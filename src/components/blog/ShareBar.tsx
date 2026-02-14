@@ -7,9 +7,10 @@ import { motion, AnimatePresence } from 'framer-motion'
 interface ShareBarProps {
   url: string
   title: string
+  variant?: 'default' | 'hero'
 }
 
-export function ShareBar({ url, title }: ShareBarProps) {
+export function ShareBar({ url, title, variant = 'default' }: ShareBarProps) {
   const [copied, setCopied] = useState(false)
 
   const encodedUrl = encodeURIComponent(url)
@@ -46,9 +47,14 @@ export function ShareBar({ url, title }: ShareBarProps) {
     }
   }
 
+  const isHero = variant === 'hero'
+  const btnClass = isHero
+    ? 'w-9 h-9 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-white/20 transition-all text-[#DCCFC0]'
+    : 'w-9 h-9 rounded-full bg-[#FDFBF7] border border-[#DCCFC0]/50 flex items-center justify-center hover:border-[#6A3B3F] hover:text-[#6A3B3F] transition-all text-[#968B89]'
+
   return (
     <div className="flex items-center gap-3 flex-wrap">
-      <span className="text-sm font-medium text-[#968B89]">Share:</span>
+      {!isHero && <span className="text-sm font-medium text-[#968B89]">Share:</span>}
       {shareLinks.map((link) => (
         <a
           key={link.label}
@@ -56,7 +62,7 @@ export function ShareBar({ url, title }: ShareBarProps) {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={`Share on ${link.label}`}
-          className="w-9 h-9 rounded-full bg-[#FDFBF7] border border-[#DCCFC0]/50 flex items-center justify-center hover:border-[#6A3B3F] hover:text-[#6A3B3F] transition-all text-[#968B89]"
+          className={btnClass}
         >
           <link.icon className="w-4 h-4" />
         </a>
@@ -64,7 +70,7 @@ export function ShareBar({ url, title }: ShareBarProps) {
       <button
         onClick={handleCopy}
         aria-label="Copy link"
-        className="relative w-9 h-9 rounded-full bg-[#FDFBF7] border border-[#DCCFC0]/50 flex items-center justify-center hover:border-[#6A3B3F] hover:text-[#6A3B3F] transition-all text-[#968B89]"
+        className={`relative ${btnClass}`}
       >
         <LinkIcon className="w-4 h-4" />
         <AnimatePresence>

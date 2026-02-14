@@ -145,19 +145,26 @@ export default async function BlogPostPage({ params }: PageProps) {
               </span>
             </div>
           </div>
+
+          {/* Share buttons in hero */}
+          <div className="mt-6 flex items-center gap-3">
+            <span className="text-sm font-medium text-[#DCCFC0]/70">Share:</span>
+            <ShareBar url={postUrl} title={post.title} variant="hero" />
+          </div>
         </div>
       </section>
 
       {/* Featured Image */}
       {post.mainImage && (
-        <section className="relative -mt-1">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8">
+        <section className="bg-[#F0E6D8] pt-10">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="aspect-[21/9] relative rounded-2xl overflow-hidden shadow-[0_8px_40px_rgba(41,33,33,0.15)]">
               <SanityImageComponent
                 image={post.mainImage}
                 alt={post.title}
                 fill
                 priority
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1024px"
               />
             </div>
           </div>
@@ -167,11 +174,6 @@ export default async function BlogPostPage({ params }: PageProps) {
       {/* Content */}
       <article className="py-12 bg-[#F0E6D8]">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Share bar */}
-          <div className="mb-8 pb-8 border-b border-[#DCCFC0]/50">
-            <ShareBar url={postUrl} title={post.title} />
-          </div>
-
           {/* Article body */}
           <div className="bg-[#FDFBF7] rounded-2xl p-6 sm:p-10 shadow-[0_2px_16px_rgba(41,33,33,0.05)] border border-[#DCCFC0]/30">
             {post.body ? (
