@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui'
+import { SanityImageComponent } from '@/components/ui'
 import type { SiteSettings } from '@/types'
 
 interface HeroSectionProps {
@@ -25,7 +26,7 @@ export function HeroSection({ settings }: HeroSectionProps) {
 
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Video Background */}
+      {/* Background: Video > Image > Gradient */}
       {videoUrl ? (
         <video
           autoPlay
@@ -36,6 +37,17 @@ export function HeroSection({ settings }: HeroSectionProps) {
         >
           <source src={videoUrl} type="video/mp4" />
         </video>
+      ) : settings?.heroImage ? (
+        <div className="absolute inset-0">
+          <SanityImageComponent
+            image={settings.heroImage}
+            alt={title}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
+        </div>
       ) : (
         <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary-dark to-warm-900" />
       )}
