@@ -126,7 +126,7 @@ export function LeadershipGrid({ staff }: LeadershipGridProps) {
                   className="bg-white rounded-2xl overflow-hidden border border-warm-100 shadow-sm hover:shadow-lg hover:border-warm-200 transition-all duration-500 group"
                 >
                   {/* Photo */}
-                  <div className="aspect-[3/2] relative overflow-hidden bg-gradient-to-br from-warm-100 to-warm-50">
+                  <div className="aspect-[16/9] relative overflow-hidden bg-gradient-to-br from-warm-100 to-warm-50">
                     {person.image ? (
                       <SanityImageComponent
                         image={person.image}
@@ -148,7 +148,7 @@ export function LeadershipGrid({ staff }: LeadershipGridProps) {
                   </div>
 
                   {/* Info */}
-                  <div className="p-6">
+                  <div className="p-5">
                     <span className="text-[11px] font-bold tracking-[0.15em] uppercase text-primary/70 mb-1 block">{person.role}</span>
                     <h3 className="text-lg font-bold text-warm-900 mb-2">{person.name}</h3>
                     {person.bio && (

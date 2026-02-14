@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useMemo, useEffect, useRef } from 'react'
-import { BookOpen, ChevronDown, Clock, ChevronLeft, ChevronRight } from 'lucide-react'
+import { BookOpen, ChevronDown, Clock, ChevronLeft, ChevronRight, ArrowUpRight } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { format } from 'date-fns'
@@ -113,10 +113,12 @@ export function BlogPageClient({ posts, categories }: BlogPageClientProps) {
             )}
 
             {/* Strong overlay for text contrast — works on any image */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/15" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/10" />
 
             {/* Content overlay */}
-            <div className="absolute inset-0 flex flex-col justify-end p-8 sm:p-12 lg:p-16">
+            <div className="absolute inset-0 flex flex-col justify-end">
+              {/* Dark text backdrop strip */}
+              <div className="bg-black/50 backdrop-blur-[2px] p-8 sm:p-12 lg:p-16">
               <div className="max-w-7xl mx-auto w-full">
                 <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
                   {/* Left: Post info */}
@@ -131,15 +133,21 @@ export function BlogPageClient({ posts, categories }: BlogPageClientProps) {
                       </span>
                     )}
 
-                    <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-3 leading-tight tracking-tight drop-shadow-lg">
+                    <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-3 leading-tight tracking-tight" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.7)' }}>
                       {featuredPost.title}
                     </h1>
 
                     {featuredPost.excerpt && (
-                      <p className="text-sm sm:text-base text-white/90 leading-relaxed line-clamp-2 max-w-xl drop-shadow-md">
+                      <p className="text-sm sm:text-base text-white leading-relaxed line-clamp-2 max-w-xl" style={{ textShadow: '0 1px 4px rgba(0,0,0,0.6)' }}>
                         {featuredPost.excerpt}
                       </p>
                     )}
+
+                    {/* Read Article button */}
+                    <span className="inline-flex items-center gap-2 mt-5 px-6 py-2.5 bg-white text-[#292121] text-sm font-semibold rounded-full group-hover:bg-[#C59853] group-hover:text-white transition-colors duration-300">
+                      Read Article
+                      <ArrowUpRight className="w-4 h-4" />
+                    </span>
                   </div>
 
                   {/* Right: Author + meta */}
@@ -162,8 +170,8 @@ export function BlogPageClient({ posts, categories }: BlogPageClientProps) {
                           </div>
                         )}
                         <div>
-                          <p className="text-sm font-semibold text-white drop-shadow-sm">{featuredPost.author.name}</p>
-                          <div className="flex items-center gap-2 text-xs text-white/70">
+                          <p className="text-sm font-semibold text-white" style={{ textShadow: '0 1px 3px rgba(0,0,0,0.5)' }}>{featuredPost.author.name}</p>
+                          <div className="flex items-center gap-2 text-xs text-white/80">
                             {featuredPost.publishedAt && (
                               <span>{format(new Date(featuredPost.publishedAt), 'd MMM yyyy')}</span>
                             )}
@@ -178,6 +186,7 @@ export function BlogPageClient({ posts, categories }: BlogPageClientProps) {
                     )}
                   </div>
                 </div>
+              </div>
               </div>
             </div>
           </section>
