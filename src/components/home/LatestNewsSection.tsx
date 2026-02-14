@@ -22,7 +22,7 @@ export function LatestNewsSection({ posts }: LatestNewsSectionProps) {
   }
 
   return (
-    <section className="py-12 lg:py-14 bg-[#E6D8C8]">
+    <section className="py-20 lg:py-24 bg-[#E6D8C8]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8">
           <div>

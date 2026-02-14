@@ -1,7 +1,7 @@
 'use client'
 
-import { useState, useMemo } from 'react'
-import { BookOpen, ChevronDown, Clock, ArrowRight } from 'lucide-react'
+import { useState, useMemo, useEffect, useRef } from 'react'
+import { BookOpen, ChevronDown, Clock, ChevronLeft, ChevronRight } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { format } from 'date-fns'
@@ -15,17 +15,30 @@ interface BlogPageClientProps {
   categories: Category[]
 }
 
-const POSTS_PER_PAGE = 8
-const LOAD_MORE_COUNT = 6
+const POSTS_PER_PAGE = 6
 
 type SortOption = 'newest' | 'oldest'
 
 export function BlogPageClient({ posts, categories }: BlogPageClientProps) {
   const [search, setSearch] = useState('')
   const [activeCategory, setActiveCategory] = useState<string | null>(null)
-  const [visibleCount, setVisibleCount] = useState(POSTS_PER_PAGE)
+  const [currentPage, setCurrentPage] = useState(1)
   const [sortBy, setSortBy] = useState<SortOption>('newest')
   const [sortOpen, setSortOpen] = useState(false)
+  const sortRef = useRef<HTMLDivElement>(null)
+
+  // Close sort dropdown on outside click
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (sortRef.current && !sortRef.current.contains(e.target as Node)) {
+        setSortOpen(false)
+      }
+    }
+    if (sortOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+      return () => document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [sortOpen])
 
   // Find the featured post (first featured, or newest)
   const featuredPost = useMemo(
@@ -64,8 +77,18 @@ export function BlogPageClient({ posts, categories }: BlogPageClientProps) {
     return filtered
   }, [posts, featuredPost, activeCategory, search, sortBy])
 
-  const visiblePosts = filteredPosts.slice(0, visibleCount)
-  const hasMore = visibleCount < filteredPosts.length
+  // Pagination
+  const totalPages = Math.max(1, Math.ceil(filteredPosts.length / POSTS_PER_PAGE))
+  const paginatedPosts = filteredPosts.slice(
+    (currentPage - 1) * POSTS_PER_PAGE,
+    currentPage * POSTS_PER_PAGE
+  )
+
+  // Reset page when filters change
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [activeCategory, search, sortBy])
+
   const featuredReadTime = featuredPost ? estimateReadingTime(featuredPost.body) : 0
   const featuredCategory = featuredPost?.categories?.[0]
 
@@ -89,15 +112,8 @@ export function BlogPageClient({ posts, categories }: BlogPageClientProps) {
               <div className="absolute inset-0 bg-gradient-to-br from-[#4A2629] to-[#6A3B3F]" />
             )}
 
-            {/* Gradient overlay for text readability */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-
-            {/* Pagination dots (decorative) */}
-            <div className="absolute bottom-8 left-8 sm:left-12 flex gap-2 z-10">
-              <span className="w-2.5 h-2.5 rounded-full bg-white" />
-              <span className="w-2.5 h-2.5 rounded-full bg-white/40" />
-              <span className="w-2.5 h-2.5 rounded-full bg-white/40" />
-            </div>
+            {/* Strong overlay for text contrast — works on any image */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/15" />
 
             {/* Content overlay */}
             <div className="absolute inset-0 flex flex-col justify-end p-8 sm:p-12 lg:p-16">
@@ -115,12 +131,12 @@ export function BlogPageClient({ posts, categories }: BlogPageClientProps) {
                       </span>
                     )}
 
-                    <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-3 leading-tight tracking-tight">
+                    <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-3 leading-tight tracking-tight drop-shadow-lg">
                       {featuredPost.title}
                     </h1>
 
                     {featuredPost.excerpt && (
-                      <p className="text-sm sm:text-base text-white/80 leading-relaxed line-clamp-2 max-w-xl">
+                      <p className="text-sm sm:text-base text-white/90 leading-relaxed line-clamp-2 max-w-xl drop-shadow-md">
                         {featuredPost.excerpt}
                       </p>
                     )}
@@ -131,7 +147,7 @@ export function BlogPageClient({ posts, categories }: BlogPageClientProps) {
                     {featuredPost.author && (
                       <div className="flex items-center gap-3">
                         {featuredPost.author.image ? (
-                          <div className="w-10 h-10 rounded-full overflow-hidden ring-2 ring-white/30">
+                          <div className="w-10 h-10 rounded-full overflow-hidden ring-2 ring-white/40">
                             <SanityImageComponent
                               image={featuredPost.author.image}
                               alt={featuredPost.author.name}
@@ -141,13 +157,13 @@ export function BlogPageClient({ posts, categories }: BlogPageClientProps) {
                             />
                           </div>
                         ) : (
-                          <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center ring-2 ring-white/30">
+                          <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center ring-2 ring-white/40">
                             <span className="text-sm font-bold text-white">{featuredPost.author.name?.charAt(0)}</span>
                           </div>
                         )}
                         <div>
-                          <p className="text-sm font-semibold text-white">{featuredPost.author.name}</p>
-                          <div className="flex items-center gap-2 text-xs text-white/60">
+                          <p className="text-sm font-semibold text-white drop-shadow-sm">{featuredPost.author.name}</p>
+                          <div className="flex items-center gap-2 text-xs text-white/70">
                             {featuredPost.publishedAt && (
                               <span>{format(new Date(featuredPost.publishedAt), 'd MMM yyyy')}</span>
                             )}
@@ -185,12 +201,11 @@ export function BlogPageClient({ posts, categories }: BlogPageClientProps) {
               active={activeCategory}
               onSelect={(slug) => {
                 setActiveCategory(slug)
-                setVisibleCount(POSTS_PER_PAGE)
               }}
             />
 
             {/* Sort dropdown */}
-            <div className="relative flex-shrink-0">
+            <div className="relative flex-shrink-0" ref={sortRef}>
               <button
                 onClick={() => setSortOpen(!sortOpen)}
                 className="flex items-center gap-2 text-sm text-[#665A58] bg-[#FDFBF7] border border-[#DCCFC0] rounded-lg px-4 py-2 hover:border-[#6A3B3F] transition-colors"
@@ -232,27 +247,49 @@ export function BlogPageClient({ posts, categories }: BlogPageClientProps) {
             {/* Posts Grid — 2 columns */}
             <div className="flex-1 min-w-0">
               <AnimatePresence mode="wait">
-                {visiblePosts.length > 0 ? (
+                {paginatedPosts.length > 0 ? (
                   <motion.div
-                    key={`${activeCategory}-${search}-${sortBy}`}
+                    key={`${activeCategory}-${search}-${sortBy}-${currentPage}`}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.3 }}
                   >
                     <div className="grid sm:grid-cols-2 gap-6">
-                      {visiblePosts.map((post, i) => (
+                      {paginatedPosts.map((post, i) => (
                         <BlogCard key={post._id} post={post} index={i} />
                       ))}
                     </div>
 
-                    {hasMore && (
-                      <div className="mt-10 text-center">
+                    {/* Pagination */}
+                    {totalPages > 1 && (
+                      <div className="mt-10 flex items-center justify-center gap-2">
                         <button
-                          onClick={() => setVisibleCount((c) => c + LOAD_MORE_COUNT)}
-                          className="px-8 py-2.5 rounded-xl border-2 border-[#6A3B3F] text-[#6A3B3F] font-semibold text-sm hover:bg-[#6A3B3F] hover:text-white transition-all duration-200"
+                          onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+                          disabled={currentPage === 1}
+                          className="w-9 h-9 rounded-lg border border-[#DCCFC0] flex items-center justify-center text-[#665A58] hover:border-[#6A3B3F] hover:text-[#6A3B3F] disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
                         >
-                          Load More Articles
+                          <ChevronLeft className="w-4 h-4" />
+                        </button>
+                        {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                          <button
+                            key={page}
+                            onClick={() => setCurrentPage(page)}
+                            className={`w-9 h-9 rounded-lg text-sm font-medium transition-colors ${
+                              currentPage === page
+                                ? 'bg-[#6A3B3F] text-white'
+                                : 'border border-[#DCCFC0] text-[#665A58] hover:border-[#6A3B3F] hover:text-[#6A3B3F]'
+                            }`}
+                          >
+                            {page}
+                          </button>
+                        ))}
+                        <button
+                          onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+                          disabled={currentPage === totalPages}
+                          className="w-9 h-9 rounded-lg border border-[#DCCFC0] flex items-center justify-center text-[#665A58] hover:border-[#6A3B3F] hover:text-[#6A3B3F] disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                        >
+                          <ChevronRight className="w-4 h-4" />
                         </button>
                       </div>
                     )}
