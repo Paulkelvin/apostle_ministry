@@ -2,6 +2,9 @@ import { client, siteSettingsQuery, serviceTimesQuery, latestPostsQuery, feature
 import { HeroSection, ServiceTimesSection, LatestNewsSection, FeaturedMinistriesSection } from '@/components/home'
 import type { SiteSettings, ServiceTimes, Post, Ministry } from '@/types'
 
+// Revalidate every 60 seconds so CMS changes appear quickly
+export const revalidate = 60
+
 async function getHomePageData() {
   try {
     const [settings, serviceTimes, posts, ministries] = await Promise.all([
