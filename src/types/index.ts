@@ -146,6 +146,7 @@ export interface SiteSettings {
   logo?: SanityImage
   logoLight?: SanityImage
   heroVideo?: string
+  heroVideoFileUrl?: string
   heroImage?: SanityImage
   heroTitle?: string
   heroSubtitle?: string

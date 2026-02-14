@@ -404,6 +404,7 @@ export const siteSettingsQuery = groq`
     logo,
     logoLight,
     heroVideo,
+    "heroVideoFileUrl": heroVideoFile.asset->url,
     heroImage,
     heroTitle,
     heroSubtitle,

@@ -30,10 +30,19 @@ export const siteSettings = defineType({
       description: 'For use on dark backgrounds',
     }),
     defineField({
+      name: 'heroVideoFile',
+      title: 'Hero Video (Upload)',
+      type: 'file',
+      description: 'Upload a short MP4 video directly. This takes priority over the URL option below.',
+      options: {
+        accept: 'video/mp4,video/webm,video/quicktime',
+      },
+    }),
+    defineField({
       name: 'heroVideo',
-      title: 'Hero Video URL',
+      title: 'Hero Video URL (External)',
       type: 'url',
-      description: 'URL to the homepage hero background video (MP4)',
+      description: 'Alternatively, paste a URL to an externally hosted video (MP4). Only used if no file is uploaded above.',
     }),
     defineField({
       name: 'heroImage',

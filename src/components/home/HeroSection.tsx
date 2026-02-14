@@ -11,7 +11,7 @@ interface HeroSectionProps {
 export function HeroSection({ settings }: HeroSectionProps) {
   const title = settings?.heroTitle || 'Welcome Home'
   const subtitle = settings?.heroSubtitle || 'A place where everyone belongs'
-  const videoUrl = settings?.heroVideo
+  const videoUrl = settings?.heroVideoFileUrl || settings?.heroVideo
   const watchOnlineUrl = settings?.watchOnlineUrl
 
   return (
