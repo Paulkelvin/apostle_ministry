@@ -9,4 +9,7 @@ const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'rlfcc'
 
 export default defineCliConfig({
   api: { projectId, dataset },
+  deployment: {
+    appId: 'xreksp8yhefsduy2liup7xbq',
+  },
 })
