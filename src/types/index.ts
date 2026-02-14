@@ -146,7 +146,13 @@ export interface SiteSettings {
   logo?: SanityImage
   logoLight?: SanityImage
   heroVideo?: string
-  heroVideoFileUrl?: string
+  heroVideoFile?: {
+    _type: 'file'
+    asset: {
+      _ref: string
+      _type: 'reference'
+    }
+  }
   heroImage?: SanityImage
   heroTitle?: string
   heroSubtitle?: string

@@ -398,13 +398,13 @@ export const featuredEventsQuery = groq`
 // SITE SETTINGS (Singleton)
 // ============================================
 export const siteSettingsQuery = groq`
-  *[_type == "siteSettings"][0] {
+  *[_id == "siteSettings"][0] {
     siteName,
     siteTagline,
     logo,
     logoLight,
     heroVideo,
-    "heroVideoFileUrl": heroVideoFile.asset->url,
+    heroVideoFile,
     heroImage,
     heroTitle,
     heroSubtitle,

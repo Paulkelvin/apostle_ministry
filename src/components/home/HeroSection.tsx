@@ -11,7 +11,16 @@ interface HeroSectionProps {
 export function HeroSection({ settings }: HeroSectionProps) {
   const title = settings?.heroTitle || 'Welcome Home'
   const subtitle = settings?.heroSubtitle || 'A place where everyone belongs'
-  const videoUrl = settings?.heroVideoFileUrl || settings?.heroVideo
+  // Build video URL from uploaded file asset ref, or fall back to external URL
+  let videoUrl = settings?.heroVideo
+  if (settings?.heroVideoFile?.asset?._ref) {
+    // Asset ref format: file-{id}-{ext}
+    const ref = settings.heroVideoFile.asset._ref
+    const [, id, ext] = ref.match(/^file-(.+)-(\w+)$/) || []
+    if (id && ext) {
+      videoUrl = `https://cdn.sanity.io/files/${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'j2qt3gmh'}/${process.env.NEXT_PUBLIC_SANITY_DATASET || 'rlfcc'}/${id}.${ext}`
+    }
+  }
   const watchOnlineUrl = settings?.watchOnlineUrl
 
   return (

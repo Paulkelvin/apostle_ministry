@@ -9,22 +9,18 @@ const client = createClient({
   token: process.env.SANITY_API_TOKEN,
 })
 
-// Check both published and draft
-const published = await client.fetch(`
-  *[_id == "siteSettings"][0]{
-    heroVideo,
-    heroVideoFile,
-    "heroVideoFileUrl": heroVideoFile.asset->url
-  }
-`)
+// Get ALL siteSettings documents (published, draft, versions)
+const all = await client.fetch(`*[_type == "siteSettings"]`)
+console.log("All siteSettings docs:", all.length)
+for (const doc of all) {
+  console.log(`\n=== ${doc._id} (updated: ${doc._updatedAt}) ===`)
+  console.log("Has heroVideoFile:", !!doc.heroVideoFile)
+  console.log("heroVideoFile:", JSON.stringify(doc.heroVideoFile))
+  console.log("_system:", JSON.stringify(doc._system))
+}
 
-const draft = await client.fetch(`
-  *[_id == "drafts.siteSettings"][0]{
-    heroVideo,
-    heroVideoFile,
-    "heroVideoFileUrl": heroVideoFile.asset->url
-  }
-`)
-
-console.log("PUBLISHED:", JSON.stringify(published, null, 2))
-console.log("DRAFT:", JSON.stringify(draft, null, 2))
+// Also try by ID directly
+const byId = await client.fetch(`*[_id == "siteSettings"][0]`)
+console.log("\n=== By _id 'siteSettings' ===")
+console.log("Has heroVideoFile:", !!byId?.heroVideoFile)
+console.log("Full keys:", Object.keys(byId || {}))

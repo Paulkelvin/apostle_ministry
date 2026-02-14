@@ -8,7 +8,7 @@ export const client = createClient({
   projectId,
   dataset,
   apiVersion,
-  useCdn: process.env.NODE_ENV === 'production',
+  useCdn: false, // Always fetch fresh data (ISR handles caching at the page level)
 })
 
 // Preview client with token for drafts
