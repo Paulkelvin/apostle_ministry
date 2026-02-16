@@ -20,7 +20,7 @@ const buttonVariants = cva(
         white:
           'bg-white text-warm-900 hover:bg-warm-100 focus:ring-white shadow-md',
         gold:
-          'bg-[#D4AF37] text-[#332D2D] hover:bg-[#B8962E] focus:ring-[#D4AF37] shadow-md hover:shadow-lg font-semibold',
+          'bg-[#D4AF37] text-[#1A1A1A] hover:bg-[#B8962E] focus:ring-[#D4AF37] shadow-md hover:shadow-lg font-bold',
         heroOutline:
           'border-2 border-white/60 text-white bg-white/10 backdrop-blur-sm hover:bg-white/20 focus:ring-white shadow-md',
       },

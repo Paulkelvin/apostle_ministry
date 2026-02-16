@@ -56,10 +56,10 @@ export function HeroSection({ settings }: HeroSectionProps) {
       <div className="absolute inset-0 bg-black/50" />
 
       {/* Content */}
-      <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
+      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
         <motion.h1
-          className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6"
-          style={{ textShadow: '0px 4px 12px rgba(0,0,0,0.4)' }}
+          className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 text-[#FFFFFF]"
+          style={{ textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.3 }}
@@ -68,8 +68,8 @@ export function HeroSection({ settings }: HeroSectionProps) {
         </motion.h1>
 
         <motion.p
-          className="text-xl md:text-2xl lg:text-3xl text-white/90 mb-10"
-          style={{ textShadow: '0px 2px 8px rgba(0,0,0,0.3)' }}
+          className="text-xl md:text-2xl lg:text-3xl text-[#FFFFFF] mb-10"
+          style={{ textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6 }}
