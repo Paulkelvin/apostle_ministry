@@ -1,35 +1,35 @@
 @import "tailwindcss";
 
 :root {
-  /* Warm Sanctuary Palette */
-  --color-primary: #6A3B3F;        /* Deep Wine */
-  --color-primary-dark: #82494E;   /* Hover tone */
-  --color-primary-light: #A26A73;
+  /* Radiant Sanctuary Palette */
+  --color-primary: #592D31;        /* Rich Deep Burgundy */
+  --color-primary-dark: #6E3A3F;   /* Hover tone */
+  --color-primary-light: #7A4A50;
   
-  --color-secondary: #E6D8C8;      /* Alt section background */
-  --color-secondary-dark: #D4C5B4;
+  --color-secondary: #F4F0EA;      /* Alt section background */
+  --color-secondary-dark: #E8E2D8;
   
-  --color-accent: #C59853;         /* Antique Gold */
-  --color-accent-dark: #A57837;
-  --color-accent-light: #E6C99B;
+  --color-accent: #D4AF37;         /* Luminous Gold */
+  --color-accent-dark: #B8962E;
+  --color-accent-light: #E8CC6A;
   
   --color-sage: #7BA381;
   --color-sage-dark: #5C8A63;
   --color-sage-light: #E8F0EA;
   
-  --color-neutral-900: #292121;    /* Espresso Black */
-  --color-neutral-800: #382022;    /* Deep Dark Wine for footer */
-  --color-neutral-700: #4A3A38;
-  --color-neutral-600: #665A58;    /* Warm Taupe (secondary text) */
-  --color-neutral-500: #968B89;    /* Muted text */
-  --color-neutral-400: #B19F95;
-  --color-neutral-300: #CEBEAD;
-  --color-neutral-200: #DCCFC0;    /* Borders */
-  --color-neutral-100: #E6D8C8;    /* Alt bg */
-  --color-neutral-50: #FDFBF7;     /* Card ivory */
+  --color-neutral-900: #332D2D;    /* Soft Charcoal */
+  --color-neutral-800: #3D2A2C;    /* Deep Dark Wine for footer */
+  --color-neutral-700: #4A3A3C;
+  --color-neutral-600: #5C5252;    /* Secondary text */
+  --color-neutral-500: #8A8080;    /* Muted text */
+  --color-neutral-400: #A89E9E;
+  --color-neutral-300: #D1C9C5;
+  --color-neutral-200: #E0D8D2;    /* Borders */
+  --color-neutral-100: #F4F0EA;    /* Alt bg (Alabaster) */
+  --color-neutral-50: #FFFFFF;     /* Pure white cards */
   
-  --background: #F0E6D8;           /* Page background (warm oat) */
-  --foreground: #292121;
+  --background: #FCFBF9;           /* Crisp Warm White */
+  --foreground: #332D2D;
 }
 
 @theme inline {
@@ -85,23 +85,23 @@ body {
 /* Footer-specific overrides — !important to beat any inherited global rules */
 footer[data-footer] h3,
 footer[data-footer] h4 {
-  color: #F0E6D8 !important;
+  color: #F4F0EA !important;
 }
 
 footer[data-footer] p,
 footer[data-footer] address,
 footer[data-footer] address p,
 footer[data-footer] a {
-  color: #CDBFBA !important;
+  color: #C4BAB4 !important;
 }
 
 footer[data-footer] a:hover {
-  color: #C59853 !important;
+  color: #D4AF37 !important;
 }
 
 footer[data-footer] .legal,
 footer[data-footer] .legal p {
-  color: #968B89 !important;
+  color: #8A8080 !important;
 }
 
 /* Smooth scrolling */
@@ -118,7 +118,7 @@ h1, h2, h3, h4, h5, h6 {
 :not(footer) > h4, :not(footer) > h5, :not(footer) > h6,
 section h1, section h2, section h3,
 section h4, section h5, section h6 {
-  color: #6A3B3F;
+  color: #592D31;
 }
 
 p {
@@ -126,7 +126,7 @@ p {
 }
 :not(footer) > p,
 section p {
-  color: #665A58;
+  color: #332D2D;
 }
 
 /* Custom scrollbar */
@@ -275,10 +275,10 @@ a[role="button"]:active {
 /* Gentle pulse for CTAs */
 @keyframes gentlePulse {
   0%, 100% {
-    box-shadow: 0 0 0 0 rgba(106, 59, 63, 0.2);
+    box-shadow: 0 0 0 0 rgba(89, 45, 49, 0.2);
   }
   50% {
-    box-shadow: 0 0 0 8px rgba(106, 59, 63, 0);
+    box-shadow: 0 0 0 8px rgba(89, 45, 49, 0);
   }
 }
 
@@ -306,19 +306,19 @@ a[role="button"]:active {
 
 /* Premium card base */
 .card-premium {
-  background: #FDFBF7;
+  background: #FFFFFF;
   border-radius: 16px;
   border: none;
-  box-shadow: 0 12px 32px rgba(41, 33, 33, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
 }
 .card-premium:hover {
   transform: translateY(-4px);
-  box-shadow: 0 16px 40px rgba(41, 33, 33, 0.12);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
 }
 
 /* Selection */
 ::selection {
-  background: #C59853;
-  color: #FDFBF7;
+  background: #D4AF37;
+  color: #FFFFFF;
 }

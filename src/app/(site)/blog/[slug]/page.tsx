@@ -65,19 +65,19 @@ export default async function BlogPostPage({ params }: PageProps) {
       <section
         className="relative pt-32 pb-16 overflow-hidden"
         style={{
-          background: 'linear-gradient(135deg, #4A2629 0%, #6A3B3F 100%)',
+          background: 'linear-gradient(135deg, #3D2A2C 0%, #592D31 100%)',
         }}
       >
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            background: 'radial-gradient(circle at top right, rgba(212, 175, 106, 0.15), transparent)',
+            background: 'radial-gradient(circle at top right, rgba(212, 175, 55, 0.15), transparent)',
           }}
         />
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-[#DCCFC0]/80 hover:text-[#FDFBF7] transition-colors mb-8 text-sm"
+            className="inline-flex items-center gap-2 text-[#E0D8D2]/80 hover:text-[#FFFFFF] transition-colors mb-8 text-sm"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to Blog
@@ -100,7 +100,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 
           <h1
             className="text-3xl md:text-5xl font-bold mb-6 tracking-tight leading-tight"
-            style={{ color: '#FDFBF7' }}
+            style={{ color: '#FFFFFF' }}
           >
             {post.title}
           </h1>
@@ -125,14 +125,14 @@ export default async function BlogPostPage({ params }: PageProps) {
                   </div>
                 )}
                 <div>
-                  <p className="text-sm font-medium" style={{ color: '#FDFBF7' }}>{post.author.name}</p>
+                  <p className="text-sm font-medium" style={{ color: '#FFFFFF' }}>{post.author.name}</p>
                   {post.author.role && (
-                    <p className="text-xs" style={{ color: '#DCCFC0' }}>{post.author.role}</p>
+                    <p className="text-xs" style={{ color: '#E0D8D2' }}>{post.author.role}</p>
                   )}
                 </div>
               </div>
             )}
-            <div className="flex items-center gap-4 text-sm" style={{ color: '#DCCFC0' }}>
+            <div className="flex items-center gap-4 text-sm" style={{ color: '#E0D8D2' }}>
               {post.publishedAt && (
                 <span className="flex items-center gap-1.5">
                   <Calendar className="w-3.5 h-3.5" />
@@ -148,7 +148,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 
           {/* Share buttons in hero */}
           <div className="mt-6 flex items-center gap-3">
-            <span className="text-sm font-medium text-[#DCCFC0]/70">Share:</span>
+            <span className="text-sm font-medium text-[#E0D8D2]/70">Share:</span>
             <ShareBar url={postUrl} title={post.title} variant="hero" />
           </div>
         </div>
@@ -156,9 +156,9 @@ export default async function BlogPostPage({ params }: PageProps) {
 
       {/* Featured Image */}
       {post.mainImage && (
-        <section className="bg-[#F0E6D8] pt-10">
+        <section className="bg-[#FCFBF9] pt-10">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="aspect-[21/9] relative rounded-2xl overflow-hidden shadow-[0_8px_40px_rgba(41,33,33,0.15)]">
+            <div className="aspect-[21/9] relative rounded-2xl overflow-hidden shadow-[0_8px_40px_rgba(0,0,0,0.15)]">
               <SanityImageComponent
                 image={post.mainImage}
                 alt={post.title}
@@ -172,19 +172,19 @@ export default async function BlogPostPage({ params }: PageProps) {
       )}
 
       {/* Content */}
-      <article className="py-12 bg-[#F0E6D8]">
+      <article className="py-12 bg-[#FCFBF9]">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Article body */}
-          <div className="bg-[#FDFBF7] rounded-2xl p-6 sm:p-10 shadow-[0_2px_16px_rgba(41,33,33,0.05)] border border-[#DCCFC0]/30">
+          <div className="bg-[#FFFFFF] rounded-2xl p-6 sm:p-10 shadow-[0_2px_16px_rgba(0,0,0,0.05)] border border-[#E0D8D2]/30">
             {post.body ? (
               <PortableTextRenderer value={post.body} />
             ) : (
-              <p className="text-[#665A58]">No content available.</p>
+              <p className="text-[#332D2D]">No content available.</p>
             )}
           </div>
 
           {/* Bottom share bar */}
-          <div className="mt-8 pt-8 border-t border-[#DCCFC0]/50">
+          <div className="mt-8 pt-8 border-t border-[#E0D8D2]/50">
             <ShareBar url={postUrl} title={post.title} />
           </div>
         </div>
@@ -192,12 +192,12 @@ export default async function BlogPostPage({ params }: PageProps) {
 
       {/* Author Bio */}
       {post.author && post.author.bio && (
-        <section className="py-12 bg-[#E6D8C8]">
+        <section className="py-12 bg-[#F4F0EA]">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-[#FDFBF7] rounded-2xl p-8 shadow-[0_2px_16px_rgba(41,33,33,0.06)] border border-[#DCCFC0]/30 flex flex-col sm:flex-row gap-6">
+            <div className="bg-[#FFFFFF] rounded-2xl p-8 shadow-[0_2px_16px_rgba(0,0,0,0.06)] border border-[#E0D8D2]/30 flex flex-col sm:flex-row gap-6">
               {post.author.image && (
                 <div className="flex-shrink-0">
-                  <div className="w-20 h-20 rounded-full overflow-hidden ring-2 ring-[#DCCFC0]/50">
+                  <div className="w-20 h-20 rounded-full overflow-hidden ring-2 ring-[#E0D8D2]/50">
                     <SanityImageComponent
                       image={post.author.image}
                       alt={post.author.name}
@@ -209,12 +209,12 @@ export default async function BlogPostPage({ params }: PageProps) {
                 </div>
               )}
               <div>
-                <p className="text-xs font-semibold text-[#C59853] uppercase tracking-wider mb-1">About the Author</p>
-                <h3 className="text-lg font-bold text-[#292121]">{post.author.name}</h3>
+                <p className="text-xs font-semibold text-[#D4AF37] uppercase tracking-wider mb-1">About the Author</p>
+                <h3 className="text-lg font-bold text-[#592D31]">{post.author.name}</h3>
                 {post.author.role && (
-                  <p className="text-[#6A3B3F] text-sm mb-3">{post.author.role}</p>
+                  <p className="text-[#592D31] text-sm mb-3">{post.author.role}</p>
                 )}
-                <p className="text-[#665A58] text-sm leading-relaxed">{post.author.bio}</p>
+                <p className="text-[#332D2D] text-sm leading-relaxed">{post.author.bio}</p>
               </div>
             </div>
           </div>
@@ -222,7 +222,7 @@ export default async function BlogPostPage({ params }: PageProps) {
       )}
 
       {/* Comments */}
-      <section className="py-12 bg-[#F0E6D8]">
+      <section className="py-12 bg-[#FCFBF9]">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <CommentSection postId={post._id} comments={comments} />
         </div>
@@ -230,9 +230,9 @@ export default async function BlogPostPage({ params }: PageProps) {
 
       {/* Related Posts */}
       {relatedPosts.length > 0 && (
-        <section className="py-16 bg-[#E6D8C8]">
+        <section className="py-16 bg-[#F4F0EA]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl font-bold text-[#292121] mb-8 text-center">
+            <h2 className="text-2xl font-bold text-[#592D31] mb-8 text-center">
               Related Articles
             </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">

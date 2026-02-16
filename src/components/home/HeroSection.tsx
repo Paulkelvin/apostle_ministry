@@ -59,6 +59,7 @@ export function HeroSection({ settings }: HeroSectionProps) {
       <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
         <motion.h1
           className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6"
+          style={{ textShadow: '0px 4px 12px rgba(0,0,0,0.4)' }}
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.3 }}
@@ -68,6 +69,7 @@ export function HeroSection({ settings }: HeroSectionProps) {
 
         <motion.p
           className="text-xl md:text-2xl lg:text-3xl text-white/90 mb-10"
+          style={{ textShadow: '0px 2px 8px rgba(0,0,0,0.3)' }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6 }}
@@ -81,14 +83,13 @@ export function HeroSection({ settings }: HeroSectionProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.9 }}
         >
-          <Button href="/contact" variant="white" size="lg">
+          <Button href="/contact" variant="gold" size="lg">
             Plan Your Visit
           </Button>
           <Button
             href={watchOnlineUrl || '/sermons'}
-            variant="outline"
+            variant="heroOutline"
             size="lg"
-            className="border-white text-white hover:bg-white hover:text-warm-900"
           >
             Watch Online
           </Button>

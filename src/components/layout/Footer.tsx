@@ -47,15 +47,15 @@ export function Footer({ socialLinks = [], statement501c3, siteName, siteTagline
   const addressLines = (address || "High Calling Ministries\n401-A Prince George's Blvd\nUpper Marlboro, MD 20774").split('\n')
 
   return (
-    <footer data-footer className="bg-[#382022] text-[#F0E6D8]">
+    <footer data-footer className="bg-[#3D2A2C] text-[#F4F0EA]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Brand & Social */}
           <div>
-            <h3 className="text-2xl font-bold mb-4" style={{ color: '#F0E6D8' }}>
+            <h3 className="text-2xl font-bold mb-4" style={{ color: '#F4F0EA' }}>
               {displayName}
             </h3>
-            <p className="mb-6" style={{ color: '#CDBFBA' }}>
+            <p className="mb-6" style={{ color: '#C4BAB4' }}>
               {displayTagline}
             </p>
             <div className="flex space-x-4">
@@ -68,7 +68,7 @@ export function Footer({ socialLinks = [], statement501c3, siteName, siteTagline
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-full bg-[#4A3A38] flex items-center justify-center hover:bg-[#6A3B3F] hover:text-white transition-colors"
+                    className="w-10 h-10 rounded-full bg-[#4A3A3C] flex items-center justify-center hover:bg-[#592D31] hover:text-white transition-colors"
                     aria-label={`Follow us on ${link.platform}`}
                   >
                     <Icon className="w-5 h-5" />
@@ -80,7 +80,7 @@ export function Footer({ socialLinks = [], statement501c3, siteName, siteTagline
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-semibold mb-4" style={{ color: '#F0E6D8' }}>
+            <h4 className="text-lg font-semibold mb-4" style={{ color: '#F4F0EA' }}>
               Quick Links
             </h4>
             <ul className="space-y-3">
@@ -88,8 +88,8 @@ export function Footer({ socialLinks = [], statement501c3, siteName, siteTagline
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="transition-colors hover:!text-[#C59853]"
-                    style={{ color: '#CDBFBA' }}
+                    className="transition-colors hover:!text-[#D4AF37]"
+                    style={{ color: '#C4BAB4' }}
                   >
                     {link.label}
                   </Link>
@@ -100,27 +100,27 @@ export function Footer({ socialLinks = [], statement501c3, siteName, siteTagline
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-lg font-semibold mb-4" style={{ color: '#F0E6D8' }}>
+            <h4 className="text-lg font-semibold mb-4" style={{ color: '#F4F0EA' }}>
               Contact Us
             </h4>
-            <address className="not-italic space-y-2" style={{ color: '#CDBFBA' }}>
+            <address className="not-italic space-y-2" style={{ color: '#C4BAB4' }}>
               {addressLines.map((line, i) => (
-                <p key={i} style={{ color: '#CDBFBA' }}>{line}</p>
+                <p key={i} style={{ color: '#C4BAB4' }}>{line}</p>
               ))}
-              <p className="mt-4" style={{ color: '#CDBFBA' }}>
+              <p className="mt-4" style={{ color: '#C4BAB4' }}>
                 <a
                   href={`tel:${displayPhone.replace(/[^+\d]/g, '')}`}
-                  className="transition-colors hover:!text-[#C59853]"
-                  style={{ color: '#CDBFBA' }}
+                  className="transition-colors hover:!text-[#D4AF37]"
+                  style={{ color: '#C4BAB4' }}
                 >
                   {displayPhone}
                 </a>
               </p>
-              <p style={{ color: '#CDBFBA' }}>
+              <p style={{ color: '#C4BAB4' }}>
                 <a
                   href={`mailto:${displayEmail}`}
-                  className="transition-colors hover:!text-[#C59853]"
-                  style={{ color: '#CDBFBA' }}
+                  className="transition-colors hover:!text-[#D4AF37]"
+                  style={{ color: '#C4BAB4' }}
                 >
                   {displayEmail}
                 </a>
@@ -131,14 +131,14 @@ export function Footer({ socialLinks = [], statement501c3, siteName, siteTagline
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-[#4A3A38]">
+      <div className="border-t border-[#4A3A3C]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="legal text-sm text-center md:text-left" style={{ color: '#968B89' }}>
+            <p className="legal text-sm text-center md:text-left" style={{ color: '#8A8080' }}>
               {statement501c3 ||
                 'The Apostles Ministry is a 501(c)(3) nonprofit organization. All donations are tax-deductible.'}
             </p>
-            <p className="legal text-sm" style={{ color: '#968B89' }}>
+            <p className="legal text-sm" style={{ color: '#8A8080' }}>
               © {currentYear} {displayName}. All rights reserved.
             </p>
           </div>

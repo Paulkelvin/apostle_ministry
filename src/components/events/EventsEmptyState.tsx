@@ -18,7 +18,7 @@ export function EventsEmptyState({ filterActive = false, monthly = false }: Even
     >
       {/* Icon */}
       <div className="relative mb-6">
-        <div className="w-20 h-20 rounded-2xl bg-[#F3EBDD] flex items-center justify-center border border-[#E0D4C2]">
+        <div className="w-20 h-20 rounded-2xl bg-[#F4F0EA] flex items-center justify-center border border-[#E0D4C2]">
           {filterActive ? (
             <Search className="w-9 h-9 text-[#1C1B1A]/40" />
           ) : monthly ? (
@@ -28,8 +28,8 @@ export function EventsEmptyState({ filterActive = false, monthly = false }: Even
           )}
         </div>
         {/* Decorative dots */}
-        <div className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-[#D4AF6A]/30" />
-        <div className="absolute -bottom-1 -left-1 w-2 h-2 rounded-full bg-[#D4AF6A]/20" />
+        <div className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-[#D4AF37]/30" />
+        <div className="absolute -bottom-1 -left-1 w-2 h-2 rounded-full bg-[#D4AF37]/20" />
       </div>
 
       {/* Text */}

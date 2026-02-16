@@ -30,26 +30,26 @@ export default async function AboutPage() {
       <section
         className="relative pt-32 pb-16 overflow-hidden"
         style={{
-          background: 'linear-gradient(135deg, #4A2629 0%, #6A3B3F 100%)',
+          background: 'linear-gradient(135deg, #3D2A2C 0%, #592D31 100%)',
         }}
       >
         {/* Gold glow overlay */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            background: 'radial-gradient(circle at top right, rgba(212, 175, 106, 0.15), transparent)',
+            background: 'radial-gradient(circle at top right, rgba(212, 175, 55, 0.15), transparent)',
           }}
         />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1
             className="text-5xl font-bold mb-4 tracking-tight"
-            style={{ color: '#FDFBF7' }}
+            style={{ color: '#FFFFFF' }}
           >
             About Us
           </h1>
           <p
             className="text-xl max-w-2xl mx-auto"
-            style={{ color: 'rgba(220, 207, 192, 0.9)' }}
+            style={{ color: 'rgba(224, 216, 210, 0.9)' }}
           >
             Discover who we are and what we believe
           </p>

@@ -49,7 +49,7 @@ export function FeaturedEventCard({ event, onClick }: FeaturedEventCardProps) {
       <div className="relative bg-white rounded-[20px] overflow-hidden shadow-[0_12px_32px_rgba(28,27,26,0.08)] hover:shadow-[0_16px_40px_rgba(28,27,26,0.12)] hover:-translate-y-1 transition-all duration-300">
         {/* Featured badge */}
         <div className="absolute top-5 left-5 z-10">
-          <span className="bg-[#D4AF6A] text-[#1C1B1A] text-xs font-bold tracking-wider uppercase px-3.5 py-1.5 rounded-full shadow-lg shadow-[#D4AF6A]/20">
+          <span className="bg-[#D4AF37] text-[#1C1B1A] text-xs font-bold tracking-wider uppercase px-3.5 py-1.5 rounded-full shadow-lg shadow-[#D4AF37]/20">
             Featured
           </span>
         </div>
@@ -77,7 +77,7 @@ export function FeaturedEventCard({ event, onClick }: FeaturedEventCardProps) {
           <div className="p-5 lg:p-8 flex flex-col justify-center">
             {/* Date badge inline */}
             <div className="flex items-center gap-3 mb-4">
-              <div className="bg-[#F3EBDD] rounded-xl px-3 py-2 text-center leading-none border border-[#E0D4C2]">
+              <div className="bg-[#F4F0EA] rounded-xl px-3 py-2 text-center leading-none border border-[#E0D4C2]">
                 <span className="text-[10px] font-bold uppercase block tracking-wider text-[#8F8A80]">{format(startDate, 'MMM')}</span>
                 <span className="text-2xl font-bold block mt-0.5 text-[#1C1B1A]">{format(startDate, 'd')}</span>
               </div>
@@ -87,7 +87,7 @@ export function FeaturedEventCard({ event, onClick }: FeaturedEventCardProps) {
               </div>
             </div>
 
-            <h3 className="text-2xl lg:text-3xl font-bold text-[#1C1B1A] mb-3 group-hover:text-[#6A3B3F] transition-colors tracking-tight leading-tight">
+            <h3 className="text-2xl lg:text-3xl font-bold text-[#1C1B1A] mb-3 group-hover:text-[#592D31] transition-colors tracking-tight leading-tight">
               {event.title}
             </h3>
 
@@ -99,7 +99,7 @@ export function FeaturedEventCard({ event, onClick }: FeaturedEventCardProps) {
             <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-[#8F8A80] mb-6">
               {event.location && (
                 <span className="flex items-center gap-1.5">
-                  <MapPin className="w-3.5 h-3.5 text-[#D4AF6A]" />
+                  <MapPin className="w-3.5 h-3.5 text-[#D4AF37]" />
                   {event.location}
                 </span>
               )}
@@ -121,7 +121,7 @@ export function FeaturedEventCard({ event, onClick }: FeaturedEventCardProps) {
                     { value: countdown.minutes, label: 'Min' },
                     { value: countdown.seconds, label: 'Sec' },
                   ].map(({ value, label }) => (
-                    <div key={label} className="bg-[#F3EBDD] text-[#1C1B1A] rounded-md px-2.5 py-2 text-center min-w-[48px] border border-[#E0D4C2]">
+                    <div key={label} className="bg-[#F4F0EA] text-[#1C1B1A] rounded-md px-2.5 py-2 text-center min-w-[48px] border border-[#E0D4C2]">
                       <span className="text-lg font-bold tabular-nums block leading-none">{String(value).padStart(2, '0')}</span>
                       <span className="text-[9px] uppercase tracking-wider text-[#8F8A80] mt-1 block">{label}</span>
                     </div>

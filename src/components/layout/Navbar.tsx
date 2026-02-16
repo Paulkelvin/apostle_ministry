@@ -43,8 +43,8 @@ export function Navbar() {
       <motion.header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out ${
           showSolid
-            ? 'bg-white/95 backdrop-blur-md shadow-sm'
-            : 'bg-gradient-to-b from-black/40 to-transparent'
+            ? 'bg-[#FCFBF9]/95 backdrop-blur-md shadow-sm'
+            : 'bg-gradient-to-b from-black/30 to-transparent'
         }`}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
@@ -56,14 +56,14 @@ export function Navbar() {
             <Link href="/" className="flex items-center space-x-2 group">
               <span
                 className={`text-2xl font-bold tracking-tight transition-colors duration-300 ${
-                  showSolid ? 'text-[#292121]' : 'text-white'
+                  showSolid ? 'text-[#592D31]' : 'text-white'
                 }`}
                 style={!showSolid ? { color: '#FFFFFF' } : undefined}
               >
                 The Apostles{' '}
                 <span
                   className={`${showSolid ? 'text-primary' : ''} transition-colors duration-300`}
-                  style={!showSolid ? { color: '#D4AF6A' } : undefined}
+                  style={!showSolid ? { color: '#D4AF37' } : undefined}
                 >
                   Ministry
                 </span>
@@ -81,8 +81,8 @@ export function Navbar() {
                     className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
                       showSolid
                         ? isActive
-                          ? 'text-[#292121] bg-[#E6D8C8]'
-                          : 'text-[#665A58] hover:text-[#292121] hover:bg-[#E6D8C8]'
+                          ? 'text-[#592D31] bg-[#F4F0EA]'
+                          : 'text-[#332D2D] hover:text-[#592D31] hover:bg-[#F4F0EA]'
                         : isActive
                           ? 'text-white bg-white/10'
                           : 'text-white/85 hover:text-white hover:bg-white/10'
@@ -97,7 +97,7 @@ export function Navbar() {
             {/* Mobile Menu Button */}
             <button
               className={`md:hidden p-2 rounded-lg transition-colors ${
-                showSolid ? 'text-[#292121] hover:bg-[#E6D8C8]' : 'text-white hover:bg-white/10'
+                showSolid ? 'text-[#592D31] hover:bg-[#F4F0EA]' : 'text-white hover:bg-white/10'
               }`}
               onClick={() => setIsMobileMenuOpen(true)}
               aria-label="Open mobile menu"
@@ -129,15 +129,15 @@ export function Navbar() {
             >
               <div className="p-6">
                 <div className="flex justify-between items-center mb-10">
-                  <span className="text-xl font-bold text-[#292121]">
+                  <span className="text-xl font-bold text-[#592D31]">
                     Menu
                   </span>
                   <button
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="p-2 rounded-lg hover:bg-[#E6D8C8] transition-colors"
+                    className="p-2 rounded-lg hover:bg-[#F4F0EA] transition-colors"
                     aria-label="Close mobile menu"
                   >
-                    <X className="w-5 h-5 text-[#968B89]" />
+                    <X className="w-5 h-5 text-[#8A8080]" />
                   </button>
                 </div>
                 <div className="flex flex-col space-y-1">
@@ -149,8 +149,8 @@ export function Navbar() {
                         href={link.href}
                         className={`text-base font-medium py-3 px-4 rounded-lg transition-all ${
                           isActive
-                            ? 'text-[#292121] bg-[#E6D8C8]'
-                            : 'text-[#665A58] hover:text-[#292121] hover:bg-[#E6D8C8]'
+                            ? 'text-[#592D31] bg-[#F4F0EA]'
+                            : 'text-[#332D2D] hover:text-[#592D31] hover:bg-[#F4F0EA]'
                         }`}
                         onClick={() => setIsMobileMenuOpen(false)}
                       >

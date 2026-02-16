@@ -10,7 +10,7 @@ const buttonVariants = cva(
         primary:
           'bg-primary text-white hover:bg-primary-dark focus:ring-primary shadow-md hover:shadow-lg',
         secondary:
-          'border-2 border-primary text-primary bg-transparent hover:bg-[#E6D8C8] focus:ring-primary',
+          'border-2 border-primary text-primary bg-transparent hover:bg-[#F4F0EA] focus:ring-primary',
         outline:
           'border-2 border-primary text-primary hover:bg-primary hover:text-white focus:ring-primary',
         ghost:
@@ -19,6 +19,10 @@ const buttonVariants = cva(
           'bg-accent text-warm-900 hover:bg-accent-dark focus:ring-accent shadow-md hover:shadow-lg',
         white:
           'bg-white text-warm-900 hover:bg-warm-100 focus:ring-white shadow-md',
+        gold:
+          'bg-[#D4AF37] text-[#332D2D] hover:bg-[#B8962E] focus:ring-[#D4AF37] shadow-md hover:shadow-lg font-semibold',
+        heroOutline:
+          'border-2 border-white/60 text-white bg-white/10 backdrop-blur-sm hover:bg-white/20 focus:ring-white shadow-md',
       },
       size: {
         sm: 'text-sm px-4 py-2 rounded-lg',

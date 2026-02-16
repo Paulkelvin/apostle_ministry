@@ -42,10 +42,10 @@ async function createSampleData() {
     // 2. Create categories
     console.log('📚 Creating categories...')
     const categories = [
-      { title: 'Devotional', slug: { current: 'devotional' }, color: '#6A3B3F' },
-      { title: 'Announcement', slug: { current: 'announcement' }, color: '#C59853' },
+      { title: 'Devotional', slug: { current: 'devotional' }, color: '#592D31' },
+      { title: 'Announcement', slug: { current: 'announcement' }, color: '#D4AF37' },
       { title: 'Testimony', slug: { current: 'testimony' }, color: '#8B6F47' },
-      { title: 'Leadership', slug: { current: 'leadership' }, color: '#4A2629' },
+      { title: 'Leadership', slug: { current: 'leadership' }, color: '#3D2A2C' },
     ]
 
     const createdCategories = await Promise.all(

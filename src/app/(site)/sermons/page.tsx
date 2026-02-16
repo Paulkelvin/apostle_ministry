@@ -30,25 +30,25 @@ export default async function SermonsPage() {
       <section
         className="relative pt-32 pb-16 overflow-hidden"
         style={{
-          background: 'linear-gradient(135deg, #382022 0%, #292121 100%)',
+          background: 'linear-gradient(135deg, #3D2A2C 0%, #592D31 100%)',
         }}
       >
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            background: 'radial-gradient(circle at top right, rgba(212, 175, 106, 0.12), transparent)',
+            background: 'radial-gradient(circle at top right, rgba(212, 175, 55, 0.12), transparent)',
           }}
         />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1
             className="text-5xl font-bold mb-4 tracking-tight"
-            style={{ color: '#FDFBF7' }}
+            style={{ color: '#FFFFFF' }}
           >
             Sermons
           </h1>
           <p
             className="text-xl max-w-2xl mx-auto"
-            style={{ color: 'rgba(220, 207, 192, 0.9)' }}
+            style={{ color: 'rgba(224, 216, 210, 0.9)' }}
           >
             Explore our archive of messages to grow in your faith
           </p>
@@ -57,17 +57,17 @@ export default async function SermonsPage() {
 
       {/* Filter Bar */}
       {seriesList.length > 0 && (
-        <section className="py-6 bg-[#FDFBF7] border-b border-[#DCCFC0]">
+        <section className="py-6 bg-[#FFFFFF] border-b border-[#E0D8D2]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-wrap items-center gap-3">
-              <span className="text-[#665A58] font-medium">Filter by Series:</span>
-              <button className="px-4 py-2 rounded-full bg-[#6A3B3F] text-white text-sm font-medium cursor-pointer">
+              <span className="text-[#332D2D] font-medium">Filter by Series:</span>
+              <button className="px-4 py-2 rounded-full bg-[#592D31] text-white text-sm font-medium cursor-pointer">
                 All
               </button>
               {seriesList.slice(0, 5).map((series) => (
                 <button
                   key={series}
-                  className="px-4 py-2 rounded-full bg-[#E6D8C8] text-[#665A58] text-sm font-medium hover:bg-[#DCCFC0] cursor-pointer transition-colors"
+                  className="px-4 py-2 rounded-full bg-[#F4F0EA] text-[#332D2D] text-sm font-medium hover:bg-[#E0D8D2] cursor-pointer transition-colors"
                 >
                   {series}
                 </button>
@@ -78,7 +78,7 @@ export default async function SermonsPage() {
       )}
 
       {/* Sermons Grid */}
-      <section className="py-20 bg-[#F0E6D8]">
+      <section className="py-20 bg-[#FCFBF9]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {sermons.length > 0 ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -88,11 +88,11 @@ export default async function SermonsPage() {
             </div>
           ) : (
             <div className="text-center py-16">
-              <div className="w-20 h-20 rounded-full bg-[#E6D8C8] flex items-center justify-center mx-auto mb-6">
-                <Video className="w-10 h-10 text-[#DCCFC0]" />
+              <div className="w-20 h-20 rounded-full bg-[#F4F0EA] flex items-center justify-center mx-auto mb-6">
+                <Video className="w-10 h-10 text-[#E0D8D2]" />
               </div>
-              <h2 className="text-2xl font-bold text-[#292121] mb-2">No Sermons Yet</h2>
-              <p className="text-[#665A58]">
+              <h2 className="text-2xl font-bold text-[#592D31] mb-2">No Sermons Yet</h2>
+              <p className="text-[#332D2D]">
                 Check back soon for our sermon archive!
               </p>
             </div>

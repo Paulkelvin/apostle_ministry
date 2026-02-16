@@ -67,11 +67,11 @@ export default async function GivePage() {
       </section>
 
       {/* Why We Give */}
-      <section className="py-20 bg-[#F0E6D8]">
+      <section className="py-20 bg-[#FCFBF9]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-[#292121] mb-4">{whyHeading}</h2>
-            <p className="text-[#665A58] text-lg max-w-2xl mx-auto">
+            <h2 className="text-4xl font-bold text-[#592D31] mb-4">{whyHeading}</h2>
+            <p className="text-[#332D2D] text-lg max-w-2xl mx-auto">
               {whySubtext}
             </p>
           </div>
@@ -83,8 +83,8 @@ export default async function GivePage() {
                 className="bg-white rounded-2xl p-8 shadow-md text-center"
               >
                 <div className="text-4xl font-bold text-primary mb-2">{item.percentage}</div>
-                <h3 className="text-xl font-bold text-[#292121] mb-3">{item.title}</h3>
-                <p className="text-[#665A58]">{item.description}</p>
+                <h3 className="text-xl font-bold text-[#592D31] mb-3">{item.title}</h3>
+                <p className="text-[#332D2D]">{item.description}</p>
               </div>
             ))}
           </div>
@@ -95,8 +95,8 @@ export default async function GivePage() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-[#292121] mb-4">Other Ways to Give</h2>
-            <p className="text-[#665A58] text-lg">
+            <h2 className="text-4xl font-bold text-[#592D31] mb-4">Other Ways to Give</h2>
+            <p className="text-[#332D2D] text-lg">
               Choose the giving method that works best for you
             </p>
           </div>
@@ -105,22 +105,22 @@ export default async function GivePage() {
             {methods.map((method, index) => {
               const Icon = iconMap[method.icon] || CreditCard
               return (
-                <div key={method.title} className="border-2 border-[#DCCFC0] rounded-2xl p-8 hover:border-primary transition-colors">
+                <div key={method.title} className="border-2 border-[#E0D8D2] rounded-2xl p-8 hover:border-primary transition-colors">
                   <div className={`w-14 h-14 rounded-full ${methodBgColors[index] || 'bg-primary/10'} flex items-center justify-center mb-6`}>
                     <Icon className={`w-7 h-7 ${methodIconColors[index] || 'text-primary'}`} />
                   </div>
-                  <h3 className="text-xl font-bold text-[#292121] mb-3">{method.title}</h3>
-                  <p className="text-[#665A58] mb-6">
+                  <h3 className="text-xl font-bold text-[#592D31] mb-3">{method.title}</h3>
+                  <p className="text-[#332D2D] mb-6">
                     {method.description}
                   </p>
                   {method.icon === 'credit-card' && (
                     <TithelyButton label="Give Online" className="w-full" />
                   )}
                   {method.note && (
-                    <p className="text-sm text-[#968B89]">{method.note}</p>
+                    <p className="text-sm text-[#8A8080]">{method.note}</p>
                   )}
                   {method.icon === 'mail' && (
-                    <address className="text-sm text-[#968B89] not-italic whitespace-pre-line">
+                    <address className="text-sm text-[#8A8080] not-italic whitespace-pre-line">
                       {mailingAddress}
                     </address>
                   )}
@@ -132,9 +132,9 @@ export default async function GivePage() {
       </section>
 
       {/* Tax Info */}
-      <section className="py-12 bg-[#F0E6D8]">
+      <section className="py-12 bg-[#FCFBF9]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-[#665A58]">
+          <p className="text-[#332D2D]">
             {taxStatement}
           </p>
         </div>

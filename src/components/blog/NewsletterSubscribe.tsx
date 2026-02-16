@@ -41,12 +41,12 @@ export function NewsletterSubscribe() {
   }
 
   return (
-    <div className="bg-[#FDFBF7] rounded-xl p-6 text-center border border-[#DCCFC0]/60 shadow-[0_2px_12px_rgba(41,33,33,0.06)]">
+    <div className="bg-[#FFFFFF] rounded-xl p-6 text-center border border-[#E0D8D2]/60 shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
       <div className="relative z-10">
-        <h3 className="text-lg font-bold text-[#292121] mb-1">
+        <h3 className="text-lg font-bold text-[#592D31] mb-1">
           Stay Connected
         </h3>
-        <p className="text-[#665A58] text-[13px] mb-4">
+        <p className="text-[#332D2D] text-[13px] mb-4">
           Get devotionals, updates, and stories delivered to your inbox.
         </p>
 
@@ -57,7 +57,7 @@ export function NewsletterSubscribe() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0 }}
-              className="flex items-center justify-center gap-2 text-[#6A3B3F]"
+              className="flex items-center justify-center gap-2 text-[#592D31]"
             >
               <CheckCircle className="w-5 h-5" />
               <span className="text-sm font-medium">{message}</span>
@@ -77,12 +77,12 @@ export function NewsletterSubscribe() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="w-full px-4 py-2.5 rounded-lg bg-[#F0E6D8] border border-[#DCCFC0] text-[#292121] placeholder-[#968B89] text-sm outline-none focus:border-[#6A3B3F] focus:ring-2 focus:ring-[#6A3B3F]/10 transition-all"
+                className="w-full px-4 py-2.5 rounded-lg bg-[#FCFBF9] border border-[#E0D8D2] text-[#332D2D] placeholder-[#8A8080] text-sm outline-none focus:border-[#592D31] focus:ring-2 focus:ring-[#592D31]/10 transition-all"
               />
               <button
                 type="submit"
                 disabled={status === 'loading'}
-                className="w-full px-5 py-2.5 rounded-lg bg-[#6A3B3F] text-white font-semibold text-sm hover:bg-[#82494E] cursor-pointer transition-colors flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
+                className="w-full px-5 py-2.5 rounded-lg bg-[#592D31] text-white font-semibold text-sm hover:bg-[#6E3A3F] cursor-pointer transition-colors flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
               >
                 <Send className="w-3.5 h-3.5" />
                 {status === 'loading' ? 'Subscribing...' : 'Subscribe'}

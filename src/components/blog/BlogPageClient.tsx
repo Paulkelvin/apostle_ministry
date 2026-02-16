@@ -109,7 +109,7 @@ export function BlogPageClient({ posts, categories }: BlogPageClientProps) {
                 className="group-hover:scale-[1.02] transition-transform duration-700"
               />
             ) : (
-              <div className="absolute inset-0 bg-gradient-to-br from-[#4A2629] to-[#6A3B3F]" />
+              <div className="absolute inset-0 bg-gradient-to-br from-[#3D2A2C] to-[#592D31]" />
             )}
 
             {/* Gradient overlay for text contrast — image still fully visible */}
@@ -125,7 +125,7 @@ export function BlogPageClient({ posts, categories }: BlogPageClientProps) {
                     {featuredCategory && (
                       <span
                         className="inline-block text-xs font-semibold px-3.5 py-1 rounded-full text-white backdrop-blur-sm mb-4"
-                        style={{ backgroundColor: featuredCategory.color ? `${featuredCategory.color}cc` : 'rgba(106,59,63,0.85)' }}
+                        style={{ backgroundColor: featuredCategory.color ? `${featuredCategory.color}cc` : 'rgba(89,45,49,0.85)' }}
                       >
                         {featuredCategory.title}
                       </span>
@@ -142,7 +142,7 @@ export function BlogPageClient({ posts, categories }: BlogPageClientProps) {
                     )}
 
                     {/* Read Article button */}
-                    <span className="inline-flex items-center gap-2 mt-5 px-6 py-2.5 bg-white text-[#292121] text-sm font-semibold rounded-full group-hover:bg-[#C59853] group-hover:text-white transition-colors duration-300 shadow-lg">
+                    <span className="inline-flex items-center gap-2 mt-5 px-6 py-2.5 bg-white text-[#332D2D] text-sm font-semibold rounded-full group-hover:bg-[#D4AF37] group-hover:text-white transition-colors duration-300 shadow-lg">
                       Read Article
                       <ArrowUpRight className="w-4 h-4" />
                     </span>
@@ -194,8 +194,8 @@ export function BlogPageClient({ posts, categories }: BlogPageClientProps) {
       <section className="pt-10 pb-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-2">
-            <h2 className="text-2xl sm:text-3xl font-bold text-[#292121]">Blog</h2>
-            <p className="text-sm text-[#665A58] mt-1">
+            <h2 className="text-2xl sm:text-3xl font-bold text-[#592D31]">Blog</h2>
+            <p className="text-sm text-[#332D2D] mt-1">
               News, devotionals, and stories from our church family
             </p>
           </div>
@@ -214,9 +214,9 @@ export function BlogPageClient({ posts, categories }: BlogPageClientProps) {
             <div className="relative flex-shrink-0" ref={sortRef}>
               <button
                 onClick={() => setSortOpen(!sortOpen)}
-                className="flex items-center gap-2 text-sm text-[#665A58] bg-[#FDFBF7] border border-[#DCCFC0] rounded-lg px-4 py-2 hover:border-[#6A3B3F] transition-colors"
+                className="flex items-center gap-2 text-sm text-[#332D2D] bg-[#FFFFFF] border border-[#E0D8D2] rounded-lg px-4 py-2 hover:border-[#592D31] transition-colors"
               >
-                Sort by: <span className="font-medium text-[#292121]">{sortBy === 'newest' ? 'Newest' : 'Oldest'}</span>
+                Sort by: <span className="font-medium text-[#332D2D]">{sortBy === 'newest' ? 'Newest' : 'Oldest'}</span>
                 <ChevronDown className={`w-4 h-4 transition-transform ${sortOpen ? 'rotate-180' : ''}`} />
               </button>
               <AnimatePresence>
@@ -225,14 +225,14 @@ export function BlogPageClient({ posts, categories }: BlogPageClientProps) {
                     initial={{ opacity: 0, y: -4 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -4 }}
-                    className="absolute right-0 mt-1 bg-[#FDFBF7] border border-[#DCCFC0] rounded-lg shadow-lg z-20 overflow-hidden"
+                    className="absolute right-0 mt-1 bg-[#FFFFFF] border border-[#E0D8D2] rounded-lg shadow-lg z-20 overflow-hidden"
                   >
                     {(['newest', 'oldest'] as SortOption[]).map((opt) => (
                       <button
                         key={opt}
                         onClick={() => { setSortBy(opt); setSortOpen(false); }}
-                        className={`block w-full text-left px-4 py-2 text-sm hover:bg-[#E6D8C8] transition-colors ${
-                          sortBy === opt ? 'text-[#6A3B3F] font-medium bg-[#E6D8C8]/50' : 'text-[#292121]'
+                        className={`block w-full text-left px-4 py-2 text-sm hover:bg-[#F4F0EA] transition-colors ${
+                          sortBy === opt ? 'text-[#592D31] font-medium bg-[#F4F0EA]/50' : 'text-[#332D2D]'
                         }`}
                       >
                         {opt === 'newest' ? 'Newest' : 'Oldest'}
@@ -273,7 +273,7 @@ export function BlogPageClient({ posts, categories }: BlogPageClientProps) {
                         <button
                           onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                           disabled={currentPage === 1}
-                          className="w-9 h-9 rounded-lg border border-[#DCCFC0] flex items-center justify-center text-[#665A58] hover:border-[#6A3B3F] hover:text-[#6A3B3F] disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                          className="w-9 h-9 rounded-lg border border-[#E0D8D2] flex items-center justify-center text-[#332D2D] hover:border-[#592D31] hover:text-[#592D31] disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
                         >
                           <ChevronLeft className="w-4 h-4" />
                         </button>
@@ -283,8 +283,8 @@ export function BlogPageClient({ posts, categories }: BlogPageClientProps) {
                             onClick={() => setCurrentPage(page)}
                             className={`w-9 h-9 rounded-lg text-sm font-medium transition-colors ${
                               currentPage === page
-                                ? 'bg-[#6A3B3F] text-white'
-                                : 'border border-[#DCCFC0] text-[#665A58] hover:border-[#6A3B3F] hover:text-[#6A3B3F]'
+                                ? 'bg-[#592D31] text-white'
+                                : 'border border-[#E0D8D2] text-[#332D2D] hover:border-[#592D31] hover:text-[#592D31]'
                             }`}
                           >
                             {page}
@@ -293,7 +293,7 @@ export function BlogPageClient({ posts, categories }: BlogPageClientProps) {
                         <button
                           onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
                           disabled={currentPage === totalPages}
-                          className="w-9 h-9 rounded-lg border border-[#DCCFC0] flex items-center justify-center text-[#665A58] hover:border-[#6A3B3F] hover:text-[#6A3B3F] disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                          className="w-9 h-9 rounded-lg border border-[#E0D8D2] flex items-center justify-center text-[#332D2D] hover:border-[#592D31] hover:text-[#592D31] disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
                         >
                           <ChevronRight className="w-4 h-4" />
                         </button>
@@ -307,13 +307,13 @@ export function BlogPageClient({ posts, categories }: BlogPageClientProps) {
                     animate={{ opacity: 1 }}
                     className="text-center py-16"
                   >
-                    <div className="w-16 h-16 rounded-full bg-[#E6D8C8] flex items-center justify-center mx-auto mb-4">
-                      <BookOpen className="w-8 h-8 text-[#DCCFC0]" />
+                    <div className="w-16 h-16 rounded-full bg-[#F4F0EA] flex items-center justify-center mx-auto mb-4">
+                      <BookOpen className="w-8 h-8 text-[#E0D8D2]" />
                     </div>
-                    <h2 className="text-xl font-bold text-[#292121] mb-2">
+                    <h2 className="text-xl font-bold text-[#592D31] mb-2">
                       {search || activeCategory ? 'No matching articles' : 'No Posts Yet'}
                     </h2>
-                    <p className="text-sm text-[#665A58]">
+                    <p className="text-sm text-[#332D2D]">
                       {search || activeCategory
                         ? 'Try adjusting your search or category filter.'
                         : 'Check back soon for news and updates from our church!'}
@@ -324,7 +324,7 @@ export function BlogPageClient({ posts, categories }: BlogPageClientProps) {
                           setSearch('')
                           setActiveCategory(null)
                         }}
-                        className="mt-4 text-sm text-[#6A3B3F] font-medium hover:underline"
+                        className="mt-4 text-sm text-[#592D31] font-medium hover:underline"
                       >
                         Clear filters
                       </button>

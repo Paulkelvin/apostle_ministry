@@ -157,7 +157,7 @@ export function EventDetailModal({ event, onClose }: EventDetailModalProps) {
                   {/* Meta Info */}
                   <div className="mt-5 space-y-3">
                     <div className="flex items-start gap-3 text-[#5F5B55]">
-                      <CalendarDays className="w-5 h-5 text-[#D4AF6A] shrink-0 mt-0.5" />
+                      <CalendarDays className="w-5 h-5 text-[#D4AF37] shrink-0 mt-0.5" />
                       <div>
                         <p className="font-semibold text-[#1C1B1A]">{format(parseISO(event.date), 'EEEE, MMMM d, yyyy')}</p>
                         {event.endDate && (
@@ -169,20 +169,20 @@ export function EventDetailModal({ event, onClose }: EventDetailModalProps) {
                     </div>
 
                     <div className="flex items-center gap-3 text-[#5F5B55]">
-                      <Clock className="w-5 h-5 text-[#D4AF6A] shrink-0" />
+                      <Clock className="w-5 h-5 text-[#D4AF37] shrink-0" />
                       <p className="font-medium">{format(parseISO(event.date), 'h:mm a')}</p>
                     </div>
 
                     {event.location && (
                       <div className="flex items-start gap-3 text-[#5F5B55]">
-                        <MapPin className="w-5 h-5 text-[#D4AF6A] shrink-0 mt-0.5" />
+                        <MapPin className="w-5 h-5 text-[#D4AF37] shrink-0 mt-0.5" />
                         <p className="font-medium">{event.location}</p>
                       </div>
                     )}
 
                     {event.isOnline && (
                       <div className="flex items-center gap-3 text-[#5F5B55]">
-                        <Globe className="w-5 h-5 text-[#D4AF6A] shrink-0" />
+                        <Globe className="w-5 h-5 text-[#D4AF37] shrink-0" />
                         <p className="font-medium">Online Event</p>
                       </div>
                     )}

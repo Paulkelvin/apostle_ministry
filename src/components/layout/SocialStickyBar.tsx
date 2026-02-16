@@ -18,22 +18,22 @@ const socialConfig: Record<string, {
   facebook: {
     Icon: Facebook,
     defaultBg: 'bg-white',
-    defaultText: 'text-[#292121]',
-    hoverStyle: 'hover:bg-[#292121] hover:text-white hover:shadow-[0_10px_28px_rgba(41,33,33,0.18)]',
+    defaultText: 'text-[#332D2D]',
+    hoverStyle: 'hover:bg-[#332D2D] hover:text-white hover:shadow-[0_10px_28px_rgba(0,0,0,0.18)]',
     label: 'Facebook',
   },
   instagram: {
     Icon: Instagram,
     defaultBg: 'bg-white',
-    defaultText: 'text-[#292121]',
-    hoverStyle: 'hover:bg-[#292121] hover:text-white hover:shadow-[0_10px_28px_rgba(41,33,33,0.18)]',
+    defaultText: 'text-[#332D2D]',
+    hoverStyle: 'hover:bg-[#332D2D] hover:text-white hover:shadow-[0_10px_28px_rgba(0,0,0,0.18)]',
     label: 'Instagram',
   },
   youtube: {
     Icon: Youtube,
     defaultBg: 'bg-white',
-    defaultText: 'text-[#292121]',
-    hoverStyle: 'hover:bg-[#292121] hover:text-white hover:shadow-[0_10px_28px_rgba(41,33,33,0.18)]',
+    defaultText: 'text-[#332D2D]',
+    hoverStyle: 'hover:bg-[#332D2D] hover:text-white hover:shadow-[0_10px_28px_rgba(0,0,0,0.18)]',
     label: 'YouTube',
   },
   tiktok: {
@@ -43,8 +43,8 @@ const socialConfig: Record<string, {
       </svg>
     ),
     defaultBg: 'bg-white',
-    defaultText: 'text-[#292121]',
-    hoverStyle: 'hover:bg-[#292121] hover:text-white hover:shadow-[0_10px_28px_rgba(41,33,33,0.18)]',
+    defaultText: 'text-[#332D2D]',
+    hoverStyle: 'hover:bg-[#332D2D] hover:text-white hover:shadow-[0_10px_28px_rgba(0,0,0,0.18)]',
     label: 'TikTok',
   },
   twitter: {
@@ -54,8 +54,8 @@ const socialConfig: Record<string, {
       </svg>
     ),
     defaultBg: 'bg-white',
-    defaultText: 'text-[#292121]',
-    hoverStyle: 'hover:bg-[#292121] hover:text-white hover:shadow-[0_10px_28px_rgba(41,33,33,0.18)]',
+    defaultText: 'text-[#332D2D]',
+    hoverStyle: 'hover:bg-[#332D2D] hover:text-white hover:shadow-[0_10px_28px_rgba(0,0,0,0.18)]',
     label: 'X (Twitter)',
   },
 }
@@ -69,7 +69,7 @@ export function SocialStickyBar({ socialLinks = [] }: SocialStickyBarProps) {
     : defaultPlatforms.map((p) => ({ platform: p, url: '#' }))
 
   return (
-    <div className="fixed right-0 top-1/2 -translate-y-1/2 z-40 hidden lg:flex flex-col gap-1.5 p-2 bg-white/90 backdrop-blur-md rounded-l-2xl shadow-[0_10px_28px_rgba(41,33,33,0.18)] border border-[#DCCFC0] border-r-0">
+    <div className="fixed right-0 top-1/2 -translate-y-1/2 z-40 hidden lg:flex flex-col gap-1.5 p-2 bg-white/90 backdrop-blur-md rounded-l-2xl shadow-[0_10px_28px_rgba(0,0,0,0.18)] border border-[#E0D8D2] border-r-0">
       {platforms.map(({ platform, url }) => {
         const config = socialConfig[platform]
         if (!config) return null

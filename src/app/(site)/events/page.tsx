@@ -98,12 +98,12 @@ export default async function EventsPage() {
   return (
     <>
       {/* Hero Banner */}
-      <section className="relative pt-36 pb-20 overflow-hidden bg-[#E6D8C8]">
+      <section className="relative pt-36 pb-20 overflow-hidden bg-[#F4F0EA]">
         {/* Soft sanctuary light — gentle glow over parchment */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(253,251,247,0.6)_0%,_transparent_70%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(252,251,249,0.6)_0%,_transparent_70%)]" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-[#D4AF6A] font-semibold tracking-[0.2em] text-sm uppercase mb-5">
+          <p className="text-[#D4AF37] font-semibold tracking-[0.2em] text-sm uppercase mb-5">
             Upcoming Gatherings
           </p>
           <h1 className="text-5xl md:text-6xl font-bold text-[#1C1B1A] mb-5 tracking-tight">
