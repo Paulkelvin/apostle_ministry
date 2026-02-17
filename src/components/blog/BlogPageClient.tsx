@@ -131,12 +131,12 @@ export function BlogPageClient({ posts, categories }: BlogPageClientProps) {
                       </span>
                     )}
 
-                    <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#FFFFFF] mb-3 leading-tight tracking-tight" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
+                    <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3 leading-tight tracking-tight" style={{ color: '#FFFFFF', textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
                       {featuredPost.title}
                     </h1>
 
                     {featuredPost.excerpt && (
-                      <p className="text-sm sm:text-base text-[#FFFFFF] leading-relaxed line-clamp-2 max-w-xl" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
+                      <p className="text-sm sm:text-base leading-relaxed line-clamp-2 max-w-xl" style={{ color: '#FFFFFF', textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
                         {featuredPost.excerpt}
                       </p>
                     )}
@@ -168,7 +168,7 @@ export function BlogPageClient({ posts, categories }: BlogPageClientProps) {
                           </div>
                         )}
                         <div>
-                          <p className="text-sm font-semibold text-[#FFFFFF]" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>{featuredPost.author.name}</p>
+                          <p className="text-sm font-semibold" style={{ color: '#FFFFFF', textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>{featuredPost.author.name}</p>
                           <div className="flex items-center gap-2 text-xs text-[#FFFFFF]/80" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
                             {featuredPost.publishedAt && (
                               <span>{format(new Date(featuredPost.publishedAt), 'd MMM yyyy')}</span>
