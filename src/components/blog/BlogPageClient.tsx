@@ -112,8 +112,8 @@ export function BlogPageClient({ posts, categories }: BlogPageClientProps) {
               <div className="absolute inset-0 bg-gradient-to-br from-[#3D2A2C] to-[#592D31]" />
             )}
 
-            {/* Gradient overlay for text contrast — image still fully visible */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+            {/* Scrim overlay: dark left for text, fading right to show image */}
+            <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 100%)' }} />
 
             {/* Content overlay */}
             <div className="absolute inset-0 flex flex-col justify-end p-8 sm:p-12 lg:p-16">
@@ -124,25 +124,25 @@ export function BlogPageClient({ posts, categories }: BlogPageClientProps) {
                     {/* Category badge */}
                     {featuredCategory && (
                       <span
-                        className="inline-block text-xs font-semibold px-3.5 py-1 rounded-full text-white backdrop-blur-sm mb-4"
-                        style={{ backgroundColor: featuredCategory.color ? `${featuredCategory.color}cc` : 'rgba(89,45,49,0.85)' }}
+                        className="inline-block text-xs font-semibold px-3.5 py-1 rounded-full text-[#1A1A1A] mb-4"
+                        style={{ backgroundColor: '#D4AF37' }}
                       >
                         {featuredCategory.title}
                       </span>
                     )}
 
-                    <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-3 leading-tight tracking-tight" style={{ textShadow: '0 2px 12px rgba(0,0,0,0.9), 0 1px 4px rgba(0,0,0,0.7)' }}>
+                    <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#FFFFFF] mb-3 leading-tight tracking-tight" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
                       {featuredPost.title}
                     </h1>
 
                     {featuredPost.excerpt && (
-                      <p className="text-sm sm:text-base text-white leading-relaxed line-clamp-2 max-w-xl" style={{ textShadow: '0 1px 8px rgba(0,0,0,0.8), 0 1px 3px rgba(0,0,0,0.6)' }}>
+                      <p className="text-sm sm:text-base text-[#FFFFFF] leading-relaxed line-clamp-2 max-w-xl" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
                         {featuredPost.excerpt}
                       </p>
                     )}
 
                     {/* Read Article button */}
-                    <span className="inline-flex items-center gap-2 mt-5 px-6 py-2.5 bg-white text-[#332D2D] text-sm font-semibold rounded-full group-hover:bg-[#D4AF37] group-hover:text-white transition-colors duration-300 shadow-lg">
+                    <span className="inline-flex items-center gap-2 mt-5 px-6 py-2.5 bg-white text-[#000000] text-sm font-bold rounded-full group-hover:bg-[#D4AF37] group-hover:text-[#000000] transition-colors duration-300 shadow-lg">
                       Read Article
                       <ArrowUpRight className="w-4 h-4" />
                     </span>
@@ -163,13 +163,13 @@ export function BlogPageClient({ posts, categories }: BlogPageClientProps) {
                             />
                           </div>
                         ) : (
-                          <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center ring-2 ring-white/40">
-                            <span className="text-sm font-bold text-white">{featuredPost.author.name?.charAt(0)}</span>
+                          <div className="w-10 h-10 rounded-full bg-[rgba(255,255,255,0.2)] flex items-center justify-center ring-2 ring-white/40">
+                            <span className="text-sm font-bold text-[#FFFFFF]">{featuredPost.author.name?.charAt(0)}</span>
                           </div>
                         )}
                         <div>
-                          <p className="text-sm font-semibold text-white" style={{ textShadow: '0 1px 3px rgba(0,0,0,0.5)' }}>{featuredPost.author.name}</p>
-                          <div className="flex items-center gap-2 text-xs text-white/80">
+                          <p className="text-sm font-semibold text-[#FFFFFF]" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>{featuredPost.author.name}</p>
+                          <div className="flex items-center gap-2 text-xs text-[#FFFFFF]/80" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
                             {featuredPost.publishedAt && (
                               <span>{format(new Date(featuredPost.publishedAt), 'd MMM yyyy')}</span>
                             )}
