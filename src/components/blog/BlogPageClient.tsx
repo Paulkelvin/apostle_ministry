@@ -96,7 +96,6 @@ export function BlogPageClient({ posts, categories }: BlogPageClientProps) {
     <>
       {/* ──── HERO: Featured Post as Full-Width Image ──── */}
       {featuredPost && !search && !activeCategory && (
-        <Link href={`/blog/${featuredPost.slug?.current}`} className="block group">
           <section className="relative w-full h-[70vh] min-h-[480px] max-h-[640px] overflow-hidden">
             {/* Background image */}
             {featuredPost.mainImage ? (
@@ -106,7 +105,7 @@ export function BlogPageClient({ posts, categories }: BlogPageClientProps) {
                 fill
                 priority
                 sizes="100vw"
-                className="group-hover:scale-[1.02] transition-transform duration-700"
+                className="transition-transform duration-700"
               />
             ) : (
               <div className="absolute inset-0 bg-gradient-to-br from-[#3D2A2C] to-[#592D31]" />
@@ -142,10 +141,10 @@ export function BlogPageClient({ posts, categories }: BlogPageClientProps) {
                     )}
 
                     {/* Read Article button */}
-                    <span className="inline-flex items-center gap-2 mt-5 px-6 py-2.5 bg-white text-[#000000] text-sm font-bold rounded-full group-hover:bg-[#D4AF37] group-hover:text-[#000000] transition-colors duration-300 shadow-lg">
+                    <Link href={`/blog/${featuredPost.slug?.current}`} className="inline-flex items-center gap-2 mt-5 px-6 py-2.5 bg-white text-[#000000] text-sm font-bold rounded-full hover:bg-[#D4AF37] hover:text-[#000000] transition-colors duration-300 shadow-lg">
                       Read Article
                       <ArrowUpRight className="w-4 h-4" />
-                    </span>
+                    </Link>
                   </div>
 
                   {/* Right: Author + meta */}
@@ -187,7 +186,6 @@ export function BlogPageClient({ posts, categories }: BlogPageClientProps) {
               </div>
             </div>
           </section>
-        </Link>
       )}
 
       {/* ──── Heading + Category Tabs + Sort ──── */}
