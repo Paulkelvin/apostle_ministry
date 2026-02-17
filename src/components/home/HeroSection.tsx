@@ -58,7 +58,7 @@ export function HeroSection({ settings }: HeroSectionProps) {
       {/* Content */}
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
         <motion.h1
-          className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6"
+          className="text-5xl md:text-7xl lg:text-8xl font-bold mb-3"
           style={{ color: '#FFFFFF', textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -68,7 +68,7 @@ export function HeroSection({ settings }: HeroSectionProps) {
         </motion.h1>
 
         <motion.p
-          className="text-xl md:text-2xl lg:text-3xl mb-10"
+          className="text-xl md:text-2xl lg:text-3xl mb-7"
           style={{ color: '#FFFFFF', textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -78,18 +78,19 @@ export function HeroSection({ settings }: HeroSectionProps) {
         </motion.p>
 
         <motion.div
-          className="flex flex-col sm:flex-row gap-4 justify-center"
+          className="flex flex-col sm:flex-row gap-3 justify-center"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.9 }}
         >
-          <Button href="/contact" variant="gold" size="lg">
+          <Button href="/contact" variant="gold" size="md" className="uppercase tracking-widest text-sm px-10 py-3.5 rounded-lg">
             Plan Your Visit
           </Button>
           <Button
             href={watchOnlineUrl || '/sermons'}
             variant="heroOutline"
-            size="lg"
+            size="md"
+            className="uppercase tracking-widest text-sm px-10 py-3.5 rounded-lg"
           >
             Watch Online
           </Button>

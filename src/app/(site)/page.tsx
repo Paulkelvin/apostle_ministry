@@ -1,5 +1,5 @@
 import { client, siteSettingsQuery, serviceTimesQuery, latestPostsQuery, featuredMinistriesQuery } from '@/lib/sanity'
-import { HeroSection, ServiceTimesSection, LatestNewsSection, FeaturedMinistriesSection } from '@/components/home'
+import { HeroSection, ServiceTimesSection, LatestNewsSection, FeaturedMinistriesSection, MissionVisionSection } from '@/components/home'
 import type { SiteSettings, ServiceTimes, Post, Ministry } from '@/types'
 
 // Revalidate every 60 seconds so CMS changes appear quickly
@@ -27,6 +27,10 @@ export default async function HomePage() {
       <HeroSection settings={settings} />
       <ServiceTimesSection serviceTimes={serviceTimes} />
       <FeaturedMinistriesSection ministries={ministries} />
+      <MissionVisionSection
+        mission={settings?.missionStatement}
+        vision={settings?.visionStatement}
+      />
       <LatestNewsSection posts={posts} />
     </>
   )
