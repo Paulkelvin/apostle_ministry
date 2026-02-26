@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { FloatingCrosses } from '@/components/ui/AmbientGlow'
 
 interface MissionVisionSectionProps {
   mission?: string
@@ -17,6 +18,9 @@ export function MissionVisionSection({ mission, vision }: MissionVisionSectionPr
 
   return (
     <section className="relative py-24 lg:py-32 overflow-hidden" style={{ backgroundColor: '#592D31' }}>
+      {/* Floating crosses */}
+      <FloatingCrosses />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative flex flex-col lg:flex-row items-stretch min-h-[520px]">
 
@@ -33,8 +37,8 @@ export function MissionVisionSection({ mission, vision }: MissionVisionSectionPr
             {/* Decorative text watermark */}
             <div className="absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none select-none">
               <span
-                className="text-[10rem] md:text-[14rem] font-bold uppercase leading-none tracking-tighter"
-                style={{ color: 'rgba(255,255,255,0.04)' }}
+                className="text-[8rem] sm:text-[10rem] md:text-[14rem] font-bold uppercase leading-none tracking-wide"
+                style={{ color: 'rgba(255,255,255,0.04)', letterSpacing: '0.05em' }}
               >
                 Faith
               </span>

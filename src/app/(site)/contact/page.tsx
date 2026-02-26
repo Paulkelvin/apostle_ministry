@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import { MapPin, Phone, Mail, Clock, Headset, MessageSquare, Newspaper, ExternalLink, ArrowRight } from 'lucide-react'
 import { client, faqQuery, serviceTimesQuery } from '@/lib/sanity'
-import { ContactForm, FAQAccordion } from '@/components/contact'
+import { ContactForm, FAQAccordion, DirectionsForm } from '@/components/contact'
 import type { FAQ, ServiceTimes } from '@/types'
 
 export const metadata: Metadata = {
@@ -137,7 +137,7 @@ export default async function ContactPage() {
       </section>
 
       {/* Map & Location Section */}
-      <section className="py-20 bg-gradient-to-b from-[#FCFBF9] via-[#F4F0EA] to-[#E0D8D2]">
+      <section id="directions" className="py-20 bg-gradient-to-b from-[#FCFBF9] via-[#F4F0EA] to-[#E0D8D2] scroll-mt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <span className="inline-block text-xs font-bold tracking-[0.2em] uppercase text-primary mb-3">Visit Us</span>
@@ -209,9 +209,13 @@ export default async function ContactPage() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-primary/5 hover:bg-primary/10 text-primary font-semibold px-5 py-2.5 rounded-xl transition-colors group w-fit"
                 >
-                  Get Directions
+                  Open in Maps
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
                 </a>
+
+                <DirectionsForm
+                  churchAddress={serviceTimes?.address || 'High Calling Ministries, 401-A Prince Georges Blvd, Upper Marlboro, MD 20774'}
+                />
               </div>
             </div>
           </div>
