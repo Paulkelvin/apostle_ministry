@@ -27,13 +27,13 @@ export function LatestNewsSection({ posts }: LatestNewsSectionProps) {
   const featuredCategory = featured.categories?.[0]
 
   return (
-    <section className="py-20 lg:py-28 bg-[#F4F0EA]">
+    <section className="py-20 lg:py-28 bg-[#F4F0EA] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header with watermark */}
-        <div className="relative mb-12 lg:mb-16">
-          {/* Massive watermark */}
+        <div className="relative mb-12 lg:mb-16 overflow-hidden">
+          {/* Massive watermark - hidden on small mobile to prevent overflow */}
           <span
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[6rem] sm:text-[8rem] lg:text-[10rem] font-black uppercase leading-none tracking-tight pointer-events-none select-none whitespace-nowrap"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[4rem] sm:text-[8rem] lg:text-[10rem] font-black uppercase leading-none tracking-tight pointer-events-none select-none"
             style={{ color: '#EAE5DF' }}
             aria-hidden="true"
           >

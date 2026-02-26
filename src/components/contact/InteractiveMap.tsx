@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useCallback } from 'react'
-import { Navigation, MapPin, RotateCcw } from 'lucide-react'
+import { Navigation, MapPin, RotateCcw, Loader2 } from 'lucide-react'
 
 interface InteractiveMapProps {
   churchAddress: string
@@ -11,6 +11,7 @@ interface InteractiveMapProps {
 export function InteractiveMap({ churchAddress, initialMapSrc }: InteractiveMapProps) {
   const [fromAddress, setFromAddress] = useState('')
   const [showingDirections, setShowingDirections] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
   const [mapSrc, setMapSrc] = useState(
     initialMapSrc ||
       `https://www.google.com/maps?q=${encodeURIComponent(churchAddress)}&output=embed`
@@ -20,6 +21,9 @@ export function InteractiveMap({ churchAddress, initialMapSrc }: InteractiveMapP
     (e: React.FormEvent) => {
       e.preventDefault()
       if (!fromAddress.trim()) return
+
+      // Start loading state
+      setIsLoading(true)
 
       // Generate directions embed URL
       const origin = encodeURIComponent(fromAddress.trim())
@@ -32,9 +36,14 @@ export function InteractiveMap({ churchAddress, initialMapSrc }: InteractiveMapP
     [fromAddress, churchAddress]
   )
 
+  const handleMapLoad = useCallback(() => {
+    setIsLoading(false)
+  }, [])
+
   const handleReset = useCallback(() => {
     setFromAddress('')
     setShowingDirections(false)
+    setIsLoading(false)
     setMapSrc(
       initialMapSrc ||
         `https://www.google.com/maps?q=${encodeURIComponent(churchAddress)}&output=embed`
@@ -69,24 +78,31 @@ export function InteractiveMap({ churchAddress, initialMapSrc }: InteractiveMapP
               value={fromAddress}
               onChange={(e) => setFromAddress(e.target.value)}
               placeholder="Enter your starting address"
-              className="w-full pl-10 pr-4 py-2.5 rounded-lg text-sm border transition-colors focus:outline-none focus:ring-2 focus:ring-[#D4AF37]/30 focus:border-[#D4AF37]"
+              className="w-full pl-10 pr-4 py-2.5 rounded-lg text-base border transition-colors focus:outline-none focus:ring-2 focus:ring-[#D4AF37]/30 focus:border-[#D4AF37]"
               style={{ borderColor: '#E0D8D2', color: '#332D2D', backgroundColor: '#FAFAF8' }}
             />
           </div>
           <button
             type="submit"
-            disabled={!fromAddress.trim()}
-            className="px-5 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed whitespace-nowrap"
+            disabled={!fromAddress.trim() || isLoading}
+            className="px-5 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed whitespace-nowrap flex items-center gap-2"
             style={{
               backgroundColor: fromAddress.trim() ? '#D4AF37' : '#E0D8D2',
               color: fromAddress.trim() ? '#1A1A1A' : '#8A8080',
             }}
           >
-            Show Route
+            {isLoading ? (
+              <>
+                <Loader2 className="w-4 h-4 animate-spin" />
+                Loading...
+              </>
+            ) : (
+              'Show Route'
+            )}
           </button>
         </form>
 
-        {showingDirections && (
+        {showingDirections && !isLoading && (
           <p className="text-xs mt-2 text-[#7BA381] flex items-center gap-1">
             <span className="w-1.5 h-1.5 rounded-full bg-[#7BA381]" />
             Showing directions from your location
@@ -95,7 +111,15 @@ export function InteractiveMap({ churchAddress, initialMapSrc }: InteractiveMapP
       </div>
 
       {/* Map Embed */}
-      <div className="rounded-2xl overflow-hidden shadow-lg h-[380px] ring-1 ring-[#E0D8D2]/60">
+      <div className="rounded-2xl overflow-hidden shadow-lg h-[380px] ring-1 ring-[#E0D8D2]/60 relative">
+        {/* Loading Overlay */}
+        {isLoading && (
+          <div className="absolute inset-0 bg-white/90 backdrop-blur-sm z-10 flex flex-col items-center justify-center">
+            <Loader2 className="w-10 h-10 text-[#D4AF37] animate-spin mb-3" />
+            <p className="text-sm font-medium text-[#592D31]">Fetching directions...</p>
+            <p className="text-xs text-[#8A8080] mt-1">This may take a moment</p>
+          </div>
+        )}
         <iframe
           src={mapSrc}
           width="100%"
@@ -105,6 +129,7 @@ export function InteractiveMap({ churchAddress, initialMapSrc }: InteractiveMapP
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
           title={showingDirections ? 'Directions to Church' : 'Church Location Map'}
+          onLoad={handleMapLoad}
         />
       </div>
     </div>
