@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import { MapPin, Phone, Mail, Clock, Headset, MessageSquare, Newspaper, ExternalLink, ArrowRight } from 'lucide-react'
 import { client, faqQuery, serviceTimesQuery } from '@/lib/sanity'
-import { ContactForm, FAQAccordion, DirectionsForm } from '@/components/contact'
+import { ContactForm, FAQAccordion, InteractiveMap } from '@/components/contact'
 import type { FAQ, ServiceTimes } from '@/types'
 
 export const metadata: Metadata = {
@@ -146,77 +146,49 @@ export default async function ContactPage() {
             </h2>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-10 items-stretch">
-            {/* Map Embed */}
-            <div className="rounded-2xl overflow-hidden shadow-lg h-[420px] ring-1 ring-[#E0D8D2]/60">
-              <iframe
-                src={
-                  serviceTimes?.googleMapsLink
-                    ? serviceTimes.googleMapsLink.includes('embed')
-                      ? serviceTimes.googleMapsLink
-                      : `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.9!2d-73.935242!3d40.730610!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQzJzUwLjIiTiA3M8KwNTYnMDYuOSJX!5e0!3m2!1sen!2sus!4v1700000000000`
-                    : 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.9503079893093!2d-73.93524268459392!3d40.73061077932937!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2590fe71c4f37%3A0x89c92e7f1e4e2e1a!2sNew%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus'
-                }
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Church Location Map"
-              />
-            </div>
+          <div className="grid lg:grid-cols-[1.3fr_1fr] gap-8 items-start">
+            {/* Interactive Map with Directions */}
+            <InteractiveMap
+              churchAddress={serviceTimes?.address || 'High Calling Ministries, 401-A Prince Georges Blvd, Upper Marlboro, MD 20774'}
+            />
 
-            {/* Location Details Card */}
-            <div className="bg-white rounded-2xl p-8 shadow-sm border border-[#F4F0EA] flex flex-col justify-center">
-              <div className="space-y-6">
-                <div>
-                  <h3 className="font-bold text-[#592D31] text-xl mb-3">
-                    {serviceTimes?.locationName || 'Main Campus'}
-                  </h3>
-                  <p className="text-[#332D2D] whitespace-pre-line leading-relaxed">
-                    {serviceTimes?.address || 'High Calling Ministries\n401-A Prince George\'s Blvd\nUpper Marlboro, MD 20774'}
-                  </p>
-                </div>
+            {/* Compact Location Details Card */}
+            <div className="bg-white rounded-2xl p-6 shadow-sm border border-[#F4F0EA] lg:self-center">
+              <h3 className="font-bold text-[#592D31] text-lg mb-2">
+                {serviceTimes?.locationName || 'Main Campus'}
+              </h3>
+              <p className="text-[#332D2D] text-sm whitespace-pre-line leading-relaxed mb-4">
+                {serviceTimes?.address || 'High Calling Ministries\n401-A Prince George\'s Blvd\nUpper Marlboro, MD 20774'}
+              </p>
 
-                <div className="h-px bg-[#F4F0EA]" />
+              <div className="h-px bg-[#F4F0EA] mb-4" />
 
-                <div className="flex flex-col gap-3">
-                  <div className="flex items-center gap-3 text-[#332D2D]">
-                    <Phone className="w-4 h-4 text-[#8A8080]" />
-                    <a
-                      href={`tel:${serviceTimes?.phoneNumber || '+1234567890'}`}
-                      className="hover:text-primary transition-colors"
-                    >
-                      {serviceTimes?.phoneNumber || '(202) 503-9579'}
-                    </a>
-                  </div>
-
-                  <div className="flex items-center gap-3 text-[#332D2D]">
-                    <Mail className="w-4 h-4 text-[#8A8080]" />
-                    <a
-                      href={`mailto:${serviceTimes?.email || 'admin@rflcc.org'}`}
-                      className="hover:text-primary transition-colors"
-                    >
-                      {serviceTimes?.email || 'admin@rflcc.org'}
-                    </a>
-                  </div>
-                </div>
-
+              <div className="flex flex-col gap-2 mb-5">
                 <a
-                  href={serviceTimes?.googleMapsLink || 'https://maps.google.com'}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-primary/5 hover:bg-primary/10 text-primary font-semibold px-5 py-2.5 rounded-xl transition-colors group w-fit"
+                  href={`tel:${serviceTimes?.phoneNumber || '+1234567890'}`}
+                  className="flex items-center gap-2.5 text-sm text-[#332D2D] hover:text-primary transition-colors"
                 >
-                  Open in Maps
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                  <Phone className="w-4 h-4 text-[#8A8080]" />
+                  {serviceTimes?.phoneNumber || '(202) 503-9579'}
                 </a>
-
-                <DirectionsForm
-                  churchAddress={serviceTimes?.address || 'High Calling Ministries, 401-A Prince Georges Blvd, Upper Marlboro, MD 20774'}
-                />
+                <a
+                  href={`mailto:${serviceTimes?.email || 'admin@rflcc.org'}`}
+                  className="flex items-center gap-2.5 text-sm text-[#332D2D] hover:text-primary transition-colors"
+                >
+                  <Mail className="w-4 h-4 text-[#8A8080]" />
+                  {serviceTimes?.email || 'admin@rflcc.org'}
+                </a>
               </div>
+
+              <a
+                href={serviceTimes?.googleMapsLink || 'https://maps.google.com'}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm bg-primary/5 hover:bg-primary/10 text-primary font-semibold px-4 py-2 rounded-lg transition-colors group"
+              >
+                Open in Google Maps
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+              </a>
             </div>
           </div>
         </div>
