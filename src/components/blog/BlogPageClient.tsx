@@ -189,7 +189,7 @@ export function BlogPageClient({ posts, categories }: BlogPageClientProps) {
       )}
 
       {/* ──── Heading + Category Tabs + Sort ──── */}
-      <section className="pt-10 pb-4">
+      <section className={`pb-4 ${(!featuredPost || search || activeCategory) ? 'pt-32' : 'pt-10'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-2">
             <h2 className="text-2xl sm:text-3xl font-bold text-[#592D31]">Blog</h2>

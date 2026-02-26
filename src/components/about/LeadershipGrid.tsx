@@ -84,11 +84,11 @@ export function LeadershipGrid({ staff }: LeadershipGridProps) {
                 </div>
 
                 {/* Content */}
-                <div className="p-8 md:p-10 flex flex-col justify-center">
+                <div className="p-6 md:p-10 flex flex-col justify-center">
                   <span className="text-xs font-bold tracking-[0.15em] uppercase text-primary mb-2">{leadPerson.role}</span>
-                  <h3 className="text-3xl md:text-4xl font-bold text-warm-900 mb-4 tracking-tight">{leadPerson.name}</h3>
+                  <h3 className="text-2xl md:text-4xl font-bold text-warm-900 mb-3 md:mb-4 tracking-tight">{leadPerson.name}</h3>
                   {leadPerson.bio && (
-                    <p className="text-warm-600 leading-relaxed mb-6 text-[15px]">{leadPerson.bio}</p>
+                    <p className="text-warm-600 leading-relaxed mb-4 md:mb-6 text-sm md:text-[15px] line-clamp-4 md:line-clamp-none">{leadPerson.bio}</p>
                   )}
                   {leadPerson.email && (
                     <a
