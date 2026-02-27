@@ -84,99 +84,110 @@ export default async function GivePage() {
 
   return (
     <>
-      {/* Hero Section — Folder Tab Design */}
+      {/* Hero Section — Classic Elegant Design */}
       <section className="relative min-h-[90vh] flex items-center overflow-hidden">
-        {/* Background with folder shapes */}
-        <div className="absolute inset-0 bg-[#FCFBF9]" />
+        {/* Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#FCFBF9] via-[#F8F6F3] to-[#F4F0EA]" />
         
-        {/* Folder tab shapes - decorative */}
-        <div className="absolute top-0 right-0 w-[60%] h-full">
-          {/* Main folder shape */}
-          <svg className="absolute inset-0 w-full h-full" viewBox="0 0 600 800" preserveAspectRatio="none" fill="none">
-            <path d="M80 0 L600 0 L600 800 L0 800 L0 100 Q0 60 40 60 L60 60 Q80 60 80 40 Z" fill="#592D31"/>
+        {/* Classic diagonal split with refined edge */}
+        <div className="absolute top-0 right-0 w-[55%] h-full hidden lg:block">
+          <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+            {/* Main burgundy panel */}
+            <polygon points="15,0 100,0 100,100 0,100" fill="#592D31"/>
+            {/* Gold accent line along the edge */}
+            <line x1="15" y1="0" x2="0" y2="100" stroke="#D4AF37" strokeWidth="0.3"/>
           </svg>
-          {/* Inner folder tab */}
-          <svg className="absolute top-8 left-8 w-[90%] h-[95%]" viewBox="0 0 500 700" preserveAspectRatio="none" fill="none">
-            <path d="M60 0 L500 0 L500 700 L0 700 L0 80 Q0 50 30 50 L45 50 Q60 50 60 30 Z" fill="#D4AF37" opacity="0.15"/>
-          </svg>
+          {/* Subtle pattern overlay */}
+          <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #FFFFFF 1px, transparent 0)', backgroundSize: '32px 32px' }} />
         </div>
         
-        {/* Decorative circles */}
-        <div className="absolute top-20 left-10 w-64 h-64 bg-[#D4AF37]/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 left-1/4 w-48 h-48 bg-[#592D31]/5 rounded-full blur-2xl" />
+        {/* Mobile burgundy accent */}
+        <div className="absolute top-0 right-0 w-full h-32 lg:hidden bg-gradient-to-b from-[#592D31]/10 to-transparent" />
+        
+        {/* Decorative elements */}
+        <div className="absolute top-32 left-8 w-px h-24 bg-gradient-to-b from-[#D4AF37] to-transparent opacity-40" />
+        <div className="absolute bottom-32 left-16 w-px h-32 bg-gradient-to-t from-[#D4AF37] to-transparent opacity-30" />
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 w-full">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Left: Content */}
             <div className="relative z-10">
-              <span className="inline-flex items-center gap-2 text-[#D4AF37] text-xs font-bold tracking-[0.2em] uppercase mb-6">
-                <Heart className="w-4 h-4" />
-                Give Generously
-              </span>
+              {/* Decorative line */}
+              <div className="flex items-center gap-4 mb-8">
+                <div className="w-12 h-[2px] bg-[#D4AF37]" />
+                <span className="text-[#D4AF37] text-xs font-semibold tracking-[0.25em] uppercase">
+                  Give Generously
+                </span>
+              </div>
               
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#592D31] mb-6 leading-[1.1] tracking-tight">
+              <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold text-[#592D31] mb-6 leading-[1.08] tracking-tight" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>
                 {heroTitle}
               </h1>
               
-              <p className="text-lg text-[#332D2D] mb-8 max-w-lg leading-relaxed">
+              <p className="text-lg text-[#5C5252] mb-10 max-w-lg leading-relaxed">
                 Your generosity transforms lives. Every gift, no matter the size, helps us serve our community and spread the love of Christ.
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-4 mb-12">
                 <TithelyButton 
                   label="Give Now" 
-                  className="text-lg px-10 py-5 bg-[#592D31] hover:bg-[#3D2A2C] text-white rounded-full font-semibold transition-all shadow-lg hover:shadow-xl" 
+                  className="text-base px-8 py-4 bg-[#592D31] hover:bg-[#3D2A2C] text-white rounded-lg font-semibold transition-all shadow-md hover:shadow-lg" 
                 />
                 <a 
                   href="#campaigns"
-                  className="inline-flex items-center justify-center gap-2 text-[#592D31] font-semibold px-6 py-3 rounded-full border-2 border-[#592D31]/20 hover:border-[#592D31] hover:bg-[#592D31]/5 transition-all"
+                  className="inline-flex items-center justify-center gap-2 text-[#592D31] font-semibold px-6 py-4 rounded-lg border border-[#592D31]/20 hover:border-[#592D31]/40 hover:bg-[#592D31]/5 transition-all"
                 >
                   View Campaigns
                   <ArrowRight className="w-4 h-4" />
                 </a>
               </div>
               
-              {/* Scripture quote */}
-              <div className="mt-12 p-6 bg-white/80 backdrop-blur-sm rounded-2xl border border-[#E0D8D2] max-w-md">
-                <p className="text-[#5C5252] text-sm italic leading-relaxed">
-                  &ldquo;{heroVerse}&rdquo;
+              {/* Scripture quote — elegant card */}
+              <div className="relative p-6 bg-white rounded-xl shadow-sm border border-[#E8E2DA]">
+                <div className="absolute -top-3 left-6 w-6 h-6 bg-[#D4AF37]/10 rounded-full flex items-center justify-center">
+                  <span className="text-[#D4AF37] text-lg leading-none">&ldquo;</span>
+                </div>
+                <p className="text-[#5C5252] text-[15px] italic leading-relaxed pl-2">
+                  {heroVerse}
                 </p>
-                <span className="text-[#D4AF37] text-xs font-semibold mt-2 block">
-                  — {heroVerseRef}
-                </span>
+                <div className="flex items-center gap-2 mt-3 pl-2">
+                  <div className="w-8 h-[1px] bg-[#D4AF37]" />
+                  <span className="text-[#D4AF37] text-xs font-semibold tracking-wide">
+                    {heroVerseRef}
+                  </span>
+                </div>
               </div>
             </div>
             
-            {/* Right: Stats card on top of folder */}
-            <div className="relative z-10 lg:pl-8">
-              <div className="bg-white rounded-3xl p-8 lg:p-10 shadow-[0_20px_60px_rgba(89,45,49,0.2)] border border-white/50">
-                {/* Decorative cross */}
-                <div className="absolute -top-4 -right-4 w-16 h-16 bg-[#D4AF37] rounded-2xl flex items-center justify-center shadow-lg">
-                  <svg width="24" height="30" viewBox="0 0 24 30" fill="none">
-                    <rect x="9" y="0" width="6" height="30" fill="white"/>
-                    <rect x="0" y="8" width="24" height="6" fill="white"/>
-                  </svg>
+            {/* Right: Stats card */}
+            <div className="relative z-10">
+              <div className="bg-white rounded-2xl p-8 lg:p-10 shadow-[0_8px_40px_rgba(0,0,0,0.08)] border border-[#E8E2DA]/50">
+                {/* Corner accent */}
+                <div className="absolute -top-3 -right-3 w-12 h-12 bg-[#D4AF37] rounded-xl flex items-center justify-center shadow-md">
+                  <Heart className="w-5 h-5 text-white" />
                 </div>
                 
                 <div className="text-center mb-8">
-                  <span className="text-7xl sm:text-8xl font-bold text-[#592D31] block" style={{ textShadow: '0 4px 20px rgba(89,45,49,0.1)' }}>
+                  <span className="text-6xl sm:text-7xl lg:text-8xl font-bold text-[#592D31] block tracking-tight" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>
                     1,200+
                   </span>
-                  <p className="text-[#8A8080] text-lg">Lives touched this year</p>
+                  <p className="text-[#8A8080] text-base mt-2">Lives touched this year</p>
                 </div>
                 
-                <div className="grid grid-cols-3 gap-4 pt-6 border-t border-[#E0D8D2]">
+                <div className="h-px bg-gradient-to-r from-transparent via-[#E0D8D2] to-transparent mb-6" />
+                
+                <div className="grid grid-cols-3 gap-4">
                   <div className="text-center">
-                    <span className="text-2xl font-bold text-[#D4AF37]">$150K+</span>
+                    <span className="text-xl lg:text-2xl font-bold text-[#592D31]">$150K+</span>
                     <p className="text-xs text-[#8A8080] mt-1">Given this year</p>
                   </div>
                   <div className="text-center border-x border-[#E0D8D2]">
-                    <span className="text-2xl font-bold text-[#D4AF37]">100%</span>
+                    <span className="text-xl lg:text-2xl font-bold text-[#D4AF37]">100%</span>
                     <p className="text-xs text-[#8A8080] mt-1">To ministry</p>
                   </div>
                   <div className="text-center">
-                    <span className="text-2xl font-bold text-[#D4AF37]">500+</span>
-                    <p className="text-xs text-[#8A8080] mt-1">Donors</p>
+                    <span className="text-xl lg:text-2xl font-bold text-[#592D31]">500+</span>
+                    <p className="text-xs text-[#8A8080] mt-1">Faithful donors</p>
                   </div>
                 </div>
               </div>
@@ -186,23 +197,25 @@ export default async function GivePage() {
       </section>
 
       {/* Donation Campaigns — Progress Tracking */}
-      <section id="campaigns" className="py-24 bg-white scroll-mt-20">
+      <section id="campaigns" className="py-24 bg-[#FCFBF9] scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <span className="inline-flex items-center justify-center gap-3 text-[#D4AF37] text-xs font-bold tracking-[0.2em] uppercase mb-4">
-              <span className="w-12 h-px bg-[#D4AF37]" />
-              Current Campaigns
-              <span className="w-12 h-px bg-[#D4AF37]" />
-            </span>
-            <h2 className="text-4xl md:text-5xl font-bold text-[#592D31] mb-4">
+            <div className="flex items-center justify-center gap-4 mb-4">
+              <div className="w-16 h-[1px] bg-[#D4AF37]" />
+              <span className="text-[#D4AF37] text-xs font-semibold tracking-[0.25em] uppercase">
+                Current Campaigns
+              </span>
+              <div className="w-16 h-[1px] bg-[#D4AF37]" />
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#592D31] mb-4" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>
               Help Us Reach Our Goals
             </h2>
-            <p className="text-[#332D2D] text-lg max-w-2xl mx-auto">
-              Track our progress and see how your giving makes a real difference in these focused initiatives.
+            <p className="text-[#5C5252] text-base max-w-xl mx-auto">
+              Track our progress and see how your giving makes a real difference.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {donationCampaigns.map((campaign, index) => {
               const percentage = Math.min(Math.round((campaign.currentAmount / campaign.goalAmount) * 100), 100)
               const remaining = campaign.goalAmount - campaign.currentAmount
@@ -211,71 +224,59 @@ export default async function GivePage() {
               return (
                 <div 
                   key={campaign.title}
-                  className="group relative bg-[#FCFBF9] rounded-2xl overflow-hidden border border-[#E0D8D2] hover:shadow-xl transition-all duration-500"
+                  className="group relative bg-white rounded-xl overflow-hidden border border-[#E8E2DA] hover:shadow-lg hover:border-[#D4AF37]/30 transition-all duration-300"
                 >
-                  {/* Folder tab top */}
-                  <div className="relative h-3" style={{ backgroundColor: accentColor }}>
-                    <div 
-                      className="absolute -bottom-3 left-6 w-12 h-6 rounded-b-lg"
-                      style={{ backgroundColor: accentColor }}
-                    />
-                  </div>
+                  {/* Top accent line */}
+                  <div className="h-1" style={{ backgroundColor: accentColor }} />
                   
                   {/* Image or placeholder */}
                   {campaign.image ? (
-                    <div className="aspect-[16/9] relative">
+                    <div className="aspect-[16/10] relative">
                       <SanityImageComponent
                         image={campaign.image}
                         alt={campaign.title}
                         fill
                         className="object-cover"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                     </div>
                   ) : (
                     <div 
-                      className="aspect-[16/9] flex items-center justify-center"
-                      style={{ backgroundColor: `${accentColor}10` }}
+                      className="aspect-[16/10] flex items-center justify-center bg-gradient-to-br from-[#F8F6F3] to-[#F4F0EA]"
                     >
-                      <Target className="w-16 h-16" style={{ color: accentColor, opacity: 0.3 }} />
+                      <Target className="w-12 h-12" style={{ color: accentColor, opacity: 0.2 }} />
                     </div>
                   )}
                   
                   <div className="p-6">
-                    <h3 className="text-xl font-bold text-[#592D31] mb-2">{campaign.title}</h3>
+                    <h3 className="text-lg font-bold text-[#592D31] mb-2" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>{campaign.title}</h3>
                     {campaign.description && (
-                      <p className="text-[#8A8080] text-sm leading-relaxed mb-6">{campaign.description}</p>
+                      <p className="text-[#8A8080] text-sm leading-relaxed mb-5 line-clamp-2">{campaign.description}</p>
                     )}
                     
                     {/* Progress bar */}
                     <div className="mb-4">
                       <div className="flex justify-between text-sm mb-2">
-                        <span className="font-semibold" style={{ color: accentColor }}>
+                        <span className="font-semibold text-[#592D31]">
                           ${campaign.currentAmount.toLocaleString()}
                         </span>
                         <span className="text-[#8A8080]">
-                          ${campaign.goalAmount.toLocaleString()} goal
+                          of ${campaign.goalAmount.toLocaleString()}
                         </span>
                       </div>
-                      <div className="h-3 bg-[#E0D8D2] rounded-full overflow-hidden">
+                      <div className="h-2 bg-[#E8E2DA] rounded-full overflow-hidden">
                         <div 
                           className="h-full rounded-full transition-all duration-1000 ease-out"
                           style={{ 
                             width: `${percentage}%`, 
                             backgroundColor: accentColor,
-                            boxShadow: `0 0 10px ${accentColor}40`
                           }}
                         />
                       </div>
                     </div>
                     
                     {/* Stats row */}
-                    <div className="flex items-center justify-between pt-4 border-t border-[#E0D8D2]">
-                      <div className="flex items-center gap-2">
-                        <TrendingUp className="w-4 h-4" style={{ color: accentColor }} />
-                        <span className="text-sm font-bold" style={{ color: accentColor }}>{percentage}%</span>
-                        <span className="text-xs text-[#8A8080]">funded</span>
-                      </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm font-semibold" style={{ color: accentColor }}>{percentage}% funded</span>
                       <span className="text-xs text-[#8A8080]">
                         ${remaining.toLocaleString()} to go
                       </span>
@@ -436,14 +437,6 @@ export default async function GivePage() {
         </div>
       </section>
 
-      {/* Tax Info */}
-      <section className="py-12 bg-[#F4F0EA]">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-[#332D2D] text-sm leading-relaxed">
-            {taxStatement}
-          </p>
-        </div>
-      </section>
     </>
   )
 }

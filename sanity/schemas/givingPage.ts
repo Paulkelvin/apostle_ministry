@@ -108,6 +108,7 @@ export const givingPage = defineType({
           type: 'object',
           fields: [
             { name: 'title', type: 'string', title: 'Campaign Title', validation: (Rule: any) => Rule.required() },
+            { name: 'fundId', type: 'string', title: 'Tithely Fund ID', description: 'The fund name as it appears in Tithely (for automatic webhook updates)' },
             { name: 'description', type: 'text', title: 'Description', rows: 2 },
             { name: 'goalAmount', type: 'number', title: 'Goal Amount ($)', validation: (Rule: any) => Rule.required().min(0) },
             { name: 'currentAmount', type: 'number', title: 'Current Amount ($)', description: 'Update this manually or via integration', initialValue: 0 },
