@@ -60,7 +60,7 @@ export function MissionVisionSection({ mission, vision }: MissionVisionSectionPr
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="relative w-full lg:w-[55%] lg:-ml-[15%] mt-6 sm:mt-[-20px] lg:mt-0 lg:my-10 z-10"
+            className="relative w-full lg:w-[55%] lg:-ml-[15%] -mt-4 sm:mt-[-25px] lg:mt-0 lg:my-10 z-10"
           >
             <div className="bg-white rounded-2xl p-8 md:p-12 lg:p-14 shadow-[0_20px_60px_rgba(0,0,0,0.15)]">
               {/* Gold accent */}

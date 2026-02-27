@@ -430,6 +430,21 @@ export const givingPageQuery = groq`
     givingBreakdown,
     givingMethods,
     taxStatement,
-    mailingAddress
+    mailingAddress,
+    donationCampaigns[] {
+      title,
+      description,
+      goalAmount,
+      currentAmount,
+      image {
+        asset->,
+        alt,
+        hotspot,
+        crop
+      },
+      color,
+      isActive,
+      endDate
+    }
   }
 `

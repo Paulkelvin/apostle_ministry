@@ -98,6 +98,55 @@ export const givingPage = defineType({
       type: 'text',
       rows: 3,
     }),
+    defineField({
+      name: 'donationCampaigns',
+      title: 'Donation Campaigns',
+      description: 'Track progress towards specific giving goals',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            { name: 'title', type: 'string', title: 'Campaign Title', validation: (Rule: any) => Rule.required() },
+            { name: 'description', type: 'text', title: 'Description', rows: 2 },
+            { name: 'goalAmount', type: 'number', title: 'Goal Amount ($)', validation: (Rule: any) => Rule.required().min(0) },
+            { name: 'currentAmount', type: 'number', title: 'Current Amount ($)', description: 'Update this manually or via integration', initialValue: 0 },
+            { 
+              name: 'image', 
+              type: 'image', 
+              title: 'Campaign Image',
+              options: { hotspot: true },
+            },
+            {
+              name: 'color',
+              type: 'string',
+              title: 'Accent Color',
+              options: {
+                list: [
+                  { title: 'Burgundy', value: '#592D31' },
+                  { title: 'Gold', value: '#D4AF37' },
+                  { title: 'Sage', value: '#7BA381' },
+                  { title: 'Blue', value: '#4A6FA5' },
+                ],
+              },
+              initialValue: '#592D31',
+            },
+            { name: 'isActive', type: 'boolean', title: 'Active Campaign', initialValue: true },
+            { name: 'endDate', type: 'date', title: 'End Date (optional)' },
+          ],
+          preview: {
+            select: { title: 'title', goal: 'goalAmount', current: 'currentAmount' },
+            prepare({ title, goal, current }: { title?: string; goal?: number; current?: number }) {
+              const percentage = goal ? Math.round(((current || 0) / goal) * 100) : 0
+              return {
+                title: title || 'Untitled Campaign',
+                subtitle: `$${current || 0} / $${goal || 0} (${percentage}%)`,
+              }
+            },
+          },
+        },
+      ],
+    }),
   ],
   preview: {
     prepare() {

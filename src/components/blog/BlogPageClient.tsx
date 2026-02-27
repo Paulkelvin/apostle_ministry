@@ -191,9 +191,16 @@ export function BlogPageClient({ posts, categories }: BlogPageClientProps) {
       {/* ──── Heading + Category Tabs + Sort ──── */}
       <section className={`pb-4 ${(!featuredPost || search || activeCategory) ? 'pt-32' : 'pt-10'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-2">
-            <h2 className="text-2xl sm:text-3xl font-bold text-[#592D31]">Blog</h2>
-            <p className="text-sm text-[#332D2D] mt-1">
+          <div className="mb-6">
+            {/* Decorative label */}
+            <div className="flex items-center gap-3 mb-3">
+              <span className="w-8 h-[2px] bg-[#D4AF37]" />
+              <span className="text-[#D4AF37] text-xs font-bold tracking-[0.2em] uppercase">
+                Our Stories
+              </span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#592D31] tracking-tight">Blog</h2>
+            <p className="text-[#8A8080] mt-2 text-base max-w-lg">
               News, devotionals, and stories from our church family
             </p>
           </div>

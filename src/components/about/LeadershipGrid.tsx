@@ -64,13 +64,13 @@ export function LeadershipGrid({ staff }: LeadershipGridProps) {
             <div className="bg-white rounded-3xl overflow-hidden border border-warm-100 shadow-sm hover:shadow-lg transition-shadow duration-500 max-w-3xl mx-auto">
               <div className="grid md:grid-cols-[1fr_1.4fr]">
                 {/* Photo */}
-                <div className="aspect-[3/4] md:aspect-auto relative overflow-hidden bg-gradient-to-br from-warm-100 to-warm-200">
+                <div className="aspect-[4/5] md:aspect-auto relative overflow-hidden bg-gradient-to-br from-warm-100 to-warm-200 min-h-[280px] md:min-h-[360px]">
                   {leadPerson.image ? (
                     <SanityImageComponent
                       image={leadPerson.image}
                       alt={leadPerson.name}
                       fill
-                      className="object-cover"
+                      className="object-cover object-top"
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center min-h-[360px]">
@@ -132,7 +132,7 @@ export function LeadershipGrid({ staff }: LeadershipGridProps) {
                         image={person.image}
                         alt={person.name}
                         fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-700"
+                        className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center">

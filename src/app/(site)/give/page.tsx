@@ -1,8 +1,9 @@
 import { Metadata } from 'next'
-import { Heart, CreditCard, Building2, Mail, Users, BookOpen, Globe, Utensils, ArrowRight, Quote, ChevronRight } from 'lucide-react'
+import { Heart, CreditCard, Building2, Mail, Users, BookOpen, Globe, Utensils, ArrowRight, Target, TrendingUp } from 'lucide-react'
 import { TithelyButton } from '@/components/giving'
 import { client, givingPageQuery } from '@/lib/sanity'
-import type { GivingPage } from '@/types'
+import { SanityImageComponent } from '@/components/ui'
+import type { GivingPage, DonationCampaign } from '@/types'
 
 export const metadata: Metadata = {
   title: 'Give | The Apostles Ministry',
@@ -41,6 +42,13 @@ export default async function GivePage() {
   ]
   const taxStatement = data?.taxStatement || 'The Apostles Ministry is a registered 501(c)(3) nonprofit organization. All donations are tax-deductible to the fullest extent allowed by law. You will receive a giving statement for your records.'
   const mailingAddress = data?.mailingAddress || "The Apostles Ministry\n401-A Prince George's Blvd\nUpper Marlboro, MD 20774"
+  
+  // Demo donation campaigns if none exist
+  const donationCampaigns: DonationCampaign[] = data?.donationCampaigns?.filter(c => c.isActive) || [
+    { title: 'Building Fund', description: 'Help us expand our sanctuary to accommodate our growing congregation.', goalAmount: 100000, currentAmount: 67500, color: '#592D31', isActive: true },
+    { title: 'Youth Ministry', description: 'Support programs, camps, and resources for the next generation.', goalAmount: 25000, currentAmount: 18750, color: '#D4AF37', isActive: true },
+    { title: 'Community Outreach', description: 'Provide meals, supplies, and support to families in need.', goalAmount: 15000, currentAmount: 12300, color: '#7BA381', isActive: true },
+  ]
 
   // Impact areas with church-appropriate icons and descriptions
   const impactAreas = [
@@ -76,19 +84,31 @@ export default async function GivePage() {
 
   return (
     <>
-      {/* Hero Section — Split Design */}
-      <section className="relative min-h-[85vh] flex items-center overflow-hidden">
-        {/* Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#FCFBF9] via-[#F4F0EA] to-[#E8E2DA]" />
+      {/* Hero Section — Folder Tab Design */}
+      <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+        {/* Background with folder shapes */}
+        <div className="absolute inset-0 bg-[#FCFBF9]" />
         
-        {/* Decorative elements */}
+        {/* Folder tab shapes - decorative */}
+        <div className="absolute top-0 right-0 w-[60%] h-full">
+          {/* Main folder shape */}
+          <svg className="absolute inset-0 w-full h-full" viewBox="0 0 600 800" preserveAspectRatio="none" fill="none">
+            <path d="M80 0 L600 0 L600 800 L0 800 L0 100 Q0 60 40 60 L60 60 Q80 60 80 40 Z" fill="#592D31"/>
+          </svg>
+          {/* Inner folder tab */}
+          <svg className="absolute top-8 left-8 w-[90%] h-[95%]" viewBox="0 0 500 700" preserveAspectRatio="none" fill="none">
+            <path d="M60 0 L500 0 L500 700 L0 700 L0 80 Q0 50 30 50 L45 50 Q60 50 60 30 Z" fill="#D4AF37" opacity="0.15"/>
+          </svg>
+        </div>
+        
+        {/* Decorative circles */}
         <div className="absolute top-20 left-10 w-64 h-64 bg-[#D4AF37]/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#592D31]/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 left-1/4 w-48 h-48 bg-[#592D31]/5 rounded-full blur-2xl" />
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 w-full">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left: Content */}
-            <div>
+            <div className="relative z-10">
               <span className="inline-flex items-center gap-2 text-[#D4AF37] text-xs font-bold tracking-[0.2em] uppercase mb-6">
                 <Heart className="w-4 h-4" />
                 Give Generously
@@ -108,49 +128,170 @@ export default async function GivePage() {
                   className="text-lg px-10 py-5 bg-[#592D31] hover:bg-[#3D2A2C] text-white rounded-full font-semibold transition-all shadow-lg hover:shadow-xl" 
                 />
                 <a 
-                  href="#impact"
+                  href="#campaigns"
                   className="inline-flex items-center justify-center gap-2 text-[#592D31] font-semibold px-6 py-3 rounded-full border-2 border-[#592D31]/20 hover:border-[#592D31] hover:bg-[#592D31]/5 transition-all"
                 >
-                  See Your Impact
+                  View Campaigns
                   <ArrowRight className="w-4 h-4" />
                 </a>
               </div>
+              
+              {/* Scripture quote */}
+              <div className="mt-12 p-6 bg-white/80 backdrop-blur-sm rounded-2xl border border-[#E0D8D2] max-w-md">
+                <p className="text-[#5C5252] text-sm italic leading-relaxed">
+                  &ldquo;{heroVerse}&rdquo;
+                </p>
+                <span className="text-[#D4AF37] text-xs font-semibold mt-2 block">
+                  — {heroVerseRef}
+                </span>
+              </div>
             </div>
             
-            {/* Right: Large stat card */}
-            <div className="relative">
-              <div className="bg-[#592D31] rounded-3xl p-10 lg:p-14 text-center relative overflow-hidden">
+            {/* Right: Stats card on top of folder */}
+            <div className="relative z-10 lg:pl-8">
+              <div className="bg-white rounded-3xl p-8 lg:p-10 shadow-[0_20px_60px_rgba(89,45,49,0.2)] border border-white/50">
                 {/* Decorative cross */}
-                <div className="absolute top-6 right-6 opacity-10">
-                  <svg width="60" height="75" viewBox="0 0 60 75" fill="none">
-                    <rect x="22.5" y="0" width="15" height="75" fill="white"/>
-                    <rect x="0" y="17.5" width="60" height="15" fill="white"/>
+                <div className="absolute -top-4 -right-4 w-16 h-16 bg-[#D4AF37] rounded-2xl flex items-center justify-center shadow-lg">
+                  <svg width="24" height="30" viewBox="0 0 24 30" fill="none">
+                    <rect x="9" y="0" width="6" height="30" fill="white"/>
+                    <rect x="0" y="8" width="24" height="6" fill="white"/>
                   </svg>
                 </div>
                 
-                <div className="relative">
-                  <span className="text-7xl sm:text-8xl lg:text-9xl font-bold text-white mb-2 block" style={{ textShadow: '0 4px 20px rgba(0,0,0,0.2)' }}>
+                <div className="text-center mb-8">
+                  <span className="text-7xl sm:text-8xl font-bold text-[#592D31] block" style={{ textShadow: '0 4px 20px rgba(89,45,49,0.1)' }}>
                     1,200+
                   </span>
-                  <p className="text-white/80 text-lg mb-8">Lives touched this year</p>
-                  
-                  <div className="h-px bg-white/20 mb-8" />
-                  
-                  <p className="text-white/90 text-sm leading-relaxed italic">
-                    &ldquo;{heroVerse}&rdquo;
-                  </p>
-                  <span className="text-[#D4AF37] text-sm mt-3 block font-medium">
-                    — {heroVerseRef}
-                  </span>
+                  <p className="text-[#8A8080] text-lg">Lives touched this year</p>
+                </div>
+                
+                <div className="grid grid-cols-3 gap-4 pt-6 border-t border-[#E0D8D2]">
+                  <div className="text-center">
+                    <span className="text-2xl font-bold text-[#D4AF37]">$150K+</span>
+                    <p className="text-xs text-[#8A8080] mt-1">Given this year</p>
+                  </div>
+                  <div className="text-center border-x border-[#E0D8D2]">
+                    <span className="text-2xl font-bold text-[#D4AF37]">100%</span>
+                    <p className="text-xs text-[#8A8080] mt-1">To ministry</p>
+                  </div>
+                  <div className="text-center">
+                    <span className="text-2xl font-bold text-[#D4AF37]">500+</span>
+                    <p className="text-xs text-[#8A8080] mt-1">Donors</p>
+                  </div>
                 </div>
               </div>
-              
-              {/* Floating badge */}
-              <div className="absolute -bottom-6 -left-6 bg-[#D4AF37] text-[#1A1A1A] rounded-2xl px-6 py-4 shadow-xl">
-                <span className="text-2xl font-bold block">100%</span>
-                <span className="text-xs font-medium">Goes to Ministry</span>
-              </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Donation Campaigns — Progress Tracking */}
+      <section id="campaigns" className="py-24 bg-white scroll-mt-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <span className="inline-flex items-center justify-center gap-3 text-[#D4AF37] text-xs font-bold tracking-[0.2em] uppercase mb-4">
+              <span className="w-12 h-px bg-[#D4AF37]" />
+              Current Campaigns
+              <span className="w-12 h-px bg-[#D4AF37]" />
+            </span>
+            <h2 className="text-4xl md:text-5xl font-bold text-[#592D31] mb-4">
+              Help Us Reach Our Goals
+            </h2>
+            <p className="text-[#332D2D] text-lg max-w-2xl mx-auto">
+              Track our progress and see how your giving makes a real difference in these focused initiatives.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {donationCampaigns.map((campaign, index) => {
+              const percentage = Math.min(Math.round((campaign.currentAmount / campaign.goalAmount) * 100), 100)
+              const remaining = campaign.goalAmount - campaign.currentAmount
+              const accentColor = campaign.color || '#592D31'
+              
+              return (
+                <div 
+                  key={campaign.title}
+                  className="group relative bg-[#FCFBF9] rounded-2xl overflow-hidden border border-[#E0D8D2] hover:shadow-xl transition-all duration-500"
+                >
+                  {/* Folder tab top */}
+                  <div className="relative h-3" style={{ backgroundColor: accentColor }}>
+                    <div 
+                      className="absolute -bottom-3 left-6 w-12 h-6 rounded-b-lg"
+                      style={{ backgroundColor: accentColor }}
+                    />
+                  </div>
+                  
+                  {/* Image or placeholder */}
+                  {campaign.image ? (
+                    <div className="aspect-[16/9] relative">
+                      <SanityImageComponent
+                        image={campaign.image}
+                        alt={campaign.title}
+                        fill
+                        className="object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                    </div>
+                  ) : (
+                    <div 
+                      className="aspect-[16/9] flex items-center justify-center"
+                      style={{ backgroundColor: `${accentColor}10` }}
+                    >
+                      <Target className="w-16 h-16" style={{ color: accentColor, opacity: 0.3 }} />
+                    </div>
+                  )}
+                  
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-[#592D31] mb-2">{campaign.title}</h3>
+                    {campaign.description && (
+                      <p className="text-[#8A8080] text-sm leading-relaxed mb-6">{campaign.description}</p>
+                    )}
+                    
+                    {/* Progress bar */}
+                    <div className="mb-4">
+                      <div className="flex justify-between text-sm mb-2">
+                        <span className="font-semibold" style={{ color: accentColor }}>
+                          ${campaign.currentAmount.toLocaleString()}
+                        </span>
+                        <span className="text-[#8A8080]">
+                          ${campaign.goalAmount.toLocaleString()} goal
+                        </span>
+                      </div>
+                      <div className="h-3 bg-[#E0D8D2] rounded-full overflow-hidden">
+                        <div 
+                          className="h-full rounded-full transition-all duration-1000 ease-out"
+                          style={{ 
+                            width: `${percentage}%`, 
+                            backgroundColor: accentColor,
+                            boxShadow: `0 0 10px ${accentColor}40`
+                          }}
+                        />
+                      </div>
+                    </div>
+                    
+                    {/* Stats row */}
+                    <div className="flex items-center justify-between pt-4 border-t border-[#E0D8D2]">
+                      <div className="flex items-center gap-2">
+                        <TrendingUp className="w-4 h-4" style={{ color: accentColor }} />
+                        <span className="text-sm font-bold" style={{ color: accentColor }}>{percentage}%</span>
+                        <span className="text-xs text-[#8A8080]">funded</span>
+                      </div>
+                      <span className="text-xs text-[#8A8080]">
+                        ${remaining.toLocaleString()} to go
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+          
+          {/* CTA */}
+          <div className="text-center mt-12">
+            <TithelyButton 
+              label="Contribute Now" 
+              className="text-base px-8 py-4 bg-[#592D31] hover:bg-[#3D2A2C] text-white rounded-full font-semibold transition-all shadow-lg hover:shadow-xl" 
+            />
           </div>
         </div>
       </section>

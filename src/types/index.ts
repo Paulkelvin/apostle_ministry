@@ -234,6 +234,17 @@ export interface GivingMethod {
   icon: 'credit-card' | 'building' | 'mail'
 }
 
+export interface DonationCampaign {
+  title: string
+  description?: string
+  goalAmount: number
+  currentAmount: number
+  image?: SanityImage
+  color?: string
+  isActive?: boolean
+  endDate?: string
+}
+
 export interface GivingPage {
   heroTitle?: string
   heroVerse?: string
@@ -244,4 +255,5 @@ export interface GivingPage {
   givingMethods?: GivingMethod[]
   taxStatement?: string
   mailingAddress?: string
+  donationCampaigns?: DonationCampaign[]
 }

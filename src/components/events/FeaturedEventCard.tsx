@@ -98,9 +98,9 @@ export function FeaturedEventCard({ event, onClick }: FeaturedEventCardProps) {
             {/* Meta */}
             <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-[#8F8A80] mb-6">
               {event.location && (
-                <span className="flex items-center gap-1.5">
-                  <MapPin className="w-3.5 h-3.5 text-[#D4AF37]" />
-                  {event.location}
+                <span className="flex items-center gap-1.5 max-w-full">
+                  <MapPin className="w-3.5 h-3.5 text-[#D4AF37] flex-shrink-0" />
+                  <span className="truncate">{event.location}</span>
                 </span>
               )}
               {event.isOnline && (
