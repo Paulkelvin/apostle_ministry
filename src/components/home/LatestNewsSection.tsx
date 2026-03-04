@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { format } from 'date-fns'
 import { ArrowRight, Clock, BookOpen } from 'lucide-react'
 import { SanityImageComponent } from '@/components/ui'
+import { SubtleSparkle, FloatingCross } from '@/components/ui/MicroGraphics'
 import { estimateReadingTime } from '@/lib/utils'
 import type { Post } from '@/types'
 
@@ -27,8 +28,12 @@ export function LatestNewsSection({ posts }: LatestNewsSectionProps) {
   const featuredCategory = featured.categories?.[0]
 
   return (
-    <section className="py-20 lg:py-28 bg-[#F4F0EA] overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative py-20 lg:py-28 bg-[#F4F0EA] overflow-hidden">
+      {/* Decorative MicroGraphics */}
+      <SubtleSparkle className="top-[10%] xl:top-20 left-[5%] opacity-30 mix-blend-multiply" size={40} color="#CBA052" />
+      <FloatingCross className="bottom-[10%] right-[3%] opacity-15 mix-blend-multiply" delay={1.5} size={60} color="#592D31" />
+      
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header with watermark */}
         <div className="relative mb-12 lg:mb-16 overflow-hidden">
           {/* Massive watermark - hidden on small mobile to prevent overflow */}

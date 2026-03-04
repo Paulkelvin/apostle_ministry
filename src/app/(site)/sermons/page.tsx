@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import { client, sermonsQuery, sermonSeriesQuery } from '@/lib/sanity'
 import { SermonsPageClient } from '@/components/sermons'
+import { FloatingRing, WaveLine } from '@/components/ui/MicroGraphics'
 import type { Sermon } from '@/types'
 
 export const metadata: Metadata = {
@@ -38,6 +39,11 @@ export default async function SermonsPage() {
             background: 'radial-gradient(circle at top right, rgba(212, 175, 55, 0.12), transparent)',
           }}
         />
+
+        {/* Decorative MicroGraphics */}
+        <FloatingRing className="top-10 left-[15%] opacity-30 mix-blend-overlay" size={100} delay={0.3} color="#D4AF37" />
+        <WaveLine className="bottom-[10%] right-[10%] opacity-20 mix-blend-overlay" delay={1.2} color="#D4AF37" />
+
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1
             className="text-5xl font-bold mb-4 tracking-tight"

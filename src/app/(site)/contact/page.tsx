@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import { MapPin, Phone, Mail, Clock, Headset, MessageSquare, Newspaper, ExternalLink, ArrowRight } from 'lucide-react'
 import { client, faqQuery, serviceTimesQuery } from '@/lib/sanity'
 import { ContactForm, FAQAccordion, InteractiveMap } from '@/components/contact'
+import { FloatingRing, WaveLine } from '@/components/ui/MicroGraphics'
 import type { FAQ, ServiceTimes } from '@/types'
 
 export const metadata: Metadata = {
@@ -31,6 +32,10 @@ export default async function ContactPage() {
         {/* Subtle decorative blobs */}
         <div className="absolute top-20 left-0 w-72 h-72 bg-primary/[0.04] rounded-full blur-3xl" />
         <div className="absolute bottom-0 right-10 w-96 h-96 bg-accent/[0.05] rounded-full blur-3xl" />
+
+        {/* Decorative MicroGraphics */}
+        <FloatingRing className="top-32 left-[40%] opacity-40 mix-blend-multiply" size={50} delay={0.5} color="#D4AF37" />
+        <WaveLine className="bottom-[10%] right-[30%] opacity-20 mix-blend-multiply rotate-[10deg]" delay={1.2} color="#592D31" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">

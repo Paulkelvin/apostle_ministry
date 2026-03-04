@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui'
 import { SanityImageComponent } from '@/components/ui'
+import { FloatingRing, FloatingCross, SubtleSparkle } from '@/components/ui/MicroGraphics'
 import type { SiteSettings } from '@/types'
 
 interface HeroSectionProps {
@@ -54,7 +55,10 @@ export function HeroSection({ settings }: HeroSectionProps) {
 
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/50" />
-
+      {/* Decorative MicroGraphics */}
+      <FloatingCross className="top-1/4 left-[10%] opacity-40 mix-blend-overlay" size={50} delay={0.5} />
+      <SubtleSparkle className="top-1/3 right-[15%] opacity-60 mix-blend-overlay" size={35} delay={1.2} />
+      <FloatingRing className="bottom-[20%] left-[20%] opacity-30 mix-blend-overlay" size={80} delay={2.5} />
       {/* Content */}
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
         <motion.h1
