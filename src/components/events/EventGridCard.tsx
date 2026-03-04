@@ -16,7 +16,7 @@ export function EventGridCard({ event, onClick }: EventGridCardProps) {
   return (
     <button
       onClick={onClick}
-      className="w-full text-left group"
+      className="w-full max-w-full text-left group"
     >
       <article className="h-full flex flex-col bg-[#FFFFFF] rounded-2xl overflow-hidden shadow-[0_12px_32px_rgba(0,0,0,0.08)] hover:shadow-[0_16px_40px_rgba(0,0,0,0.12)] hover:-translate-y-1 transition-all duration-300">
         {/* Image */}
@@ -60,19 +60,19 @@ export function EventGridCard({ event, onClick }: EventGridCardProps) {
         </div>
 
         {/* Content */}
-        <div className="p-5 flex-1 flex flex-col">
-          <h3 className="text-base font-bold text-[#592D31] mb-2 group-hover:text-[#592D31] transition-colors line-clamp-2 leading-snug">
+        <div className="p-5 flex-1 flex flex-col min-w-0">
+          <h3 className="text-base font-bold text-[#592D31] mb-2 group-hover:text-[#592D31] transition-colors line-clamp-2 leading-snug break-words">
             {event.title}
           </h3>
 
-          <div className="space-y-1.5 text-sm text-[#8A8080]">
+          <div className="space-y-1.5 text-sm text-[#8A8080] min-w-0">
             <div className="flex items-center gap-2">
-              <Calendar className="w-3.5 h-3.5 text-[#D4AF37]" />
-              <span>{format(startDate, 'EEE, MMM d · h:mm a')}</span>
+              <Calendar className="w-3.5 h-3.5 text-[#D4AF37] flex-shrink-0" />
+              <span className="truncate">{format(startDate, 'EEE, MMM d · h:mm a')}</span>
             </div>
             {event.location && (
               <div className="flex items-center gap-2">
-                <MapPin className="w-3.5 h-3.5 text-[#D4AF37]" />
+                <MapPin className="w-3.5 h-3.5 text-[#D4AF37] flex-shrink-0" />
                 <span className="truncate">{event.location}</span>
               </div>
             )}

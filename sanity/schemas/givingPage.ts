@@ -26,6 +26,15 @@ export const givingPage = defineType({
       description: 'e.g., "2 Corinthians 9:7"',
     }),
     defineField({
+      name: 'heroImage',
+      title: 'Hero Image',
+      type: 'image',
+      description: 'Image displayed on the right side of the hero section. Landscape orientation (16:9 or 4:3) recommended.',
+      options: {
+        hotspot: true,
+      },
+    }),
+    defineField({
       name: 'whyWeGiveHeading',
       title: '"Why We Give" Heading',
       type: 'string',

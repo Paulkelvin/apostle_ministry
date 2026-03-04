@@ -76,11 +76,11 @@ export default async function BlogPostPage({ params }: PageProps) {
         />
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
-            href="/blog"
-            className="inline-flex items-center gap-2 text-[#E0D8D2]/80 hover:text-[#FFFFFF] transition-colors mb-8 text-sm"
+            href="/resources"
+            className="inline-flex items-center gap-2 text-[#E0D8D2]/80 hover:text-[#FFFFFF] transition-colors mb-8 text-sm group"
           >
-            <ArrowLeft className="w-4 h-4" />
-            Back to Blog
+            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+            Back to Resources
           </Link>
 
           {/* Categories */}
@@ -158,7 +158,7 @@ export default async function BlogPostPage({ params }: PageProps) {
       {post.mainImage && (
         <section className="bg-[#FCFBF9] pt-10">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="aspect-[21/9] relative rounded-2xl overflow-hidden shadow-[0_8px_40px_rgba(0,0,0,0.15)]">
+            <div className="aspect-[16/9] relative rounded-2xl overflow-hidden shadow-[0_8px_40px_rgba(0,0,0,0.15)] border border-[#E0D8D2]/20">
               <SanityImageComponent
                 image={post.mainImage}
                 alt={post.title}
@@ -192,29 +192,34 @@ export default async function BlogPostPage({ params }: PageProps) {
 
       {/* Author Bio */}
       {post.author && post.author.bio && (
-        <section className="py-12 bg-[#F4F0EA]">
+        <section className="py-16 bg-gradient-to-b from-[#F4F0EA] to-[#FCFBF9]">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-[#FFFFFF] rounded-2xl p-8 shadow-[0_2px_16px_rgba(0,0,0,0.06)] border border-[#E0D8D2]/30 flex flex-col sm:flex-row gap-6">
-              {post.author.image && (
-                <div className="flex-shrink-0">
-                  <div className="w-20 h-20 rounded-full overflow-hidden ring-2 ring-[#E0D8D2]/50">
-                    <SanityImageComponent
-                      image={post.author.image}
-                      alt={post.author.name}
-                      width={80}
-                      height={80}
-                      className="object-cover"
-                    />
+            <div className="relative bg-[#FFFFFF] rounded-3xl p-8 sm:p-10 shadow-[0_4px_24px_rgba(0,0,0,0.08)] border border-[#E0D8D2]/40">
+              {/* Decorative accent */}
+              <div className="absolute top-0 left-8 w-16 h-1 bg-gradient-to-r from-[#D4AF37] to-[#D4AF37]/30 rounded-full -translate-y-1/2" />
+              
+              <div className="flex flex-col sm:flex-row gap-6 items-start">
+                {post.author.image && (
+                  <div className="flex-shrink-0">
+                    <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden ring-4 ring-[#F4F0EA] shadow-lg">
+                      <SanityImageComponent
+                        image={post.author.image}
+                        alt={post.author.name}
+                        width={112}
+                        height={112}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
                   </div>
-                </div>
-              )}
-              <div>
-                <p className="text-xs font-semibold text-[#D4AF37] uppercase tracking-wider mb-1">About the Author</p>
-                <h3 className="text-lg font-bold text-[#592D31]">{post.author.name}</h3>
-                {post.author.role && (
-                  <p className="text-[#592D31] text-sm mb-3">{post.author.role}</p>
                 )}
-                <p className="text-[#332D2D] text-sm leading-relaxed">{post.author.bio}</p>
+                <div className="flex-1">
+                  <p className="text-xs font-semibold text-[#D4AF37] uppercase tracking-[0.15em] mb-2">About the Author</p>
+                  <h3 className="text-xl font-bold text-[#592D31] mb-1" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>{post.author.name}</h3>
+                  {post.author.role && (
+                    <p className="text-[#8A8080] text-sm font-medium mb-4">{post.author.role}</p>
+                  )}
+                  <p className="text-[#5C5252] text-sm leading-relaxed">{post.author.bio}</p>
+                </div>
               </div>
             </div>
           </div>

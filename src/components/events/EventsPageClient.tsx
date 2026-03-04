@@ -58,7 +58,7 @@ export function EventsPageClient({ events }: EventsPageClientProps) {
                 <button
                   key={key}
                   onClick={() => setActiveFilter(key)}
-                  className={`px-4 py-1.5 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-200 ${
+                  className={`px-4 py-1.5 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-300 ease-out active:scale-95 ${
                     activeFilter === key
                       ? 'bg-[#332D2D] text-white shadow-md shadow-[#332D2D]/15'
                       : 'bg-white text-[#332D2D] hover:bg-[#F4F0EA] hover:text-[#332D2D]'
@@ -76,7 +76,7 @@ export function EventsPageClient({ events }: EventsPageClientProps) {
             <div className="flex items-center bg-[#F4F0EA] rounded-xl p-1 shrink-0 self-end sm:self-auto">
               <button
                 onClick={() => setViewMode('grid')}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-300 ease-out active:scale-95 ${
                   viewMode === 'grid'
                     ? 'bg-white text-[#332D2D] shadow-sm'
                     : 'text-[#8A8080] hover:text-[#332D2D]'
@@ -87,7 +87,7 @@ export function EventsPageClient({ events }: EventsPageClientProps) {
               </button>
               <button
                 onClick={() => setViewMode('calendar')}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-300 ease-out active:scale-95 ${
                   viewMode === 'calendar'
                     ? 'bg-white text-[#332D2D] shadow-sm'
                     : 'text-[#8A8080] hover:text-[#332D2D]'
@@ -102,8 +102,8 @@ export function EventsPageClient({ events }: EventsPageClientProps) {
       </section>
 
       {/* Content */}
-      <section className="py-8 min-h-[60vh]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-8 min-h-[60vh] overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
           {viewMode === 'grid' ? (
             <>
               {filteredEvents.length === 0 ? (
@@ -124,7 +124,7 @@ export function EventsPageClient({ events }: EventsPageClientProps) {
                       <h2 className="text-lg font-bold text-[#592D31] mb-5">
                         {activeFilter === 'all' ? 'Upcoming Events' : `${FILTER_OPTIONS.find(f => f.key === activeFilter)?.label || ''} Events`}
                       </h2>
-                      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                         {gridEvents.map((event) => (
                           <EventGridCard
                             key={event._id}

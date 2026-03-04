@@ -115,8 +115,8 @@ export function BlogPageClient({ posts, categories }: BlogPageClientProps) {
             <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 100%)' }} />
 
             {/* Content overlay */}
-            <div className="absolute inset-0 flex flex-col justify-end px-4 py-8 sm:p-12 lg:p-16">
-              <div className="max-w-7xl mx-auto w-full">
+            <div className="absolute inset-0 flex flex-col justify-end">
+              <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pb-8 sm:pb-12 lg:pb-16">
                 <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
                   {/* Left: Post info */}
                   <div className="max-w-2xl">

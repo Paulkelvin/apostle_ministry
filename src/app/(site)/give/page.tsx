@@ -84,90 +84,67 @@ export default async function GivePage() {
 
   return (
     <>
-      {/* Hero Section — Viewport-Contained Design */}
-      <section className="relative h-[100svh] min-h-[600px] max-h-[900px] flex items-center overflow-hidden">
-        {/* Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#FCFBF9] via-[#F8F6F3] to-[#F4F0EA]" />
+      {/* Hero Section — Clean Minimal Design */}
+      <section className="relative min-h-[85vh] flex items-center overflow-hidden bg-[#FCFBF9]">
+        {/* Subtle background texture */}
+        <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #592D31 1px, transparent 0)', backgroundSize: '48px 48px' }} />
         
-        {/* Classic diagonal split with refined edge */}
-        <div className="absolute top-0 right-0 w-[55%] h-full hidden lg:block">
-          <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-            {/* Main burgundy panel */}
-            <polygon points="15,0 100,0 100,100 0,100" fill="#592D31"/>
-            {/* Gold accent line along the edge */}
-            <line x1="15" y1="0" x2="0" y2="100" stroke="#D4AF37" strokeWidth="0.3"/>
-          </svg>
-          {/* Subtle pattern overlay */}
-          <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #FFFFFF 1px, transparent 0)', backgroundSize: '32px 32px' }} />
-        </div>
+        {/* Decorative gold accent */}
+        <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-transparent via-[#D4AF37] to-transparent opacity-30" />
         
-        {/* Mobile burgundy accent */}
-        <div className="absolute top-0 right-0 w-full h-32 lg:hidden bg-gradient-to-b from-[#592D31]/10 to-transparent" />
-        
-        {/* Decorative elements */}
-        <div className="absolute top-32 left-8 w-px h-24 bg-gradient-to-b from-[#D4AF37] to-transparent opacity-40" />
-        <div className="absolute bottom-32 left-16 w-px h-32 bg-gradient-to-t from-[#D4AF37] to-transparent opacity-30" />
-        
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 w-full h-full flex items-center">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center w-full">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 w-full">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Left: Content */}
             <div className="relative z-10">
               {/* Decorative line */}
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-[2px] bg-[#D4AF37]" />
-                <span className="text-[#D4AF37] text-xs font-semibold tracking-[0.25em] uppercase">
-                  Give Generously
+              <div className="flex items-center gap-4 mb-8">
+                <div className="w-16 h-[2px] bg-[#D4AF37]" />
+                <span className="text-[#D4AF37] text-xs font-semibold tracking-[0.3em] uppercase">
+                  Generosity
                 </span>
               </div>
               
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#592D31] mb-5 leading-[1.1] tracking-tight" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#592D31] mb-8 leading-[1.05] tracking-tight" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>
                 {heroTitle}
               </h1>
               
-              <p className="text-base lg:text-lg text-[#5C5252] mb-8 max-w-lg leading-relaxed">
-                Your generosity transforms lives. Every gift, no matter the size, helps us serve our community and spread the love of Christ.
-              </p>
+              {/* Scripture as elegant inline quote */}
+              <div className="relative mb-10 pl-6 border-l-2 border-[#D4AF37]">
+                <p className="text-lg lg:text-xl text-[#5C5252] italic leading-relaxed">
+                  &ldquo;Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver.&rdquo;
+                </p>
+                <p className="text-[#D4AF37] text-sm font-semibold mt-3 tracking-wide">
+                  2 Corinthians 9:7
+                </p>
+              </div>
               
-              <div className="flex flex-col sm:flex-row gap-3 mb-8">
+              <div className="flex flex-col sm:flex-row gap-4">
                 <TithelyButton 
                   label="Give Now" 
-                  className="text-base px-8 py-3.5 bg-[#592D31] hover:bg-[#3D2A2C] text-white rounded-lg font-semibold transition-all shadow-md hover:shadow-lg" 
+                  className="group text-base px-10 py-4 bg-[#592D31] hover:bg-[#3D2A2C] text-white rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-[1.02]" 
                 />
                 <a 
                   href="#campaigns"
-                  className="inline-flex items-center justify-center gap-2 text-[#592D31] font-semibold px-6 py-3.5 rounded-lg border border-[#592D31]/20 hover:border-[#592D31]/40 hover:bg-[#592D31]/5 transition-all"
+                  className="inline-flex items-center justify-center gap-2 text-[#592D31] font-semibold px-8 py-4 rounded-full border-2 border-[#592D31]/20 hover:border-[#D4AF37] hover:text-[#D4AF37] transition-all duration-300"
                 >
                   View Campaigns
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </a>
-              </div>
-              
-              {/* Scripture quote — elegant card */}
-              <div className="relative p-5 bg-white rounded-xl shadow-sm border border-[#E8E2DA]">
-                <div className="absolute -top-3 left-5 w-6 h-6 bg-[#D4AF37]/10 rounded-full flex items-center justify-center">
-                  <span className="text-[#D4AF37] text-lg leading-none">&ldquo;</span>
-                </div>
-                <p className="text-[#5C5252] text-sm italic leading-relaxed pl-2">
-                  {heroVerse}
-                </p>
-                <div className="flex items-center gap-2 mt-2 pl-2">
-                  <div className="w-8 h-[1px] bg-[#D4AF37]" />
-                  <span className="text-[#D4AF37] text-xs font-semibold tracking-wide">
-                    {heroVerseRef}
-                  </span>
-                </div>
               </div>
             </div>
             
-            {/* Right: Image placeholder */}
-            <div className="relative z-10 hidden lg:flex h-[50vh] min-h-[320px] max-h-[480px] rounded-2xl overflow-hidden bg-gradient-to-br from-[#592D31]/10 to-[#D4AF37]/10 border border-[#E8E2DA]/50 shadow-lg">
-              {/* Placeholder content */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-8">
-                <div className="w-16 h-16 rounded-full bg-[#D4AF37]/20 flex items-center justify-center mb-3">
-                  <Heart className="w-8 h-8 text-[#592D31]" />
+            {/* Right: Elegant visual */}
+            <div className="relative z-10 hidden lg:block">
+              <div className="relative">
+                {/* Main visual container */}
+                <div className="aspect-square max-w-[420px] mx-auto rounded-full bg-gradient-to-br from-[#592D31]/5 via-[#F4F0EA] to-[#D4AF37]/10 flex items-center justify-center">
+                  <div className="w-3/4 h-3/4 rounded-full bg-gradient-to-br from-[#FFFFFF] to-[#F8F6F3] shadow-[0_8px_60px_rgba(89,45,49,0.15)] flex items-center justify-center">
+                    <Heart className="w-20 h-20 text-[#D4AF37]" strokeWidth={1} />
+                  </div>
                 </div>
-                <p className="text-[#592D31] font-semibold text-lg">Your Gift Matters</p>
-                <p className="text-[#8A8080] text-sm mt-1">Every contribution helps us serve our community</p>
+                {/* Floating accent elements */}
+                <div className="absolute top-8 right-8 w-4 h-4 rounded-full bg-[#D4AF37]" />
+                <div className="absolute bottom-12 left-4 w-2 h-2 rounded-full bg-[#592D31]/40" />
               </div>
             </div>
           </div>
@@ -193,7 +170,7 @@ export default async function GivePage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
             {donationCampaigns.map((campaign, index) => {
               const percentage = Math.min(Math.round((campaign.currentAmount / campaign.goalAmount) * 100), 100)
               const remaining = campaign.goalAmount - campaign.currentAmount
@@ -202,46 +179,45 @@ export default async function GivePage() {
               return (
                 <div 
                   key={campaign.title}
-                  className="group relative bg-white rounded-xl overflow-hidden border border-[#E8E2DA] hover:shadow-lg hover:border-[#D4AF37]/30 transition-all duration-300"
+                  className="group relative bg-white/80 backdrop-blur-sm rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-[#592D31]/10 transition-all duration-500"
                 >
-                  {/* Top accent line */}
-                  <div className="h-1" style={{ backgroundColor: accentColor }} />
-                  
-                  {/* Image or placeholder */}
+                  {/* Image or elegant placeholder */}
                   {campaign.image ? (
-                    <div className="aspect-[16/7] relative">
+                    <div className="aspect-[4/3] relative">
                       <SanityImageComponent
                         image={campaign.image}
                         alt={campaign.title}
                         fill
                         className="object-cover"
                       />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#592D31]/60 via-transparent to-transparent" />
+                      {/* Progress badge */}
+                      <div className="absolute bottom-4 left-4 px-4 py-2 bg-white/95 backdrop-blur-sm rounded-full shadow-lg">
+                        <span className="text-sm font-bold" style={{ color: accentColor }}>{percentage}% funded</span>
+                      </div>
                     </div>
                   ) : (
                     <div 
-                      className="aspect-[16/7] flex items-center justify-center bg-gradient-to-br from-[#F8F6F3] to-[#F4F0EA]"
+                      className="aspect-[4/3] flex items-center justify-center bg-gradient-to-br from-[#F8F6F3] via-[#FFFFFF] to-[#F4F0EA] relative"
                     >
-                      <Target className="w-12 h-12" style={{ color: accentColor, opacity: 0.2 }} />
+                      <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #592D31 1px, transparent 0)', backgroundSize: '24px 24px' }} />
+                      <Target className="w-16 h-16" style={{ color: accentColor, opacity: 0.15 }} />
+                      {/* Progress badge */}
+                      <div className="absolute bottom-4 left-4 px-4 py-2 bg-white/95 backdrop-blur-sm rounded-full shadow-lg">
+                        <span className="text-sm font-bold" style={{ color: accentColor }}>{percentage}% funded</span>
+                      </div>
                     </div>
                   )}
                   
-                  <div className="p-6">
-                    <h3 className="text-lg font-bold text-[#592D31] mb-2" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>{campaign.title}</h3>
+                  <div className="p-6 pt-8">
+                    <h3 className="text-xl font-bold text-[#592D31] mb-2" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>{campaign.title}</h3>
                     {campaign.description && (
-                      <p className="text-[#8A8080] text-sm leading-relaxed mb-5 line-clamp-2">{campaign.description}</p>
+                      <p className="text-[#5C5252] text-sm leading-relaxed mb-6 line-clamp-2">{campaign.description}</p>
                     )}
                     
-                    {/* Progress bar */}
-                    <div className="mb-4">
-                      <div className="flex justify-between text-sm mb-2">
-                        <span className="font-semibold text-[#592D31]">
-                          ${campaign.currentAmount.toLocaleString()}
-                        </span>
-                        <span className="text-[#8A8080]">
-                          of ${campaign.goalAmount.toLocaleString()}
-                        </span>
-                      </div>
-                      <div className="h-2 bg-[#E8E2DA] rounded-full overflow-hidden">
+                    {/* Progress bar - minimal */}
+                    <div className="mb-5">
+                      <div className="h-1.5 bg-[#E8E2DA]/60 rounded-full overflow-hidden">
                         <div 
                           className="h-full rounded-full transition-all duration-1000 ease-out"
                           style={{ 
@@ -252,12 +228,13 @@ export default async function GivePage() {
                       </div>
                     </div>
                     
-                    {/* Stats row */}
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm font-semibold" style={{ color: accentColor }}>{percentage}% funded</span>
-                      <span className="text-xs text-[#8A8080]">
-                        ${remaining.toLocaleString()} to go
-                      </span>
+                    {/* Amount display - elegant */}
+                    <div className="flex items-baseline justify-between">
+                      <div>
+                        <span className="text-2xl font-bold text-[#592D31]">${campaign.currentAmount.toLocaleString()}</span>
+                        <span className="text-sm text-[#8A8080] ml-2">raised</span>
+                      </div>
+                      <span className="text-sm text-[#8A8080]">${campaign.goalAmount.toLocaleString()} goal</span>
                     </div>
                   </div>
                 </div>
@@ -266,51 +243,109 @@ export default async function GivePage() {
           </div>
           
           {/* CTA */}
-          <div className="text-center mt-12">
+          <div className="text-center mt-16">
             <TithelyButton 
-              label="Contribute Now" 
-              className="text-base px-8 py-4 bg-[#592D31] hover:bg-[#3D2A2C] text-white rounded-full font-semibold transition-all shadow-lg hover:shadow-xl" 
+              label="Contribute to a Campaign" 
+              className="group text-base px-12 py-5 bg-gradient-to-r from-[#592D31] to-[#6E3A3F] hover:from-[#3D2A2C] hover:to-[#592D31] text-white rounded-full font-semibold transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-[1.02] border border-[#D4AF37]/20" 
             />
+            <p className="text-[#8A8080] text-sm mt-4">Secure giving powered by Tithe.ly</p>
           </div>
         </div>
       </section>
 
-      {/* Impact Areas — Building Brighter Futures */}
-      <section id="impact" className="py-24 bg-white scroll-mt-20">
+      {/* Impact Areas — Bento Grid Layout */}
+      <section id="impact" className="py-24 bg-[#F7F5F0] scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <span className="inline-flex items-center justify-center gap-3 text-[#D4AF37] text-xs font-bold tracking-[0.2em] uppercase mb-4">
-              <span className="w-12 h-px bg-[#D4AF37]" />
-              Your Impact
-              <span className="w-12 h-px bg-[#D4AF37]" />
-            </span>
-            <h2 className="text-4xl md:text-5xl font-bold text-[#592D31] mb-4">
+            <div className="flex items-center justify-center gap-4 mb-4">
+              <div className="w-16 h-[1px] bg-[#CBA052]" />
+              <span className="text-[#CBA052] text-xs font-semibold tracking-[0.25em] uppercase">Your Impact</span>
+              <div className="w-16 h-[1px] bg-[#CBA052]" />
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#4A2B2D] mb-4" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>
               Building Kingdom Futures
             </h2>
-            <p className="text-[#332D2D] text-lg max-w-2xl mx-auto">
+            <p className="text-[#595959] text-base max-w-2xl mx-auto">
               Every dollar you give is stewarded with care. Here&apos;s how your generosity makes a difference.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
+          {/* Bento Grid - Refined with exact brand colors */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 auto-rows-[200px]">
             {impactAreas.map((area, index) => {
               const Icon = area.icon
+              const isLarge = index === 0 || index === 3
+              
               return (
                 <div 
                   key={area.title}
-                  className="group relative bg-[#FCFBF9] rounded-2xl p-8 border border-[#E0D8D2] hover:border-[#D4AF37]/50 hover:shadow-lg transition-all duration-300"
+                  className={`relative rounded-[24px] overflow-hidden transition-all duration-300 hover:scale-[1.02] ${
+                    isLarge ? 'md:col-span-2 md:row-span-2' : ''
+                  } ${
+                    index === 0 ? 'bg-[#4A2B2D]' : 
+                    index === 3 ? 'bg-[#CBA052]' : 
+                    'bg-white shadow-[0_4px_20px_rgba(0,0,0,0.05)]'
+                  }`}
+                  style={{ 
+                    ...(index !== 0 && index !== 3 ? { boxShadow: '0 4px 20px rgba(0,0,0,0.05)' } : {})
+                  }}
                 >
-                  <div className="flex items-start gap-5">
-                    <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-[#592D31]/10 flex items-center justify-center group-hover:bg-[#592D31] group-hover:text-white transition-colors duration-300">
-                      <Icon className="w-6 h-6 text-[#592D31] group-hover:text-white transition-colors" />
+                  {/* Background pattern for burgundy card (Card 1) */}
+                  {index === 0 && (
+                    <div className="absolute inset-0" style={{ opacity: 0.1 }}>
+                      <div className="absolute -top-10 -right-10 w-48 h-48 border border-white rounded-full" />
+                      <div className="absolute -bottom-16 -left-16 w-40 h-40 border border-white rounded-full" />
                     </div>
-                    <div className="flex-1">
-                      <h3 className="text-xl font-bold text-[#592D31] mb-2">{area.title}</h3>
-                      <p className="text-[#332D2D] text-sm leading-relaxed mb-4">{area.description}</p>
-                      <div className="flex items-baseline gap-2">
-                        <span className="text-3xl font-bold text-[#D4AF37]">{area.stat}</span>
-                        <span className="text-sm text-[#8A8080]">{area.statLabel}</span>
+                  )}
+                  
+                  <div className={`relative h-full flex flex-col ${
+                    isLarge ? 'p-10' : 'p-8'
+                  } ${
+                    index === 0 ? 'justify-end' : 'justify-start'
+                  }`}>
+                    {/* Icon - positioned at top for all cards */}
+                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
+                      index === 0 ? 'absolute top-10 left-10' : 'mb-auto'
+                    } ${
+                      index === 0 ? 'bg-white/10' : 
+                      index === 3 ? 'bg-[#4A2B2D]/15' : 
+                      'bg-[#F7F5F0]'
+                    }`}>
+                      <Icon className={`w-6 h-6 ${
+                        index === 0 ? 'text-[#CBA052]' : 
+                        index === 3 ? 'text-[#4A2B2D]' : 
+                        'text-[#4A2B2D]'
+                      }`} />
+                    </div>
+                    
+                    {/* Content */}
+                    <div className={index === 0 ? '' : 'mt-auto'}>
+                      <div className="flex items-baseline gap-2 mb-2">
+                        <span className={`font-bold ${
+                          isLarge ? 'text-5xl md:text-6xl' : 'text-4xl'
+                        } ${
+                          index === 0 ? 'text-[#CBA052]' : 
+                          index === 3 ? 'text-[#4A2B2D]' : 
+                          'text-[#CBA052]'
+                        }`}>{area.stat}</span>
+                        <span className={`text-sm ${
+                          index === 0 ? 'text-[#F9F6F0]/70' : 
+                          index === 3 ? 'text-[#4A2B2D]/70' : 
+                          'text-[#595959]'
+                        }`}>{area.statLabel}</span>
                       </div>
+                      <h3 className={`text-lg font-bold mb-1 ${
+                        index === 0 ? 'text-[#F9F6F0]' : 
+                        index === 3 ? 'text-[#4A2B2D]' : 
+                        'text-[#4A2B2D]'
+                      }`} style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>{area.title}</h3>
+                      {isLarge && (
+                        <p className={`text-sm leading-relaxed line-clamp-2 hidden md:block ${
+                          index === 0 ? 'text-[#F9F6F0]/80' : 
+                          index === 3 ? 'text-[#4A2B2D]/80' : 
+                          'text-[#595959]'
+                        }`}>{area.description}</p>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -362,16 +397,16 @@ export default async function GivePage() {
         </div>
       </section>
 
-      {/* Ways to Give */}
+      {/* Ways to Give — Flowing Cards */}
       <section className="py-24 bg-[#FCFBF9]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <span className="inline-flex items-center justify-center gap-3 text-[#592D31] text-xs font-bold tracking-[0.2em] uppercase mb-4">
-              <span className="w-12 h-px bg-[#D4AF37]" />
-              Ways to Give
-              <span className="w-12 h-px bg-[#D4AF37]" />
-            </span>
-            <h2 className="text-4xl md:text-5xl font-bold text-[#592D31]">
+            <div className="flex items-center justify-center gap-4 mb-4">
+              <div className="w-16 h-[1px] bg-[#D4AF37]" />
+              <span className="text-[#592D31] text-xs font-semibold tracking-[0.25em] uppercase">Ways to Give</span>
+              <div className="w-16 h-[1px] bg-[#D4AF37]" />
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#592D31]" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>
               Choose Your Giving Method
             </h2>
           </div>
@@ -380,31 +415,34 @@ export default async function GivePage() {
             {methods.map((method, index) => {
               const Icon = iconMap[method.icon] || CreditCard
               const colors = [
-                { bg: 'bg-[#592D31]', light: 'bg-[#592D31]/10', text: 'text-[#592D31]' },
-                { bg: 'bg-[#D4AF37]', light: 'bg-[#D4AF37]/10', text: 'text-[#D4AF37]' },
-                { bg: 'bg-[#7BA381]', light: 'bg-[#7BA381]/10', text: 'text-[#7BA381]' },
+                { gradient: 'from-[#592D31] to-[#6E3A3F]', light: 'bg-[#592D31]/5', text: 'text-[#592D31]' },
+                { gradient: 'from-[#D4AF37] to-[#C9A431]', light: 'bg-[#D4AF37]/5', text: 'text-[#D4AF37]' },
+                { gradient: 'from-[#7BA381] to-[#6E9475]', light: 'bg-[#7BA381]/5', text: 'text-[#7BA381]' },
               ][index]
               
               return (
                 <div 
                   key={method.title} 
-                  className="bg-white rounded-2xl p-8 shadow-sm border border-[#E0D8D2] hover:shadow-xl hover:border-transparent transition-all duration-300 group"
+                  className="relative bg-white rounded-3xl p-8 hover:shadow-2xl hover:shadow-[#592D31]/10 transition-all duration-500 group"
                 >
-                  <div className={`w-16 h-16 rounded-2xl ${colors.light} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                    <Icon className={`w-8 h-8 ${colors.text}`} />
+                  {/* Subtle gradient line at top */}
+                  <div className={`absolute top-0 left-8 right-8 h-1 bg-gradient-to-r ${colors.gradient} rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
+                  
+                  <div className={`w-14 h-14 rounded-2xl ${colors.light} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                    <Icon className={`w-7 h-7 ${colors.text}`} />
                   </div>
-                  <h3 className="text-xl font-bold text-[#592D31] mb-3">{method.title}</h3>
-                  <p className="text-[#332D2D] mb-6 leading-relaxed">
+                  <h3 className="text-xl font-bold text-[#592D31] mb-3" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>{method.title}</h3>
+                  <p className="text-[#5C5252] mb-6 leading-relaxed text-sm">
                     {method.description}
                   </p>
                   {method.icon === 'credit-card' && (
-                    <TithelyButton label="Give Online" className="w-full rounded-xl" />
+                    <TithelyButton label="Give Online" className="w-full rounded-full" />
                   )}
                   {method.note && (
-                    <p className="text-sm text-[#8A8080] bg-[#F4F0EA] rounded-lg px-4 py-3">{method.note}</p>
+                    <p className="text-sm text-[#8A8080] bg-[#F4F0EA]/60 rounded-2xl px-4 py-3">{method.note}</p>
                   )}
                   {method.icon === 'mail' && (
-                    <address className="text-sm text-[#8A8080] not-italic whitespace-pre-line bg-[#F4F0EA] rounded-lg px-4 py-3">
+                    <address className="text-sm text-[#8A8080] not-italic whitespace-pre-line bg-[#F4F0EA]/60 rounded-2xl px-4 py-3">
                       {mailingAddress}
                     </address>
                   )}

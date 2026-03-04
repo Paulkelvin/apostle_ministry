@@ -16,6 +16,7 @@ export function SermonsPageClient({ sermons, seriesList }: SermonsPageClientProp
   const [activeSeries, setActiveSeries] = useState<string | null>(null)
   const [sortBy, setSortBy] = useState<'newest' | 'oldest'>('newest')
   const [showFilters, setShowFilters] = useState(false)
+  const [showSortDropdown, setShowSortDropdown] = useState(false)
 
   // Get unique speakers
   const speakers = useMemo(() => {
@@ -178,7 +179,7 @@ export function SermonsPageClient({ sermons, seriesList }: SermonsPageClientProp
                 {/* Filter toggle button */}
                 <button
                   onClick={() => setShowFilters(!showFilters)}
-                  className={`flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all ${
+                  className={`flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 ease-out active:scale-95 ${
                     showFilters || hasActiveFilters
                       ? 'bg-[#592D31] text-white'
                       : 'bg-[#F4F0EA] text-[#332D2D] hover:bg-[#E0D8D2]'
@@ -193,23 +194,57 @@ export function SermonsPageClient({ sermons, seriesList }: SermonsPageClientProp
                   )}
                 </button>
 
-                {/* Sort dropdown */}
+                {/* Sort dropdown - Custom */}
                 <div className="relative">
-                  <select
-                    value={sortBy}
-                    onChange={(e) => setSortBy(e.target.value as 'newest' | 'oldest')}
-                    className="appearance-none pl-4 pr-10 py-2.5 bg-[#F4F0EA] border border-[#E0D8D2] rounded-lg text-sm font-medium text-[#332D2D] cursor-pointer focus:outline-none focus:border-[#592D31] transition-colors"
+                  <button
+                    onClick={() => setShowSortDropdown(!showSortDropdown)}
+                    onBlur={() => setTimeout(() => setShowSortDropdown(false), 150)}
+                    className="flex items-center gap-2 pl-4 pr-3 py-2.5 bg-[#F4F0EA] border border-[#E0D8D2] rounded-xl text-sm font-medium text-[#332D2D] cursor-pointer hover:border-[#592D31]/30 focus:outline-none focus:border-[#592D31] transition-all duration-200"
                   >
-                    <option value="newest">Newest First</option>
-                    <option value="oldest">Oldest First</option>
-                  </select>
-                  <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#8A8080] pointer-events-none" />
+                    <Calendar className="w-4 h-4 text-[#8A8080]" />
+                    <span>{sortBy === 'newest' ? 'Newest First' : 'Oldest First'}</span>
+                    <ChevronDown className={`w-4 h-4 text-[#8A8080] transition-transform duration-200 ${showSortDropdown ? 'rotate-180' : ''}`} />
+                  </button>
+                  
+                  {/* Custom dropdown menu */}
+                  <div className={`absolute right-0 top-full mt-2 w-44 bg-white rounded-xl shadow-xl shadow-[#592D31]/10 border border-[#E0D8D2]/50 overflow-hidden z-50 transition-all duration-200 origin-top ${
+                    showSortDropdown 
+                      ? 'opacity-100 scale-100 translate-y-0' 
+                      : 'opacity-0 scale-95 -translate-y-2 pointer-events-none'
+                  }`}>
+                    <div className="py-1">
+                      <button
+                        onClick={() => { setSortBy('newest'); setShowSortDropdown(false); }}
+                        className={`w-full flex items-center gap-3 px-4 py-3 text-sm transition-colors duration-150 ${
+                          sortBy === 'newest' 
+                            ? 'bg-[#592D31]/5 text-[#592D31] font-semibold' 
+                            : 'text-[#332D2D] hover:bg-[#F4F0EA]'
+                        }`}
+                      >
+                        <span className={`w-2 h-2 rounded-full transition-all duration-200 ${sortBy === 'newest' ? 'bg-[#D4AF37] scale-100' : 'bg-transparent scale-0'}`} />
+                        Newest First
+                      </button>
+                      <button
+                        onClick={() => { setSortBy('oldest'); setShowSortDropdown(false); }}
+                        className={`w-full flex items-center gap-3 px-4 py-3 text-sm transition-colors duration-150 ${
+                          sortBy === 'oldest' 
+                            ? 'bg-[#592D31]/5 text-[#592D31] font-semibold' 
+                            : 'text-[#332D2D] hover:bg-[#F4F0EA]'
+                        }`}
+                      >
+                        <span className={`w-2 h-2 rounded-full transition-all duration-200 ${sortBy === 'oldest' ? 'bg-[#D4AF37] scale-100' : 'bg-transparent scale-0'}`} />
+                        Oldest First
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
 
             {/* Expandable filters */}
-            {showFilters && (
+            <div className={`overflow-hidden transition-all duration-300 ease-out ${
+              showFilters ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
+            }`}>
               <div className="flex flex-wrap items-start gap-4 pt-4 border-t border-[#E0D8D2]">
                 {/* Series filter */}
                 {seriesList.length > 0 && (
@@ -217,7 +252,7 @@ export function SermonsPageClient({ sermons, seriesList }: SermonsPageClientProp
                     <span className="text-sm font-medium text-[#332D2D] mr-1">Series:</span>
                     <button
                       onClick={() => setActiveSeries(null)}
-                      className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
+                      className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-300 ease-out active:scale-95 ${
                         !activeSeries
                           ? 'bg-[#592D31] text-white'
                           : 'bg-[#F4F0EA] text-[#332D2D] hover:bg-[#E0D8D2]'
@@ -229,7 +264,7 @@ export function SermonsPageClient({ sermons, seriesList }: SermonsPageClientProp
                       <button
                         key={series}
                         onClick={() => setActiveSeries(activeSeries === series ? null : series)}
-                        className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
+                        className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-300 ease-out active:scale-95 ${
                           activeSeries === series
                             ? 'bg-[#592D31] text-white'
                             : 'bg-[#F4F0EA] text-[#332D2D] hover:bg-[#E0D8D2]'
@@ -247,7 +282,7 @@ export function SermonsPageClient({ sermons, seriesList }: SermonsPageClientProp
                     <span className="text-sm font-medium text-[#332D2D] mr-1">Speaker:</span>
                     <button
                       onClick={() => setActiveSpeaker(null)}
-                      className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
+                      className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-300 ease-out active:scale-95 ${
                         !activeSpeaker
                           ? 'bg-[#D4AF37] text-[#1A1A1A]'
                           : 'bg-[#F4F0EA] text-[#332D2D] hover:bg-[#E0D8D2]'
@@ -259,7 +294,7 @@ export function SermonsPageClient({ sermons, seriesList }: SermonsPageClientProp
                       <button
                         key={speaker}
                         onClick={() => setActiveSpeaker(activeSpeaker === speaker ? null : speaker)}
-                        className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
+                        className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-300 ease-out active:scale-95 ${
                           activeSpeaker === speaker
                             ? 'bg-[#D4AF37] text-[#1A1A1A]'
                             : 'bg-[#F4F0EA] text-[#332D2D] hover:bg-[#E0D8D2]'
@@ -275,14 +310,14 @@ export function SermonsPageClient({ sermons, seriesList }: SermonsPageClientProp
                 {hasActiveFilters && (
                   <button
                     onClick={clearFilters}
-                    className="inline-flex items-center gap-1 text-sm text-[#592D31] hover:text-[#3D2A2C] font-medium ml-auto"
+                    className="inline-flex items-center gap-1 text-sm text-[#592D31] hover:text-[#3D2A2C] font-medium ml-auto transition-colors duration-200"
                   >
                     <X className="w-4 h-4" />
                     Clear all
                   </button>
                 )}
               </div>
-            )}
+            </div>
           </div>
         </div>
       </section>
