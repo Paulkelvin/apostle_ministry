@@ -128,7 +128,7 @@ export function SermonsPageClient({ sermons, seriesList }: SermonsPageClientProp
                 </div>
 
                 {/* Content side */}
-                <div className="p-10 lg:px-16 lg:py-12 flex flex-col justify-center bg-gradient-to-br from-[#1F1F1F] to-[#1A1A1A]">
+                <div className="p-8 lg:px-12 lg:py-10 flex flex-col justify-center bg-gradient-to-br from-[#1F1F1F] to-[#1A1A1A]">
                   <span className="text-[#CBA052] text-xs font-bold tracking-[1px] uppercase mb-3">
                     Latest Message
                   </span>
@@ -136,12 +136,12 @@ export function SermonsPageClient({ sermons, seriesList }: SermonsPageClientProp
                     {featuredSermon.title}
                   </h2>
                   {featuredSermon.speaker && (
-                    <p className="text-[#F9F6F0] font-semibold mb-2">
+                    <p className="text-white font-semibold mb-2 drop-shadow-[0_1px_1px_rgba(0,0,0,0.55)]">
                       {featuredSermon.speaker.name}
                     </p>
                   )}
                   {featuredSermon.scripture && (
-                    <p className="text-[#F9F6F0] text-sm font-semibold mb-4">
+                    <p className="text-white text-sm font-semibold mb-4 drop-shadow-[0_1px_1px_rgba(0,0,0,0.55)]">
                       {featuredSermon.scripture}
                     </p>
                   )}

@@ -249,6 +249,7 @@ export interface GivingPage {
   heroTitle?: string
   heroVerse?: string
   heroVerseRef?: string
+  heroImage?: SanityImage
   whyWeGiveHeading?: string
   whyWeGiveSubtext?: string
   givingBreakdown?: GivingBreakdownItem[]

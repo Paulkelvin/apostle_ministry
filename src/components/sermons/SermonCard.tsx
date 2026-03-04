@@ -59,22 +59,22 @@ export function SermonCard({ sermon, index, onPlayVideo }: SermonCardProps) {
       </div>
 
       {/* Content */}
-      <div className="p-6">
-        <time className="text-sm text-warm-500">{format(date, 'MMMM d, yyyy')}</time>
-        <h3 className="text-xl font-bold text-warm-900 mt-1 group-hover:text-primary transition-colors line-clamp-2">
+      <div className="p-5">
+        <time className="text-xs text-warm-500">{format(date, 'MMMM d, yyyy')}</time>
+        <h3 className="text-lg font-bold text-warm-900 mt-1 group-hover:text-primary transition-colors line-clamp-2">
           {sermon.title}
         </h3>
 
         {sermon.speaker && (
-          <p className="text-warm-600 mt-2">{sermon.speaker.name}</p>
+          <p className="text-warm-600 mt-1 text-sm">{sermon.speaker.name}</p>
         )}
 
         {sermon.scripture && (
-          <p className="text-primary text-sm font-medium mt-2">{sermon.scripture}</p>
+          <p className="text-primary text-xs font-semibold mt-1">{sermon.scripture}</p>
         )}
 
         {/* Action Buttons */}
-        <div className="flex items-center gap-3 mt-4">
+        <div className="flex items-center gap-3 mt-3">
           {sermon.videoUrl && (
             <button
               onClick={() => onPlayVideo?.(sermon.videoUrl!, sermon.title)}

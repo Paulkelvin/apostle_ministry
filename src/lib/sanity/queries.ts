@@ -425,6 +425,12 @@ export const givingPageQuery = groq`
     heroTitle,
     heroVerse,
     heroVerseRef,
+    heroImage {
+      asset->,
+      alt,
+      hotspot,
+      crop
+    },
     whyWeGiveHeading,
     whyWeGiveSubtext,
     givingBreakdown,

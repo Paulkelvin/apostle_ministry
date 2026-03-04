@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   description: 'Support the mission of The Apostles Ministry through your generous giving.',
 }
 
+// Revalidate frequently so published Sanity changes show up quickly
+export const revalidate = 60
+
 async function getGivingPageData(): Promise<GivingPage | null> {
   try {
     return await client.fetch<GivingPage>(givingPageQuery)
@@ -30,6 +33,7 @@ export default async function GivePage() {
   const heroTitle = data?.heroTitle || 'Together, We Build Faith and Create Impact'
   const heroVerse = data?.heroVerse || 'Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver.'
   const heroVerseRef = data?.heroVerseRef || '2 Corinthians 9:7'
+  const heroImage = data?.heroImage
   const breakdown = data?.givingBreakdown || [
     { title: 'Local Outreach', percentage: '30%', description: 'Feeding the hungry, clothing the needy, and serving our local community with the love of Christ.' },
     { title: 'Ministry Operations', percentage: '50%', description: "Supporting worship, children's programs, youth ministry, and creating spaces for spiritual growth." },
@@ -85,14 +89,14 @@ export default async function GivePage() {
   return (
     <>
       {/* Hero Section — Clean Minimal Design */}
-      <section className="relative min-h-[85vh] flex items-center overflow-hidden bg-[#FCFBF9]">
+      <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-[#FCFBF9] py-36 lg:py-40">
         {/* Subtle background texture */}
         <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #592D31 1px, transparent 0)', backgroundSize: '48px 48px' }} />
         
         {/* Decorative gold accent */}
         <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-transparent via-[#D4AF37] to-transparent opacity-30" />
         
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 w-full">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Left: Content */}
             <div className="relative z-10">
@@ -110,11 +114,11 @@ export default async function GivePage() {
               
               {/* Scripture as elegant inline quote */}
               <div className="relative mb-10 pl-6 border-l-2 border-[#D4AF37]">
-                <p className="text-lg lg:text-xl text-[#5C5252] italic leading-relaxed">
-                  &ldquo;Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver.&rdquo;
+                <p className="text-lg lg:text-xl text-[#4A2B2D] italic leading-relaxed">
+                  &ldquo;{heroVerse}&rdquo;
                 </p>
                 <p className="text-[#D4AF37] text-sm font-semibold mt-3 tracking-wide">
-                  2 Corinthians 9:7
+                  {heroVerseRef}
                 </p>
               </div>
               
@@ -133,15 +137,29 @@ export default async function GivePage() {
               </div>
             </div>
             
-            {/* Right: Elegant visual */}
+            {/* Right: Hero image if provided, else fallback visual */}
             <div className="relative z-10 hidden lg:block">
               <div className="relative">
-                {/* Main visual container */}
-                <div className="aspect-square max-w-[420px] mx-auto rounded-full bg-gradient-to-br from-[#592D31]/5 via-[#F4F0EA] to-[#D4AF37]/10 flex items-center justify-center">
-                  <div className="w-3/4 h-3/4 rounded-full bg-gradient-to-br from-[#FFFFFF] to-[#F8F6F3] shadow-[0_8px_60px_rgba(89,45,49,0.15)] flex items-center justify-center">
-                    <Heart className="w-20 h-20 text-[#D4AF37]" strokeWidth={1} />
+                {heroImage ? (
+                  <div
+                    className="aspect-[4/3] max-w-[520px] mx-auto overflow-hidden relative"
+                    style={{ borderRadius: '52% 48% 46% 54% / 58% 44% 56% 42%' }}
+                  >
+                    <SanityImageComponent
+                      image={heroImage}
+                      alt={heroTitle}
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
                   </div>
-                </div>
+                ) : (
+                  <div className="aspect-square max-w-[420px] mx-auto rounded-full bg-gradient-to-br from-[#592D31]/5 via-[#F4F0EA] to-[#D4AF37]/10 flex items-center justify-center">
+                    <div className="w-3/4 h-3/4 rounded-full bg-gradient-to-br from-[#FFFFFF] to-[#F8F6F3] shadow-[0_8px_60px_rgba(89,45,49,0.15)] flex items-center justify-center">
+                      <Heart className="w-20 h-20 text-[#D4AF37]" strokeWidth={1} />
+                    </div>
+                  </div>
+                )}
                 {/* Floating accent elements */}
                 <div className="absolute top-8 right-8 w-4 h-4 rounded-full bg-[#D4AF37]" />
                 <div className="absolute bottom-12 left-4 w-2 h-2 rounded-full bg-[#592D31]/40" />
@@ -324,25 +342,25 @@ export default async function GivePage() {
                         <span className={`font-bold drop-shadow-sm ${
                           isLarge ? 'text-5xl md:text-6xl' : 'text-4xl'
                         } ${
-                          index === 0 ? 'text-[#E8C872]' : 
-                          index === 3 ? 'text-[#1F0F10]' : 
+                          index === 0 ? 'text-[#FDEFD3]' : 
+                          index === 3 ? 'text-[#2B1A1C]' : 
                           'text-[#CBA052]'
                         }`}>{area.stat}</span>
                         <span className={`text-sm font-medium ${
-                          index === 0 ? 'text-white/85' : 
-                          index === 3 ? 'text-[#1F0F10]/80' : 
+                          index === 0 ? 'text-white' : 
+                          index === 3 ? 'text-[#2B1A1C]' : 
                           'text-[#595959]'
                         }`}>{area.statLabel}</span>
                       </div>
                       <h3 className={`text-lg font-bold mb-2 ${
                         index === 0 ? 'text-white' : 
-                        index === 3 ? 'text-[#1F0F10]' : 
+                        index === 3 ? 'text-[#2B1A1C]' : 
                         'text-[#4A2B2D]'
                       }`} style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>{area.title}</h3>
                       {isLarge && (
                         <p className={`text-sm leading-relaxed line-clamp-3 hidden md:block ${
-                          index === 0 ? 'text-white/95' : 
-                          index === 3 ? 'text-[#1F0F10]' : 
+                          index === 0 ? 'text-white' : 
+                          index === 3 ? 'text-[#2B1A1C]' : 
                           'text-[#595959]'
                         }`}>{area.description}</p>
                       )}
