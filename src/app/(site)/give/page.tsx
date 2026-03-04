@@ -325,24 +325,24 @@ export default async function GivePage() {
                           isLarge ? 'text-5xl md:text-6xl' : 'text-4xl'
                         } ${
                           index === 0 ? 'text-[#E8C872]' : 
-                          index === 3 ? 'text-[#3D2A2C]' : 
+                          index === 3 ? 'text-[#1F0F10]' : 
                           'text-[#CBA052]'
                         }`}>{area.stat}</span>
                         <span className={`text-sm font-medium ${
-                          index === 0 ? 'text-white/80' : 
-                          index === 3 ? 'text-[#3D2A2C]/80' : 
+                          index === 0 ? 'text-white/85' : 
+                          index === 3 ? 'text-[#1F0F10]/80' : 
                           'text-[#595959]'
                         }`}>{area.statLabel}</span>
                       </div>
                       <h3 className={`text-lg font-bold mb-2 ${
                         index === 0 ? 'text-white' : 
-                        index === 3 ? 'text-[#3D2A2C]' : 
+                        index === 3 ? 'text-[#1F0F10]' : 
                         'text-[#4A2B2D]'
                       }`} style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>{area.title}</h3>
                       {isLarge && (
                         <p className={`text-sm leading-relaxed line-clamp-3 hidden md:block ${
-                          index === 0 ? 'text-white/90' : 
-                          index === 3 ? 'text-[#3D2A2C]' : 
+                          index === 0 ? 'text-white/95' : 
+                          index === 3 ? 'text-[#1F0F10]' : 
                           'text-[#595959]'
                         }`}>{area.description}</p>
                       )}

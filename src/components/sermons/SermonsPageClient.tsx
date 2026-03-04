@@ -136,12 +136,12 @@ export function SermonsPageClient({ sermons, seriesList }: SermonsPageClientProp
                     {featuredSermon.title}
                   </h2>
                   {featuredSermon.speaker && (
-                    <p className="text-white/90 font-medium mb-2">
+                    <p className="text-[#F9F6F0] font-semibold mb-2">
                       {featuredSermon.speaker.name}
                     </p>
                   )}
                   {featuredSermon.scripture && (
-                    <p className="text-[#CBA052] text-sm font-medium mb-4">
+                    <p className="text-[#F9F6F0] text-sm font-semibold mb-4">
                       {featuredSermon.scripture}
                     </p>
                   )}
