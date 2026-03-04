@@ -4,6 +4,8 @@ import { EventsPageClient } from '@/components/events'
 import { FloatingRing, WaveLine } from '@/components/ui/MicroGraphics'
 import type { Event } from '@/types'
 
+export const revalidate = 60;
+
 export const metadata: Metadata = {
   title: 'Events | The Apostles Ministry',
   description: 'See upcoming events, programs, and gatherings at The Apostles Ministry.',

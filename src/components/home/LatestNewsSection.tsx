@@ -1,4 +1,7 @@
+'use client'
+
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 import { format } from 'date-fns'
 import { ArrowRight, Clock, BookOpen } from 'lucide-react'
 import { SanityImageComponent } from '@/components/ui'
@@ -35,7 +38,13 @@ export function LatestNewsSection({ posts, accentImage }: LatestNewsSectionProps
       <SubtleSparkle className="top-[10%] xl:top-20 left-[5%] opacity-30 mix-blend-multiply z-0" size={40} color="#CBA052" />
       <FloatingCross className="bottom-[10%] right-[3%] opacity-15 mix-blend-multiply z-0" delay={1.5} size={60} color="#592D31" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8 }}
+        className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+      >
         {/* Header with watermark */}
         <div className="relative mb-12 lg:mb-16 overflow-hidden">
           {/* Massive watermark - hidden on small mobile to prevent overflow */}
@@ -186,7 +195,7 @@ export function LatestNewsSection({ posts, accentImage }: LatestNewsSectionProps
             )}
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   )
 }

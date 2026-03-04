@@ -4,6 +4,8 @@ import { MissionVisionSection, TimelineSection, LeadershipGrid } from '@/compone
 import { WaveLine, DottedSquare } from '@/components/ui/MicroGraphics'
 import type { SiteSettings, HistoryItem, Staff } from '@/types'
 
+export const revalidate = 60;
+
 export const metadata: Metadata = {
   title: 'About Us | Restoring Life Family Community Center',
   description: 'Learn about our mission, vision, history, and the leadership of Restoring Life Family Community Center.',

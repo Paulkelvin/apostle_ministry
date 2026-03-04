@@ -6,6 +6,8 @@ import { SanityImageComponent } from '@/components/ui'
 import { FloatingRing, WaveLine } from '@/components/ui/MicroGraphics'
 import type { FAQ, ServiceTimes, SiteSettings } from '@/types'
 
+export const revalidate = 60;
+
 export const metadata: Metadata = {
   title: 'Contact Us | Restoring Life Family Community Center',
   description: 'Get in touch with Restoring Life Family Community Center. Find our location, service times, and answers to frequently asked questions.',

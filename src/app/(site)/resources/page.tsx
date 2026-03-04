@@ -3,6 +3,8 @@ import { client, postsQuery, categoriesQuery } from '@/lib/sanity'
 import { BlogPageClient } from '@/components/blog'
 import type { Post, Category } from '@/types'
 
+export const revalidate = 60;
+
 export const metadata: Metadata = {
   title: 'Resources | Restoring Life Family Community Center',
   description: 'Read the latest news, devotionals, and updates from Restoring Life Family Community Center.',

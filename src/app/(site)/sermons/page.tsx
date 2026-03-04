@@ -4,6 +4,8 @@ import { SermonsPageClient } from '@/components/sermons'
 import { FloatingRing, WaveLine } from '@/components/ui/MicroGraphics'
 import type { Sermon, SiteSettings } from '@/types'
 
+export const revalidate = 60;
+
 export const metadata: Metadata = {
   title: 'Sermons | Restoring Life Family Community Center',
   description: 'Watch and listen to past sermons from Restoring Life Family Community Center.',

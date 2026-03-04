@@ -322,3 +322,18 @@ a[role="button"]:active {
   background: #D4AF37;
   color: #FFFFFF;
 }
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+::-webkit-scrollbar-thumb {
+  background: #592D31; 
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #D4AF37; 
+}
