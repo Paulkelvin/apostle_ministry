@@ -9,9 +9,10 @@ import type { Sermon } from '@/types'
 interface SermonCardProps {
   sermon: Sermon
   index: number
+  onPlayVideo?: (videoUrl: string, title: string) => void
 }
 
-export function SermonCard({ sermon, index }: SermonCardProps) {
+export function SermonCard({ sermon, index, onPlayVideo }: SermonCardProps) {
   const date = sermon.date ? new Date(sermon.date) : new Date()
 
   return (
@@ -39,16 +40,14 @@ export function SermonCard({ sermon, index }: SermonCardProps) {
 
         {/* Play Button Overlay */}
         {sermon.videoUrl && (
-          <a
-            href={sermon.videoUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity"
+          <button
+            onClick={() => onPlayVideo?.(sermon.videoUrl!, sermon.title)}
+            className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
           >
             <div className="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform">
               <Play className="w-8 h-8 text-primary ml-1" />
             </div>
-          </a>
+          </button>
         )}
 
         {/* Series Badge */}
@@ -77,15 +76,13 @@ export function SermonCard({ sermon, index }: SermonCardProps) {
         {/* Action Buttons */}
         <div className="flex items-center gap-3 mt-4">
           {sermon.videoUrl && (
-            <a
-              href={sermon.videoUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              onClick={() => onPlayVideo?.(sermon.videoUrl!, sermon.title)}
               className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary-dark transition-colors"
             >
               <Play className="w-4 h-4" />
               Watch
-            </a>
+            </button>
           )}
           {sermon.audioUrl && (
             <a

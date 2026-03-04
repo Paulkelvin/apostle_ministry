@@ -4,6 +4,7 @@ import { useState, useMemo } from 'react'
 import { Video, Search, Calendar, Filter, ChevronDown, X, Play } from 'lucide-react'
 import { SermonCard } from './SermonCard'
 import { SanityImageComponent } from '@/components/ui'
+import { VideoModal } from '@/components/ui/VideoEmbed'
 import type { Sermon } from '@/types'
 
 interface SermonsPageClientProps {
@@ -17,6 +18,16 @@ export function SermonsPageClient({ sermons, seriesList }: SermonsPageClientProp
   const [sortBy, setSortBy] = useState<'newest' | 'oldest'>('newest')
   const [showFilters, setShowFilters] = useState(false)
   const [showSortDropdown, setShowSortDropdown] = useState(false)
+  const [showVideoModal, setShowVideoModal] = useState(false)
+  const [activeVideoUrl, setActiveVideoUrl] = useState<string | null>(null)
+  const [activeVideoTitle, setActiveVideoTitle] = useState<string>('Sermon Video')
+
+  // Handle video playback
+  const handlePlayVideo = (videoUrl: string, title: string) => {
+    setActiveVideoUrl(videoUrl)
+    setActiveVideoTitle(title)
+    setShowVideoModal(true)
+  }
 
   // Get unique speakers
   const speakers = useMemo(() => {
@@ -88,7 +99,10 @@ export function SermonsPageClient({ sermons, seriesList }: SermonsPageClientProp
                 {/* Video/Thumbnail side */}
                 <div className="relative aspect-video lg:aspect-auto lg:min-h-[400px]">
                   {featuredSermon.videoUrl ? (
-                    <div className="absolute inset-0 bg-black flex items-center justify-center group cursor-pointer">
+                    <button 
+                      onClick={() => handlePlayVideo(featuredSermon.videoUrl!, featuredSermon.title)}
+                      className="absolute inset-0 w-full h-full bg-black flex items-center justify-center group cursor-pointer"
+                    >
                       {/* Thumbnail background */}
                       <div className="absolute inset-0">
                         {featuredSermon.thumbnail && (
@@ -100,17 +114,12 @@ export function SermonsPageClient({ sermons, seriesList }: SermonsPageClientProp
                           />
                         )}
                         {/* 40% black overlay for depth */}
-                        <div className="absolute inset-0 bg-black/40" />
+                        <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors" />
                       </div>
-                      <a
-                        href={featuredSermon.videoUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="relative z-10 w-20 h-20 rounded-full bg-[#CBA052] flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform"
-                      >
+                      <div className="relative z-10 w-20 h-20 rounded-full bg-[#CBA052] flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform">
                         <Play className="w-8 h-8 text-[#4A2B2D] ml-1" fill="#4A2B2D" />
-                      </a>
-                    </div>
+                      </div>
+                    </button>
                   ) : (
                     <div className="absolute inset-0 bg-gradient-to-br from-[#592D31] to-[#3D2A2C] flex items-center justify-center">
                       <Video className="w-24 h-24 text-white/20" />
@@ -127,12 +136,12 @@ export function SermonsPageClient({ sermons, seriesList }: SermonsPageClientProp
                     {featuredSermon.title}
                   </h2>
                   {featuredSermon.speaker && (
-                    <p className="text-[#D1D1D1] mb-2">
+                    <p className="text-white/90 font-medium mb-2">
                       {featuredSermon.speaker.name}
                     </p>
                   )}
                   {featuredSermon.scripture && (
-                    <p className="text-[#D1D1D1] text-sm mb-4">
+                    <p className="text-[#CBA052] text-sm font-medium mb-4">
                       {featuredSermon.scripture}
                     </p>
                   )}
@@ -142,15 +151,13 @@ export function SermonsPageClient({ sermons, seriesList }: SermonsPageClientProp
                     </span>
                   )}
                   {featuredSermon.videoUrl && (
-                    <a
-                      href={featuredSermon.videoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <button
+                      onClick={() => handlePlayVideo(featuredSermon.videoUrl!, featuredSermon.title)}
                       className="inline-flex items-center gap-2 px-6 py-3 bg-[#CBA052] text-[#4A2B2D] font-bold rounded-lg hover:bg-[#B8933F] transition-colors w-fit"
                     >
                       <Play className="w-4 h-4" fill="#4A2B2D" />
                       Watch Now
-                    </a>
+                    </button>
                   )}
                 </div>
               </div>
@@ -334,7 +341,12 @@ export function SermonsPageClient({ sermons, seriesList }: SermonsPageClientProp
               </p>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {filteredSermons.map((sermon, index) => (
-                  <SermonCard key={sermon._id} sermon={sermon} index={index} />
+                  <SermonCard 
+                    key={sermon._id} 
+                    sermon={sermon} 
+                    index={index}
+                    onPlayVideo={handlePlayVideo}
+                  />
                 ))}
               </div>
             </>
@@ -363,6 +375,19 @@ export function SermonsPageClient({ sermons, seriesList }: SermonsPageClientProp
           )}
         </div>
       </section>
+
+      {/* Video Modal for embedded playback */}
+      {activeVideoUrl && (
+        <VideoModal
+          videoUrl={activeVideoUrl}
+          isOpen={showVideoModal}
+          onClose={() => {
+            setShowVideoModal(false)
+            setActiveVideoUrl(null)
+          }}
+          title={activeVideoTitle}
+        />
+      )}
     </>
   )
 }

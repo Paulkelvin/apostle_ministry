@@ -320,29 +320,29 @@ export default async function GivePage() {
                     
                     {/* Content */}
                     <div className={index === 0 ? '' : 'mt-auto'}>
-                      <div className="flex items-baseline gap-2 mb-2">
-                        <span className={`font-bold ${
+                      <div className="flex items-baseline gap-3 mb-3">
+                        <span className={`font-bold drop-shadow-sm ${
                           isLarge ? 'text-5xl md:text-6xl' : 'text-4xl'
                         } ${
-                          index === 0 ? 'text-[#CBA052]' : 
-                          index === 3 ? 'text-[#4A2B2D]' : 
+                          index === 0 ? 'text-[#E8C872]' : 
+                          index === 3 ? 'text-[#3D2A2C]' : 
                           'text-[#CBA052]'
                         }`}>{area.stat}</span>
-                        <span className={`text-sm ${
-                          index === 0 ? 'text-[#F9F6F0]/70' : 
-                          index === 3 ? 'text-[#4A2B2D]/70' : 
+                        <span className={`text-sm font-medium ${
+                          index === 0 ? 'text-white/80' : 
+                          index === 3 ? 'text-[#3D2A2C]/80' : 
                           'text-[#595959]'
                         }`}>{area.statLabel}</span>
                       </div>
-                      <h3 className={`text-lg font-bold mb-1 ${
-                        index === 0 ? 'text-[#F9F6F0]' : 
-                        index === 3 ? 'text-[#4A2B2D]' : 
+                      <h3 className={`text-lg font-bold mb-2 ${
+                        index === 0 ? 'text-white' : 
+                        index === 3 ? 'text-[#3D2A2C]' : 
                         'text-[#4A2B2D]'
                       }`} style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>{area.title}</h3>
                       {isLarge && (
-                        <p className={`text-sm leading-relaxed line-clamp-2 hidden md:block ${
-                          index === 0 ? 'text-[#F9F6F0]/80' : 
-                          index === 3 ? 'text-[#4A2B2D]/80' : 
+                        <p className={`text-sm leading-relaxed line-clamp-3 hidden md:block ${
+                          index === 0 ? 'text-white/90' : 
+                          index === 3 ? 'text-[#3D2A2C]' : 
                           'text-[#595959]'
                         }`}>{area.description}</p>
                       )}
