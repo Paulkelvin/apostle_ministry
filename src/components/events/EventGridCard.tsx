@@ -77,12 +77,6 @@ export function EventGridCard({ event, onClick }: EventGridCardProps) {
               </div>
             )}
           </div>
-
-          {event.cost && event.cost.toLowerCase() !== 'free' && (
-            <div className="mt-3 text-xs font-semibold text-[#592D31] bg-[#F4F0EA] px-2.5 py-1 rounded-full inline-block">
-              {event.cost}
-            </div>
-          )}
         </div>
       </article>
     </button>

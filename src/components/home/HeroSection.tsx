@@ -83,7 +83,7 @@ export function HeroSection({ settings }: HeroSectionProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.9 }}
         >
-          <Button href="/contact" variant="gold" size="md" className="uppercase tracking-widest text-sm px-10 py-3.5 rounded-lg">
+          <Button href="/contact#directions" variant="gold" size="md" className="uppercase tracking-widest text-sm px-10 py-3.5 rounded-lg">
             Plan Your Visit
           </Button>
           <Button

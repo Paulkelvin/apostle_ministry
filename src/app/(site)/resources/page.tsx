@@ -4,7 +4,7 @@ import { BlogPageClient } from '@/components/blog'
 import type { Post, Category } from '@/types'
 
 export const metadata: Metadata = {
-  title: 'Blog | The Apostles Ministry',
+  title: 'Resources | The Apostles Ministry',
   description: 'Read the latest news, devotionals, and updates from The Apostles Ministry.',
 }
 

@@ -23,7 +23,7 @@ export function FeaturedPost({ post }: FeaturedPostProps) {
       transition={{ duration: 0.5 }}
       className="group"
     >
-      <Link href={`/blog/${post.slug?.current}`} className="cursor-pointer">
+      <Link href={`/resources/${post.slug?.current}`} className="cursor-pointer">
         <div className="bg-[#FFFFFF] rounded-2xl overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.08)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.14)] transition-all duration-300 border border-[#E0D8D2]/50">
           <div className="grid lg:grid-cols-2">
             {/* Image */}

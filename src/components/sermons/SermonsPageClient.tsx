@@ -1,0 +1,331 @@
+'use client'
+
+import { useState, useMemo } from 'react'
+import { Video, Search, Calendar, Filter, ChevronDown, X, Play } from 'lucide-react'
+import { SermonCard } from './SermonCard'
+import { SanityImageComponent } from '@/components/ui'
+import type { Sermon } from '@/types'
+
+interface SermonsPageClientProps {
+  sermons: Sermon[]
+  seriesList: string[]
+}
+
+export function SermonsPageClient({ sermons, seriesList }: SermonsPageClientProps) {
+  const [search, setSearch] = useState('')
+  const [activeSeries, setActiveSeries] = useState<string | null>(null)
+  const [sortBy, setSortBy] = useState<'newest' | 'oldest'>('newest')
+  const [showFilters, setShowFilters] = useState(false)
+
+  // Get unique speakers
+  const speakers = useMemo(() => {
+    const speakerNames = sermons
+      .map((s) => s.speaker?.name)
+      .filter((name): name is string => !!name)
+    return [...new Set(speakerNames)]
+  }, [sermons])
+
+  const [activeSpeaker, setActiveSpeaker] = useState<string | null>(null)
+
+  // Filter sermons
+  const filteredSermons = useMemo(() => {
+    let filtered = [...sermons]
+
+    // Search filter
+    if (search.trim()) {
+      const q = search.toLowerCase()
+      filtered = filtered.filter(
+        (s) =>
+          s.title.toLowerCase().includes(q) ||
+          s.series?.toLowerCase().includes(q) ||
+          s.speaker?.name?.toLowerCase().includes(q) ||
+          s.scripture?.toLowerCase().includes(q)
+      )
+    }
+
+    // Series filter
+    if (activeSeries) {
+      filtered = filtered.filter((s) => s.series === activeSeries)
+    }
+
+    // Speaker filter
+    if (activeSpeaker) {
+      filtered = filtered.filter((s) => s.speaker?.name === activeSpeaker)
+    }
+
+    // Sort
+    filtered.sort((a, b) => {
+      const dateA = new Date(a.date || 0).getTime()
+      const dateB = new Date(b.date || 0).getTime()
+      return sortBy === 'newest' ? dateB - dateA : dateA - dateB
+    })
+
+    return filtered
+  }, [sermons, search, activeSeries, activeSpeaker, sortBy])
+
+  const hasActiveFilters = activeSeries || activeSpeaker || search
+
+  const clearFilters = () => {
+    setSearch('')
+    setActiveSeries(null)
+    setActiveSpeaker(null)
+  }
+
+  // Featured sermon (most recent with video)
+  const featuredSermon = useMemo(() => {
+    return sermons.find((s) => s.videoUrl) || sermons[0]
+  }, [sermons])
+
+  return (
+    <>
+      {/* Featured Sermon - Only show if there are sermons */}
+      {featuredSermon && sermons.length > 0 && (
+        <section className="py-12 bg-[#FCFBF9]">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="relative rounded-2xl overflow-hidden bg-[#1A1A1A]">
+              <div className="grid lg:grid-cols-2 gap-0">
+                {/* Video/Thumbnail side */}
+                <div className="relative aspect-video lg:aspect-auto lg:min-h-[400px]">
+                  {featuredSermon.videoUrl ? (
+                    <div className="absolute inset-0 bg-black flex items-center justify-center group cursor-pointer">
+                      {/* Thumbnail background */}
+                      <div className="absolute inset-0">
+                        {featuredSermon.thumbnail && (
+                          <SanityImageComponent
+                            image={featuredSermon.thumbnail}
+                            alt={featuredSermon.title}
+                            fill
+                            className="object-cover opacity-80"
+                          />
+                        )}
+                      </div>
+                      <a
+                        href={featuredSermon.videoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="relative z-10 w-20 h-20 rounded-full bg-[#D4AF37] flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform"
+                      >
+                        <Play className="w-8 h-8 text-white ml-1" />
+                      </a>
+                    </div>
+                  ) : (
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#592D31] to-[#3D2A2C] flex items-center justify-center">
+                      <Video className="w-24 h-24 text-white/20" />
+                    </div>
+                  )}
+                </div>
+
+                {/* Content side */}
+                <div className="p-8 lg:p-12 flex flex-col justify-center bg-gradient-to-br from-[#1F1F1F] to-[#1A1A1A]">
+                  <span className="text-[#D4AF37] text-xs font-bold tracking-[0.2em] uppercase mb-2">
+                    Latest Message
+                  </span>
+                  <h2 className="text-2xl lg:text-3xl font-bold text-white mb-3">
+                    {featuredSermon.title}
+                  </h2>
+                  {featuredSermon.speaker && (
+                    <p className="text-[#E0D8D2]/80 mb-2">
+                      {featuredSermon.speaker.name}
+                    </p>
+                  )}
+                  {featuredSermon.scripture && (
+                    <p className="text-[#D4AF37] text-sm font-medium mb-4">
+                      {featuredSermon.scripture}
+                    </p>
+                  )}
+                  {featuredSermon.series && (
+                    <span className="inline-block text-xs font-semibold px-3 py-1 rounded-full bg-[#592D31]/50 text-[#E0D8D2] mb-6 w-fit">
+                      {featuredSermon.series}
+                    </span>
+                  )}
+                  {featuredSermon.videoUrl && (
+                    <a
+                      href={featuredSermon.videoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-6 py-3 bg-[#D4AF37] text-[#1A1A1A] font-semibold rounded-lg hover:bg-[#C5A030] transition-colors w-fit"
+                    >
+                      <Play className="w-4 h-4" />
+                      Watch Now
+                    </a>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Filter Bar */}
+      <section className="py-6 bg-[#FFFFFF] border-b border-[#E0D8D2] sticky top-[72px] z-30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col gap-4">
+            {/* Top row: Search + sort */}
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              {/* Search */}
+              <div className="relative flex-1 max-w-md">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#8A8080]" />
+                <input
+                  type="text"
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  placeholder="Search sermons..."
+                  className="w-full pl-10 pr-4 py-2.5 bg-[#F4F0EA] border border-[#E0D8D2] rounded-lg text-sm text-[#332D2D] placeholder:text-[#8A8080] focus:outline-none focus:border-[#592D31] transition-colors"
+                />
+              </div>
+
+              <div className="flex items-center gap-3">
+                {/* Filter toggle button */}
+                <button
+                  onClick={() => setShowFilters(!showFilters)}
+                  className={`flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all ${
+                    showFilters || hasActiveFilters
+                      ? 'bg-[#592D31] text-white'
+                      : 'bg-[#F4F0EA] text-[#332D2D] hover:bg-[#E0D8D2]'
+                  }`}
+                >
+                  <Filter className="w-4 h-4" />
+                  Filters
+                  {hasActiveFilters && (
+                    <span className="w-5 h-5 rounded-full bg-[#D4AF37] text-[#1A1A1A] text-xs flex items-center justify-center">
+                      {(activeSeries ? 1 : 0) + (activeSpeaker ? 1 : 0) + (search ? 1 : 0)}
+                    </span>
+                  )}
+                </button>
+
+                {/* Sort dropdown */}
+                <div className="relative">
+                  <select
+                    value={sortBy}
+                    onChange={(e) => setSortBy(e.target.value as 'newest' | 'oldest')}
+                    className="appearance-none pl-4 pr-10 py-2.5 bg-[#F4F0EA] border border-[#E0D8D2] rounded-lg text-sm font-medium text-[#332D2D] cursor-pointer focus:outline-none focus:border-[#592D31] transition-colors"
+                  >
+                    <option value="newest">Newest First</option>
+                    <option value="oldest">Oldest First</option>
+                  </select>
+                  <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#8A8080] pointer-events-none" />
+                </div>
+              </div>
+            </div>
+
+            {/* Expandable filters */}
+            {showFilters && (
+              <div className="flex flex-wrap items-start gap-4 pt-4 border-t border-[#E0D8D2]">
+                {/* Series filter */}
+                {seriesList.length > 0 && (
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="text-sm font-medium text-[#332D2D] mr-1">Series:</span>
+                    <button
+                      onClick={() => setActiveSeries(null)}
+                      className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
+                        !activeSeries
+                          ? 'bg-[#592D31] text-white'
+                          : 'bg-[#F4F0EA] text-[#332D2D] hover:bg-[#E0D8D2]'
+                      }`}
+                    >
+                      All
+                    </button>
+                    {seriesList.map((series) => (
+                      <button
+                        key={series}
+                        onClick={() => setActiveSeries(activeSeries === series ? null : series)}
+                        className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
+                          activeSeries === series
+                            ? 'bg-[#592D31] text-white'
+                            : 'bg-[#F4F0EA] text-[#332D2D] hover:bg-[#E0D8D2]'
+                        }`}
+                      >
+                        {series}
+                      </button>
+                    ))}
+                  </div>
+                )}
+
+                {/* Speaker filter */}
+                {speakers.length > 0 && (
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="text-sm font-medium text-[#332D2D] mr-1">Speaker:</span>
+                    <button
+                      onClick={() => setActiveSpeaker(null)}
+                      className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
+                        !activeSpeaker
+                          ? 'bg-[#D4AF37] text-[#1A1A1A]'
+                          : 'bg-[#F4F0EA] text-[#332D2D] hover:bg-[#E0D8D2]'
+                      }`}
+                    >
+                      All
+                    </button>
+                    {speakers.map((speaker) => (
+                      <button
+                        key={speaker}
+                        onClick={() => setActiveSpeaker(activeSpeaker === speaker ? null : speaker)}
+                        className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
+                          activeSpeaker === speaker
+                            ? 'bg-[#D4AF37] text-[#1A1A1A]'
+                            : 'bg-[#F4F0EA] text-[#332D2D] hover:bg-[#E0D8D2]'
+                        }`}
+                      >
+                        {speaker}
+                      </button>
+                    ))}
+                  </div>
+                )}
+
+                {/* Clear filters */}
+                {hasActiveFilters && (
+                  <button
+                    onClick={clearFilters}
+                    className="inline-flex items-center gap-1 text-sm text-[#592D31] hover:text-[#3D2A2C] font-medium ml-auto"
+                  >
+                    <X className="w-4 h-4" />
+                    Clear all
+                  </button>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* Sermons Grid */}
+      <section className="py-20 bg-[#FCFBF9]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {filteredSermons.length > 0 ? (
+            <>
+              <p className="text-sm text-[#8A8080] mb-6">
+                Showing {filteredSermons.length} {filteredSermons.length === 1 ? 'sermon' : 'sermons'}
+              </p>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {filteredSermons.map((sermon, index) => (
+                  <SermonCard key={sermon._id} sermon={sermon} index={index} />
+                ))}
+              </div>
+            </>
+          ) : (
+            <div className="text-center py-16">
+              <div className="w-20 h-20 rounded-full bg-[#F4F0EA] flex items-center justify-center mx-auto mb-6">
+                <Video className="w-10 h-10 text-[#E0D8D2]" />
+              </div>
+              <h2 className="text-2xl font-bold text-[#592D31] mb-2">
+                {hasActiveFilters ? 'No Matching Sermons' : 'No Sermons Yet'}
+              </h2>
+              <p className="text-[#332D2D]">
+                {hasActiveFilters
+                  ? 'Try adjusting your filters to find what you\'re looking for.'
+                  : 'Check back soon for our sermon archive!'}
+              </p>
+              {hasActiveFilters && (
+                <button
+                  onClick={clearFilters}
+                  className="mt-4 text-[#592D31] font-semibold hover:underline"
+                >
+                  Clear filters
+                </button>
+              )}
+            </div>
+          )}
+        </div>
+      </section>
+    </>
+  )
+}

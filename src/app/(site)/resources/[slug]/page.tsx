@@ -57,7 +57,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   }
 
   const readTime = estimateReadingTime(post.body)
-  const postUrl = `https://theapostlesministry.org/blog/${post.slug.current}`
+  const postUrl = `https://theapostlesministry.org/resources/${post.slug.current}`
 
   return (
     <>

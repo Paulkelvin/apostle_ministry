@@ -11,13 +11,13 @@ const navLinks = [
   { href: '/about', label: 'About' },
   { href: '/events', label: 'Events' },
   { href: '/sermons', label: 'Sermons' },
-  { href: '/blog', label: 'Blog' },
+  { href: '/resources', label: 'Resources' },
   { href: '/give', label: 'Give' },
   { href: '/contact', label: 'Contact' },
 ]
 
 // Pages that have a full-screen dark hero where the nav should start transparent
-const darkHeroPages = ['/', '/give', '/about', '/sermons', '/blog']
+const darkHeroPages = ['/', '/give', '/about', '/sermons', '/resources']
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -41,7 +41,7 @@ export function Navbar() {
   return (
     <>
       <motion.header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out pt-[env(safe-area-inset-top)] ${
           showSolid
             ? 'bg-[#FCFBF9]/95 backdrop-blur-md shadow-sm'
             : 'bg-gradient-to-b from-black/30 to-transparent'
@@ -51,7 +51,7 @@ export function Navbar() {
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       >
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
+          <div className="flex items-center justify-between h-[72px] min-h-[72px]">
             {/* Logo */}
             <Link href="/" className="flex items-center space-x-2 group">
               <span

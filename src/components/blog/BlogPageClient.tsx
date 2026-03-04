@@ -115,7 +115,7 @@ export function BlogPageClient({ posts, categories }: BlogPageClientProps) {
             <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 100%)' }} />
 
             {/* Content overlay */}
-            <div className="absolute inset-0 flex flex-col justify-end p-8 sm:p-12 lg:p-16">
+            <div className="absolute inset-0 flex flex-col justify-end px-4 py-8 sm:p-12 lg:p-16">
               <div className="max-w-7xl mx-auto w-full">
                 <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
                   {/* Left: Post info */}
@@ -141,7 +141,7 @@ export function BlogPageClient({ posts, categories }: BlogPageClientProps) {
                     )}
 
                     {/* Read Article button */}
-                    <Link href={`/blog/${featuredPost.slug?.current}`} className="inline-flex items-center gap-2 mt-5 px-6 py-2.5 bg-white text-[#000000] text-sm font-bold rounded-full hover:bg-[#D4AF37] hover:text-[#000000] transition-colors duration-300 shadow-lg">
+                    <Link href={`/resources/${featuredPost.slug?.current}`} className="inline-flex items-center gap-2 mt-5 px-6 py-2.5 bg-white text-[#000000] text-sm font-bold rounded-full hover:bg-[#D4AF37] hover:text-[#000000] transition-colors duration-300 shadow-lg">
                       Read Article
                       <ArrowUpRight className="w-4 h-4" />
                     </Link>
@@ -199,7 +199,7 @@ export function BlogPageClient({ posts, categories }: BlogPageClientProps) {
                 Our Stories
               </span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#592D31] tracking-tight">Blog</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#592D31] tracking-tight">Resources</h2>
             <p className="text-[#8A8080] mt-2 text-base max-w-lg">
               News, devotionals, and stories from our church family
             </p>

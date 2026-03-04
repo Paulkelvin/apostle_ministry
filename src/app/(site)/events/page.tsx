@@ -96,7 +96,7 @@ export default async function EventsPage() {
   const events = await getEvents()
 
   return (
-    <>
+    <div className="overflow-x-hidden">
       {/* Hero Banner */}
       <section className="relative pt-36 pb-20 overflow-hidden bg-[#F4F0EA]">
         {/* Soft sanctuary light — gentle glow over parchment */}
@@ -121,6 +121,6 @@ export default async function EventsPage() {
           <EventsPageClient events={events} />
         </div>
       </section>
-    </>
+    </div>
   )
 }

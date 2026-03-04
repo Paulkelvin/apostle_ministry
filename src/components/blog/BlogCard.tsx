@@ -24,7 +24,7 @@ export function BlogCard({ post, index = 0 }: BlogCardProps) {
       transition={{ duration: 0.4, delay: index * 0.05 }}
       className="group bg-white rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.05)] hover:shadow-[0_16px_40px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300 border border-[#E0D8D2]/50 flex flex-col cursor-pointer"
     >
-      <Link href={`/blog/${post.slug?.current}`} className="flex flex-col h-full">
+      <Link href={`/resources/${post.slug?.current}`} className="flex flex-col h-full">
         {/* Image */}
         <div className="aspect-[16/9] relative overflow-hidden">
           {post.mainImage ? (

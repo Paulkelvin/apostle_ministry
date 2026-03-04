@@ -79,10 +79,10 @@ export function FeaturedMinistriesSection({ ministries }: FeaturedMinistriesSect
                     </p>
                   )}
                   <Link
-                    href={`/ministries/${ministry.slug?.current || ministry._id}`}
+                    href="/contact"
                     className="inline-flex items-center gap-2 px-7 py-3 rounded-lg border-2 border-[#D4AF37] text-[#D4AF37] font-semibold text-sm hover:bg-[#D4AF37] hover:text-[#1A1A1A] transition-colors duration-300"
                   >
-                    Learn More
+                    Get Involved
                     <ArrowRight className="w-4 h-4" />
                   </Link>
                 </div>

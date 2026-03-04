@@ -84,8 +84,8 @@ export default async function GivePage() {
 
   return (
     <>
-      {/* Hero Section — Classic Elegant Design */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+      {/* Hero Section — Viewport-Contained Design */}
+      <section className="relative h-[100svh] min-h-[600px] max-h-[900px] flex items-center overflow-hidden">
         {/* Background */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#FCFBF9] via-[#F8F6F3] to-[#F4F0EA]" />
         
@@ -108,34 +108,34 @@ export default async function GivePage() {
         <div className="absolute top-32 left-8 w-px h-24 bg-gradient-to-b from-[#D4AF37] to-transparent opacity-40" />
         <div className="absolute bottom-32 left-16 w-px h-32 bg-gradient-to-t from-[#D4AF37] to-transparent opacity-30" />
         
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 w-full">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 w-full h-full flex items-center">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center w-full">
             {/* Left: Content */}
             <div className="relative z-10">
               {/* Decorative line */}
-              <div className="flex items-center gap-4 mb-8">
+              <div className="flex items-center gap-4 mb-6">
                 <div className="w-12 h-[2px] bg-[#D4AF37]" />
                 <span className="text-[#D4AF37] text-xs font-semibold tracking-[0.25em] uppercase">
                   Give Generously
                 </span>
               </div>
               
-              <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold text-[#592D31] mb-6 leading-[1.08] tracking-tight" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#592D31] mb-5 leading-[1.1] tracking-tight" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>
                 {heroTitle}
               </h1>
               
-              <p className="text-lg text-[#5C5252] mb-10 max-w-lg leading-relaxed">
+              <p className="text-base lg:text-lg text-[#5C5252] mb-8 max-w-lg leading-relaxed">
                 Your generosity transforms lives. Every gift, no matter the size, helps us serve our community and spread the love of Christ.
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-4 mb-12">
+              <div className="flex flex-col sm:flex-row gap-3 mb-8">
                 <TithelyButton 
                   label="Give Now" 
-                  className="text-base px-8 py-4 bg-[#592D31] hover:bg-[#3D2A2C] text-white rounded-lg font-semibold transition-all shadow-md hover:shadow-lg" 
+                  className="text-base px-8 py-3.5 bg-[#592D31] hover:bg-[#3D2A2C] text-white rounded-lg font-semibold transition-all shadow-md hover:shadow-lg" 
                 />
                 <a 
                   href="#campaigns"
-                  className="inline-flex items-center justify-center gap-2 text-[#592D31] font-semibold px-6 py-4 rounded-lg border border-[#592D31]/20 hover:border-[#592D31]/40 hover:bg-[#592D31]/5 transition-all"
+                  className="inline-flex items-center justify-center gap-2 text-[#592D31] font-semibold px-6 py-3.5 rounded-lg border border-[#592D31]/20 hover:border-[#592D31]/40 hover:bg-[#592D31]/5 transition-all"
                 >
                   View Campaigns
                   <ArrowRight className="w-4 h-4" />
@@ -143,14 +143,14 @@ export default async function GivePage() {
               </div>
               
               {/* Scripture quote — elegant card */}
-              <div className="relative p-6 bg-white rounded-xl shadow-sm border border-[#E8E2DA]">
-                <div className="absolute -top-3 left-6 w-6 h-6 bg-[#D4AF37]/10 rounded-full flex items-center justify-center">
+              <div className="relative p-5 bg-white rounded-xl shadow-sm border border-[#E8E2DA]">
+                <div className="absolute -top-3 left-5 w-6 h-6 bg-[#D4AF37]/10 rounded-full flex items-center justify-center">
                   <span className="text-[#D4AF37] text-lg leading-none">&ldquo;</span>
                 </div>
-                <p className="text-[#5C5252] text-[15px] italic leading-relaxed pl-2">
+                <p className="text-[#5C5252] text-sm italic leading-relaxed pl-2">
                   {heroVerse}
                 </p>
-                <div className="flex items-center gap-2 mt-3 pl-2">
+                <div className="flex items-center gap-2 mt-2 pl-2">
                   <div className="w-8 h-[1px] bg-[#D4AF37]" />
                   <span className="text-[#D4AF37] text-xs font-semibold tracking-wide">
                     {heroVerseRef}
@@ -159,37 +159,15 @@ export default async function GivePage() {
               </div>
             </div>
             
-            {/* Right: Stats card */}
-            <div className="relative z-10">
-              <div className="bg-white rounded-2xl p-8 lg:p-10 shadow-[0_8px_40px_rgba(0,0,0,0.08)] border border-[#E8E2DA]/50">
-                {/* Corner accent */}
-                <div className="absolute -top-3 -right-3 w-12 h-12 bg-[#D4AF37] rounded-xl flex items-center justify-center shadow-md">
-                  <Heart className="w-5 h-5 text-white" />
+            {/* Right: Image placeholder */}
+            <div className="relative z-10 hidden lg:flex h-[50vh] min-h-[320px] max-h-[480px] rounded-2xl overflow-hidden bg-gradient-to-br from-[#592D31]/10 to-[#D4AF37]/10 border border-[#E8E2DA]/50 shadow-lg">
+              {/* Placeholder content */}
+              <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-8">
+                <div className="w-16 h-16 rounded-full bg-[#D4AF37]/20 flex items-center justify-center mb-3">
+                  <Heart className="w-8 h-8 text-[#592D31]" />
                 </div>
-                
-                <div className="text-center mb-8">
-                  <span className="text-6xl sm:text-7xl lg:text-8xl font-bold text-[#592D31] block tracking-tight" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>
-                    1,200+
-                  </span>
-                  <p className="text-[#8A8080] text-base mt-2">Lives touched this year</p>
-                </div>
-                
-                <div className="h-px bg-gradient-to-r from-transparent via-[#E0D8D2] to-transparent mb-6" />
-                
-                <div className="grid grid-cols-3 gap-4">
-                  <div className="text-center">
-                    <span className="text-xl lg:text-2xl font-bold text-[#592D31]">$150K+</span>
-                    <p className="text-xs text-[#8A8080] mt-1">Given this year</p>
-                  </div>
-                  <div className="text-center border-x border-[#E0D8D2]">
-                    <span className="text-xl lg:text-2xl font-bold text-[#D4AF37]">100%</span>
-                    <p className="text-xs text-[#8A8080] mt-1">To ministry</p>
-                  </div>
-                  <div className="text-center">
-                    <span className="text-xl lg:text-2xl font-bold text-[#592D31]">500+</span>
-                    <p className="text-xs text-[#8A8080] mt-1">Faithful donors</p>
-                  </div>
-                </div>
+                <p className="text-[#592D31] font-semibold text-lg">Your Gift Matters</p>
+                <p className="text-[#8A8080] text-sm mt-1">Every contribution helps us serve our community</p>
               </div>
             </div>
           </div>
@@ -231,7 +209,7 @@ export default async function GivePage() {
                   
                   {/* Image or placeholder */}
                   {campaign.image ? (
-                    <div className="aspect-[16/10] relative">
+                    <div className="aspect-[16/7] relative">
                       <SanityImageComponent
                         image={campaign.image}
                         alt={campaign.title}
@@ -241,7 +219,7 @@ export default async function GivePage() {
                     </div>
                   ) : (
                     <div 
-                      className="aspect-[16/10] flex items-center justify-center bg-gradient-to-br from-[#F8F6F3] to-[#F4F0EA]"
+                      className="aspect-[16/7] flex items-center justify-center bg-gradient-to-br from-[#F8F6F3] to-[#F4F0EA]"
                     >
                       <Target className="w-12 h-12" style={{ color: accentColor, opacity: 0.2 }} />
                     </div>

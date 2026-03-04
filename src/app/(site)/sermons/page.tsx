@@ -1,7 +1,6 @@
 import { Metadata } from 'next'
-import { Video } from 'lucide-react'
 import { client, sermonsQuery, sermonSeriesQuery } from '@/lib/sanity'
-import { SermonCard } from '@/components/sermons'
+import { SermonsPageClient } from '@/components/sermons'
 import type { Sermon } from '@/types'
 
 export const metadata: Metadata = {
@@ -55,50 +54,8 @@ export default async function SermonsPage() {
         </div>
       </section>
 
-      {/* Filter Bar */}
-      {seriesList.length > 0 && (
-        <section className="py-6 bg-[#FFFFFF] border-b border-[#E0D8D2]">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-wrap items-center gap-3">
-              <span className="text-[#332D2D] font-medium">Filter by Series:</span>
-              <button className="px-4 py-2 rounded-full bg-[#592D31] text-white text-sm font-medium cursor-pointer">
-                All
-              </button>
-              {seriesList.slice(0, 5).map((series) => (
-                <button
-                  key={series}
-                  className="px-4 py-2 rounded-full bg-[#F4F0EA] text-[#332D2D] text-sm font-medium hover:bg-[#E0D8D2] cursor-pointer transition-colors"
-                >
-                  {series}
-                </button>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* Sermons Grid */}
-      <section className="py-20 bg-[#FCFBF9]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {sermons.length > 0 ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {sermons.map((sermon, index) => (
-                <SermonCard key={sermon._id} sermon={sermon} index={index} />
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-16">
-              <div className="w-20 h-20 rounded-full bg-[#F4F0EA] flex items-center justify-center mx-auto mb-6">
-                <Video className="w-10 h-10 text-[#E0D8D2]" />
-              </div>
-              <h2 className="text-2xl font-bold text-[#592D31] mb-2">No Sermons Yet</h2>
-              <p className="text-[#332D2D]">
-                Check back soon for our sermon archive!
-              </p>
-            </div>
-          )}
-        </div>
-      </section>
+      {/* Interactive Sermon Browser */}
+      <SermonsPageClient sermons={sermons} seriesList={seriesList} />
     </>
   )
 }

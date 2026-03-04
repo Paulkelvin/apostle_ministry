@@ -133,11 +133,7 @@ export function Footer({ socialLinks = [], statement501c3, siteName, siteTagline
       {/* Bottom Bar */}
       <div className="border-t border-[#4A3A3C]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="legal text-sm text-center md:text-left" style={{ color: '#8A8080' }}>
-              {statement501c3 ||
-                'The Apostles Ministry is a 501(c)(3) nonprofit organization. All donations are tax-deductible.'}
-            </p>
+          <div className="flex justify-center items-center">
             <p className="legal text-sm" style={{ color: '#8A8080' }}>
               © {currentYear} {displayName}. All rights reserved.
             </p>

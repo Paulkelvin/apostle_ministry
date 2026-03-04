@@ -14,7 +14,7 @@ export function LatestNewsSection({ posts }: LatestNewsSectionProps) {
     return (
       <section className="py-16 bg-[#F4F0EA]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold mb-3" style={{ color: '#592D31' }}>Latest from the Blog</h2>
+          <h2 className="text-3xl font-bold mb-3" style={{ color: '#592D31' }}>Latest Resources</h2>
           <p style={{ color: '#332D2D' }}>No posts yet. Check back soon!</p>
         </div>
       </section>
@@ -42,15 +42,15 @@ export function LatestNewsSection({ posts }: LatestNewsSectionProps) {
           <div className="relative flex flex-col sm:flex-row justify-between items-start sm:items-end">
             <div>
               <div className="w-[2px] h-10 bg-[#D4AF37] mb-4" />
-              <h2 className="text-3xl md:text-4xl font-bold mb-1" style={{ color: '#592D31' }}>Latest from the Blog</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-1" style={{ color: '#592D31' }}>Latest Resources</h2>
               <p className="text-sm" style={{ color: '#5C5252' }}>Stories, devotionals, and news from our community</p>
             </div>
             <Link
-              href="/blog"
+              href="/resources"
               className="mt-4 sm:mt-0 inline-flex items-center gap-2 font-semibold text-sm hover:text-[#3D2A2C] transition-colors"
               style={{ color: '#592D31' }}
             >
-              View All Posts
+              View All Resources
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -59,7 +59,7 @@ export function LatestNewsSection({ posts }: LatestNewsSectionProps) {
         {/* Hero + Stack Grid */}
         <div className="grid lg:grid-cols-2 gap-6">
           {/* Featured (Left) — Full-height hero card */}
-          <Link href={`/blog/${featured.slug?.current}`} className="group block">
+          <Link href={`/resources/${featured.slug?.current}`} className="group block">
             <article className="relative h-full min-h-[420px] lg:min-h-[520px] rounded-2xl overflow-hidden bg-[#332D2D]">
               {featured.mainImage ? (
                 <SanityImageComponent
@@ -119,7 +119,7 @@ export function LatestNewsSection({ posts }: LatestNewsSectionProps) {
               const category = post.categories?.[0]
 
               return (
-                <Link key={post._id} href={`/blog/${post.slug?.current}`} className="group block flex-1">
+                <Link key={post._id} href={`/resources/${post.slug?.current}`} className="group block flex-1">
                   <article className="flex flex-col sm:flex-row gap-5 h-full bg-white rounded-2xl overflow-hidden border border-[#E0D8D2]/50 shadow-[0_8px_24px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_32px_rgba(0,0,0,0.08)] hover:-translate-y-0.5 transition-all duration-300 p-4 sm:p-5">
                     {/* Thumbnail */}
                     <div className="relative w-full sm:w-40 md:w-48 flex-shrink-0 aspect-[4/3] sm:aspect-square rounded-xl overflow-hidden">
@@ -168,11 +168,11 @@ export function LatestNewsSection({ posts }: LatestNewsSectionProps) {
 
             {/* If only one stacked post (2 total), add a "View All" card */}
             {stacked.length < 2 && (
-              <Link href="/blog" className="flex-1 block">
+              <Link href="/resources" className="flex-1 block">
                 <div className="flex items-center justify-center h-full min-h-[200px] rounded-2xl border-2 border-dashed border-[#E0D8D2] hover:border-[#D4AF37] transition-colors duration-300">
                   <div className="text-center">
                     <p className="font-semibold mb-1" style={{ color: '#592D31' }}>Explore More</p>
-                    <p className="text-sm" style={{ color: '#8A8080' }}>Visit our blog for all articles</p>
+                    <p className="text-sm" style={{ color: '#8A8080' }}>Browse all our resources</p>
                   </div>
                 </div>
               </Link>
