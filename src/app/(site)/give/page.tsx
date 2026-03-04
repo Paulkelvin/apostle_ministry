@@ -6,8 +6,8 @@ import { SanityImageComponent } from '@/components/ui'
 import type { GivingPage, DonationCampaign } from '@/types'
 
 export const metadata: Metadata = {
-  title: 'Give | The Apostles Ministry',
-  description: 'Support the mission of The Apostles Ministry through your generous giving.',
+  title: 'Give | Restoring Life Family Community Center',
+  description: 'Support the mission of Restoring Life Family Community Center through your generous giving.',
 }
 
 // Revalidate frequently so published Sanity changes show up quickly
@@ -42,10 +42,10 @@ export default async function GivePage() {
   const methods = data?.givingMethods || [
     { title: 'Online Giving', description: 'Give securely online using credit card, debit card, or bank transfer through our Tithe.ly integration.', icon: 'credit-card' as const },
     { title: 'In Person', description: 'Give during any of our services using the offering boxes located at the back of the sanctuary.', note: 'Cash, checks, and giving envelopes accepted', icon: 'building' as const },
-    { title: 'Mail a Check', description: 'Mail your donation to our church office. Make checks payable to "The Apostles Ministry".', icon: 'mail' as const },
+    { title: 'Mail a Check', description: 'Mail your donation to our church office. Make checks payable to "Restoring Life Family Community Center".', icon: 'mail' as const },
   ]
-  const taxStatement = data?.taxStatement || 'The Apostles Ministry is a registered 501(c)(3) nonprofit organization. All donations are tax-deductible to the fullest extent allowed by law. You will receive a giving statement for your records.'
-  const mailingAddress = data?.mailingAddress || "The Apostles Ministry\n401-A Prince George's Blvd\nUpper Marlboro, MD 20774"
+  const taxStatement = data?.taxStatement || 'Restoring Life Family Community Center is a registered 501(c)(3) nonprofit organization. All donations are tax-deductible to the fullest extent allowed by law. You will receive a giving statement for your records.'
+  const mailingAddress = data?.mailingAddress || "Restoring Life Family Community Center\n401-A Prince George's Blvd\nUpper Marlboro, MD 20774"
   
   // Demo donation campaigns if none exist
   const donationCampaigns: DonationCampaign[] = data?.donationCampaigns?.filter(c => c.isActive) || [
@@ -374,3 +374,4 @@ export default async function GivePage() {
     </>
   )
 }
+

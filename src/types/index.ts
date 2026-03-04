@@ -162,6 +162,13 @@ export interface SiteSettings {
   missionStatement?: string
   visionStatement?: string
   watchOnlineUrl?: string
+  footerSkylineImage?: SanityImage
+  timelineParchmentImage?: SanityImage
+  ministriesArchitectureImage?: SanityImage
+  sermonsGodRaysImage?: SanityImage
+  missionVisionAccentImage?: SanityImage
+  newsAccentImage?: SanityImage
+  faqAccentImage?: SanityImage
 }
 
 // Portable Text Types

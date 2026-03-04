@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { format } from 'date-fns'
-import { Play, Volume2, BookOpen } from 'lucide-react'
+import { Play, Volume2 } from 'lucide-react'
 import { SanityImageComponent } from '@/components/ui'
 import type { Sermon } from '@/types'
 
@@ -34,7 +34,7 @@ export function SermonCard({ sermon, index, onPlayVideo }: SermonCardProps) {
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary to-primary-dark">
-            <BookOpen className="w-16 h-16 text-white/50" />
+            <div className="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center"><Play className="w-8 h-8 text-white/50 ml-1" /></div>
           </div>
         )}
 
@@ -100,3 +100,4 @@ export function SermonCard({ sermon, index, onPlayVideo }: SermonCardProps) {
     </motion.article>
   )
 }
+

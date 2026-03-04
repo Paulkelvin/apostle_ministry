@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { Facebook, Instagram, Youtube, Twitter } from 'lucide-react'
-import type { SocialLink } from '@/types'
+import type { SocialLink, SanityImage } from '@/types'
+import { SanityImageComponent } from '@/components/ui'
 
 interface FooterProps {
   socialLinks?: SocialLink[]
@@ -11,6 +12,7 @@ interface FooterProps {
   locationName?: string
   phone?: string
   email?: string
+  skylineImage?: SanityImage
 }
 
 const quickLinks = [
@@ -38,17 +40,29 @@ const socialIcons = {
   ),
 }
 
-export function Footer({ socialLinks = [], statement501c3, siteName, siteTagline, address, phone, email }: FooterProps) {
+export function Footer({ socialLinks = [], statement501c3, siteName, siteTagline, address, phone, email, skylineImage }: FooterProps) {
   const currentYear = new Date().getFullYear()
-  const displayName = siteName || 'The Apostles Ministry'
+  const displayName = siteName || 'Restoring Life Family Community Center'
   const displayTagline = siteTagline || 'A place where everyone belongs.'
   const displayPhone = phone || '(202) 503-9579'
   const displayEmail = email || 'admin@rflcc.org'
   const addressLines = (address || "High Calling Ministries\n401-A Prince George's Blvd\nUpper Marlboro, MD 20774").split('\n')
 
   return (
-    <footer data-footer className="bg-[#3D2A2C] text-[#F4F0EA]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <footer data-footer className="bg-[#3D2A2C] text-[#F4F0EA] relative overflow-hidden">
+        {/* Full Background Footer Graphics */}
+        {skylineImage && (
+          <div className="absolute inset-0 w-full h-full pointer-events-none opacity-15 mix-blend-color-dodge z-0">
+            <SanityImageComponent
+              image={skylineImage}
+              alt="Footer Decorative Background"
+              fill
+              className="object-cover object-center"
+            />
+          </div>
+        )}
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Brand & Social */}
           <div>
@@ -143,3 +157,4 @@ export function Footer({ socialLinks = [], statement501c3, siteName, siteTagline
     </footer>
   )
 }
+

@@ -4,13 +4,14 @@ import { ArrowRight, Clock, BookOpen } from 'lucide-react'
 import { SanityImageComponent } from '@/components/ui'
 import { SubtleSparkle, FloatingCross } from '@/components/ui/MicroGraphics'
 import { estimateReadingTime } from '@/lib/utils'
-import type { Post } from '@/types'
+import type { Post, SanityImage } from '@/types'
 
 interface LatestNewsSectionProps {
   posts: Post[]
+  accentImage?: SanityImage
 }
 
-export function LatestNewsSection({ posts }: LatestNewsSectionProps) {
+export function LatestNewsSection({ posts, accentImage }: LatestNewsSectionProps) {
   if (!posts || posts.length === 0) {
     return (
       <section className="py-16 bg-[#F4F0EA]">
@@ -29,10 +30,11 @@ export function LatestNewsSection({ posts }: LatestNewsSectionProps) {
 
   return (
     <section className="relative py-20 lg:py-28 bg-[#F4F0EA] overflow-hidden">
+
       {/* Decorative MicroGraphics */}
-      <SubtleSparkle className="top-[10%] xl:top-20 left-[5%] opacity-30 mix-blend-multiply" size={40} color="#CBA052" />
-      <FloatingCross className="bottom-[10%] right-[3%] opacity-15 mix-blend-multiply" delay={1.5} size={60} color="#592D31" />
-      
+      <SubtleSparkle className="top-[10%] xl:top-20 left-[5%] opacity-30 mix-blend-multiply z-0" size={40} color="#CBA052" />
+      <FloatingCross className="bottom-[10%] right-[3%] opacity-15 mix-blend-multiply z-0" delay={1.5} size={60} color="#592D31" />
+
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header with watermark */}
         <div className="relative mb-12 lg:mb-16 overflow-hidden">

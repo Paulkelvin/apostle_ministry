@@ -2,13 +2,16 @@
 
 import { motion } from 'framer-motion'
 import { FloatingCrosses } from '@/components/ui/AmbientGlow'
+import { SanityImageComponent } from '@/components/ui'
+import type { SanityImage } from '@/types'
 
 interface MissionVisionSectionProps {
   mission?: string
   vision?: string
+  accentImage?: SanityImage
 }
 
-export function MissionVisionSection({ mission, vision }: MissionVisionSectionProps) {
+export function MissionVisionSection({ mission, vision, accentImage }: MissionVisionSectionProps) {
   const missionText =
     mission ||
     'It is the mission of RFLCC to be followers of Christ, at all times; triumphant over every obstacle, the adversary, sin, and imaginations. We will share the Love of God, the life, death, resurrection, and constant intercession of Jesus Christ, and the sweet communion, fellowship, and comfort of the Holy Ghost.'
@@ -18,10 +21,22 @@ export function MissionVisionSection({ mission, vision }: MissionVisionSectionPr
 
   return (
     <section className="relative py-24 lg:py-32 overflow-hidden" style={{ backgroundColor: '#592D31' }}>
-      {/* Floating crosses */}
+      {/* Decorative Accent Layer - Positioned at top-left, cut off towards the left edge and top */}
+        {accentImage && (
+          <div className="absolute -top-12 md:-top-16 -left-16 md:-left-24 w-[300px] h-[300px] pointer-events-none opacity-60 mix-blend-color-dodge z-0">
+            <SanityImageComponent
+              image={accentImage}
+              alt="Decorative Accent Top Left"
+              fill
+              className="object-contain object-top object-left"
+            />
+          </div>
+        )}
+
+        {/* Floating crosses */}
       <FloatingCrosses />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="relative flex flex-col lg:flex-row items-stretch min-h-[520px]">
 
           {/* Left — Photo placeholder (60% width on desktop) */}
@@ -98,3 +113,5 @@ export function MissionVisionSection({ mission, vision }: MissionVisionSectionPr
     </section>
   )
 }
+
+

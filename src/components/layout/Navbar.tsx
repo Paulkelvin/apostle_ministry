@@ -60,12 +60,12 @@ export function Navbar() {
                 }`}
                 style={!showSolid ? { color: '#FFFFFF' } : undefined}
               >
-                The Apostles{' '}
+                RL
                 <span
                   className={`${showSolid ? 'text-primary' : ''} transition-colors duration-300`}
                   style={!showSolid ? { color: '#D4AF37' } : undefined}
                 >
-                  Ministry
+                  FCC
                 </span>
               </span>
             </Link>
@@ -167,3 +167,4 @@ export function Navbar() {
     </>
   )
 }
+

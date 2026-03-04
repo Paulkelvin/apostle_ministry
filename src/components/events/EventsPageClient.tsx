@@ -48,7 +48,7 @@ export function EventsPageClient({ events }: EventsPageClientProps) {
   return (
     <>
       {/* Controls Bar */}
-      <section className="bg-[#FFFFFF]/95 backdrop-blur-md border-b border-[#E0D8D2] sticky top-[72px] z-30 rounded-b-2xl">
+      <section className="bg-[#FFFFFF]/95 backdrop-blur-md border-b border-[#E0D8D2] sticky top-[73px] z-40 shadow-sm rounded-b-2xl">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             {/* Filter Chips — mask fades the trailing edge on mobile to hint at scrollability */}
@@ -157,3 +157,4 @@ export function EventsPageClient({ events }: EventsPageClientProps) {
     </>
   )
 }
+

@@ -4,13 +4,14 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
 import { SanityImageComponent } from '@/components/ui'
-import type { HistoryItem } from '@/types'
+import type { HistoryItem, SanityImage } from '@/types'
 
 interface TimelineSectionProps {
   historyItems: HistoryItem[]
+  parchmentImage?: SanityImage
 }
 
-export function TimelineSection({ historyItems }: TimelineSectionProps) {
+export function TimelineSection({ historyItems, parchmentImage }: TimelineSectionProps) {
   const [expandedId, setExpandedId] = useState<string | null>(null)
 
   // Default history for demo if none from CMS
@@ -27,8 +28,43 @@ export function TimelineSection({ historyItems }: TimelineSectionProps) {
   }
 
   return (
-    <section className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 bg-white relative overflow-hidden">
+      {/* Decorative Botanical / Scattered Accents Layer */}
+        {parchmentImage && (
+          <>
+            {/* Top Left Sparse Accent */}
+            <div className="absolute top-[10%] left-[5%] w-[150px] h-[150px] pointer-events-none opacity-60 z-0 mix-blend-multiply">
+              <SanityImageComponent
+                image={parchmentImage}
+                alt="Decorative Element Top Left"
+                fill
+                className="object-contain"
+              />
+            </div>
+
+            {/* Middle Right Sparse Accent */}
+            <div className="absolute top-[45%] right-[5%] w-[150px] h-[150px] pointer-events-none opacity-60 z-0 mix-blend-multiply">
+              <SanityImageComponent
+                image={parchmentImage}
+                alt="Decorative Element Middle Right"
+                fill
+                className="object-contain transform rotate-45"
+              />
+            </div>
+
+            {/* Bottom Left Sparse Accent */}
+            <div className="absolute bottom-[10%] left-[10%] w-[150px] h-[150px] pointer-events-none opacity-60 z-0 mix-blend-multiply">
+              <SanityImageComponent
+                image={parchmentImage}
+                alt="Decorative Element Bottom Left"
+                fill
+                className="object-contain transform -rotate-12"
+              />
+            </div>
+          </>
+        )}
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -73,16 +109,16 @@ export function TimelineSection({ historyItems }: TimelineSectionProps) {
                     </div>
                     <div className={isEven ? 'pl-12' : 'order-1 pr-12'}>
                       {item.image ? (
-                        <div className="aspect-video rounded-2xl overflow-hidden shadow-md">
-                          <SanityImageComponent
-                            image={item.image}
-                            alt={item.title}
-                            fill
-                            className="object-cover"
-                          />
-                        </div>
-                      ) : (
-                        <div className="aspect-video rounded-2xl bg-gradient-to-br from-warm-100 to-warm-50 flex items-center justify-center">
+                          <div className="relative aspect-video rounded-2xl overflow-hidden shadow-md">
+                            <SanityImageComponent
+                              image={item.image}
+                              alt={item.title}
+                              fill
+                              className="object-cover"
+                            />
+                          </div>
+                        ) : (
+                          <div className="relative aspect-video rounded-2xl bg-gradient-to-br from-warm-100 to-warm-50 flex items-center justify-center">
                           <span className="text-5xl font-bold text-warm-200">{item.year}</span>
                         </div>
                       )}
@@ -172,7 +208,7 @@ export function TimelineSection({ historyItems }: TimelineSectionProps) {
                                   initial={{ opacity: 0, scale: 0.95 }}
                                   animate={{ opacity: 1, scale: 1 }}
                                   transition={{ delay: 0.15 }}
-                                  className="aspect-video rounded-xl overflow-hidden shadow-md"
+                                  className="relative aspect-video rounded-xl overflow-hidden shadow-md"
                                 >
                                   <SanityImageComponent
                                     image={item.image}
@@ -186,7 +222,7 @@ export function TimelineSection({ historyItems }: TimelineSectionProps) {
                                   initial={{ opacity: 0, scale: 0.95 }}
                                   animate={{ opacity: 1, scale: 1 }}
                                   transition={{ delay: 0.15 }}
-                                  className="aspect-video rounded-xl bg-gradient-to-br from-warm-100 to-warm-50 flex items-center justify-center"
+                                  className="relative aspect-video rounded-xl bg-gradient-to-br from-warm-100 to-warm-50 flex items-center justify-center"
                                 >
                                   <span className="text-4xl font-bold text-warm-200">{item.year}</span>
                                 </motion.div>
@@ -206,3 +242,4 @@ export function TimelineSection({ historyItems }: TimelineSectionProps) {
     </section>
   )
 }
+

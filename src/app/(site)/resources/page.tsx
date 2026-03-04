@@ -4,8 +4,8 @@ import { BlogPageClient } from '@/components/blog'
 import type { Post, Category } from '@/types'
 
 export const metadata: Metadata = {
-  title: 'Resources | The Apostles Ministry',
-  description: 'Read the latest news, devotionals, and updates from The Apostles Ministry.',
+  title: 'Resources | Restoring Life Family Community Center',
+  description: 'Read the latest news, devotionals, and updates from Restoring Life Family Community Center.',
 }
 
 async function getBlogData() {
@@ -29,3 +29,4 @@ export default async function BlogPage() {
     </div>
   )
 }
+

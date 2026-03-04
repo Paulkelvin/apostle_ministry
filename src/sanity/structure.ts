@@ -1,9 +1,9 @@
 import type {StructureResolver} from 'sanity/structure'
 
-// Custom structure for The Apostles Ministry CMS
+// Custom structure for Restoring Life Family Community Center CMS
 export const structure: StructureResolver = (S) =>
   S.list()
-    .title('The Apostles Ministry')
+    .title('Restoring Life Family Community Center')
     .items([
       // Site Settings (singleton)
       S.listItem()
@@ -89,3 +89,4 @@ export const structure: StructureResolver = (S) =>
         .schemaType('faq')
         .child(S.documentTypeList('faq').title('FAQs')),
     ])
+

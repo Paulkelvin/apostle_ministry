@@ -1,28 +1,29 @@
 import { Metadata } from 'next'
-import { client, sermonsQuery, sermonSeriesQuery } from '@/lib/sanity'
+import { client, sermonsQuery, sermonSeriesQuery, siteSettingsQuery } from '@/lib/sanity'
 import { SermonsPageClient } from '@/components/sermons'
 import { FloatingRing, WaveLine } from '@/components/ui/MicroGraphics'
-import type { Sermon } from '@/types'
+import type { Sermon, SiteSettings } from '@/types'
 
 export const metadata: Metadata = {
-  title: 'Sermons | The Apostles Ministry',
-  description: 'Watch and listen to past sermons from The Apostles Ministry.',
+  title: 'Sermons | Restoring Life Family Community Center',
+  description: 'Watch and listen to past sermons from Restoring Life Family Community Center.',
 }
 
 async function getSermonsData() {
   try {
-    const [sermons, seriesList] = await Promise.all([
+    const [sermons, seriesList, settings] = await Promise.all([
       client.fetch<Sermon[]>(sermonsQuery),
       client.fetch<string[]>(sermonSeriesQuery),
+      client.fetch<SiteSettings>(siteSettingsQuery),
     ])
-    return { sermons, seriesList }
+    return { sermons, seriesList, settings }
   } catch {
-    return { sermons: [], seriesList: [] }
+    return { sermons: [], seriesList: [], settings: null }
   }
 }
 
 export default async function SermonsPage() {
-  const { sermons, seriesList } = await getSermonsData()
+  const { sermons, seriesList, settings } = await getSermonsData()
 
   return (
     <>
@@ -61,7 +62,12 @@ export default async function SermonsPage() {
       </section>
 
       {/* Interactive Sermon Browser */}
-      <SermonsPageClient sermons={sermons} seriesList={seriesList} />
+      <SermonsPageClient 
+        sermons={sermons} 
+        seriesList={seriesList} 
+        godRaysImage={settings?.sermonsGodRaysImage}
+      />
     </>
   )
 }
+

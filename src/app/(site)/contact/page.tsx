@@ -1,29 +1,31 @@
 import { Metadata } from 'next'
 import { MapPin, Phone, Mail, Clock, Headset, MessageSquare, Newspaper, ExternalLink, ArrowRight } from 'lucide-react'
-import { client, faqQuery, serviceTimesQuery } from '@/lib/sanity'
+import { client, faqQuery, serviceTimesQuery, siteSettingsQuery } from '@/lib/sanity'
 import { ContactForm, FAQAccordion, InteractiveMap } from '@/components/contact'
+import { SanityImageComponent } from '@/components/ui'
 import { FloatingRing, WaveLine } from '@/components/ui/MicroGraphics'
-import type { FAQ, ServiceTimes } from '@/types'
+import type { FAQ, ServiceTimes, SiteSettings } from '@/types'
 
 export const metadata: Metadata = {
-  title: 'Contact Us | The Apostles Ministry',
-  description: 'Get in touch with The Apostles Ministry. Find our location, service times, and answers to frequently asked questions.',
+  title: 'Contact Us | Restoring Life Family Community Center',
+  description: 'Get in touch with Restoring Life Family Community Center. Find our location, service times, and answers to frequently asked questions.',
 }
 
 async function getContactPageData() {
   try {
-    const [faqs, serviceTimes] = await Promise.all([
+    const [faqs, serviceTimes, settings] = await Promise.all([
       client.fetch<FAQ[]>(faqQuery),
       client.fetch<ServiceTimes>(serviceTimesQuery),
+      client.fetch<SiteSettings>(siteSettingsQuery),
     ])
-    return { faqs, serviceTimes }
+    return { faqs, serviceTimes, settings }
   } catch {
-    return { faqs: [], serviceTimes: null }
+    return { faqs: [], serviceTimes: null, settings: null }
   }
 }
 
 export default async function ContactPage() {
-  const { faqs, serviceTimes } = await getContactPageData()
+  const { faqs, serviceTimes, settings } = await getContactPageData()
 
   return (
     <>
@@ -47,7 +49,7 @@ export default async function ContactPage() {
               </h1>
               <p className="text-lg text-[#332D2D] mb-10 max-w-md leading-relaxed">
                 Email, call, or complete the form to learn how
-                The Apostles Ministry can serve you.
+                Restoring Life Family Community Center can serve you.
               </p>
 
               <div className="space-y-4 mb-10">
@@ -200,8 +202,20 @@ export default async function ContactPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-gradient-to-b from-[#f5f0ea] to-[#faf5f0]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-20 bg-gradient-to-b from-[#f5f0ea] to-[#faf5f0] overflow-hidden">
+        {/* Decorative FAQ Accent Layer - Positioned at top-left, cut off towards the left edge and top */}
+        {settings?.faqAccentImage && (
+          <div className="absolute -top-12 md:-top-16 -left-16 md:-left-24 w-[300px] h-[300px] pointer-events-none opacity-60 z-0 mix-blend-multiply">
+            <SanityImageComponent
+              image={settings.faqAccentImage}
+              alt="FAQ Decorative Accent"
+              fill
+              className="object-contain object-top object-left"
+            />
+          </div>
+        )}
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-[1fr_2fr] gap-12 lg:gap-16 items-start">
             {/* Left: FAQ Heading */}
             <div className="lg:sticky lg:top-28">
@@ -228,3 +242,4 @@ export default async function ContactPage() {
     </>
   )
 }
+

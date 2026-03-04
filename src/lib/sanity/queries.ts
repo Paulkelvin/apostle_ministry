@@ -413,7 +413,14 @@ export const siteSettingsQuery = groq`
     tithelyChurchId,
     missionStatement,
     visionStatement,
-    watchOnlineUrl
+    watchOnlineUrl,
+    footerSkylineImage,
+    timelineParchmentImage,
+    ministriesArchitectureImage,
+    sermonsGodRaysImage,
+    missionVisionAccentImage,
+    newsAccentImage,
+    faqAccentImage
   }
 `
 

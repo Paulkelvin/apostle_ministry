@@ -5,8 +5,8 @@ import { WaveLine, DottedSquare } from '@/components/ui/MicroGraphics'
 import type { SiteSettings, HistoryItem, Staff } from '@/types'
 
 export const metadata: Metadata = {
-  title: 'About Us | The Apostles Ministry',
-  description: 'Learn about our mission, vision, history, and the leadership of The Apostles Ministry.',
+  title: 'About Us | Restoring Life Family Community Center',
+  description: 'Learn about our mission, vision, history, and the leadership of Restoring Life Family Community Center.',
 }
 
 async function getAboutPageData() {
@@ -65,9 +65,11 @@ export default async function AboutPage() {
       <MissionVisionSection
         mission={settings?.missionStatement}
         vision={settings?.visionStatement}
+        accentImage={settings?.missionVisionAccentImage}
       />
-      <TimelineSection historyItems={historyItems} />
+      <TimelineSection historyItems={historyItems} parchmentImage={settings?.timelineParchmentImage} />
       <LeadershipGrid staff={staff} />
     </>
   )
 }
+

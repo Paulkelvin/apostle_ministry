@@ -10,7 +10,7 @@ export const siteSettings = defineType({
       name: 'siteName',
       title: 'Site Name',
       type: 'string',
-      initialValue: 'The Apostles Ministry',
+      initialValue: 'Restoring Life Family Community Center',
     }),
     defineField({
       name: 'siteTagline',
@@ -106,7 +106,7 @@ export const siteSettings = defineType({
       type: 'text',
       rows: 3,
       description: 'Legal statement for the footer',
-      initialValue: 'The Apostles Ministry is a 501(c)(3) nonprofit organization. All donations are tax-deductible.',
+      initialValue: 'Restoring Life Family Community Center is a 501(c)(3) nonprofit organization. All donations are tax-deductible.',
     }),
     defineField({
       name: 'tithelyChurchId',
@@ -132,6 +132,39 @@ export const siteSettings = defineType({
       type: 'url',
       description: 'Link to live stream or YouTube channel',
     }),
+    defineField({
+      name: 'footerSkylineImage',
+      title: 'Footer Full Background Image',
+      type: 'image',
+      description: 'Large beautiful background image that covers the entire footer (Recommended: Bright/vibrant colors, 1920x1080px)',
+      options: { hotspot: true },
+    }),
+    defineField({
+      name: 'timelineParchmentImage',
+      title: 'Timeline Edge Accent',
+      type: 'image',
+      description: 'Scattered accent images throughout the timeline. (Recommended: 150x150px png with transparency)',
+      options: { hotspot: true },
+    }),defineField({
+      name: 'sermonsGodRaysImage',
+      title: 'Sermons Edge Accent',
+      type: 'image',
+      description: 'Diagonal watermark graphic at the top-right of the Sermons grid. (Recommended: 300x300px png with transparency)',
+      options: { hotspot: true },
+    }),
+    defineField({
+      name: 'missionVisionAccentImage',
+      title: 'Mission & Vision Edge Accent',
+      type: 'image',
+      description: 'Watermark positioned at the top-left of the section. (Recommended: 300x300px png with transparency)',
+      options: { hotspot: true },
+    }),defineField({
+      name: 'faqAccentImage',
+      title: 'FAQ Edge Accent Image',
+      type: 'image',
+      description: 'Edge-bleeding watermark from the upper-left of the FAQ section. (Recommended: 300x300px png with transparency)',
+      options: { hotspot: true },
+    }),
   ],
   preview: {
     prepare() {
@@ -141,3 +174,7 @@ export const siteSettings = defineType({
     },
   },
 })
+
+
+
+

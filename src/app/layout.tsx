@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "The Apostles Ministry | Welcome Home",
+  title: "Restoring Life Family Community Center | Welcome Home",
   description: "A place where everyone belongs. Join us for worship, community, and spiritual growth.",
   keywords: ["church", "ministry", "worship", "community", "faith", "spiritual growth"],
 };
@@ -33,3 +33,4 @@ export default function RootLayout({
     </html>
   );
 }
+

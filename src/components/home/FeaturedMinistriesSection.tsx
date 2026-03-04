@@ -4,13 +4,14 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import { SanityImageComponent } from '@/components/ui'
-import type { Ministry } from '@/types'
+import type { Ministry, SanityImage } from '@/types'
 
 interface FeaturedMinistriesSectionProps {
   ministries: Ministry[]
+  
 }
 
-export function FeaturedMinistriesSection({ ministries }: FeaturedMinistriesSectionProps) {
+export function FeaturedMinistriesSection({ ministries, }: FeaturedMinistriesSectionProps) {
   const displayMinistries = ministries.length > 0 ? ministries : [
     { _id: '1', name: 'Kids Ministry', slug: { current: 'kids' }, description: 'Fun and engaging programs for children of all ages. Our dedicated team creates a safe, nurturing environment where kids can learn about faith through play, story, and song.' },
     { _id: '2', name: 'Youth Ministry', slug: { current: 'youth' }, description: 'Building the next generation of faith leaders. Through mentorship, fellowship, and real-world service, we equip young people to live out their calling with courage.' },
@@ -19,8 +20,8 @@ export function FeaturedMinistriesSection({ ministries }: FeaturedMinistriesSect
   ]
 
   return (
-    <section className="py-20 lg:py-28 bg-[#FCFBF9]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 lg:py-28 bg-[#FCFBF9] relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16 lg:mb-20">
           <div className="flex justify-center mb-4">
@@ -94,3 +95,4 @@ export function FeaturedMinistriesSection({ ministries }: FeaturedMinistriesSect
     </section>
   )
 }
+
