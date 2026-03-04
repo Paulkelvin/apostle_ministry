@@ -132,16 +132,16 @@ export function SermonsPageClient({ sermons, seriesList }: SermonsPageClientProp
                   <span className="text-[#CBA052] text-xs font-bold tracking-[1px] uppercase mb-3">
                     Latest Message
                   </span>
-                  <h2 className="text-2xl lg:text-3xl font-bold text-[#F9F6F0] mb-4">
+                  <h2 className="text-2xl lg:text-3xl font-bold mb-4" style={{ color: '#FDEFD3' }}>
                     {featuredSermon.title}
                   </h2>
                   {featuredSermon.speaker && (
-                    <p className="text-white font-semibold mb-2 drop-shadow-[0_1px_1px_rgba(0,0,0,0.55)]">
+                    <p className="font-semibold mb-2" style={{ color: '#E0D8D2' }}>
                       {featuredSermon.speaker.name}
                     </p>
                   )}
                   {featuredSermon.scripture && (
-                    <p className="text-white text-sm font-semibold mb-4 drop-shadow-[0_1px_1px_rgba(0,0,0,0.55)]">
+                    <p className="text-sm font-semibold mb-4" style={{ color: '#E0D8D2' }}>
                       {featuredSermon.scripture}
                     </p>
                   )}

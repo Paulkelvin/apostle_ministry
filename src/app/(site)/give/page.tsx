@@ -89,7 +89,9 @@ export default async function GivePage() {
   return (
     <>
       {/* Hero Section — Clean Minimal Design */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-[#FCFBF9] py-36 lg:py-40">
+      <section
+        className="relative min-h-screen pt-[120px] pb-12 flex items-center overflow-hidden bg-[#FCFBF9]"
+      >
         {/* Subtle background texture */}
         <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #592D31 1px, transparent 0)', backgroundSize: '48px 48px' }} />
         
@@ -127,13 +129,6 @@ export default async function GivePage() {
                   label="Give Now" 
                   className="group text-base px-10 py-4 bg-[#592D31] hover:bg-[#3D2A2C] text-white rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-[1.02]" 
                 />
-                <a 
-                  href="#campaigns"
-                  className="inline-flex items-center justify-center gap-2 text-[#592D31] font-semibold px-8 py-4 rounded-full border-2 border-[#592D31]/20 hover:border-[#D4AF37] hover:text-[#D4AF37] transition-all duration-300"
-                >
-                  View Campaigns
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </a>
               </div>
             </div>
             
@@ -165,108 +160,6 @@ export default async function GivePage() {
                 <div className="absolute bottom-12 left-4 w-2 h-2 rounded-full bg-[#592D31]/40" />
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Donation Campaigns — Progress Tracking */}
-      <section id="campaigns" className="py-24 bg-[#FCFBF9] scroll-mt-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <div className="flex items-center justify-center gap-4 mb-4">
-              <div className="w-16 h-[1px] bg-[#D4AF37]" />
-              <span className="text-[#D4AF37] text-xs font-semibold tracking-[0.25em] uppercase">
-                Current Campaigns
-              </span>
-              <div className="w-16 h-[1px] bg-[#D4AF37]" />
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#592D31] mb-4" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>
-              Help Us Reach Our Goals
-            </h2>
-            <p className="text-[#5C5252] text-base max-w-xl mx-auto">
-              Track our progress and see how your giving makes a real difference.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
-            {donationCampaigns.map((campaign, index) => {
-              const percentage = Math.min(Math.round((campaign.currentAmount / campaign.goalAmount) * 100), 100)
-              const remaining = campaign.goalAmount - campaign.currentAmount
-              const accentColor = campaign.color || '#592D31'
-              
-              return (
-                <div 
-                  key={campaign.title}
-                  className="group relative bg-white/80 backdrop-blur-sm rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-[#592D31]/10 transition-all duration-500"
-                >
-                  {/* Image or elegant placeholder */}
-                  {campaign.image ? (
-                    <div className="aspect-[4/3] relative">
-                      <SanityImageComponent
-                        image={campaign.image}
-                        alt={campaign.title}
-                        fill
-                        className="object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#592D31]/60 via-transparent to-transparent" />
-                      {/* Progress badge */}
-                      <div className="absolute bottom-4 left-4 px-4 py-2 bg-white/95 backdrop-blur-sm rounded-full shadow-lg">
-                        <span className="text-sm font-bold" style={{ color: accentColor }}>{percentage}% funded</span>
-                      </div>
-                    </div>
-                  ) : (
-                    <div 
-                      className="aspect-[4/3] flex items-center justify-center bg-gradient-to-br from-[#F8F6F3] via-[#FFFFFF] to-[#F4F0EA] relative"
-                    >
-                      <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #592D31 1px, transparent 0)', backgroundSize: '24px 24px' }} />
-                      <Target className="w-16 h-16" style={{ color: accentColor, opacity: 0.15 }} />
-                      {/* Progress badge */}
-                      <div className="absolute bottom-4 left-4 px-4 py-2 bg-white/95 backdrop-blur-sm rounded-full shadow-lg">
-                        <span className="text-sm font-bold" style={{ color: accentColor }}>{percentage}% funded</span>
-                      </div>
-                    </div>
-                  )}
-                  
-                  <div className="p-6 pt-8">
-                    <h3 className="text-xl font-bold text-[#592D31] mb-2" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>{campaign.title}</h3>
-                    {campaign.description && (
-                      <p className="text-[#5C5252] text-sm leading-relaxed mb-6 line-clamp-2">{campaign.description}</p>
-                    )}
-                    
-                    {/* Progress bar - minimal */}
-                    <div className="mb-5">
-                      <div className="h-1.5 bg-[#E8E2DA]/60 rounded-full overflow-hidden">
-                        <div 
-                          className="h-full rounded-full transition-all duration-1000 ease-out"
-                          style={{ 
-                            width: `${percentage}%`, 
-                            backgroundColor: accentColor,
-                          }}
-                        />
-                      </div>
-                    </div>
-                    
-                    {/* Amount display - elegant */}
-                    <div className="flex items-baseline justify-between">
-                      <div>
-                        <span className="text-2xl font-bold text-[#592D31]">${campaign.currentAmount.toLocaleString()}</span>
-                        <span className="text-sm text-[#8A8080] ml-2">raised</span>
-                      </div>
-                      <span className="text-sm text-[#8A8080]">${campaign.goalAmount.toLocaleString()} goal</span>
-                    </div>
-                  </div>
-                </div>
-              )
-            })}
-          </div>
-          
-          {/* CTA */}
-          <div className="text-center mt-16">
-            <TithelyButton 
-              label="Contribute to a Campaign" 
-              className="group text-base px-12 py-5 bg-gradient-to-r from-[#592D31] to-[#6E3A3F] hover:from-[#3D2A2C] hover:to-[#592D31] text-white rounded-full font-semibold transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-[1.02] border border-[#D4AF37]/20" 
-            />
-            <p className="text-[#8A8080] text-sm mt-4">Secure giving powered by Tithe.ly</p>
           </div>
         </div>
       </section>
@@ -339,30 +232,32 @@ export default async function GivePage() {
                     {/* Content */}
                     <div className={index === 0 ? '' : 'mt-auto'}>
                       <div className="flex items-baseline gap-3 mb-3">
-                        <span className={`font-bold drop-shadow-sm ${
-                          isLarge ? 'text-5xl md:text-6xl' : 'text-4xl'
-                        } ${
-                          index === 0 ? 'text-[#FDEFD3]' : 
-                          index === 3 ? 'text-[#2B1A1C]' : 
-                          'text-[#CBA052]'
-                        }`}>{area.stat}</span>
-                        <span className={`text-sm font-medium ${
-                          index === 0 ? 'text-white' : 
-                          index === 3 ? 'text-[#2B1A1C]' : 
-                          'text-[#595959]'
-                        }`}>{area.statLabel}</span>
+                        <span 
+                          className={`font-bold drop-shadow-sm ${isLarge ? 'text-5xl md:text-6xl' : 'text-4xl'}`}
+                          style={{ color: index === 0 ? '#FDEFD3' : index === 3 ? '#2B1A1C' : '#CBA052' }}
+                        >
+                          {area.stat}
+                        </span>
+                        <span 
+                          className="text-sm font-medium"
+                          style={{ color: index === 0 ? '#FFFFFF' : index === 3 ? '#2B1A1C' : '#595959' }}
+                        >
+                          {area.statLabel}
+                        </span>
                       </div>
-                      <h3 className={`text-lg font-bold mb-2 ${
-                        index === 0 ? 'text-white' : 
-                        index === 3 ? 'text-[#2B1A1C]' : 
-                        'text-[#4A2B2D]'
-                      }`} style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>{area.title}</h3>
+                      <h3 
+                        className="text-lg font-bold mb-2" 
+                        style={{ fontFamily: 'Georgia, "Times New Roman", serif', color: index === 0 ? '#FFFFFF' : index === 3 ? '#2B1A1C' : '#4A2B2D' }}
+                      >
+                        {area.title}
+                      </h3>
                       {isLarge && (
-                        <p className={`text-sm leading-relaxed line-clamp-3 hidden md:block ${
-                          index === 0 ? 'text-white' : 
-                          index === 3 ? 'text-[#2B1A1C]' : 
-                          'text-[#595959]'
-                        }`}>{area.description}</p>
+                        <p 
+                          className="text-sm leading-relaxed line-clamp-3 hidden md:block"
+                          style={{ color: index === 0 ? '#FFFFFF' : index === 3 ? '#2B1A1C' : '#595959' }}
+                        >
+                          {area.description}
+                        </p>
                       )}
                     </div>
                   </div>
