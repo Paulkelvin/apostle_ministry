@@ -25,6 +25,18 @@ export function ServiceTimesSection({ serviceTimes }: ServiceTimesSectionProps) 
 
   return (
     <section className="relative py-24 overflow-hidden" style={{ backgroundColor: '#592D31' }}>
+      {/* Exquisite Gothic Arch Background Graphic */}
+      <div className="absolute inset-x-0 bottom-0 top-0 overflow-hidden pointer-events-none select-none flex justify-center opacity-[0.03]">
+        <svg width="600" height="800" viewBox="0 0 600 800" fill="none" xmlns="http://www.w3.org/2000/svg" className="transform translate-y-20">
+          <path d="M50 800V300C50 161.929 161.929 50 300 50C438.071 50 550 161.929 550 300V800" stroke="#D4AF37" strokeWidth="4" />
+          <path d="M150 800V350C150 267.157 217.157 200 300 200C382.843 200 450 267.157 450 350V800" stroke="#D4AF37" strokeWidth="2" />
+          <path d="M250 800V400C250 372.386 272.386 350 300 350C327.614 350 350 372.386 350 400V800" stroke="#D4AF37" strokeWidth="1" />
+          <line x1="300" y1="50" x2="300" y2="800" stroke="#D4AF37" strokeWidth="1" strokeDasharray="8 8" />
+          <line x1="50" y1="450" x2="550" y2="450" stroke="#D4AF37" strokeWidth="1" strokeDasharray="8 8" />
+          <circle cx="300" cy="200" r="30" stroke="#D4AF37" strokeWidth="2" />
+        </svg>
+      </div>
+
       {/* Ambient glow particles */}
       <AmbientGlow />
 

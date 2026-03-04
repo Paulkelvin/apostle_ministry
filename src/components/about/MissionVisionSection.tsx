@@ -21,8 +21,15 @@ export function MissionVisionSection({ mission, vision }: MissionVisionSectionPr
 
   return (
     <>
+      {/* Holy Scripture Background Watermark */}
+      <div className="absolute top-[25%] left-[-10%] select-none pointer-events-none opacity-[0.02] transform -rotate-6 z-0 overflow-hidden mix-blend-multiply">
+        <h1 className="text-[12rem] md:text-[20rem] font-bold whitespace-nowrap" style={{ fontFamily: 'Georgia, serif', color: '#592D31' }}>
+          ACTS 2:42
+        </h1>
+      </div>
+
       {/* Who We Are — Full Width Split */}
-      <section className="relative overflow-hidden">
+      <section className="relative overflow-hidden z-10">
         <div className="grid lg:grid-cols-2 min-h-[600px]">
           {/* Left: Deep burgundy with mission */}
           <div className="relative bg-[#592D31] py-20 px-6 sm:px-10 lg:px-16 flex items-center">

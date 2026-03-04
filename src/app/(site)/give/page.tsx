@@ -3,7 +3,6 @@ import { Heart, CreditCard, Building2, Mail, Users, BookOpen, Globe, Utensils, A
 import { TithelyButton } from '@/components/giving'
 import { client, givingPageQuery } from '@/lib/sanity'
 import { SanityImageComponent } from '@/components/ui'
-import { SubtleSparkle, FloatingCross, DottedSquare } from '@/components/ui/MicroGraphics'
 import type { GivingPage, DonationCampaign } from '@/types'
 
 export const metadata: Metadata = {
@@ -95,11 +94,6 @@ export default async function GivePage() {
       >
         {/* Subtle background texture */}
         <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #592D31 1px, transparent 0)', backgroundSize: '48px 48px' }} />
-        
-        {/* Decorative MicroGraphics */}
-        <SubtleSparkle className="top-[20%] left-[8%] opacity-60" size={30} delay={0.5} color="#CBA052" />
-        <DottedSquare className="bottom-[15%] right-[5%] opacity-20" delay={2} color="#592D31" />
-        <FloatingCross className="top-[15%] right-[12%] opacity-30" size={40} delay={1.2} color="#CBA052" />
 
         {/* Decorative gold accent */}
         <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-transparent via-[#D4AF37] to-transparent opacity-30" />
@@ -170,8 +164,13 @@ export default async function GivePage() {
         </div>
       </section>
 
+      {/* Elegant Vertical Connector */}
+      <div className="w-full flex justify-center bg-[#FCFBF9] -mb-12 relative z-10 pointer-events-none">
+        <div className="h-24 w-px bg-gradient-to-b from-[#D4AF37] to-transparent opacity-40"></div>
+      </div>
+
       {/* Impact Areas — Bento Grid Layout */}
-      <section id="impact" className="py-24 bg-[#F7F5F0] scroll-mt-20">
+      <section id="impact" className="pt-12 pb-24 bg-[#F7F5F0] scroll-mt-20 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="flex items-center justify-center gap-4 mb-4">
