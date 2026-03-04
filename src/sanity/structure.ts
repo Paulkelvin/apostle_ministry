@@ -25,6 +25,16 @@ export const structure: StructureResolver = (S) =>
             .documentId('serviceTimes')
         ),
       
+      // Giving Page (singleton)
+      S.listItem()
+        .title('Giving Page')
+        .schemaType('givingPage')
+        .child(
+          S.documentTypeList('givingPage')
+            .title('Giving Page')
+            .filter('_type == "givingPage"')
+        ),
+      
       S.divider(),
       
       // Content

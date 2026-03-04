@@ -96,17 +96,19 @@ export function SermonsPageClient({ sermons, seriesList }: SermonsPageClientProp
                             image={featuredSermon.thumbnail}
                             alt={featuredSermon.title}
                             fill
-                            className="object-cover opacity-80"
+                            className="object-cover"
                           />
                         )}
+                        {/* 40% black overlay for depth */}
+                        <div className="absolute inset-0 bg-black/40" />
                       </div>
                       <a
                         href={featuredSermon.videoUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="relative z-10 w-20 h-20 rounded-full bg-[#D4AF37] flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform"
+                        className="relative z-10 w-20 h-20 rounded-full bg-[#CBA052] flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform"
                       >
-                        <Play className="w-8 h-8 text-white ml-1" />
+                        <Play className="w-8 h-8 text-[#4A2B2D] ml-1" fill="#4A2B2D" />
                       </a>
                     </div>
                   ) : (
@@ -117,25 +119,25 @@ export function SermonsPageClient({ sermons, seriesList }: SermonsPageClientProp
                 </div>
 
                 {/* Content side */}
-                <div className="p-8 lg:p-12 flex flex-col justify-center bg-gradient-to-br from-[#1F1F1F] to-[#1A1A1A]">
-                  <span className="text-[#D4AF37] text-xs font-bold tracking-[0.2em] uppercase mb-2">
+                <div className="p-10 lg:px-16 lg:py-12 flex flex-col justify-center bg-gradient-to-br from-[#1F1F1F] to-[#1A1A1A]">
+                  <span className="text-[#CBA052] text-xs font-bold tracking-[1px] uppercase mb-3">
                     Latest Message
                   </span>
-                  <h2 className="text-2xl lg:text-3xl font-bold text-white mb-3">
+                  <h2 className="text-2xl lg:text-3xl font-bold text-[#F9F6F0] mb-4">
                     {featuredSermon.title}
                   </h2>
                   {featuredSermon.speaker && (
-                    <p className="text-[#E0D8D2]/80 mb-2">
+                    <p className="text-[#D1D1D1] mb-2">
                       {featuredSermon.speaker.name}
                     </p>
                   )}
                   {featuredSermon.scripture && (
-                    <p className="text-[#D4AF37] text-sm font-medium mb-4">
+                    <p className="text-[#D1D1D1] text-sm mb-4">
                       {featuredSermon.scripture}
                     </p>
                   )}
                   {featuredSermon.series && (
-                    <span className="inline-block text-xs font-semibold px-3 py-1 rounded-full bg-[#592D31]/50 text-[#E0D8D2] mb-6 w-fit">
+                    <span className="inline-block text-xs font-semibold px-4 py-1.5 rounded-full bg-[#592D31]/30 text-[#E0D8D2] border border-[#CBA052]/10 mb-6 w-fit">
                       {featuredSermon.series}
                     </span>
                   )}
@@ -144,9 +146,9 @@ export function SermonsPageClient({ sermons, seriesList }: SermonsPageClientProp
                       href={featuredSermon.videoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-6 py-3 bg-[#D4AF37] text-[#1A1A1A] font-semibold rounded-lg hover:bg-[#C5A030] transition-colors w-fit"
+                      className="inline-flex items-center gap-2 px-6 py-3 bg-[#CBA052] text-[#4A2B2D] font-bold rounded-lg hover:bg-[#B8933F] transition-colors w-fit"
                     >
-                      <Play className="w-4 h-4" />
+                      <Play className="w-4 h-4" fill="#4A2B2D" />
                       Watch Now
                     </a>
                   )}
