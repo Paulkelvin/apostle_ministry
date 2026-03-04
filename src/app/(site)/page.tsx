@@ -26,16 +26,14 @@ export default async function HomePage() {
     <>
       <HeroSection settings={settings} />
       <ServiceTimesSection serviceTimes={serviceTimes} />
-      <FeaturedMinistriesSection 
-        ministries={ministries} 
-        architectureImage={settings?.ministriesArchitectureImage}
+      <FeaturedMinistriesSection
+        ministries={ministries}
       />
       <MissionVisionSection
         mission={settings?.missionStatement}
         vision={settings?.visionStatement}
-        accentImage={settings?.missionVisionAccentImage}
       />
-      <LatestNewsSection posts={posts} accentImage={settings?.newsAccentImage} />
+      <LatestNewsSection posts={posts} />
     </>
   )
 }

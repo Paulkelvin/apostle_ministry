@@ -67,7 +67,6 @@ export default async function AboutPage() {
       <MissionVisionSection
         mission={settings?.missionStatement}
         vision={settings?.visionStatement}
-        accentImage={settings?.missionVisionAccentImage}
       />
       <TimelineSection historyItems={historyItems} parchmentImage={settings?.timelineParchmentImage} />
       <LeadershipGrid staff={staff} />
