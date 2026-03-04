@@ -20,9 +20,9 @@ export function MissionVisionSection({ mission, vision }: MissionVisionSectionPr
   ]
 
   return (
-    <>
+    <div className="relative w-full overflow-hidden">
       {/* Holy Scripture Background Watermark */}
-      <div className="absolute top-[25%] left-[-10%] select-none pointer-events-none opacity-[0.02] transform -rotate-6 z-0 overflow-hidden mix-blend-multiply">
+      <div className="absolute top-[25%] left-[-10%] select-none pointer-events-none opacity-[0.02] transform -rotate-6 z-0 mix-blend-multiply">
         <h1 className="text-[12rem] md:text-[20rem] font-bold whitespace-nowrap" style={{ fontFamily: 'Georgia, serif', color: '#592D31' }}>
           ACTS 2:42
         </h1>
@@ -181,6 +181,6 @@ export function MissionVisionSection({ mission, vision }: MissionVisionSectionPr
           </div>
         </div>
       </section>
-    </>
+    </div>
   )
 }
