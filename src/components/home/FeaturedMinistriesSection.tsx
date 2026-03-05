@@ -103,7 +103,7 @@ export function FeaturedMinistriesSection({ ministries }: FeaturedMinistriesSect
 
         {/* Zig-Zag Rows */}
         <div className="space-y-16 lg:space-y-24">
-          {displayMinistries.map((ministry, index) => |
+          {displayMinistries.map((ministry, index) => {
             const isReversed = index % 2 !== 0
 
             return (
