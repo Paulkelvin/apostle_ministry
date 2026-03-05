@@ -24,10 +24,16 @@ export function FeaturedMinistriesSection({ ministries, }: FeaturedMinistriesSec
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16 lg:mb-20">
-          <div className="flex justify-center mb-4">
-            <div className="w-[2px] h-10 bg-[#D4AF37]" />
+          <div className="flex justify-center mb-6">
+            <div className="inline-flex items-center gap-4">
+              <span className="w-16 h-[2px] bg-[#D4AF37]/60"></span>
+              <span className="text-[#D4AF37] font-semibold tracking-[0.25em] uppercase text-sm">Join A Ministry</span>
+              <span className="w-16 h-[2px] bg-[#D4AF37]/60"></span>
+            </div>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: '#592D31' }}>Get Involved</h2>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 tracking-tight" style={{ color: '#592D31' }}>
+            Get Involved
+          </h2>
           <p className="text-lg max-w-2xl mx-auto" style={{ color: '#5C5252' }}>
             Find your place in our church family
           </p>
@@ -80,10 +86,10 @@ export function FeaturedMinistriesSection({ ministries, }: FeaturedMinistriesSec
                     </p>
                   )}
                   <Link
-                    href="/contact"
+                    href={`/contact?department=${ministry.slug?.current || ministry.name.toLowerCase().replace(/\s+/g, '-')}`}
                     className="inline-flex items-center gap-2 px-7 py-3 rounded-lg border-2 border-[#D4AF37] text-[#D4AF37] font-semibold text-sm hover:bg-[#D4AF37] hover:text-[#1A1A1A] transition-colors duration-300"
                   >
-                    Get Involved
+                    Join {ministry.name}
                     <ArrowRight className="w-4 h-4" />
                   </Link>
                 </div>
