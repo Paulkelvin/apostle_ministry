@@ -127,7 +127,7 @@ export function FeaturedMinistriesSection({ ministries }: FeaturedMinistriesSect
                         className="object-cover transition-transform duration-700 group-hover:scale-105"
                       />
                     ) : (
-                      <div className="w-full h-full bg-gradient-to-br from-[#592D31]/10 to-[#D4AF37]/10 fex items-center justify-center transition-transform duration-700 group-hover:scale-105">
+                      <div className="w-full h-full bg-gradient-to-br from-[#592D31]/10 to-[#D4AF37]/10 flex items-center justify-center transition-transform duration-700 group-hover:scale-105">
                         <span className="text-7xl font-bold" style={{ color: 'rgba(89,45,49,0.15)' }}>
                           {ministry.name.charAt(0)}
                         </span>
@@ -184,7 +184,7 @@ export function FeaturedMinistriesSection({ ministries }: FeaturedMinistriesSect
               className="fixed inset-y-0 right-0 w-full max-w-md bg-white shadow-2xl z-50 flex flex-col"
             >
               {/* Drawer Header */}
-              <div className="flex-shrink-0 px-6 py-6 border-b border-gray-100 flex items-center justify-between bg-[#FCFBF9=">
+              <div className="flex-shrink-0 px-6 py-6 border-b border-gray-100 flex items-center justify-between bg-[#FCFBF9]">
                 <h3 className="text-xl font-bold text-[#592D31]">Join Department</h3>
                 <button 
                   onClick={closeDrawer}
@@ -231,7 +231,7 @@ export function FeaturedMinistriesSection({ ministries }: FeaturedMinistriesSect
                       <div>
                         <label className="block text-sm font-semibold text-gray-700 mb-1">Message (Optional)</label>
                         <textarea 
-                          rows-{3}
+                          rows={3}
                           className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-[#D4AF37] focus:ring-2 focus:ring-[#D4AF37]/20 outline-none transition-all resize-none text-[#1A1A1A]" 
                           placeholder="Why are you interested in this department?"
                         ></textarea>
@@ -243,7 +243,7 @@ export function FeaturedMinistriesSection({ ministries }: FeaturedMinistriesSect
                         className="w-full mt-4 bg-[#592D31] hover:bg-[#4a2528] text-white font-bold py-3 px-4 rounded-lg transition-colors flex items-center justify-center gap-2 border border-transparent disabled:opacity-70"
                       >
                         {isSubmitting ? (
-                          <span className="w-5 h-5 border-2 border-white/30 border-tmwhite rounded-full animate-spin"></span>
+                          <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
                         ) : (
                           'Submit Interest'
                         )}
