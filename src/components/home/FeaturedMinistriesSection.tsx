@@ -14,6 +14,20 @@ export function FeaturedMinistriesSection({ ministries }: FeaturedMinistriesSect
   const [selectedMinistry, setSelectedMinistry] = useState<Ministry | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [phoneNumber, setPhoneNumber] = useState('')
+
+  // Format phone number as user types
+  const formatPhoneNumber = (value: string) => {
+    const digits = value.replace(/\D/g, '')
+    if (digits.length <= 3) return digits
+    if (digits.length <= 6) return `(${digits.slice(0, 3)}) ${digits.slice(3)}`
+    return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6, 10)}`
+  }
+
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const formatted = formatPhoneNumber(e.target.value)
+    setPhoneNumber(formatted)
+  }
 
   const displayMinistries = ministries?.length > 0 ? ministries : [
     { _id: '1', name: 'Kids Ministry', slug: { current: 'kids' }, description: 'Fun and engaging programs for children of all ages. Our dedicated team creates a safe, nurturing environment where kids can learn about faith through play, story, and song.' },
@@ -59,6 +73,7 @@ export function FeaturedMinistriesSection({ ministries }: FeaturedMinistriesSect
     setTimeout(() => {
       setIsSubmitted(false)
       setIsSubmitting(false)
+      setPhoneNumber('')
     }, 300)
   }
 
@@ -85,7 +100,6 @@ export function FeaturedMinistriesSection({ ministries }: FeaturedMinistriesSect
           <div className="relative z-10 text-center flex flex-col items-center">
             {/* Styled Badge */}
             <div className="inline-flex items-center gap-3 px-5 py-1.5 rounded-full border border-[#D4AF37]/30 bg-gradient-to-r from-[#D4AF37]/10 via-[#D4AF37]/5 to-transparent mb-8 backdrop-blur-sm shadow-sm">
-              <span className="w-2 h-2 rounded-full bg-[#D4AF37] animate-pulse shadow-[0_0_8px_#D4AF37]"></span>
               <span className="text-[#D4AF37] font-bold tracking-[0.2em] uppercase text-xs md:text-sm">Join A Department</span>
             </div>
             
@@ -224,8 +238,10 @@ export function FeaturedMinistriesSection({ ministries }: FeaturedMinistriesSect
                         <input 
                           type="tel" 
                           required
+                          value={phoneNumber}
+                          onChange={handlePhoneChange}
                           className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-[#D4AF37] focus:ring-2 focus:ring-[#D4AF37]/20 outline-none transition-all text-[#1A1A1A]" 
-                          placeholder="+1 (555) 000-0000"
+                          placeholder="(555) 000-0000"
                         />
                       </div>
                       <div>
