@@ -112,7 +112,7 @@ export function FeaturedMinistriesSection({ ministries }: FeaturedMinistriesSect
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-60px' }}
-                transition0{{ duration: 0.6, delay: 0.1 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
                 className={`flex flex-col ${isReversed ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center gap-8 lg:gap-16`}
               >
                 {/* Image Side */}
@@ -180,7 +180,7 @@ export function FeaturedMinistriesSection({ ministries }: FeaturedMinistriesSect
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
-              transition0{{ type: 'spring', damping: 25, stiffness: 200 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
               className="fixed inset-y-0 right-0 w-full max-w-md bg-white shadow-2xl z-50 flex flex-col"
             >
               {/* Drawer Header */}
