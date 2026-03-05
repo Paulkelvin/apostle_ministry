@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import { format } from 'date-fns'
 import { ArrowRight, Clock, BookOpen } from 'lucide-react'
 import { SanityImageComponent } from '@/components/ui'
-import { SubtleSparkle, FloatingCross } from '@/components/ui/MicroGraphics'
+import { FloatingCross } from '@/components/ui/MicroGraphics'
 import { estimateReadingTime } from '@/lib/utils'
 import type { Post, SanityImage } from '@/types'
 
@@ -35,7 +35,6 @@ export function LatestNewsSection({ posts, accentImage }: LatestNewsSectionProps
     <section className="relative py-20 lg:py-28 bg-[#F4F0EA] overflow-hidden">
 
       {/* Decorative MicroGraphics */}
-      <SubtleSparkle className="top-[10%] xl:top-20 left-[5%] opacity-30 mix-blend-multiply z-0" size={40} color="#CBA052" />
       <FloatingCross className="bottom-[10%] right-[3%] opacity-15 mix-blend-multiply z-0" delay={1.5} size={60} color="#592D31" />
 
       <motion.div 

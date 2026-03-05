@@ -100,6 +100,7 @@ export function FeaturedMinistriesSection({ ministries }: FeaturedMinistriesSect
           <div className="relative z-10 text-center flex flex-col items-center">
             {/* Styled Badge */}
             <div className="inline-flex items-center gap-3 px-5 py-1.5 rounded-full border border-[#D4AF37]/30 bg-gradient-to-r from-[#D4AF37]/10 via-[#D4AF37]/5 to-transparent mb-8 backdrop-blur-sm shadow-sm">
+              <span className="w-2 h-2 rounded-full bg-[#D4AF37] animate-pulse shadow-[0_0_8px_#D4AF37]"></span>
               <span className="text-[#D4AF37] font-bold tracking-[0.2em] uppercase text-xs md:text-sm">Join A Department</span>
             </div>
             
