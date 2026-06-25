@@ -22,8 +22,8 @@ export const category = defineType({
       name: 'color',
       title: 'Badge Color (Hex)',
       type: 'string',
-      description: 'Hex color for the category badge, e.g. #592D31',
-      initialValue: '#592D31',
+      description: 'Hex color for the category badge, e.g. #4B2D7F',
+      initialValue: '#4B2D7F',
     }),
   ],
   preview: {

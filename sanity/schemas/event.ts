@@ -89,7 +89,6 @@ export const event = defineType({
       options: {
         list: [
           { title: 'Sunday Service', value: 'sunday-service' },
-          { title: 'Youth', value: 'youth' },
           { title: 'Bible Study', value: 'bible-study' },
           { title: 'Online', value: 'online' },
           { title: 'Outreach', value: 'outreach' },

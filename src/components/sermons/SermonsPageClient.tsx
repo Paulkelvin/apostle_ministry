@@ -118,11 +118,11 @@ export function SermonsPageClient({ sermons, seriesList, godRaysImage }: Sermons
                         <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors" />
                       </div>
                       <div className="relative z-10 w-20 h-20 rounded-full bg-[#CBA052] flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform">
-                        <Play className="w-8 h-8 text-[#4A2B2D] ml-1" fill="#4A2B2D" />
+                        <Play className="w-8 h-8 text-[#3E1F6B] ml-1" fill="#3E1F6B" />
                       </div>
                     </button>
                   ) : (
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#592D31] to-[#3D2A2C] flex items-center justify-center">
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#4B2D7F] to-[#2E1F47] flex items-center justify-center">
                       <Video className="w-24 h-24 text-white/20" />
                     </div>
                   )}
@@ -147,16 +147,16 @@ export function SermonsPageClient({ sermons, seriesList, godRaysImage }: Sermons
                     </p>
                   )}
                   {featuredSermon.series && (
-                    <span className="inline-block text-xs font-semibold px-4 py-1.5 rounded-full bg-[#592D31]/30 text-[#E0D8D2] border border-[#CBA052]/10 mb-6 w-fit">
+                    <span className="inline-block text-xs font-semibold px-4 py-1.5 rounded-full bg-[#4B2D7F]/30 text-[#E0D8D2] border border-[#CBA052]/10 mb-6 w-fit">
                       {featuredSermon.series}
                     </span>
                   )}
                   {featuredSermon.videoUrl && (
                     <button
                       onClick={() => handlePlayVideo(featuredSermon.videoUrl!, featuredSermon.title)}
-                      className="inline-flex items-center gap-2 px-6 py-3 bg-[#CBA052] text-[#4A2B2D] font-bold rounded-lg hover:bg-[#B8933F] transition-colors w-fit"
+                      className="inline-flex items-center gap-2 px-6 py-3 bg-[#CBA052] text-[#3E1F6B] font-bold rounded-lg hover:bg-[#B8933F] transition-colors w-fit"
                     >
-                      <Play className="w-4 h-4" fill="#4A2B2D" />
+                      <Play className="w-4 h-4" fill="#3E1F6B" />
                       Watch Now
                     </button>
                   )}
@@ -181,7 +181,7 @@ export function SermonsPageClient({ sermons, seriesList, godRaysImage }: Sermons
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   placeholder="Search sermons..."
-                  className="w-full pl-10 pr-4 py-2.5 bg-[#F4F0EA] border border-[#E0D8D2] rounded-lg text-sm text-[#332D2D] placeholder:text-[#8A8080] focus:outline-none focus:border-[#592D31] transition-colors"
+                  className="w-full pl-10 pr-4 py-2.5 bg-[#F4F0EA] border border-[#E0D8D2] rounded-lg text-sm text-[#332D2D] placeholder:text-[#8A8080] focus:outline-none focus:border-[#4B2D7F] transition-colors"
                 />
               </div>
 
@@ -191,7 +191,7 @@ export function SermonsPageClient({ sermons, seriesList, godRaysImage }: Sermons
                   onClick={() => setShowFilters(!showFilters)}
                   className={`flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 ease-out active:scale-95 ${
                     showFilters || hasActiveFilters
-                      ? 'bg-[#592D31] text-white'
+                      ? 'bg-[#4B2D7F] text-white'
                       : 'bg-[#F4F0EA] text-[#332D2D] hover:bg-[#E0D8D2]'
                   }`}
                 >
@@ -209,7 +209,7 @@ export function SermonsPageClient({ sermons, seriesList, godRaysImage }: Sermons
                   <button
                     onClick={() => setShowSortDropdown(!showSortDropdown)}
                     onBlur={() => setTimeout(() => setShowSortDropdown(false), 150)}
-                    className="flex items-center gap-2 pl-4 pr-3 py-2.5 bg-[#F4F0EA] border border-[#E0D8D2] rounded-xl text-sm font-medium text-[#332D2D] cursor-pointer hover:border-[#592D31]/30 focus:outline-none focus:border-[#592D31] transition-all duration-200"
+                    className="flex items-center gap-2 pl-4 pr-3 py-2.5 bg-[#F4F0EA] border border-[#E0D8D2] rounded-xl text-sm font-medium text-[#332D2D] cursor-pointer hover:border-[#4B2D7F]/30 focus:outline-none focus:border-[#4B2D7F] transition-all duration-200"
                   >
                     <Calendar className="w-4 h-4 text-[#8A8080]" />
                     <span>{sortBy === 'newest' ? 'Newest First' : 'Oldest First'}</span>
@@ -217,7 +217,7 @@ export function SermonsPageClient({ sermons, seriesList, godRaysImage }: Sermons
                   </button>
                   
                   {/* Custom dropdown menu */}
-                  <div className={`absolute right-0 top-full mt-2 w-44 bg-white rounded-xl shadow-xl shadow-[#592D31]/10 border border-[#E0D8D2]/50 overflow-hidden z-50 transition-all duration-200 origin-top ${
+                  <div className={`absolute right-0 top-full mt-2 w-44 bg-white rounded-xl shadow-xl shadow-[#4B2D7F]/10 border border-[#E0D8D2]/50 overflow-hidden z-50 transition-all duration-200 origin-top ${
                     showSortDropdown 
                       ? 'opacity-100 scale-100 translate-y-0' 
                       : 'opacity-0 scale-95 -translate-y-2 pointer-events-none'
@@ -227,7 +227,7 @@ export function SermonsPageClient({ sermons, seriesList, godRaysImage }: Sermons
                         onClick={() => { setSortBy('newest'); setShowSortDropdown(false); }}
                         className={`w-full flex items-center gap-3 px-4 py-3 text-sm transition-colors duration-150 ${
                           sortBy === 'newest' 
-                            ? 'bg-[#592D31]/5 text-[#592D31] font-semibold' 
+                            ? 'bg-[#4B2D7F]/5 text-[#4B2D7F] font-semibold' 
                             : 'text-[#332D2D] hover:bg-[#F4F0EA]'
                         }`}
                       >
@@ -238,7 +238,7 @@ export function SermonsPageClient({ sermons, seriesList, godRaysImage }: Sermons
                         onClick={() => { setSortBy('oldest'); setShowSortDropdown(false); }}
                         className={`w-full flex items-center gap-3 px-4 py-3 text-sm transition-colors duration-150 ${
                           sortBy === 'oldest' 
-                            ? 'bg-[#592D31]/5 text-[#592D31] font-semibold' 
+                            ? 'bg-[#4B2D7F]/5 text-[#4B2D7F] font-semibold' 
                             : 'text-[#332D2D] hover:bg-[#F4F0EA]'
                         }`}
                       >
@@ -264,7 +264,7 @@ export function SermonsPageClient({ sermons, seriesList, godRaysImage }: Sermons
                       onClick={() => setActiveSeries(null)}
                       className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-300 ease-out active:scale-95 ${
                         !activeSeries
-                          ? 'bg-[#592D31] text-white'
+                          ? 'bg-[#4B2D7F] text-white'
                           : 'bg-[#F4F0EA] text-[#332D2D] hover:bg-[#E0D8D2]'
                       }`}
                     >
@@ -276,7 +276,7 @@ export function SermonsPageClient({ sermons, seriesList, godRaysImage }: Sermons
                         onClick={() => setActiveSeries(activeSeries === series ? null : series)}
                         className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-300 ease-out active:scale-95 ${
                           activeSeries === series
-                            ? 'bg-[#592D31] text-white'
+                            ? 'bg-[#4B2D7F] text-white'
                             : 'bg-[#F4F0EA] text-[#332D2D] hover:bg-[#E0D8D2]'
                         }`}
                       >
@@ -320,7 +320,7 @@ export function SermonsPageClient({ sermons, seriesList, godRaysImage }: Sermons
                 {hasActiveFilters && (
                   <button
                     onClick={clearFilters}
-                    className="inline-flex items-center gap-1 text-sm text-[#592D31] hover:text-[#3D2A2C] font-medium ml-auto transition-colors duration-200"
+                    className="inline-flex items-center gap-1 text-sm text-[#4B2D7F] hover:text-[#2E1F47] font-medium ml-auto transition-colors duration-200"
                   >
                     <X className="w-4 h-4" />
                     Clear all
@@ -369,7 +369,7 @@ export function SermonsPageClient({ sermons, seriesList, godRaysImage }: Sermons
               <div className="w-20 h-20 rounded-full bg-[#F4F0EA] flex items-center justify-center mx-auto mb-6">
                 <Video className="w-10 h-10 text-[#E0D8D2]" />
               </div>
-              <h2 className="text-2xl font-bold text-[#592D31] mb-2">
+              <h2 className="text-2xl font-bold text-[#4B2D7F] mb-2">
                 {hasActiveFilters ? 'No Matching Sermons' : 'No Sermons Yet'}
               </h2>
               <p className="text-[#332D2D]">
@@ -380,7 +380,7 @@ export function SermonsPageClient({ sermons, seriesList, godRaysImage }: Sermons
               {hasActiveFilters && (
                 <button
                   onClick={clearFilters}
-                  className="mt-4 text-[#592D31] font-semibold hover:underline"
+                  className="mt-4 text-[#4B2D7F] font-semibold hover:underline"
                 >
                   Clear filters
                 </button>

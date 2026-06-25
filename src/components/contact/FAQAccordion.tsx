@@ -19,9 +19,9 @@ export function FAQAccordion({ faqs }: FAQAccordionProps) {
     },
     {
       _id: '2',
-      question: 'What about my kids?',
-      answer: 'We have engaging, age-appropriate programs for children from nursery through 5th grade during all services. Our trained staff and volunteers create a safe, fun environment where kids learn about Jesus.',
-      category: 'kids' as const,
+      question: 'What can I expect during worship?',
+      answer: 'Our services include contemporary worship music followed by a practical, Bible-based message. We create an atmosphere where everyone can encounter God and grow in their faith.',
+      category: 'services' as const,
     },
     {
       _id: '3',

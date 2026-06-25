@@ -57,7 +57,7 @@ export interface FAQ {
   _id: string
   question: string
   answer: string
-  category?: 'visitors' | 'services' | 'kids' | 'involvement' | 'general'
+  category?: 'visitors' | 'services' | 'involvement' | 'general'
 }
 
 export interface ServiceTime {
@@ -135,7 +135,7 @@ export interface Event {
   cost?: string
   ministry?: Ministry
   featured?: boolean
-  category?: 'sunday-service' | 'youth' | 'bible-study' | 'online' | 'outreach' | 'special' | 'general'
+  category?: 'sunday-service' | 'bible-study' | 'online' | 'outreach' | 'special' | 'general'
   isOnline?: boolean
   onlineLink?: string
 }

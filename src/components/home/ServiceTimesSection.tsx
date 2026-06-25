@@ -24,7 +24,7 @@ export function ServiceTimesSection({ serviceTimes }: ServiceTimesSectionProps) 
   const locationName = serviceTimes?.locationName || 'Main Campus'
 
   return (
-    <section className="relative py-24 overflow-hidden" style={{ backgroundColor: '#592D31' }}>
+    <section className="relative py-24 overflow-hidden" style={{ backgroundColor: '#4B2D7F' }}>
       {/* Exquisite Gothic Arch Background Graphic */}
       <div className="absolute inset-x-0 bottom-0 top-0 overflow-hidden pointer-events-none select-none flex justify-center opacity-[0.03]">
         <svg width="600" height="800" viewBox="0 0 600 800" fill="none" xmlns="http://www.w3.org/2000/svg" className="transform translate-y-20">

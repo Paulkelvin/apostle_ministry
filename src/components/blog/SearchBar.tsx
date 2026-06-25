@@ -15,7 +15,7 @@ export function SearchBar({ value, onChange }: SearchBarProps) {
     <div
       className={`relative flex items-center transition-all duration-200 rounded-xl border ${
         focused
-          ? 'border-[#592D31] ring-2 ring-[#592D31]/10 bg-white'
+          ? 'border-[#4B2D7F] ring-2 ring-[#4B2D7F]/10 bg-white'
           : 'border-[#E0D8D2] bg-[#FFFFFF] hover:border-[#D4AF37]'
       }`}
     >

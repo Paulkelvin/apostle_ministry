@@ -44,12 +44,12 @@ function getDemoEvents(): Event[] {
     },
     {
       _id: 'demo-3',
-      title: 'Youth Night',
-      slug: { current: 'youth-night' },
+      title: 'Prayer & Worship Night',
+      slug: { current: 'prayer-worship-night' },
       date: makeDate(5, 18),
-      location: 'High Calling Ministries — Youth Center',
-      description: 'An evening of fellowship, games, worship, and an inspiring message for young people ages 13-25.',
-      category: 'youth',
+      location: 'High Calling Ministries — Fellowship Hall',
+      description: 'An evening of deep prayer, worship, and fellowship. Come expecting to encounter the presence of God.',
+      category: 'special',
       cost: 'Free',
     },
     {

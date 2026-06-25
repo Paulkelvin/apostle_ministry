@@ -52,8 +52,8 @@ export function CommentSection({ postId, comments: initialComments }: CommentSec
   return (
     <div>
       <div className="flex items-center gap-3 mb-8">
-        <MessageCircle className="w-6 h-6 text-[#592D31]" />
-        <h2 className="text-2xl font-bold text-[#592D31]">
+        <MessageCircle className="w-6 h-6 text-[#4B2D7F]" />
+        <h2 className="text-2xl font-bold text-[#4B2D7F]">
           Comments {comments.length > 0 && `(${comments.length})`}
         </h2>
       </div>
@@ -71,7 +71,7 @@ export function CommentSection({ postId, comments: initialComments }: CommentSec
             >
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-9 h-9 rounded-full bg-[#F4F0EA] flex items-center justify-center">
-                  <span className="text-sm font-bold text-[#592D31]">
+                  <span className="text-sm font-bold text-[#4B2D7F]">
                     {comment.name.charAt(0).toUpperCase()}
                   </span>
                 </div>
@@ -92,7 +92,7 @@ export function CommentSection({ postId, comments: initialComments }: CommentSec
 
       {/* Comment form */}
       <div className="bg-[#FFFFFF] rounded-2xl p-6 sm:p-8 border border-[#E0D8D2]/40">
-        <h3 className="text-lg font-bold text-[#592D31] mb-6">Leave a Comment</h3>
+        <h3 className="text-lg font-bold text-[#4B2D7F] mb-6">Leave a Comment</h3>
 
         <AnimatePresence mode="wait">
           {status === 'success' ? (
@@ -104,13 +104,13 @@ export function CommentSection({ postId, comments: initialComments }: CommentSec
               className="text-center py-8"
             >
               <div className="w-14 h-14 rounded-full bg-[#F4F0EA] flex items-center justify-center mx-auto mb-4">
-                <MessageCircle className="w-7 h-7 text-[#592D31]" />
+                <MessageCircle className="w-7 h-7 text-[#4B2D7F]" />
               </div>
               <p className="text-[#332D2D] font-semibold mb-1">{message}</p>
               <p className="text-sm text-[#8A8080]">We review comments before publishing.</p>
               <button
                 onClick={() => setStatus('idle')}
-                className="mt-4 text-sm text-[#592D31] font-medium hover:underline"
+                className="mt-4 text-sm text-[#4B2D7F] font-medium hover:underline"
               >
                 Write another comment
               </button>
@@ -133,7 +133,7 @@ export function CommentSection({ postId, comments: initialComments }: CommentSec
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     required
-                    className="w-full pl-10 pr-4 py-3 rounded-xl border border-[#E0D8D2] bg-white text-sm text-[#332D2D] placeholder-[#8A8080] outline-none focus:border-[#592D31] focus:ring-2 focus:ring-[#592D31]/10 transition-all"
+                    className="w-full pl-10 pr-4 py-3 rounded-xl border border-[#E0D8D2] bg-white text-sm text-[#332D2D] placeholder-[#8A8080] outline-none focus:border-[#4B2D7F] focus:ring-2 focus:ring-[#4B2D7F]/10 transition-all"
                   />
                 </div>
                 <div className="relative">
@@ -144,7 +144,7 @@ export function CommentSection({ postId, comments: initialComments }: CommentSec
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    className="w-full pl-10 pr-4 py-3 rounded-xl border border-[#E0D8D2] bg-white text-sm text-[#332D2D] placeholder-[#8A8080] outline-none focus:border-[#592D31] focus:ring-2 focus:ring-[#592D31]/10 transition-all"
+                    className="w-full pl-10 pr-4 py-3 rounded-xl border border-[#E0D8D2] bg-white text-sm text-[#332D2D] placeholder-[#8A8080] outline-none focus:border-[#4B2D7F] focus:ring-2 focus:ring-[#4B2D7F]/10 transition-all"
                   />
                 </div>
               </div>
@@ -155,14 +155,14 @@ export function CommentSection({ postId, comments: initialComments }: CommentSec
                 required
                 maxLength={1000}
                 rows={4}
-                className="w-full px-4 py-3 rounded-xl border border-[#E0D8D2] bg-white text-sm text-[#332D2D] placeholder-[#8A8080] outline-none focus:border-[#592D31] focus:ring-2 focus:ring-[#592D31]/10 transition-all resize-none"
+                className="w-full px-4 py-3 rounded-xl border border-[#E0D8D2] bg-white text-sm text-[#332D2D] placeholder-[#8A8080] outline-none focus:border-[#4B2D7F] focus:ring-2 focus:ring-[#4B2D7F]/10 transition-all resize-none"
               />
               <div className="flex items-center justify-between">
                 <span className="text-xs text-[#8A8080]">{text.length}/1000</span>
                 <button
                   type="submit"
                   disabled={status === 'loading' || !name || !email || !text}
-                  className="px-6 py-2.5 rounded-xl bg-[#592D31] text-white font-semibold text-sm hover:bg-[#3D2A2C] transition-colors flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="px-6 py-2.5 rounded-xl bg-[#4B2D7F] text-white font-semibold text-sm hover:bg-[#2E1F47] transition-colors flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {status === 'loading' ? (
                     <Loader2 className="w-4 h-4 animate-spin" />

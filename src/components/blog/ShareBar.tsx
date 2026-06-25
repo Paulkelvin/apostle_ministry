@@ -50,7 +50,7 @@ export function ShareBar({ url, title, variant = 'default' }: ShareBarProps) {
   const isHero = variant === 'hero'
   const btnClass = isHero
     ? 'w-9 h-9 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-white/20 transition-all text-[#E0D8D2]'
-    : 'w-9 h-9 rounded-full bg-[#FFFFFF] border border-[#E0D8D2]/50 flex items-center justify-center hover:border-[#592D31] hover:text-[#592D31] transition-all text-[#8A8080]'
+    : 'w-9 h-9 rounded-full bg-[#FFFFFF] border border-[#E0D8D2]/50 flex items-center justify-center hover:border-[#4B2D7F] hover:text-[#4B2D7F] transition-all text-[#8A8080]'
 
   return (
     <div className="flex items-center gap-3 flex-wrap">
@@ -79,7 +79,7 @@ export function ShareBar({ url, title, variant = 'default' }: ShareBarProps) {
               initial={{ opacity: 0, y: 5 }}
               animate={{ opacity: 1, y: -8 }}
               exit={{ opacity: 0 }}
-              className="absolute -top-6 text-xs font-medium text-[#592D31] bg-[#F4F0EA] px-2 py-0.5 rounded whitespace-nowrap"
+              className="absolute -top-6 text-xs font-medium text-[#4B2D7F] bg-[#F4F0EA] px-2 py-0.5 rounded whitespace-nowrap"
             >
               Copied!
             </motion.span>

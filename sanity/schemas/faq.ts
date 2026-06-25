@@ -26,7 +26,6 @@ export const faq = defineType({
         list: [
           { title: 'First Time Visitors', value: 'visitors' },
           { title: 'Services', value: 'services' },
-          { title: 'Kids & Youth', value: 'kids' },
           { title: 'Getting Involved', value: 'involvement' },
           { title: 'General', value: 'general' },
         ],

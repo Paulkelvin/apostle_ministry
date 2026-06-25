@@ -1,25 +1,25 @@
 @import "tailwindcss";
 
 :root {
-  /* Radiant Sanctuary Palette */
-  --color-primary: #592D31;        /* Rich Deep Burgundy */
-  --color-primary-dark: #6E3A3F;   /* Hover tone */
-  --color-primary-light: #7A4A50;
-  
+  /* Royal Sanctuary Palette */
+  --color-primary: #4B2D7F;        /* Rich Deep Purple */
+  --color-primary-dark: #5C3A93;   /* Hover tone */
+  --color-primary-light: #6D4AA3;
+
   --color-secondary: #F4F0EA;      /* Alt section background */
   --color-secondary-dark: #E8E2D8;
-  
+
   --color-accent: #D4AF37;         /* Luminous Gold */
   --color-accent-dark: #B8962E;
   --color-accent-light: #E8CC6A;
-  
+
   --color-sage: #7BA381;
   --color-sage-dark: #5C8A63;
   --color-sage-light: #E8F0EA;
-  
+
   --color-neutral-900: #332D2D;    /* Soft Charcoal */
-  --color-neutral-800: #3D2A2C;    /* Deep Dark Wine for footer */
-  --color-neutral-700: #4A3A3C;
+  --color-neutral-800: #2E1F47;    /* Deep Dark Purple for footer */
+  --color-neutral-700: #3D3545;
   --color-neutral-600: #5C5252;    /* Secondary text */
   --color-neutral-500: #8A8080;    /* Muted text */
   --color-neutral-400: #A89E9E;
@@ -118,7 +118,7 @@ h1, h2, h3, h4, h5, h6 {
 :not(footer) > h4, :not(footer) > h5, :not(footer) > h6,
 section h1, section h2, section h3,
 section h4, section h5, section h6 {
-  color: #592D31;
+  color: #4B2D7F;
 }
 
 p {
@@ -275,10 +275,10 @@ a[role="button"]:active {
 /* Gentle pulse for CTAs */
 @keyframes gentlePulse {
   0%, 100% {
-    box-shadow: 0 0 0 0 rgba(89, 45, 49, 0.2);
+    box-shadow: 0 0 0 0 rgba(75, 45, 127, 0.2);
   }
   50% {
-    box-shadow: 0 0 0 8px rgba(89, 45, 49, 0);
+    box-shadow: 0 0 0 8px rgba(75, 45, 127, 0);
   }
 }
 
@@ -331,7 +331,7 @@ a[role="button"]:active {
   background: #f1f1f1; 
 }
 ::-webkit-scrollbar-thumb {
-  background: #592D31; 
+  background: #4B2D7F; 
   border-radius: 5px;
 }
 ::-webkit-scrollbar-thumb:hover {

@@ -15,7 +15,7 @@ export function MissionVisionSection({ mission, vision }: MissionVisionSectionPr
   const coreValues = [
     { title: 'Love', description: 'Loving God and loving people is at the heart of everything we do.', icon: Heart, color: '#D4AF37' },
     { title: 'Community', description: 'We believe life is better together in authentic relationships.', icon: Users, color: '#7BA381' },
-    { title: 'Growth', description: "We're committed to becoming more like Jesus every day.", icon: TrendingUp, color: '#592D31' },
+    { title: 'Growth', description: "We're committed to becoming more like Jesus every day.", icon: TrendingUp, color: '#4B2D7F' },
     { title: 'Generosity', description: 'We give freely because we have been given so much.', icon: Gift, color: '#D4AF37' },
   ]
 
@@ -23,7 +23,7 @@ export function MissionVisionSection({ mission, vision }: MissionVisionSectionPr
     <div className="relative w-full overflow-hidden">
       {/* Holy Scripture Background Watermark */}
       <div className="absolute top-[25%] left-[-10%] select-none pointer-events-none opacity-[0.02] transform -rotate-6 z-0 mix-blend-multiply">
-        <h1 className="text-[12rem] md:text-[20rem] font-bold whitespace-nowrap" style={{ fontFamily: 'Georgia, serif', color: '#592D31' }}>
+        <h1 className="text-[12rem] md:text-[20rem] font-bold whitespace-nowrap" style={{ fontFamily: 'Georgia, serif', color: '#4B2D7F' }}>
           ACTS 2:42
         </h1>
       </div>
@@ -32,7 +32,7 @@ export function MissionVisionSection({ mission, vision }: MissionVisionSectionPr
       <section className="relative overflow-hidden z-10">
         <div className="grid lg:grid-cols-2 min-h-[600px]">
           {/* Left: Deep burgundy with mission */}
-          <div className="relative bg-[#592D31] py-20 px-6 sm:px-10 lg:px-16 flex items-center">
+          <div className="relative bg-[#4B2D7F] py-20 px-6 sm:px-10 lg:px-16 flex items-center">
             {/* Decorative cross watermark */}
             <div className="absolute top-10 right-10 opacity-[0.06]">
               <svg width="120" height="150" viewBox="0 0 120 150" fill="none">
@@ -66,7 +66,7 @@ export function MissionVisionSection({ mission, vision }: MissionVisionSectionPr
             {/* Decorative dots */}
             <div className="absolute bottom-10 left-10 grid grid-cols-4 gap-2 opacity-10">
               {[...Array(16)].map((_, i) => (
-                <div key={i} className="w-2 h-2 rounded-full bg-[#592D31]" />
+                <div key={i} className="w-2 h-2 rounded-full bg-[#4B2D7F]" />
               ))}
             </div>
             
@@ -77,11 +77,11 @@ export function MissionVisionSection({ mission, vision }: MissionVisionSectionPr
               transition={{ duration: 0.6, delay: 0.2 }}
               className="relative z-10 max-w-lg"
             >
-              <span className="inline-flex items-center gap-2 text-[#592D31] text-xs font-bold tracking-[0.2em] uppercase mb-6">
-                <span className="w-8 h-px bg-[#592D31]" />
+              <span className="inline-flex items-center gap-2 text-[#4B2D7F] text-xs font-bold tracking-[0.2em] uppercase mb-6">
+                <span className="w-8 h-px bg-[#4B2D7F]" />
                 Where We&apos;re Going
               </span>
-              <h2 className="text-4xl md:text-5xl font-bold text-[#592D31] mb-6 leading-tight">
+              <h2 className="text-4xl md:text-5xl font-bold text-[#4B2D7F] mb-6 leading-tight">
                 Our Vision
               </h2>
               <p className="text-lg text-[#332D2D] leading-relaxed">
@@ -90,7 +90,7 @@ export function MissionVisionSection({ mission, vision }: MissionVisionSectionPr
               
               {/* Accent quote */}
               <div className="mt-8 pl-6 border-l-4 border-[#D4AF37]">
-                <p className="text-[#592D31] italic text-base">
+                <p className="text-[#4B2D7F] italic text-base">
                   &ldquo;For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, plans to give you hope and a future.&rdquo;
                 </p>
                 <span className="text-sm text-[#8A8080] mt-2 block">— Jeremiah 29:11</span>
@@ -109,12 +109,12 @@ export function MissionVisionSection({ mission, vision }: MissionVisionSectionPr
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <span className="inline-flex items-center justify-center gap-3 text-[#592D31] text-xs font-bold tracking-[0.2em] uppercase mb-4">
+            <span className="inline-flex items-center justify-center gap-3 text-[#4B2D7F] text-xs font-bold tracking-[0.2em] uppercase mb-4">
               <span className="w-12 h-px bg-[#D4AF37]" />
               What Guides Us
               <span className="w-12 h-px bg-[#D4AF37]" />
             </span>
-            <h2 className="text-4xl md:text-5xl font-bold text-[#592D31]">Our Core Values</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-[#4B2D7F]">Our Core Values</h2>
           </motion.div>
 
           {/* Values — Classic Elegant Cards */}
@@ -131,7 +131,7 @@ export function MissionVisionSection({ mission, vision }: MissionVisionSectionPr
                   transition={{ delay: 0.1 * index }}
                   className={`relative group ${isEven ? 'md:mt-0' : 'md:mt-16'}`}
                 >
-                  <div className="relative bg-white rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-[0_20px_50px_rgba(89,45,49,0.15)]">
+                  <div className="relative bg-white rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-[0_20px_50px_rgba(75, 45, 127,0.15)]">
                     {/* Top accent bar */}
                     <div 
                       className="h-1.5 w-full"
@@ -161,7 +161,7 @@ export function MissionVisionSection({ mission, vision }: MissionVisionSectionPr
                       {/* Title with elegant underline */}
                       <div className="mb-4">
                         <h3 
-                          className="text-2xl lg:text-[1.75rem] font-bold text-[#592D31] mb-2"
+                          className="text-2xl lg:text-[1.75rem] font-bold text-[#4B2D7F] mb-2"
                           style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
                         >
                           {value.title}

@@ -19,7 +19,7 @@ export function TimelineSection({ historyItems, parchmentImage }: TimelineSectio
     { _id: '1', year: '1985', title: 'Church Founded', description: 'Our journey began with a small group of believers meeting in a living room. What started as a dream became reality through faith and dedication.', order: 1 },
     { _id: '2', year: '1992', title: 'First Building', description: 'We moved into our first dedicated worship space on Main Street. This milestone marked a new chapter in our growth.', order: 2 },
     { _id: '3', year: '2005', title: 'Community Outreach', description: 'Launched our first major community outreach program, feeding over 500 families annually. We became a beacon of hope in our neighborhood.', order: 3 },
-    { _id: '4', year: '2015', title: 'New Campus', description: 'Opened our current campus with expanded facilities for ministry, including a youth center and community hall.', order: 4 },
+    { _id: '4', year: '2015', title: 'New Campus', description: 'Opened our current campus with expanded facilities for ministry, including a fellowship center and community hall.', order: 4 },
     { _id: '5', year: '2020', title: 'Digital Ministry', description: 'Expanded online presence to reach people around the world. Our services now touch lives across continents.', order: 5 },
   ]
 

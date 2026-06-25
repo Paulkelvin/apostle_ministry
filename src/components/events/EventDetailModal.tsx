@@ -68,7 +68,6 @@ export function EventDetailModal({ event, onClose }: EventDetailModalProps) {
   const getCategoryLabel = (cat?: string) => {
     const labels: Record<string, string> = {
       'sunday-service': 'Sunday Service',
-      youth: 'Youth',
       'bible-study': 'Bible Study',
       online: 'Online',
       outreach: 'Outreach',
@@ -81,7 +80,6 @@ export function EventDetailModal({ event, onClose }: EventDetailModalProps) {
   const getCategoryColor = (cat?: string) => {
     const colors: Record<string, string> = {
       'sunday-service': 'bg-primary/10 text-primary',
-      youth: 'bg-blue-50 text-blue-600',
       'bible-study': 'bg-sage/10 text-sage',
       online: 'bg-purple-50 text-purple-600',
       outreach: 'bg-orange-50 text-orange-600',

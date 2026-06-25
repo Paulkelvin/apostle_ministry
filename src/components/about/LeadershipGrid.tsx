@@ -14,8 +14,7 @@ export function LeadershipGrid({ staff }: LeadershipGridProps) {
   const displayStaff = staff.length > 0 ? staff : [
     { _id: '1', name: 'Pastor John Smith', role: 'Senior Pastor', bio: 'Pastor John has been leading our congregation for over 15 years with a heart for teaching and shepherding.', rank: 1 },
     { _id: '2', name: 'Jane Smith', role: 'Worship Pastor', bio: 'Jane leads our worship ministry with a passion for creating meaningful worship experiences.', rank: 2 },
-    { _id: '3', name: 'Michael Johnson', role: 'Youth Pastor', bio: 'Michael is dedicated to helping the next generation discover their faith and purpose.', rank: 3 },
-    { _id: '4', name: 'Sarah Williams', role: 'Children\'s Director', bio: 'Sarah creates fun and engaging environments where kids can learn about Jesus.', rank: 4 },
+    { _id: '3', name: 'Michael Johnson', role: 'Outreach Pastor', bio: 'Michael is dedicated to serving the community and expanding the reach of our ministry.', rank: 3 },
   ]
 
   // Alternating accent colors for avatar fallbacks

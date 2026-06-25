@@ -20,7 +20,7 @@ export function MissionVisionSection({ mission, vision, accentImage }: MissionVi
     'To be a church where everyone can experience the transforming love of Jesus and become who God created them to be.'
 
   return (
-    <section className="relative py-24 lg:py-32 overflow-hidden" style={{ backgroundColor: '#592D31' }}>
+    <section className="relative py-24 lg:py-32 overflow-hidden" style={{ backgroundColor: '#4B2D7F' }}>
       {/* Decorative Accent Layer - Positioned at top-left, cut off towards the left edge and top */}
         {accentImage && (
           <div className="absolute -top-12 md:-top-16 -left-16 md:-left-24 w-[300px] h-[300px] pointer-events-none opacity-60 mix-blend-color-dodge z-0">
@@ -45,7 +45,7 @@ export function MissionVisionSection({ mission, vision, accentImage }: MissionVi
             <div
               className="absolute inset-0"
               style={{
-                background: 'linear-gradient(135deg, rgba(60,40,42,0.9) 0%, rgba(89,45,49,0.6) 50%, rgba(40,25,27,0.8) 100%)',
+                background: 'linear-gradient(135deg, rgba(60,40,42,0.9) 0%, rgba(75, 45, 127,0.6) 50%, rgba(40,25,27,0.8) 100%)',
                 opacity: 0.4,
               }}
             />
@@ -84,7 +84,7 @@ export function MissionVisionSection({ mission, vision, accentImage }: MissionVi
               {/* Mission */}
               <h3
                 className="text-3xl md:text-4xl font-bold mb-6 leading-tight"
-                style={{ color: '#592D31', fontFamily: 'Georgia, "Times New Roman", serif' }}
+                style={{ color: '#4B2D7F', fontFamily: 'Georgia, "Times New Roman", serif' }}
               >
                 Our Mission
               </h3>
@@ -98,7 +98,7 @@ export function MissionVisionSection({ mission, vision, accentImage }: MissionVi
               {/* Vision */}
               <h3
                 className="text-3xl md:text-4xl font-bold mb-6 leading-tight"
-                style={{ color: '#592D31', fontFamily: 'Georgia, "Times New Roman", serif' }}
+                style={{ color: '#4B2D7F', fontFamily: 'Georgia, "Times New Roman", serif' }}
               >
                 Our Vision
               </h3>

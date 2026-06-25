@@ -16,7 +16,6 @@ interface EventsPageClientProps {
 const FILTER_OPTIONS = [
   { key: 'all', label: 'All' },
   { key: 'sunday-service', label: 'Sunday Service' },
-  { key: 'youth', label: 'Youth' },
   { key: 'bible-study', label: 'Bible Study' },
   { key: 'online', label: 'Online' },
   { key: 'outreach', label: 'Outreach' },
@@ -121,7 +120,7 @@ export function EventsPageClient({ events }: EventsPageClientProps) {
                   {/* Grid */}
                   {gridEvents.length > 0 && (
                     <div>
-                      <h2 className="text-lg font-bold text-[#592D31] mb-5">
+                      <h2 className="text-lg font-bold text-[#4B2D7F] mb-5">
                         {activeFilter === 'all' ? 'Upcoming Events' : `${FILTER_OPTIONS.find(f => f.key === activeFilter)?.label || ''} Events`}
                       </h2>
                       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
