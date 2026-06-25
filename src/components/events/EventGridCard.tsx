@@ -52,7 +52,7 @@ export function EventGridCard({ event, onClick }: EventGridCardProps) {
                 Online
               </span>
             ) : (
-              <span className="bg-[#4B2D7F]/85 backdrop-blur-sm text-white text-[10px] font-bold px-2.5 py-1 rounded-full">
+              <span className="bg-[#6B4F9E]/85 backdrop-blur-sm text-white text-[10px] font-bold px-2.5 py-1 rounded-full">
                 In-Person
               </span>
             )}
@@ -61,7 +61,7 @@ export function EventGridCard({ event, onClick }: EventGridCardProps) {
 
         {/* Content */}
         <div className="p-5 flex-1 flex flex-col min-w-0">
-          <h3 className="text-base font-bold text-[#4B2D7F] mb-2 group-hover:text-[#4B2D7F] transition-colors line-clamp-2 leading-snug break-words">
+          <h3 className="text-base font-bold text-[#6B4F9E] mb-2 group-hover:text-[#6B4F9E] transition-colors line-clamp-2 leading-snug break-words">
             {event.title}
           </h3>
 

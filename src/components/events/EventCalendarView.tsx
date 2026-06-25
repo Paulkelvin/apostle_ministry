@@ -77,7 +77,7 @@ export function EventCalendarView({ events, onSelectEvent }: EventCalendarViewPr
       {/* Calendar Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <h2 className="text-2xl font-bold text-[#4B2D7F] tracking-tight">
+          <h2 className="text-2xl font-bold text-[#6B4F9E] tracking-tight">
             {format(currentMonth, 'MMMM yyyy')}
           </h2>
           <button
@@ -219,7 +219,7 @@ export function EventCalendarView({ events, onSelectEvent }: EventCalendarViewPr
                   <span className="text-xl font-bold block mt-0.5">{format(d, 'd')}</span>
                 </div>
                 <div className="min-w-0">
-                  <h3 className="font-bold text-[#4B2D7F] text-sm truncate">{event.title}</h3>
+                  <h3 className="font-bold text-[#6B4F9E] text-sm truncate">{event.title}</h3>
                   <p className="text-xs text-[#8A8080] mt-0.5">
                     {format(d, 'EEEE · h:mm a')}
                     {event.location && ` · ${event.location}`}

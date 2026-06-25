@@ -33,7 +33,7 @@ export default async function SermonsPage() {
       <section
         className="relative pt-32 pb-16 overflow-hidden"
         style={{
-          background: 'linear-gradient(135deg, #2E1F47 0%, #4B2D7F 100%)',
+          background: 'linear-gradient(135deg, #2E2448 0%, #6B4F9E 100%)',
         }}
       >
         <div
