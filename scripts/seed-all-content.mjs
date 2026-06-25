@@ -141,15 +141,9 @@ async function seedStaff() {
     },
     {
       name: 'Michael Johnson',
-      role: 'Youth Pastor',
-      bio: 'Michael is dedicated to helping the next generation discover their faith and purpose.',
+      role: 'Outreach Pastor',
+      bio: 'Michael is dedicated to serving the community and expanding the reach of our ministry.',
       rank: 3,
-    },
-    {
-      name: 'Sarah Williams',
-      role: "Children's Director",
-      bio: 'Sarah creates fun and engaging environments where kids can learn about Jesus.',
-      rank: 4,
     },
   ]
 
@@ -173,7 +167,7 @@ async function seedHistory() {
     { year: '1985', title: 'Church Founded', description: 'Our journey began with a small group of believers meeting in a living room. What started as a dream became reality through faith and dedication.', order: 1 },
     { year: '1992', title: 'First Building', description: 'We moved into our first dedicated worship space on Main Street. This milestone marked a new chapter in our growth.', order: 2 },
     { year: '2005', title: 'Community Outreach', description: 'Launched our first major community outreach program, feeding over 500 families annually. We became a beacon of hope in our neighborhood.', order: 3 },
-    { year: '2015', title: 'New Campus', description: 'Opened our current campus with expanded facilities for ministry, including a youth center and community hall.', order: 4 },
+    { year: '2015', title: 'New Campus', description: 'Opened our current campus with expanded facilities for ministry, including a fellowship center and community hall.', order: 4 },
     { year: '2020', title: 'Digital Ministry', description: 'Expanded online presence to reach people around the world. Our services now touch lives across continents.', order: 5 },
   ]
 
@@ -201,9 +195,9 @@ async function seedFAQs() {
       order: 1,
     },
     {
-      question: 'What about my kids?',
-      answer: 'We have engaging, age-appropriate programs for children from nursery through 5th grade during all services. Our trained staff and volunteers create a safe, fun environment where kids learn about Jesus.',
-      category: 'kids',
+      question: 'What can I expect during worship?',
+      answer: 'Our services include contemporary worship music followed by a practical, Bible-based message. We create an atmosphere where everyone can encounter God and grow in their faith.',
+      category: 'services',
       order: 2,
     },
     {
@@ -243,10 +237,10 @@ async function seedMinistries() {
   }
 
   const ministries = [
-    { name: 'Kids Ministry', slug: { _type: 'slug', current: 'kids' }, description: 'Fun and engaging programs for children of all ages.', featured: true, order: 1 },
-    { name: 'Youth Ministry', slug: { _type: 'slug', current: 'youth' }, description: 'Building the next generation of faith leaders.', featured: true, order: 2 },
-    { name: 'Worship Team', slug: { _type: 'slug', current: 'worship' }, description: 'Leading our congregation in praise and worship.', featured: true, order: 3 },
-    { name: 'Outreach', slug: { _type: 'slug', current: 'outreach' }, description: 'Serving our community with love and compassion.', featured: true, order: 4 },
+    { name: 'Worship Team', slug: { _type: 'slug', current: 'worship' }, description: 'Leading our congregation in praise and worship.', featured: true, order: 1 },
+    { name: 'Outreach', slug: { _type: 'slug', current: 'outreach' }, description: 'Serving our community with love and compassion.', featured: true, order: 2 },
+    { name: 'Prayer Ministry', slug: { _type: 'slug', current: 'prayer' }, description: 'Standing in the gap through intercession. Our prayer warriors come together to lift up the needs of our church, community, and world.', featured: true, order: 3 },
+    { name: 'Hospitality', slug: { _type: 'slug', current: 'hospitality' }, description: 'Creating a warm and welcoming atmosphere for every person who walks through our doors.', featured: true, order: 4 },
   ]
 
   for (const m of ministries) {
@@ -293,12 +287,12 @@ async function seedEvents() {
       category: 'bible-study',
     },
     {
-      title: 'Youth Night',
-      slug: { _type: 'slug', current: 'youth-night' },
+      title: 'Prayer & Worship Night',
+      slug: { _type: 'slug', current: 'prayer-worship-night' },
       date: makeDate(5, 18),
-      location: 'High Calling Ministries — Youth Center',
-      description: 'An evening of fellowship, games, worship, and an inspiring message for young people ages 13-25.',
-      category: 'youth',
+      location: 'High Calling Ministries — Fellowship Hall',
+      description: 'An evening of deep prayer, worship, and fellowship. Come expecting to encounter the presence of God.',
+      category: 'special',
       cost: 'Free',
     },
     {
@@ -355,7 +349,7 @@ async function seedGivingPage() {
     whyWeGiveSubtext: "Your generosity makes an eternal impact. Here's how your gifts are used:",
     givingBreakdown: [
       { _key: 'gb1', title: 'Local Outreach', percentage: '30%', description: 'Feeding the hungry, clothing the needy, and serving our local community with the love of Christ.' },
-      { _key: 'gb2', title: 'Ministry Operations', percentage: '50%', description: "Supporting worship, children's programs, youth ministry, and creating spaces for spiritual growth." },
+      { _key: 'gb2', title: 'Ministry Operations', percentage: '50%', description: "Supporting worship, outreach programs, and creating spaces for spiritual growth and community fellowship." },
       { _key: 'gb3', title: 'Global Missions', percentage: '20%', description: 'Partnering with missionaries and organizations around the world to spread the Gospel.' },
     ],
     givingMethods: [
