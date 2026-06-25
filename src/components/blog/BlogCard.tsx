@@ -36,7 +36,7 @@ export function BlogCard({ post, index = 0 }: BlogCardProps) {
               className="group-hover:scale-105 transition-transform duration-500"
             />
           ) : (
-            <div className="w-full h-full bg-gradient-to-br from-[#4B2D7F]/10 to-[#D4AF37]/10 flex items-center justify-center">
+            <div className="w-full h-full bg-gradient-to-br from-[#5B2D91]/10 to-[#D4AF37]/10 flex items-center justify-center">
               <BookOpen className="w-10 h-10 text-[#E0D8D2]" />
             </div>
           )}
@@ -44,7 +44,7 @@ export function BlogCard({ post, index = 0 }: BlogCardProps) {
           {category && (
             <span
               className="absolute top-3 left-3 text-[11px] font-semibold px-2.5 py-0.5 rounded-full text-white backdrop-blur-sm"
-              style={{ backgroundColor: category.color ? `${category.color}cc` : 'rgba(75, 45, 127,0.8)' }}
+              style={{ backgroundColor: category.color ? `${category.color}cc` : 'rgba(91, 45, 145,0.8)' }}
             >
               {category.title}
             </span>
@@ -65,7 +65,7 @@ export function BlogCard({ post, index = 0 }: BlogCardProps) {
           </div>
 
           {/* Title */}
-          <h3 className="text-[15px] font-bold text-[#4B2D7F] mb-1 group-hover:text-[#5C3A93] transition-colors line-clamp-2 leading-snug">
+          <h3 className="text-[15px] font-bold text-[#5B2D91] mb-1 group-hover:text-[#6E3CA6] transition-colors line-clamp-2 leading-snug">
             {post.title}
           </h3>
 
@@ -91,7 +91,7 @@ export function BlogCard({ post, index = 0 }: BlogCardProps) {
                 </div>
               ) : (
                 <div className="w-6 h-6 rounded-full bg-[#F4F0EA] flex items-center justify-center ring-1 ring-[#E0D8D2]/50">
-                  <span className="text-[10px] font-bold text-[#4B2D7F]">
+                  <span className="text-[10px] font-bold text-[#5B2D91]">
                     {post.author.name?.charAt(0)}
                   </span>
                 </div>

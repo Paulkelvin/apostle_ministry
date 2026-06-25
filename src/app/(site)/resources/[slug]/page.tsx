@@ -65,7 +65,7 @@ export default async function BlogPostPage({ params }: PageProps) {
       <section
         className="relative pt-32 pb-16 overflow-hidden"
         style={{
-          background: 'linear-gradient(135deg, #2E1F47 0%, #4B2D7F 100%)',
+          background: 'linear-gradient(135deg, #321D52 0%, #5B2D91 100%)',
         }}
       >
         <div
@@ -214,7 +214,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                 )}
                 <div className="flex-1">
                   <p className="text-xs font-semibold text-[#D4AF37] uppercase tracking-[0.15em] mb-2">About the Author</p>
-                  <h3 className="text-xl font-bold text-[#4B2D7F] mb-1" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>{post.author.name}</h3>
+                  <h3 className="text-xl font-bold text-[#5B2D91] mb-1" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>{post.author.name}</h3>
                   {post.author.role && (
                     <p className="text-[#8A8080] text-sm font-medium mb-4">{post.author.role}</p>
                   )}
@@ -237,7 +237,7 @@ export default async function BlogPostPage({ params }: PageProps) {
       {relatedPosts.length > 0 && (
         <section className="py-16 bg-[#F4F0EA]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl font-bold text-[#4B2D7F] mb-8 text-center">
+            <h2 className="text-2xl font-bold text-[#5B2D91] mb-8 text-center">
               Related Articles
             </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">

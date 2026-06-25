@@ -93,7 +93,7 @@ export function FeaturedMinistriesSection({ ministries }: FeaturedMinistriesSect
         {/* Section Header */}
         <div className="relative text-center mb-24 lg:mb-32 flex flex-col items-center">
           {/* Decorative watermark / background element */}
-          <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[15vw] md:text-[12vw] lg:text-[140px] font-black uppercase text-[#4B2D7F]/[0.03] pointer-events-none whitespace-nowrap select-none w-full text-center">
+          <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[15vw] md:text-[12vw] lg:text-[140px] font-black uppercase text-[#5B2D91]/[0.03] pointer-events-none whitespace-nowrap select-none w-full text-center">
             DEPARTMENTS
           </span>
           
@@ -106,7 +106,7 @@ export function FeaturedMinistriesSection({ ministries }: FeaturedMinistriesSect
             
             {/* Main Heading with Gradient - Reduced size as requested */}
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 tracking-tight flex flex-col md:inline-block md:gap-3">
-              <span className="text-[#4B2D7F]">Discover Your </span>
+              <span className="text-[#5B2D91]">Discover Your </span>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] via-[#C5A028] to-[#997A15]">Purpose</span>
             </h2>
             
@@ -142,8 +142,8 @@ export function FeaturedMinistriesSection({ ministries }: FeaturedMinistriesSect
                         className="object-cover transition-transform duration-700 group-hover:scale-105"
                       />
                     ) : (
-                      <div className="w-full h-full bg-gradient-to-br from-[#4B2D7F]/10 to-[#D4AF37]/10 flex items-center justify-center transition-transform duration-700 group-hover:scale-105">
-                        <span className="text-7xl font-bold" style={{ color: 'rgba(75, 45, 127,0.15)' }}>
+                      <div className="w-full h-full bg-gradient-to-br from-[#5B2D91]/10 to-[#D4AF37]/10 flex items-center justify-center transition-transform duration-700 group-hover:scale-105">
+                        <span className="text-7xl font-bold" style={{ color: 'rgba(91, 45, 145,0.15)' }}>
                           {ministry.name.charAt(0)}
                         </span>
                       </div>
@@ -155,7 +155,7 @@ export function FeaturedMinistriesSection({ ministries }: FeaturedMinistriesSect
                 <div className="w-full lg:w-1/2">
                   {/* Gold accent line */}
                   <div className="w-[2px] h-10 bg-[#D4AF37] mb-5" />
-                  <h3 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: '#4B2D7F' }}>
+                  <h3 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: '#5B2D91' }}>
                     {ministry.name}
                   </h3>
                   {ministry.description && (
@@ -200,7 +200,7 @@ export function FeaturedMinistriesSection({ ministries }: FeaturedMinistriesSect
             >
               {/* Drawer Header */}
               <div className="flex-shrink-0 px-6 py-6 border-b border-gray-100 flex items-center justify-between bg-[#FCFBF9]">
-                <h3 className="text-xl font-bold text-[#4B2D7F]">Join Department</h3>
+                <h3 className="text-xl font-bold text-[#5B2D91]">Join Department</h3>
                 <button 
                   onClick={closeDrawer}
                   className="p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-full transition-colors"
@@ -221,7 +221,7 @@ export function FeaturedMinistriesSection({ ministries }: FeaturedMinistriesSect
 
                 {!isSubmitted ? (
                   <div className="bg-gray-50 p-6 rounded-xl border border-gray-100 mb-8">
-                    <h5 className="font-bold text-[#4B2D7F] mb-4 border-b border-gray-200 pb-2">Express Interest</h5>
+                    <h5 className="font-bold text-[#5B2D91] mb-4 border-b border-gray-200 pb-2">Express Interest</h5>
                     <p className="text-sm text-gray-500 mb-6">Leave your details and leadership will reach out shortly.</p>
                     
                     <form onSubmit={handleJoinSubmit} className="space-y-4">
@@ -257,7 +257,7 @@ export function FeaturedMinistriesSection({ ministries }: FeaturedMinistriesSect
                       <button 
                         type="submit"
                         disabled={isSubmitting}
-                        className="w-full mt-4 bg-[#4B2D7F] hover:bg-[#3A1D65] text-white font-bold py-3 px-4 rounded-lg transition-colors flex items-center justify-center gap-2 border border-transparent disabled:opacity-70"
+                        className="w-full mt-4 bg-[#5B2D91] hover:bg-[#461F72] text-white font-bold py-3 px-4 rounded-lg transition-colors flex items-center justify-center gap-2 border border-transparent disabled:opacity-70"
                       >
                         {isSubmitting ? (
                           <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>

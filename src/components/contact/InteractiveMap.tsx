@@ -56,13 +56,13 @@ export function InteractiveMap({ churchAddress, initialMapSrc }: InteractiveMapP
       <div className="bg-white rounded-xl p-4 shadow-sm border border-[#F4F0EA]">
         <div className="flex items-center gap-2 mb-3">
           <Navigation className="w-4 h-4 text-[#D4AF37]" />
-          <h4 className="text-sm font-bold uppercase tracking-wider" style={{ color: '#4B2D7F' }}>
+          <h4 className="text-sm font-bold uppercase tracking-wider" style={{ color: '#5B2D91' }}>
             Get Directions
           </h4>
           {showingDirections && (
             <button
               onClick={handleReset}
-              className="ml-auto text-xs flex items-center gap-1 text-[#8A8080] hover:text-[#4B2D7F] transition-colors"
+              className="ml-auto text-xs flex items-center gap-1 text-[#8A8080] hover:text-[#5B2D91] transition-colors"
             >
               <RotateCcw className="w-3 h-3" />
               Reset
@@ -116,7 +116,7 @@ export function InteractiveMap({ churchAddress, initialMapSrc }: InteractiveMapP
         {isLoading && (
           <div className="absolute inset-0 bg-white/90 backdrop-blur-sm z-10 flex flex-col items-center justify-center">
             <Loader2 className="w-10 h-10 text-[#D4AF37] animate-spin mb-3" />
-            <p className="text-sm font-medium text-[#4B2D7F]">Fetching directions...</p>
+            <p className="text-sm font-medium text-[#5B2D91]">Fetching directions...</p>
             <p className="text-xs text-[#8A8080] mt-1">This may take a moment</p>
           </div>
         )}

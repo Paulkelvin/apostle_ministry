@@ -20,7 +20,7 @@ export function MissionVisionSection({ mission, vision, accentImage }: MissionVi
     'To be a church where everyone can experience the transforming love of Jesus and become who God created them to be.'
 
   return (
-    <section className="relative py-24 lg:py-32 overflow-hidden" style={{ backgroundColor: '#4B2D7F' }}>
+    <section className="relative py-24 lg:py-32 overflow-hidden" style={{ backgroundColor: '#5B2D91' }}>
       {/* Decorative Accent Layer - Positioned at top-left, cut off towards the left edge and top */}
         {accentImage && (
           <div className="absolute -top-12 md:-top-16 -left-16 md:-left-24 w-[300px] h-[300px] pointer-events-none opacity-60 mix-blend-color-dodge z-0">
@@ -45,15 +45,15 @@ export function MissionVisionSection({ mission, vision, accentImage }: MissionVi
             <div
               className="absolute inset-0"
               style={{
-                background: 'linear-gradient(135deg, rgba(60,40,42,0.9) 0%, rgba(75, 45, 127,0.6) 50%, rgba(40,25,27,0.8) 100%)',
-                opacity: 0.4,
+                background: 'linear-gradient(135deg, rgba(50,29,82,0.9) 0%, rgba(91,45,145,0.7) 50%, rgba(74,40,120,0.85) 100%)',
+                opacity: 0.5,
               }}
             />
             {/* Decorative text watermark */}
             <div className="absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none select-none">
               <span
                 className="text-[8rem] sm:text-[10rem] md:text-[14rem] font-bold uppercase leading-none tracking-wide"
-                style={{ color: 'rgba(255,255,255,0.04)', letterSpacing: '0.05em' }}
+                style={{ color: 'rgba(255,255,255,0.12)', letterSpacing: '0.05em' }}
               >
                 Faith
               </span>
@@ -84,7 +84,7 @@ export function MissionVisionSection({ mission, vision, accentImage }: MissionVi
               {/* Mission */}
               <h3
                 className="text-3xl md:text-4xl font-bold mb-6 leading-tight"
-                style={{ color: '#4B2D7F', fontFamily: 'Georgia, "Times New Roman", serif' }}
+                style={{ color: '#5B2D91', fontFamily: 'Georgia, "Times New Roman", serif' }}
               >
                 Our Mission
               </h3>
@@ -98,7 +98,7 @@ export function MissionVisionSection({ mission, vision, accentImage }: MissionVi
               {/* Vision */}
               <h3
                 className="text-3xl md:text-4xl font-bold mb-6 leading-tight"
-                style={{ color: '#4B2D7F', fontFamily: 'Georgia, "Times New Roman", serif' }}
+                style={{ color: '#5B2D91', fontFamily: 'Georgia, "Times New Roman", serif' }}
               >
                 Our Vision
               </h3>

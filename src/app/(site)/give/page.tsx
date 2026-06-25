@@ -49,7 +49,7 @@ export default async function GivePage() {
   
   // Demo donation campaigns if none exist
   const donationCampaigns: DonationCampaign[] = data?.donationCampaigns?.filter(c => c.isActive) || [
-    { title: 'Building Fund', description: 'Help us expand our sanctuary to accommodate our growing congregation.', goalAmount: 100000, currentAmount: 67500, color: '#4B2D7F', isActive: true },
+    { title: 'Building Fund', description: 'Help us expand our sanctuary to accommodate our growing congregation.', goalAmount: 100000, currentAmount: 67500, color: '#5B2D91', isActive: true },
     { title: 'Community Outreach', description: 'Provide meals, supplies, and support to families in need.', goalAmount: 15000, currentAmount: 12300, color: '#D4AF37', isActive: true },
     { title: 'Missions Fund', description: 'Support our missionaries and partners spreading the Gospel around the world.', goalAmount: 20000, currentAmount: 14200, color: '#7BA381', isActive: true },
   ]
@@ -93,7 +93,7 @@ export default async function GivePage() {
         className="relative min-h-screen pt-[120px] pb-12 flex items-center overflow-hidden bg-[#FCFBF9]"
       >
         {/* Subtle background texture */}
-        <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #4B2D7F 1px, transparent 0)', backgroundSize: '48px 48px' }} />
+        <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #5B2D91 1px, transparent 0)', backgroundSize: '48px 48px' }} />
 
         {/* Decorative gold accent */}
         <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-transparent via-[#D4AF37] to-transparent opacity-30" />
@@ -110,13 +110,13 @@ export default async function GivePage() {
                 </span>
               </div>
               
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#4B2D7F] mb-8 leading-[1.05] tracking-tight" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#5B2D91] mb-8 leading-[1.05] tracking-tight" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>
                 {heroTitle}
               </h1>
               
               {/* Scripture as elegant inline quote */}
               <div className="relative mb-10 pl-6 border-l-2 border-[#D4AF37]">
-                <p className="text-lg lg:text-xl text-[#3E1F6B] italic leading-relaxed">
+                <p className="text-lg lg:text-xl text-[#4A2878] italic leading-relaxed">
                   &ldquo;{heroVerse}&rdquo;
                 </p>
                 <p className="text-[#D4AF37] text-sm font-semibold mt-3 tracking-wide">
@@ -127,7 +127,7 @@ export default async function GivePage() {
               <div className="flex flex-col sm:flex-row gap-4">
                 <TithelyButton 
                   label="Give Now" 
-                  className="group text-base px-10 py-4 bg-[#4B2D7F] hover:bg-[#2E1F47] text-white rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-[1.02]" 
+                  className="group text-base px-10 py-4 bg-[#5B2D91] hover:bg-[#321D52] text-white rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-[1.02]" 
                 />
               </div>
             </div>
@@ -149,15 +149,15 @@ export default async function GivePage() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
                   </div>
                 ) : (
-                  <div className="aspect-square max-w-[420px] mx-auto rounded-full bg-gradient-to-br from-[#4B2D7F]/5 via-[#F4F0EA] to-[#D4AF37]/10 flex items-center justify-center">
-                    <div className="w-3/4 h-3/4 rounded-full bg-gradient-to-br from-[#FFFFFF] to-[#F8F6F3] shadow-[0_8px_60px_rgba(75, 45, 127,0.15)] flex items-center justify-center">
+                  <div className="aspect-square max-w-[420px] mx-auto rounded-full bg-gradient-to-br from-[#5B2D91]/5 via-[#F4F0EA] to-[#D4AF37]/10 flex items-center justify-center">
+                    <div className="w-3/4 h-3/4 rounded-full bg-gradient-to-br from-[#FFFFFF] to-[#F8F6F3] shadow-[0_8px_60px_rgba(91, 45, 145,0.15)] flex items-center justify-center">
                       <Heart className="w-20 h-20 text-[#D4AF37]" strokeWidth={1} />
                     </div>
                   </div>
                 )}
                 {/* Floating accent elements */}
                 <div className="absolute top-8 right-8 w-4 h-4 rounded-full bg-[#D4AF37]" />
-                <div className="absolute bottom-12 left-4 w-2 h-2 rounded-full bg-[#4B2D7F]/40" />
+                <div className="absolute bottom-12 left-4 w-2 h-2 rounded-full bg-[#5B2D91]/40" />
               </div>
             </div>
           </div>
@@ -178,7 +178,7 @@ export default async function GivePage() {
               <span className="text-[#CBA052] text-xs font-semibold tracking-[0.25em] uppercase">Your Impact</span>
               <div className="w-16 h-[1px] bg-[#CBA052]" />
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#3E1F6B] mb-4" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#4A2878] mb-4" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>
               Building Kingdom Futures
             </h2>
             <p className="text-[#595959] text-base max-w-2xl mx-auto">
@@ -198,7 +198,7 @@ export default async function GivePage() {
                   className={`relative rounded-[24px] overflow-hidden transition-all duration-300 hover:scale-[1.02] ${
                     isLarge ? 'md:col-span-2 md:row-span-2' : ''
                   } ${
-                    index === 0 ? 'bg-[#3E1F6B]' : 
+                    index === 0 ? 'bg-[#4A2878]' : 
                     index === 3 ? 'bg-[#CBA052]' : 
                     'bg-white shadow-[0_4px_20px_rgba(0,0,0,0.05)]'
                   }`}
@@ -224,13 +224,13 @@ export default async function GivePage() {
                       index === 0 ? 'absolute top-10 left-10' : 'mb-auto'
                     } ${
                       index === 0 ? 'bg-white/10' : 
-                      index === 3 ? 'bg-[#3E1F6B]/15' : 
+                      index === 3 ? 'bg-[#4A2878]/15' : 
                       'bg-[#F7F5F0]'
                     }`}>
                       <Icon className={`w-6 h-6 ${
                         index === 0 ? 'text-[#CBA052]' : 
-                        index === 3 ? 'text-[#3E1F6B]' : 
-                        'text-[#3E1F6B]'
+                        index === 3 ? 'text-[#4A2878]' : 
+                        'text-[#4A2878]'
                       }`} />
                     </div>
                     
@@ -252,7 +252,7 @@ export default async function GivePage() {
                       </div>
                       <h3 
                         className="text-lg font-bold mb-2" 
-                        style={{ fontFamily: 'Georgia, "Times New Roman", serif', color: index === 0 ? '#FFFFFF' : index === 3 ? '#2B1A1C' : '#3E1F6B' }}
+                        style={{ fontFamily: 'Georgia, "Times New Roman", serif', color: index === 0 ? '#FFFFFF' : index === 3 ? '#2B1A1C' : '#4A2878' }}
                       >
                         {area.title}
                       </h3>
@@ -274,7 +274,7 @@ export default async function GivePage() {
       </section>
 
       {/* Giving Breakdown — Visual */}
-      <section className="py-24 bg-[#4B2D7F] relative overflow-hidden">
+      <section className="py-24 bg-[#5B2D91] relative overflow-hidden">
         {/* Decorative background pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-10 left-10 w-40 h-40 border border-white rounded-full" />
@@ -321,10 +321,10 @@ export default async function GivePage() {
           <div className="text-center mb-16">
             <div className="flex items-center justify-center gap-4 mb-4">
               <div className="w-16 h-[1px] bg-[#D4AF37]" />
-              <span className="text-[#4B2D7F] text-xs font-semibold tracking-[0.25em] uppercase">Ways to Give</span>
+              <span className="text-[#5B2D91] text-xs font-semibold tracking-[0.25em] uppercase">Ways to Give</span>
               <div className="w-16 h-[1px] bg-[#D4AF37]" />
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#4B2D7F]" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#5B2D91]" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>
               Choose Your Giving Method
             </h2>
           </div>
@@ -333,7 +333,7 @@ export default async function GivePage() {
             {methods.map((method, index) => {
               const Icon = iconMap[method.icon] || CreditCard
               const colors = [
-                { gradient: 'from-[#4B2D7F] to-[#5C3A93]', light: 'bg-[#4B2D7F]/5', text: 'text-[#4B2D7F]' },
+                { gradient: 'from-[#5B2D91] to-[#6E3CA6]', light: 'bg-[#5B2D91]/5', text: 'text-[#5B2D91]' },
                 { gradient: 'from-[#D4AF37] to-[#C9A431]', light: 'bg-[#D4AF37]/5', text: 'text-[#D4AF37]' },
                 { gradient: 'from-[#7BA381] to-[#6E9475]', light: 'bg-[#7BA381]/5', text: 'text-[#7BA381]' },
               ][index]
@@ -341,7 +341,7 @@ export default async function GivePage() {
               return (
                 <div 
                   key={method.title} 
-                  className="relative bg-white rounded-3xl p-8 hover:shadow-2xl hover:shadow-[#4B2D7F]/10 transition-all duration-500 group"
+                  className="relative bg-white rounded-3xl p-8 hover:shadow-2xl hover:shadow-[#5B2D91]/10 transition-all duration-500 group"
                 >
                   {/* Subtle gradient line at top */}
                   <div className={`absolute top-0 left-8 right-8 h-1 bg-gradient-to-r ${colors.gradient} rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
@@ -349,7 +349,7 @@ export default async function GivePage() {
                   <div className={`w-14 h-14 rounded-2xl ${colors.light} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
                     <Icon className={`w-7 h-7 ${colors.text}`} />
                   </div>
-                  <h3 className="text-xl font-bold text-[#4B2D7F] mb-3" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>{method.title}</h3>
+                  <h3 className="text-xl font-bold text-[#5B2D91] mb-3" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>{method.title}</h3>
                   <p className="text-[#5C5252] mb-6 leading-relaxed text-sm">
                     {method.description}
                   </p>

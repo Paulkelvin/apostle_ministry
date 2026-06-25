@@ -43,7 +43,7 @@ export function NewsletterSubscribe() {
   return (
     <div className="bg-[#FFFFFF] rounded-xl p-6 text-center border border-[#E0D8D2]/60 shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
       <div className="relative z-10">
-        <h3 className="text-lg font-bold text-[#4B2D7F] mb-1">
+        <h3 className="text-lg font-bold text-[#5B2D91] mb-1">
           Stay Connected
         </h3>
         <p className="text-[#332D2D] text-[13px] mb-4">
@@ -57,7 +57,7 @@ export function NewsletterSubscribe() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0 }}
-              className="flex items-center justify-center gap-2 text-[#4B2D7F]"
+              className="flex items-center justify-center gap-2 text-[#5B2D91]"
             >
               <CheckCircle className="w-5 h-5" />
               <span className="text-sm font-medium">{message}</span>
@@ -77,12 +77,12 @@ export function NewsletterSubscribe() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="w-full px-4 py-2.5 rounded-lg bg-[#FCFBF9] border border-[#E0D8D2] text-[#332D2D] placeholder-[#8A8080] text-sm outline-none focus:border-[#4B2D7F] focus:ring-2 focus:ring-[#4B2D7F]/10 transition-all"
+                className="w-full px-4 py-2.5 rounded-lg bg-[#FCFBF9] border border-[#E0D8D2] text-[#332D2D] placeholder-[#8A8080] text-sm outline-none focus:border-[#5B2D91] focus:ring-2 focus:ring-[#5B2D91]/10 transition-all"
               />
               <button
                 type="submit"
                 disabled={status === 'loading'}
-                className="w-full px-5 py-2.5 rounded-lg bg-[#4B2D7F] text-white font-semibold text-sm hover:bg-[#5C3A93] cursor-pointer transition-colors flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
+                className="w-full px-5 py-2.5 rounded-lg bg-[#5B2D91] text-white font-semibold text-sm hover:bg-[#6E3CA6] cursor-pointer transition-colors flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
               >
                 <Send className="w-3.5 h-3.5" />
                 {status === 'loading' ? 'Subscribing...' : 'Subscribe'}

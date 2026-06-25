@@ -39,14 +39,14 @@ export default async function ContactPage() {
 
         {/* Decorative MicroGraphics */}
         <FloatingRing className="top-32 left-[40%] opacity-40 mix-blend-multiply" size={50} delay={0.5} color="#D4AF37" />
-        <WaveLine className="bottom-[10%] right-[30%] opacity-20 mix-blend-multiply rotate-[10deg]" delay={1.2} color="#4B2D7F" />
+        <WaveLine className="bottom-[10%] right-[30%] opacity-20 mix-blend-multiply rotate-[10deg]" delay={1.2} color="#5B2D91" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             {/* Left: Contact Info */}
             <div className="pt-4 lg:pt-8">
               <span className="inline-block text-xs font-bold tracking-[0.2em] uppercase text-primary mb-4">Reach Out</span>
-              <h1 className="text-5xl md:text-6xl font-bold text-[#4B2D7F] mb-6 tracking-tight leading-[1.1]">
+              <h1 className="text-5xl md:text-6xl font-bold text-[#5B2D91] mb-6 tracking-tight leading-[1.1]">
                 Contact Us
               </h1>
               <p className="text-lg text-[#332D2D] mb-10 max-w-md leading-relaxed">
@@ -108,7 +108,7 @@ export default async function ContactPage() {
                 <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/15 transition-colors">
                   <Headset className="w-5 h-5 text-primary" />
                 </div>
-                <h3 className="font-bold text-[#4B2D7F]">Pastoral Support</h3>
+                <h3 className="font-bold text-[#5B2D91]">Pastoral Support</h3>
               </div>
               <p className="text-[#332D2D] text-sm leading-relaxed">
                 Our pastoral team is available to address any spiritual concerns, prayer 
@@ -121,7 +121,7 @@ export default async function ContactPage() {
                 <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center group-hover:bg-accent/15 transition-colors">
                   <MessageSquare className="w-5 h-5 text-accent-dark" />
                 </div>
-                <h3 className="font-bold text-[#4B2D7F]">Feedback &amp; Suggestions</h3>
+                <h3 className="font-bold text-[#5B2D91]">Feedback &amp; Suggestions</h3>
               </div>
               <p className="text-[#332D2D] text-sm leading-relaxed">
                 We value your feedback and are continuously working to improve 
@@ -134,7 +134,7 @@ export default async function ContactPage() {
                 <div className="w-10 h-10 rounded-xl bg-sage/10 flex items-center justify-center group-hover:bg-sage/15 transition-colors">
                   <Newspaper className="w-5 h-5 text-sage-dark" />
                 </div>
-                <h3 className="font-bold text-[#4B2D7F]">Media Inquiries</h3>
+                <h3 className="font-bold text-[#5B2D91]">Media Inquiries</h3>
               </div>
               <p className="text-[#332D2D] text-sm leading-relaxed">
                 For media-related questions or press inquiries, please contact us 
@@ -150,7 +150,7 @@ export default async function ContactPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <span className="inline-block text-xs font-bold tracking-[0.2em] uppercase text-primary mb-3">Visit Us</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-[#4B2D7F] leading-tight">
+              <h2 className="text-3xl md:text-4xl font-bold text-[#5B2D91] leading-tight">
               Come Worship With Us
             </h2>
           </div>
@@ -163,7 +163,7 @@ export default async function ContactPage() {
 
             {/* Compact Location Details Card */}
             <div className="bg-white rounded-2xl p-6 shadow-sm border border-[#F4F0EA] lg:self-center">
-              <h3 className="font-bold text-[#4B2D7F] text-lg mb-2">
+              <h3 className="font-bold text-[#5B2D91] text-lg mb-2">
                 {serviceTimes?.locationName || 'Main Campus'}
               </h3>
               <p className="text-[#332D2D] text-sm whitespace-pre-line leading-relaxed mb-4">

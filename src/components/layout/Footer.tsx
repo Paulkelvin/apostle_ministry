@@ -49,7 +49,7 @@ export function Footer({ socialLinks = [], statement501c3, siteName, siteTagline
   const addressLines = (address || "High Calling Ministries\n401-A Prince George's Blvd\nUpper Marlboro, MD 20774").split('\n')
 
   return (
-      <footer data-footer className="bg-[#2E1F47] text-[#F4F0EA] relative overflow-hidden">
+      <footer data-footer className="bg-[#321D52] text-[#F4F0EA] relative overflow-hidden">
         {/* Full Background Footer Graphics */}
         {skylineImage && (
           <div className="absolute inset-0 w-full h-full pointer-events-none opacity-15 mix-blend-color-dodge z-0">
@@ -82,7 +82,7 @@ export function Footer({ socialLinks = [], statement501c3, siteName, siteTagline
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-full bg-[#3D3545] flex items-center justify-center hover:bg-[#4B2D7F] hover:text-white transition-colors"
+                    className="w-10 h-10 rounded-full bg-[#3E2F55] flex items-center justify-center hover:bg-[#5B2D91] hover:text-white transition-colors"
                     aria-label={`Follow us on ${link.platform}`}
                   >
                     <Icon className="w-5 h-5" />
@@ -145,7 +145,7 @@ export function Footer({ socialLinks = [], statement501c3, siteName, siteTagline
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-[#3D3545]">
+      <div className="border-t border-[#3E2F55]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex justify-center items-center">
             <p className="legal text-sm" style={{ color: '#8A8080' }}>

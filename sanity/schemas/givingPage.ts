@@ -133,13 +133,13 @@ export const givingPage = defineType({
               title: 'Accent Color',
               options: {
                 list: [
-                  { title: 'Burgundy', value: '#4B2D7F' },
+                  { title: 'Burgundy', value: '#5B2D91' },
                   { title: 'Gold', value: '#D4AF37' },
                   { title: 'Sage', value: '#7BA381' },
                   { title: 'Blue', value: '#4A6FA5' },
                 ],
               },
-              initialValue: '#4B2D7F',
+              initialValue: '#5B2D91',
             },
             { name: 'isActive', type: 'boolean', title: 'Active Campaign', initialValue: true },
             { name: 'endDate', type: 'date', title: 'End Date (optional)' },

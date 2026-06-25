@@ -87,7 +87,7 @@ export function FeaturedEventCard({ event, onClick }: FeaturedEventCardProps) {
               </div>
             </div>
 
-            <h3 className="text-2xl lg:text-3xl font-bold text-[#1C1B1A] mb-3 group-hover:text-[#4B2D7F] transition-colors tracking-tight leading-tight">
+            <h3 className="text-2xl lg:text-3xl font-bold text-[#1C1B1A] mb-3 group-hover:text-[#5B2D91] transition-colors tracking-tight leading-tight">
               {event.title}
             </h3>
 
