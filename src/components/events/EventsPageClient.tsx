@@ -120,7 +120,7 @@ export function EventsPageClient({ events }: EventsPageClientProps) {
                   {/* Grid */}
                   {gridEvents.length > 0 && (
                     <div>
-                      <h2 className="text-lg font-bold text-[#5B2D91] mb-5">
+                      <h2 className="text-lg font-bold text-[#6B4F9E] mb-5">
                         {activeFilter === 'all' ? 'Upcoming Events' : `${FILTER_OPTIONS.find(f => f.key === activeFilter)?.label || ''} Events`}
                       </h2>
                       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -56,7 +56,7 @@ export function Navbar() {
             <Link href="/" className="flex items-center space-x-2 group">
               <span
                 className={`text-2xl font-bold tracking-tight transition-colors duration-300 ${
-                  showSolid ? 'text-[#5B2D91]' : 'text-white'
+                  showSolid ? 'text-[#6B4F9E]' : 'text-white'
                 }`}
                 style={!showSolid ? { color: '#FFFFFF' } : undefined}
               >
@@ -81,8 +81,8 @@ export function Navbar() {
                     className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
                       showSolid
                         ? isActive
-                          ? 'text-[#5B2D91] bg-[#F4F0EA]'
-                          : 'text-[#332D2D] hover:text-[#5B2D91] hover:bg-[#F4F0EA]'
+                          ? 'text-[#6B4F9E] bg-[#F4F0EA]'
+                          : 'text-[#332D2D] hover:text-[#6B4F9E] hover:bg-[#F4F0EA]'
                         : isActive
                           ? 'text-white bg-white/10'
                           : 'text-white/85 hover:text-white hover:bg-white/10'
@@ -97,7 +97,7 @@ export function Navbar() {
             {/* Mobile Menu Button */}
             <button
               className={`md:hidden p-2 rounded-lg transition-colors ${
-                showSolid ? 'text-[#5B2D91] hover:bg-[#F4F0EA]' : 'text-white hover:bg-white/10'
+                showSolid ? 'text-[#6B4F9E] hover:bg-[#F4F0EA]' : 'text-white hover:bg-white/10'
               }`}
               onClick={() => setIsMobileMenuOpen(true)}
               aria-label="Open mobile menu"
@@ -129,7 +129,7 @@ export function Navbar() {
             >
               <div className="p-6">
                 <div className="flex justify-between items-center mb-10">
-                  <span className="text-xl font-bold text-[#5B2D91]">
+                  <span className="text-xl font-bold text-[#6B4F9E]">
                     Menu
                   </span>
                   <button
@@ -149,8 +149,8 @@ export function Navbar() {
                         href={link.href}
                         className={`text-base font-medium py-3 px-4 rounded-lg transition-all ${
                           isActive
-                            ? 'text-[#5B2D91] bg-[#F4F0EA]'
-                            : 'text-[#332D2D] hover:text-[#5B2D91] hover:bg-[#F4F0EA]'
+                            ? 'text-[#6B4F9E] bg-[#F4F0EA]'
+                            : 'text-[#332D2D] hover:text-[#6B4F9E] hover:bg-[#F4F0EA]'
                         }`}
                         onClick={() => setIsMobileMenuOpen(false)}
                       >

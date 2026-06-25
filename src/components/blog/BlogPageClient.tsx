@@ -108,7 +108,7 @@ export function BlogPageClient({ posts, categories }: BlogPageClientProps) {
                 className="transition-transform duration-700"
               />
             ) : (
-              <div className="absolute inset-0 bg-gradient-to-br from-[#321D52] to-[#5B2D91]" />
+              <div className="absolute inset-0 bg-gradient-to-br from-[#2E2448] to-[#6B4F9E]" />
             )}
 
             {/* Scrim overlay: dark left for text, fading right to show image */}
@@ -199,7 +199,7 @@ export function BlogPageClient({ posts, categories }: BlogPageClientProps) {
                 Our Stories
               </span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#5B2D91] tracking-tight">Resources</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#6B4F9E] tracking-tight">Resources</h2>
             <p className="text-[#8A8080] mt-2 text-base max-w-lg">
               News, devotionals, and stories from our church family
             </p>
@@ -219,7 +219,7 @@ export function BlogPageClient({ posts, categories }: BlogPageClientProps) {
             <div className="relative flex-shrink-0" ref={sortRef}>
               <button
                 onClick={() => setSortOpen(!sortOpen)}
-                className="flex items-center gap-2 text-sm text-[#332D2D] bg-[#FFFFFF] border border-[#E0D8D2] rounded-lg px-4 py-2 hover:border-[#5B2D91] transition-colors"
+                className="flex items-center gap-2 text-sm text-[#332D2D] bg-[#FFFFFF] border border-[#E0D8D2] rounded-lg px-4 py-2 hover:border-[#6B4F9E] transition-colors"
               >
                 Sort by: <span className="font-medium text-[#332D2D]">{sortBy === 'newest' ? 'Newest' : 'Oldest'}</span>
                 <ChevronDown className={`w-4 h-4 transition-transform ${sortOpen ? 'rotate-180' : ''}`} />
@@ -237,7 +237,7 @@ export function BlogPageClient({ posts, categories }: BlogPageClientProps) {
                         key={opt}
                         onClick={() => { setSortBy(opt); setSortOpen(false); }}
                         className={`block w-full text-left px-4 py-2 text-sm hover:bg-[#F4F0EA] transition-colors ${
-                          sortBy === opt ? 'text-[#5B2D91] font-medium bg-[#F4F0EA]/50' : 'text-[#332D2D]'
+                          sortBy === opt ? 'text-[#6B4F9E] font-medium bg-[#F4F0EA]/50' : 'text-[#332D2D]'
                         }`}
                       >
                         {opt === 'newest' ? 'Newest' : 'Oldest'}
@@ -278,7 +278,7 @@ export function BlogPageClient({ posts, categories }: BlogPageClientProps) {
                         <button
                           onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                           disabled={currentPage === 1}
-                          className="w-9 h-9 rounded-lg border border-[#E0D8D2] flex items-center justify-center text-[#332D2D] hover:border-[#5B2D91] hover:text-[#5B2D91] disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                          className="w-9 h-9 rounded-lg border border-[#E0D8D2] flex items-center justify-center text-[#332D2D] hover:border-[#6B4F9E] hover:text-[#6B4F9E] disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
                         >
                           <ChevronLeft className="w-4 h-4" />
                         </button>
@@ -288,8 +288,8 @@ export function BlogPageClient({ posts, categories }: BlogPageClientProps) {
                             onClick={() => setCurrentPage(page)}
                             className={`w-9 h-9 rounded-lg text-sm font-medium transition-colors ${
                               currentPage === page
-                                ? 'bg-[#5B2D91] text-white'
-                                : 'border border-[#E0D8D2] text-[#332D2D] hover:border-[#5B2D91] hover:text-[#5B2D91]'
+                                ? 'bg-[#6B4F9E] text-white'
+                                : 'border border-[#E0D8D2] text-[#332D2D] hover:border-[#6B4F9E] hover:text-[#6B4F9E]'
                             }`}
                           >
                             {page}
@@ -298,7 +298,7 @@ export function BlogPageClient({ posts, categories }: BlogPageClientProps) {
                         <button
                           onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
                           disabled={currentPage === totalPages}
-                          className="w-9 h-9 rounded-lg border border-[#E0D8D2] flex items-center justify-center text-[#332D2D] hover:border-[#5B2D91] hover:text-[#5B2D91] disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                          className="w-9 h-9 rounded-lg border border-[#E0D8D2] flex items-center justify-center text-[#332D2D] hover:border-[#6B4F9E] hover:text-[#6B4F9E] disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
                         >
                           <ChevronRight className="w-4 h-4" />
                         </button>
@@ -315,7 +315,7 @@ export function BlogPageClient({ posts, categories }: BlogPageClientProps) {
                     <div className="w-16 h-16 rounded-full bg-[#F4F0EA] flex items-center justify-center mx-auto mb-4">
                       <BookOpen className="w-8 h-8 text-[#E0D8D2]" />
                     </div>
-                    <h2 className="text-xl font-bold text-[#5B2D91] mb-2">
+                    <h2 className="text-xl font-bold text-[#6B4F9E] mb-2">
                       {search || activeCategory ? 'No matching articles' : 'No Posts Yet'}
                     </h2>
                     <p className="text-sm text-[#332D2D]">
@@ -329,7 +329,7 @@ export function BlogPageClient({ posts, categories }: BlogPageClientProps) {
                           setSearch('')
                           setActiveCategory(null)
                         }}
-                        className="mt-4 text-sm text-[#5B2D91] font-medium hover:underline"
+                        className="mt-4 text-sm text-[#6B4F9E] font-medium hover:underline"
                       >
                         Clear filters
                       </button>

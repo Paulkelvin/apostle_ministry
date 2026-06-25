@@ -37,7 +37,7 @@ export function FeaturedPost({ post }: FeaturedPostProps) {
                   className="group-hover:scale-105 transition-transform duration-700"
                 />
               ) : (
-                <div className="w-full h-full bg-gradient-to-br from-[#5B2D91]/10 to-[#D4AF37]/10 flex items-center justify-center">
+                <div className="w-full h-full bg-gradient-to-br from-[#6B4F9E]/10 to-[#D4AF37]/10 flex items-center justify-center">
                   <BookOpen className="w-16 h-16 text-[#E0D8D2]" />
                 </div>
               )}
@@ -45,7 +45,7 @@ export function FeaturedPost({ post }: FeaturedPostProps) {
               {category && (
                 <span
                   className="absolute top-6 left-6 text-sm font-semibold px-4 py-1.5 rounded-full text-white backdrop-blur-sm"
-                  style={{ backgroundColor: category.color ? `${category.color}cc` : 'rgba(91, 45, 145,0.8)' }}
+                  style={{ backgroundColor: category.color ? `${category.color}cc` : 'rgba(107, 79, 158,0.8)' }}
                 >
                   {category.title}
                 </span>
@@ -58,7 +58,7 @@ export function FeaturedPost({ post }: FeaturedPostProps) {
                 <span>Featured Post</span>
               </div>
 
-              <h2 className="text-xl lg:text-2xl font-bold text-[#5B2D91] mb-3 group-hover:text-[#5B2D91] transition-colors line-clamp-2">
+              <h2 className="text-xl lg:text-2xl font-bold text-[#6B4F9E] mb-3 group-hover:text-[#6B4F9E] transition-colors line-clamp-2">
                 {post.title}
               </h2>
 
@@ -84,7 +84,7 @@ export function FeaturedPost({ post }: FeaturedPostProps) {
                       </div>
                     ) : (
                       <div className="w-8 h-8 rounded-full bg-[#F4F0EA] flex items-center justify-center ring-1 ring-[#E0D8D2]/50">
-                        <span className="text-xs font-bold text-[#5B2D91]">
+                        <span className="text-xs font-bold text-[#6B4F9E]">
                           {post.author.name?.charAt(0)}
                         </span>
                       </div>
@@ -104,7 +104,7 @@ export function FeaturedPost({ post }: FeaturedPostProps) {
                 </span>
               </div>
 
-              <div className="flex items-center gap-2 text-[#5B2D91] font-semibold text-[13px] group-hover:gap-3 transition-all">
+              <div className="flex items-center gap-2 text-[#6B4F9E] font-semibold text-[13px] group-hover:gap-3 transition-all">
                 Read Article
                 <ArrowRight className="w-3.5 h-3.5" />
               </div>

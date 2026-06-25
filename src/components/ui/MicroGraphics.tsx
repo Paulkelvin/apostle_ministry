@@ -48,7 +48,7 @@ export function SubtleSparkle({ className = '', color = "#D4AF37", size = 30, de
   )
 }
 
-export function DottedSquare({ className = '', color = "#5B2D91", delay = 0 }) {
+export function DottedSquare({ className = '', color = "#6B4F9E", delay = 0 }) {
   return (
     <motion.div
       className={`absolute pointer-events-none z-0 opacity-20 ${className}`}

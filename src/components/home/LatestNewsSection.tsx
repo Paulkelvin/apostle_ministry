@@ -19,7 +19,7 @@ export function LatestNewsSection({ posts, accentImage }: LatestNewsSectionProps
     return (
       <section className="py-16 bg-[#F4F0EA]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold mb-3" style={{ color: '#5B2D91' }}>Latest Resources</h2>
+          <h2 className="text-3xl font-bold mb-3" style={{ color: '#6B4F9E' }}>Latest Resources</h2>
           <p style={{ color: '#332D2D' }}>No posts yet. Check back soon!</p>
         </div>
       </section>
@@ -35,7 +35,7 @@ export function LatestNewsSection({ posts, accentImage }: LatestNewsSectionProps
     <section className="relative py-20 lg:py-28 bg-[#F4F0EA] overflow-hidden">
 
       {/* Decorative MicroGraphics */}
-      <FloatingCross className="bottom-[10%] right-[3%] opacity-15 mix-blend-multiply z-0" delay={1.5} size={60} color="#5B2D91" />
+      <FloatingCross className="bottom-[10%] right-[3%] opacity-15 mix-blend-multiply z-0" delay={1.5} size={60} color="#6B4F9E" />
 
       <motion.div 
         initial={{ opacity: 0, y: 30 }}
@@ -57,13 +57,13 @@ export function LatestNewsSection({ posts, accentImage }: LatestNewsSectionProps
           <div className="relative flex flex-col sm:flex-row justify-between items-start sm:items-end">
             <div>
               <div className="w-[2px] h-10 bg-[#D4AF37] mb-4" />
-              <h2 className="text-3xl md:text-4xl font-bold mb-1" style={{ color: '#5B2D91' }}>Latest Resources</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-1" style={{ color: '#6B4F9E' }}>Latest Resources</h2>
               <p className="text-sm" style={{ color: '#5C5252' }}>Stories, devotionals, and news from our community</p>
             </div>
             <Link
               href="/resources"
-              className="mt-4 sm:mt-0 inline-flex items-center gap-2 font-semibold text-sm hover:text-[#321D52] transition-colors"
-              style={{ color: '#5B2D91' }}
+              className="mt-4 sm:mt-0 inline-flex items-center gap-2 font-semibold text-sm hover:text-[#2E2448] transition-colors"
+              style={{ color: '#6B4F9E' }}
             >
               View All Resources
               <ArrowRight className="w-4 h-4" />
@@ -84,7 +84,7 @@ export function LatestNewsSection({ posts, accentImage }: LatestNewsSectionProps
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
               ) : (
-                <div className="absolute inset-0 bg-gradient-to-br from-[#5B2D91]/30 to-[#D4AF37]/10 flex items-center justify-center">
+                <div className="absolute inset-0 bg-gradient-to-br from-[#6B4F9E]/30 to-[#D4AF37]/10 flex items-center justify-center">
                   <BookOpen className="w-16 h-16 text-[#E0D8D2]/30" />
                 </div>
               )}
@@ -146,7 +146,7 @@ export function LatestNewsSection({ posts, accentImage }: LatestNewsSectionProps
                           className="object-cover group-hover:scale-105 transition-transform duration-500"
                         />
                       ) : (
-                        <div className="w-full h-full bg-gradient-to-br from-[#5B2D91]/10 to-[#D4AF37]/10 flex items-center justify-center">
+                        <div className="w-full h-full bg-gradient-to-br from-[#6B4F9E]/10 to-[#D4AF37]/10 flex items-center justify-center">
                           <BookOpen className="w-8 h-8 text-[#E0D8D2]" />
                         </div>
                       )}
@@ -158,7 +158,7 @@ export function LatestNewsSection({ posts, accentImage }: LatestNewsSectionProps
                           {category.title}
                         </span>
                       )}
-                      <h3 className="text-base md:text-lg font-bold mb-1.5 leading-snug line-clamp-2 group-hover:text-[#6E3CA6] transition-colors" style={{ color: '#5B2D91' }}>
+                      <h3 className="text-base md:text-lg font-bold mb-1.5 leading-snug line-clamp-2 group-hover:text-[#5A4085] transition-colors" style={{ color: '#6B4F9E' }}>
                         {post.title}
                       </h3>
                       {post.excerpt && (
@@ -186,7 +186,7 @@ export function LatestNewsSection({ posts, accentImage }: LatestNewsSectionProps
               <Link href="/resources" className="flex-1 block">
                 <div className="flex items-center justify-center h-full min-h-[200px] rounded-2xl border-2 border-dashed border-[#E0D8D2] hover:border-[#D4AF37] transition-colors duration-300">
                   <div className="text-center">
-                    <p className="font-semibold mb-1" style={{ color: '#5B2D91' }}>Explore More</p>
+                    <p className="font-semibold mb-1" style={{ color: '#6B4F9E' }}>Explore More</p>
                     <p className="text-sm" style={{ color: '#8A8080' }}>Browse all our resources</p>
                   </div>
                 </div>

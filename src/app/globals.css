@@ -2,11 +2,11 @@
 
 :root {
   /* Royal Sanctuary Palette */
-  --color-primary: #5B2D91;        /* Vibrant Royal Purple */
-  --color-primary-dark: #6E3CA6;   /* Hover tone */
-  --color-primary-light: #7E52B5;
+  --color-primary: #6B4F9E;        /* Vibrant Royal Purple */
+  --color-primary-dark: #5A4085;   /* Hover tone */
+  --color-primary-light: #8B74B8;
 
-  --color-secondary: #F5F0F8;      /* Soft lavender-tinted background */
+  --color-secondary: #F6F3FA;      /* Soft lavender-tinted background */
   --color-secondary-dark: #E8E0F0;
 
   --color-accent: #D4AF37;         /* Luminous Gold */
@@ -17,9 +17,9 @@
   --color-sage-dark: #5C8A63;
   --color-sage-light: #E8F0EA;
 
-  --color-neutral-900: #2A2438;    /* Deep purple-tinted charcoal */
-  --color-neutral-800: #321D52;    /* Deep Dark Purple for footer */
-  --color-neutral-700: #3E2F55;
+  --color-neutral-900: #252035;    /* Deep purple-tinted charcoal */
+  --color-neutral-800: #2E2448;    /* Deep Dark Purple for footer */
+  --color-neutral-700: #3A3350;
   --color-neutral-600: #5C5252;    /* Secondary text */
   --color-neutral-500: #8A8080;    /* Muted text */
   --color-neutral-400: #A89E9E;
@@ -118,7 +118,7 @@ h1, h2, h3, h4, h5, h6 {
 :not(footer) > h4, :not(footer) > h5, :not(footer) > h6,
 section h1, section h2, section h3,
 section h4, section h5, section h6 {
-  color: #5B2D91;
+  color: #6B4F9E;
 }
 
 p {
@@ -275,10 +275,10 @@ a[role="button"]:active {
 /* Gentle pulse for CTAs */
 @keyframes gentlePulse {
   0%, 100% {
-    box-shadow: 0 0 0 0 rgba(91, 45, 145, 0.2);
+    box-shadow: 0 0 0 0 rgba(107, 79, 158, 0.2);
   }
   50% {
-    box-shadow: 0 0 0 8px rgba(91, 45, 145, 0);
+    box-shadow: 0 0 0 8px rgba(107, 79, 158, 0);
   }
 }
 
@@ -331,7 +331,7 @@ a[role="button"]:active {
   background: #f1f1f1; 
 }
 ::-webkit-scrollbar-thumb {
-  background: #5B2D91; 
+  background: #6B4F9E; 
   border-radius: 5px;
 }
 ::-webkit-scrollbar-thumb:hover {

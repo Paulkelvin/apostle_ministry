@@ -27,7 +27,7 @@ export function DirectionsForm({ churchAddress }: DirectionsFormProps) {
     <div className="mt-8 pt-8" style={{ borderTop: '1px solid #F4F0EA' }}>
       <div className="flex items-center gap-2 mb-4">
         <Navigation className="w-4 h-4 text-[#D4AF37]" />
-        <h4 className="text-sm font-bold uppercase tracking-wider" style={{ color: '#5B2D91' }}>
+        <h4 className="text-sm font-bold uppercase tracking-wider" style={{ color: '#6B4F9E' }}>
           Get Directions
         </h4>
       </div>
