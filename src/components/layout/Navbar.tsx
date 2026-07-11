@@ -17,7 +17,7 @@ const navLinks = [
 ]
 
 // Pages that have a full-screen dark hero where the nav should start transparent
-const darkHeroPages = ['/', '/give', '/about', '/sermons', '/resources']
+const darkHeroPages = ['/', '/about', '/sermons', '/resources']
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -43,8 +43,8 @@ export function Navbar() {
       <motion.header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out pt-[env(safe-area-inset-top)] ${
           showSolid
-            ? 'bg-[#FCFBF9]/95 backdrop-blur-md shadow-sm'
-            : 'bg-gradient-to-b from-black/30 to-transparent'
+            ? 'bg-surface/95 backdrop-blur-md border-b border-warm-200/60'
+            : 'bg-transparent'
         }`}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
@@ -56,17 +56,11 @@ export function Navbar() {
             <Link href="/" className="flex items-center space-x-2 group">
               <span
                 className={`text-2xl font-bold tracking-tight transition-colors duration-300 ${
-                  showSolid ? 'text-[#6B4F9E]' : 'text-white'
+                  showSolid ? 'text-primary' : 'text-white'
                 }`}
-                style={!showSolid ? { color: '#FFFFFF' } : undefined}
               >
                 RL
-                <span
-                  className={`${showSolid ? 'text-primary' : ''} transition-colors duration-300`}
-                  style={!showSolid ? { color: '#D4AF37' } : undefined}
-                >
-                  FCC
-                </span>
+                <span className="text-accent transition-colors duration-300">FCC</span>
               </span>
             </Link>
 
@@ -81,8 +75,8 @@ export function Navbar() {
                     className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
                       showSolid
                         ? isActive
-                          ? 'text-[#6B4F9E] bg-[#F4F0EA]'
-                          : 'text-[#332D2D] hover:text-[#6B4F9E] hover:bg-[#F4F0EA]'
+                          ? 'text-primary bg-warm-100'
+                          : 'text-ink hover:text-primary hover:bg-warm-100'
                         : isActive
                           ? 'text-white bg-white/10'
                           : 'text-white/85 hover:text-white hover:bg-white/10'
@@ -97,7 +91,7 @@ export function Navbar() {
             {/* Mobile Menu Button */}
             <button
               className={`md:hidden p-2 rounded-lg transition-colors ${
-                showSolid ? 'text-[#6B4F9E] hover:bg-[#F4F0EA]' : 'text-white hover:bg-white/10'
+                showSolid ? 'text-primary hover:bg-warm-100' : 'text-white hover:bg-white/10'
               }`}
               onClick={() => setIsMobileMenuOpen(true)}
               aria-label="Open mobile menu"
@@ -129,15 +123,15 @@ export function Navbar() {
             >
               <div className="p-6">
                 <div className="flex justify-between items-center mb-10">
-                  <span className="text-xl font-bold text-[#6B4F9E]">
+                  <span className="text-xl font-bold text-primary">
                     Menu
                   </span>
                   <button
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="p-2 rounded-lg hover:bg-[#F4F0EA] transition-colors"
+                    className="p-2 rounded-lg hover:bg-warm-100 transition-colors"
                     aria-label="Close mobile menu"
                   >
-                    <X className="w-5 h-5 text-[#8A8080]" />
+                    <X className="w-5 h-5 text-warm-500" />
                   </button>
                 </div>
                 <div className="flex flex-col space-y-1">
@@ -149,8 +143,8 @@ export function Navbar() {
                         href={link.href}
                         className={`text-base font-medium py-3 px-4 rounded-lg transition-all ${
                           isActive
-                            ? 'text-[#6B4F9E] bg-[#F4F0EA]'
-                            : 'text-[#332D2D] hover:text-[#6B4F9E] hover:bg-[#F4F0EA]'
+                            ? 'text-primary bg-warm-100'
+                            : 'text-ink hover:text-primary hover:bg-warm-100'
                         }`}
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
