@@ -4,14 +4,13 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
 import { SanityImageComponent } from '@/components/ui'
-import type { HistoryItem, SanityImage } from '@/types'
+import type { HistoryItem } from '@/types'
 
 interface TimelineSectionProps {
   historyItems: HistoryItem[]
-  parchmentImage?: SanityImage
 }
 
-export function TimelineSection({ historyItems, parchmentImage }: TimelineSectionProps) {
+export function TimelineSection({ historyItems }: TimelineSectionProps) {
   const [expandedId, setExpandedId] = useState<string | null>(null)
 
   // Default history for demo if none from CMS
@@ -29,41 +28,6 @@ export function TimelineSection({ historyItems, parchmentImage }: TimelineSectio
 
   return (
     <section className="py-24 bg-white relative overflow-hidden">
-      {/* Decorative Botanical / Scattered Accents Layer */}
-        {parchmentImage && (
-          <>
-            {/* Top Left Sparse Accent */}
-            <div className="absolute top-[10%] left-[5%] w-[150px] h-[150px] pointer-events-none opacity-60 z-0 mix-blend-multiply">
-              <SanityImageComponent
-                image={parchmentImage}
-                alt="Decorative Element Top Left"
-                fill
-                className="object-contain"
-              />
-            </div>
-
-            {/* Middle Right Sparse Accent */}
-            <div className="absolute top-[45%] right-[5%] w-[150px] h-[150px] pointer-events-none opacity-60 z-0 mix-blend-multiply">
-              <SanityImageComponent
-                image={parchmentImage}
-                alt="Decorative Element Middle Right"
-                fill
-                className="object-contain transform rotate-45"
-              />
-            </div>
-
-            {/* Bottom Left Sparse Accent */}
-            <div className="absolute bottom-[10%] left-[10%] w-[150px] h-[150px] pointer-events-none opacity-60 z-0 mix-blend-multiply">
-              <SanityImageComponent
-                image={parchmentImage}
-                alt="Decorative Element Bottom Left"
-                fill
-                className="object-contain transform -rotate-12"
-              />
-            </div>
-          </>
-        )}
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

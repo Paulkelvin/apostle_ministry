@@ -1,10 +1,9 @@
 import { Metadata } from 'next'
 import { MapPin, Phone, Mail, Clock, Headset, MessageSquare, Newspaper, ExternalLink, ArrowRight } from 'lucide-react'
-import { client, faqQuery, serviceTimesQuery, siteSettingsQuery } from '@/lib/sanity'
+import { client, faqQuery, serviceTimesQuery } from '@/lib/sanity'
 import { ContactForm, FAQAccordion, InteractiveMap } from '@/components/contact'
-import { SanityImageComponent } from '@/components/ui'
 import { FloatingRing, WaveLine } from '@/components/ui/MicroGraphics'
-import type { FAQ, ServiceTimes, SiteSettings } from '@/types'
+import type { FAQ, ServiceTimes } from '@/types'
 
 export const revalidate = 60;
 
@@ -15,19 +14,18 @@ export const metadata: Metadata = {
 
 async function getContactPageData() {
   try {
-    const [faqs, serviceTimes, settings] = await Promise.all([
+    const [faqs, serviceTimes] = await Promise.all([
       client.fetch<FAQ[]>(faqQuery),
       client.fetch<ServiceTimes>(serviceTimesQuery),
-      client.fetch<SiteSettings>(siteSettingsQuery),
     ])
-    return { faqs, serviceTimes, settings }
+    return { faqs, serviceTimes }
   } catch {
-    return { faqs: [], serviceTimes: null, settings: null }
+    return { faqs: [], serviceTimes: null }
   }
 }
 
 export default async function ContactPage() {
-  const { faqs, serviceTimes, settings } = await getContactPageData()
+  const { faqs, serviceTimes } = await getContactPageData()
 
   return (
     <>
@@ -205,18 +203,6 @@ export default async function ContactPage() {
 
       {/* FAQ Section */}
       <section className="relative py-20 bg-gradient-to-b from-[#f5f0ea] to-[#faf5f0] overflow-hidden">
-        {/* Decorative FAQ Accent Layer - Positioned at top-left, cut off towards the left edge and top */}
-        {settings?.faqAccentImage && (
-          <div className="absolute -top-12 md:-top-16 -left-16 md:-left-24 w-[300px] h-[300px] pointer-events-none opacity-60 z-0 mix-blend-multiply">
-            <SanityImageComponent
-              image={settings.faqAccentImage}
-              alt="FAQ Decorative Accent"
-              fill
-              className="object-contain object-top object-left"
-            />
-          </div>
-        )}
-
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-[1fr_2fr] gap-12 lg:gap-16 items-start">
             {/* Left: FAQ Heading */}
