@@ -1,10 +1,12 @@
 @import "tailwindcss";
 
-:root {
+@theme {
   /* Royal Sanctuary Palette */
   --color-primary: #6B4F9E;        /* Vibrant Royal Purple */
   --color-primary-dark: #5A4085;   /* Hover tone */
   --color-primary-light: #8B74B8;
+  --color-primary-deep: #2E2448;   /* Deep purple — bold band surface */
+  --color-primary-ink: #252035;    /* Deepest purple-tinted charcoal */
 
   --color-secondary: #F6F3FA;      /* Soft lavender-tinted background */
   --color-secondary-dark: #E8E0F0;
@@ -17,91 +19,43 @@
   --color-sage-dark: #5C8A63;
   --color-sage-light: #E8F0EA;
 
-  --color-neutral-900: #252035;    /* Deep purple-tinted charcoal */
-  --color-neutral-800: #2E2448;    /* Deep Dark Purple for footer */
-  --color-neutral-700: #3A3350;
-  --color-neutral-600: #5C5252;    /* Secondary text */
-  --color-neutral-500: #8A8080;    /* Muted text */
-  --color-neutral-400: #A89E9E;
-  --color-neutral-300: #D1C9C5;
-  --color-neutral-200: #E0D8D2;    /* Borders */
-  --color-neutral-100: #F4F0EA;    /* Alt bg (Alabaster) */
-  --color-neutral-50: #FFFFFF;     /* Pure white cards */
-  
-  --background: #FCFBF9;           /* Crisp Warm White */
-  --foreground: #332D2D;
-}
+  /* Warm neutral ramp */
+  --color-warm-50: #FFFFFF;        /* Pure white cards */
+  --color-warm-100: #F4F0EA;       /* Alt bg (Alabaster) */
+  --color-warm-200: #E0D8D2;       /* Borders */
+  --color-warm-300: #D1C9C5;
+  --color-warm-400: #A89E9E;
+  --color-warm-500: #8A8080;       /* Muted text */
+  --color-warm-600: #5C5252;       /* Secondary text */
+  --color-warm-700: #3A3350;
+  --color-warm-800: #2E2448;
+  --color-warm-900: #252035;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  
-  /* Custom colors */
-  --color-primary-*: initial;
-  --color-primary: var(--color-primary);
-  --color-primary-dark: var(--color-primary-dark);
-  --color-primary-light: var(--color-primary-light);
-  
-  --color-secondary: var(--color-secondary);
-  --color-secondary-dark: var(--color-secondary-dark);
-  
-  --color-accent: var(--color-accent);
-  --color-accent-dark: var(--color-accent-dark);
-  --color-accent-light: var(--color-accent-light);
-  
-  --color-sage: var(--color-sage);
-  --color-sage-dark: var(--color-sage-dark);
-  --color-sage-light: var(--color-sage-light);
-  
-  --color-warm-50: var(--color-neutral-50);
-  --color-warm-100: var(--color-neutral-100);
-  --color-warm-200: var(--color-neutral-200);
-  --color-warm-300: var(--color-neutral-300);
-  --color-warm-400: var(--color-neutral-400);
-  --color-warm-500: var(--color-neutral-500);
-  --color-warm-600: var(--color-neutral-600);
-  --color-warm-700: var(--color-neutral-700);
-  --color-warm-800: var(--color-neutral-800);
-  --color-warm-900: var(--color-neutral-900);
-  
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  
-  /* Animations */
+  --color-surface: #FCFBF9;        /* Crisp Warm White */
+  --color-ink: #332D2D;
+  --color-background: var(--color-surface);
+  --color-foreground: var(--color-ink);
+
+  /* Type */
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-mono: var(--font-geist-mono), monospace;
+
+  /* Elevation — exactly two levels */
+  --shadow-card: 0 1px 2px rgb(37 32 53 / 0.05), 0 8px 24px rgb(37 32 53 / 0.06);
+  --shadow-card-hover: 0 2px 4px rgb(37 32 53 / 0.06), 0 16px 40px rgb(37 32 53 / 0.10);
+
+  /* Accordion animations (Radix) */
   --animate-slideDown: slideDown 350ms cubic-bezier(0.33, 1, 0.68, 1);
   --animate-slideUp: slideUp 250ms cubic-bezier(0.33, 1, 0.68, 1);
-  --animate-fadeIn: fadeIn 500ms ease-out;
-  --animate-fadeInUp: fadeInUp 600ms ease-out;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-/* Footer-specific overrides — !important to beat any inherited global rules */
-footer[data-footer] h3,
-footer[data-footer] h4 {
-  color: #F4F0EA !important;
-}
-
-footer[data-footer] p,
-footer[data-footer] address,
-footer[data-footer] address p,
-footer[data-footer] a {
-  color: #C4BAB4 !important;
-}
-
-footer[data-footer] a:hover {
-  color: #D4AF37 !important;
-}
-
-footer[data-footer] .legal,
-footer[data-footer] .legal p {
-  color: #8A8080 !important;
 }
 
 /* Smooth scrolling */
@@ -109,29 +63,32 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Typography rhythm — exclude footer so footer overrides win */
+/* Typography rhythm — colors are set per component */
 h1, h2, h3, h4, h5, h6 {
-  letter-spacing: -0.02em;
-  line-height: 1.15;
-}
-:not(footer) > h1, :not(footer) > h2, :not(footer) > h3,
-:not(footer) > h4, :not(footer) > h5, :not(footer) > h6,
-section h1, section h2, section h3,
-section h4, section h5, section h6 {
-  color: #6B4F9E;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
 }
 
 p {
   line-height: 1.7;
 }
-:not(footer) > p,
-section p {
-  color: #332D2D;
-}
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-warm-300);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-warm-400);
 }
 
 /* Hide scrollbar for filter chips */
@@ -141,19 +98,6 @@ section p {
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--color-neutral-300);
-  border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-neutral-400);
 }
 
 /* Focus styles */
@@ -196,28 +140,6 @@ select:focus-visible {
   }
 }
 
-/* Fade in animations */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(16px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Global transition defaults */
-a, button, input, textarea, select {
-  transition: all 0.2s ease;
-}
-
 /* Cursor — interactive elements */
 a, button, [role="button"], label[for], select,
 input[type="submit"], input[type="button"], input[type="reset"],
@@ -236,104 +158,8 @@ button:disabled, input:disabled, select:disabled, textarea:disabled {
   cursor: not-allowed;
 }
 
-/* Subtle micro-interactions for buttons */
-button:active:not(:disabled),
-a[role="button"]:active {
-  transform: scale(0.98);
-}
-
-/* Smooth appear animation for cards and sections */
-@keyframes smoothAppear {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-appear {
-  animation: smoothAppear 0.5s ease-out forwards;
-}
-
-/* Subtle floating animation for decorative elements */
-@keyframes subtleFloat {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
-}
-
-.animate-float {
-  animation: subtleFloat 4s ease-in-out infinite;
-}
-
-/* Gentle pulse for CTAs */
-@keyframes gentlePulse {
-  0%, 100% {
-    box-shadow: 0 0 0 0 rgba(107, 79, 158, 0.2);
-  }
-  50% {
-    box-shadow: 0 0 0 8px rgba(107, 79, 158, 0);
-  }
-}
-
-.animate-pulse-gentle {
-  animation: gentlePulse 3s ease-in-out infinite;
-}
-
-/* Smooth underline hover effect */
-.hover-underline {
-  position: relative;
-}
-.hover-underline::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: currentColor;
-  transition: width 0.3s ease;
-}
-.hover-underline:hover::after {
-  width: 100%;
-}
-
-/* Premium card base */
-.card-premium {
-  background: #FFFFFF;
-  border-radius: 16px;
-  border: none;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
-}
-.card-premium:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
-}
-
 /* Selection */
 ::selection {
-  background: #D4AF37;
+  background: var(--color-primary);
   color: #FFFFFF;
-}
-
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
-}
-::-webkit-scrollbar-track {
-  background: #f1f1f1; 
-}
-::-webkit-scrollbar-thumb {
-  background: #6B4F9E; 
-  border-radius: 5px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #D4AF37; 
 }

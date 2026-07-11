@@ -3,32 +3,26 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import Link from 'next/link'
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.98]',
+  'inline-flex items-center justify-center font-semibold rounded-lg transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.98]',
   {
     variants: {
       variant: {
         primary:
-          'bg-primary text-white hover:bg-primary-dark focus:ring-primary shadow-md hover:shadow-lg',
-        secondary:
-          'border-2 border-primary text-primary bg-transparent hover:bg-[#F4F0EA] focus:ring-primary',
-        outline:
-          'border-2 border-primary text-primary hover:bg-primary hover:text-white focus:ring-primary',
-        ghost:
-          'text-primary hover:bg-primary/10 focus:ring-primary',
-        accent:
-          'bg-accent text-warm-900 hover:bg-accent-dark focus:ring-accent shadow-md hover:shadow-lg',
-        white:
-          'bg-white text-warm-900 hover:bg-warm-100 focus:ring-white shadow-md',
+          'bg-primary text-white hover:bg-primary-dark focus-visible:outline-primary',
         gold:
-          'bg-[#D4AF37] text-[#1A1A1A] hover:bg-[#B8962E] focus:ring-[#D4AF37] shadow-md hover:shadow-lg font-bold',
-        heroOutline:
-          'border-2 border-white/60 text-white bg-white/10 backdrop-blur-sm hover:bg-white/20 focus:ring-white shadow-md',
+          'bg-accent text-warm-900 hover:bg-accent-dark focus-visible:outline-accent',
+        outline:
+          'border border-warm-200 text-ink hover:border-primary hover:text-primary focus-visible:outline-primary',
+        ghost:
+          'text-primary hover:bg-primary/10 focus-visible:outline-primary',
+        inverse:
+          'border border-white/30 text-white hover:bg-white/10 focus-visible:outline-white',
       },
       size: {
-        sm: 'text-sm px-4 py-2 rounded-lg',
-        md: 'text-base px-6 py-3 rounded-lg',
-        lg: 'text-lg px-8 py-4 rounded-xl',
-        xl: 'text-xl px-10 py-5 rounded-full',
+        sm: 'text-sm px-4 py-2',
+        md: 'text-base px-6 py-3',
+        lg: 'text-lg px-8 py-4',
+        xl: 'text-xl px-10 py-5',
       },
     },
     defaultVariants: {

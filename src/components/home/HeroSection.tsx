@@ -92,7 +92,7 @@ export function HeroSection({ settings }: HeroSectionProps) {
           </Button>
           <Button
             href={watchOnlineUrl || '/sermons'}
-            variant="heroOutline"
+            variant="inverse"
             size="md"
             className="uppercase tracking-widest text-sm px-10 py-3.5 rounded-lg"
           >
