@@ -21,26 +21,11 @@ export function MissionVisionSection({ mission, vision }: MissionVisionSectionPr
 
   return (
     <div className="relative w-full overflow-hidden">
-      {/* Holy Scripture Background Watermark */}
-      <div className="absolute top-[25%] left-[-10%] select-none pointer-events-none opacity-[0.02] transform -rotate-6 z-0 mix-blend-multiply">
-        <h1 className="text-[12rem] md:text-[20rem] font-bold whitespace-nowrap" style={{ fontFamily: 'Georgia, serif', color: '#6B4F9E' }}>
-          ACTS 2:42
-        </h1>
-      </div>
-
       {/* Who We Are — Full Width Split */}
       <section className="relative overflow-hidden z-10">
         <div className="grid lg:grid-cols-2 min-h-[600px]">
           {/* Left: Deep burgundy with mission */}
           <div className="relative bg-[#6B4F9E] py-20 px-6 sm:px-10 lg:px-16 flex items-center">
-            {/* Decorative cross watermark */}
-            <div className="absolute top-10 right-10 opacity-[0.06]">
-              <svg width="120" height="150" viewBox="0 0 120 150" fill="none">
-                <rect x="45" y="0" width="30" height="150" fill="white"/>
-                <rect x="0" y="35" width="120" height="30" fill="white"/>
-              </svg>
-            </div>
-            
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -63,13 +48,6 @@ export function MissionVisionSection({ mission, vision }: MissionVisionSectionPr
           
           {/* Right: Light with vision */}
           <div className="relative bg-[#FCFBF9] py-20 px-6 sm:px-10 lg:px-16 flex items-center">
-            {/* Decorative dots */}
-            <div className="absolute bottom-10 left-10 grid grid-cols-4 gap-2 opacity-10">
-              {[...Array(16)].map((_, i) => (
-                <div key={i} className="w-2 h-2 rounded-full bg-[#6B4F9E]" />
-              ))}
-            </div>
-            
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}

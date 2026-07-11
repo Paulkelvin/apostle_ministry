@@ -1,8 +1,7 @@
 import { Metadata } from 'next'
-import { client, sermonsQuery, sermonSeriesQuery, siteSettingsQuery } from '@/lib/sanity'
+import { client, sermonsQuery, sermonSeriesQuery } from '@/lib/sanity'
 import { SermonsPageClient } from '@/components/sermons'
-import { FloatingRing, WaveLine } from '@/components/ui/MicroGraphics'
-import type { Sermon, SiteSettings } from '@/types'
+import type { Sermon } from '@/types'
 
 export const revalidate = 60;
 
@@ -13,19 +12,18 @@ export const metadata: Metadata = {
 
 async function getSermonsData() {
   try {
-    const [sermons, seriesList, settings] = await Promise.all([
+    const [sermons, seriesList] = await Promise.all([
       client.fetch<Sermon[]>(sermonsQuery),
       client.fetch<string[]>(sermonSeriesQuery),
-      client.fetch<SiteSettings>(siteSettingsQuery),
     ])
-    return { sermons, seriesList, settings }
+    return { sermons, seriesList }
   } catch {
-    return { sermons: [], seriesList: [], settings: null }
+    return { sermons: [], seriesList: [] }
   }
 }
 
 export default async function SermonsPage() {
-  const { sermons, seriesList, settings } = await getSermonsData()
+  const { sermons, seriesList } = await getSermonsData()
 
   return (
     <>
@@ -36,17 +34,6 @@ export default async function SermonsPage() {
           background: 'linear-gradient(135deg, #2E2448 0%, #6B4F9E 100%)',
         }}
       >
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background: 'radial-gradient(circle at top right, rgba(212, 175, 55, 0.12), transparent)',
-          }}
-        />
-
-        {/* Decorative MicroGraphics */}
-        <FloatingRing className="top-10 left-[15%] opacity-30 mix-blend-overlay" size={100} delay={0.3} color="#D4AF37" />
-        <WaveLine className="bottom-[10%] right-[10%] opacity-20 mix-blend-overlay" delay={1.2} color="#D4AF37" />
-
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1
             className="text-5xl font-bold mb-4 tracking-tight"
@@ -64,11 +51,7 @@ export default async function SermonsPage() {
       </section>
 
       {/* Interactive Sermon Browser */}
-      <SermonsPageClient 
-        sermons={sermons} 
-        seriesList={seriesList} 
-        godRaysImage={settings?.sermonsGodRaysImage}
-      />
+      <SermonsPageClient sermons={sermons} seriesList={seriesList} />
     </>
   )
 }

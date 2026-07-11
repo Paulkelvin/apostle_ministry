@@ -1,17 +1,13 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { FloatingCrosses } from '@/components/ui/AmbientGlow'
-import { SanityImageComponent } from '@/components/ui'
-import type { SanityImage } from '@/types'
 
 interface MissionVisionSectionProps {
   mission?: string
   vision?: string
-  accentImage?: SanityImage
 }
 
-export function MissionVisionSection({ mission, vision, accentImage }: MissionVisionSectionProps) {
+export function MissionVisionSection({ mission, vision }: MissionVisionSectionProps) {
   const missionText =
     mission ||
     'It is the mission of RFLCC to be followers of Christ, at all times; triumphant over every obstacle, the adversary, sin, and imaginations. We will share the Love of God, the life, death, resurrection, and constant intercession of Jesus Christ, and the sweet communion, fellowship, and comfort of the Holy Ghost.'
@@ -20,98 +16,38 @@ export function MissionVisionSection({ mission, vision, accentImage }: MissionVi
     'To be a church where everyone can experience the transforming love of Jesus and become who God created them to be.'
 
   return (
-    <section className="relative py-24 lg:py-32 overflow-hidden" style={{ backgroundColor: '#6B4F9E' }}>
-      {/* Decorative Accent Layer - Positioned at top-left, cut off towards the left edge and top */}
-        {accentImage && (
-          <div className="absolute -top-12 md:-top-16 -left-16 md:-left-24 w-[300px] h-[300px] pointer-events-none opacity-60 mix-blend-color-dodge z-0">
-            <SanityImageComponent
-              image={accentImage}
-              alt="Decorative Accent Top Left"
-              fill
-              className="object-contain object-top object-left"
-            />
-          </div>
-        )}
-
-        {/* Floating crosses */}
-      <FloatingCrosses />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="relative flex flex-col lg:flex-row items-stretch min-h-[520px]">
-
-          {/* Left — Photo placeholder (60% width on desktop) */}
-          <div className="relative w-full lg:w-[60%] min-h-[300px] lg:min-h-0 rounded-2xl overflow-hidden">
-            {/* B&W community photo placeholder — gradient simulates a faded photo */}
-            <div
-              className="absolute inset-0"
-              style={{
-                background: 'linear-gradient(135deg, rgba(46,36,72,0.9) 0%, rgba(91,45,145,0.7) 50%, rgba(61,50,104,0.85) 100%)',
-                opacity: 0.5,
-              }}
-            />
-            {/* Decorative text watermark */}
-            <div className="absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none select-none">
-              <span
-                className="text-[8rem] sm:text-[10rem] md:text-[14rem] font-bold uppercase leading-none tracking-wide"
-                style={{ color: 'rgba(255,255,255,0.12)', letterSpacing: '0.05em' }}
-              >
-                Faith
-              </span>
-            </div>
-            {/* Cross pattern — subtle decorative element */}
-            <div className="absolute inset-0 flex items-end p-8 lg:p-12">
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-[2px] bg-[#D4AF37]/50" />
-                <span className="text-xs uppercase tracking-[0.25em] font-medium" style={{ color: 'rgba(212,175,55,0.6)' }}>
-                  Est. in Faith
-                </span>
-              </div>
-            </div>
+    <section className="bg-primary-deep py-24 lg:py-32">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.7 }}
+          className="grid lg:grid-cols-[1fr_auto_1fr] gap-12 lg:gap-16 items-start"
+        >
+          <div>
+            <p className="text-accent text-xs font-semibold tracking-[0.2em] uppercase mb-4">
+              Our Mission
+            </p>
+            <h2 className="font-display text-3xl md:text-4xl font-semibold text-white mb-6">
+              Followers of Christ, at all times
+            </h2>
+            <p className="text-white/75 text-lg leading-relaxed">{missionText}</p>
           </div>
 
-          {/* Right — White overlap box */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="relative w-full lg:w-[55%] lg:-ml-[15%] -mt-4 sm:mt-[-25px] lg:mt-0 lg:my-10 z-10"
-          >
-            <div className="bg-white rounded-2xl p-8 md:p-12 lg:p-14 shadow-[0_20px_60px_rgba(0,0,0,0.15)]">
-              {/* Gold accent */}
-              <div className="w-[2px] h-10 bg-[#D4AF37] mb-6" />
+          <div className="hidden lg:block w-px self-stretch bg-white/10" aria-hidden="true" />
 
-              {/* Mission */}
-              <h3
-                className="text-3xl md:text-4xl font-bold mb-6 leading-tight"
-                style={{ color: '#6B4F9E', fontFamily: 'Georgia, "Times New Roman", serif' }}
-              >
-                Our Mission
-              </h3>
-              <p className="text-base md:text-lg leading-relaxed mb-10" style={{ color: '#5C5252' }}>
-                {missionText}
-              </p>
-
-              {/* Divider line */}
-              <div className="w-16 h-[1px] bg-[#E0D8D2] mb-10" />
-
-              {/* Vision */}
-              <h3
-                className="text-3xl md:text-4xl font-bold mb-6 leading-tight"
-                style={{ color: '#6B4F9E', fontFamily: 'Georgia, "Times New Roman", serif' }}
-              >
-                Our Vision
-              </h3>
-              <p className="text-base md:text-lg leading-relaxed" style={{ color: '#5C5252' }}>
-                {visionText}
-              </p>
-            </div>
-          </motion.div>
-
-        </div>
+          <div>
+            <p className="text-accent text-xs font-semibold tracking-[0.2em] uppercase mb-4">
+              Our Vision
+            </p>
+            <h2 className="font-display text-3xl md:text-4xl font-semibold text-white mb-6">
+              A church where everyone belongs
+            </h2>
+            <p className="text-white/75 text-lg leading-relaxed">{visionText}</p>
+          </div>
+        </motion.div>
       </div>
     </section>
   )
 }
-
-

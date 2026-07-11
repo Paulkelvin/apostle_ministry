@@ -91,29 +91,16 @@ export function FeaturedMinistriesSection({ ministries }: FeaturedMinistriesSect
     <section className="py-20 lg:py-28 bg-[#FCFBF9] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="relative text-center mb-24 lg:mb-32 flex flex-col items-center">
-          {/* Decorative watermark / background element */}
-          <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[15vw] md:text-[12vw] lg:text-[140px] font-black uppercase text-[#6B4F9E]/[0.03] pointer-events-none whitespace-nowrap select-none w-full text-center">
-            DEPARTMENTS
-          </span>
-          
-          <div className="relative z-10 text-center flex flex-col items-center">
-            {/* Styled Badge */}
-            <div className="inline-flex items-center gap-3 px-5 py-1.5 rounded-full border border-[#D4AF37]/30 bg-gradient-to-r from-[#D4AF37]/10 via-[#D4AF37]/5 to-transparent mb-8 backdrop-blur-sm shadow-sm">
-              <span className="w-2 h-2 rounded-full bg-[#D4AF37] animate-pulse shadow-[0_0_8px_#D4AF37]"></span>
-              <span className="text-[#D4AF37] font-bold tracking-[0.2em] uppercase text-xs md:text-sm">Join A Department</span>
-            </div>
-            
-            {/* Main Heading with Gradient - Reduced size as requested */}
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 tracking-tight flex flex-col md:inline-block md:gap-3">
-              <span className="text-[#6B4F9E]">Discover Your </span>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] via-[#C5A028] to-[#997A15]">Purpose</span>
-            </h2>
-            
-            <p className="text-base md:text-lg max-w-2xl mx-auto font-medium" style={{ color: '#5C5252' }}>
-              We believe everyone has a unique gift to share. Explore our departments and find your place in our church family.
-            </p>
-          </div>
+        <div className="text-center mb-16 flex flex-col items-center">
+          <p className="text-accent-dark text-xs font-semibold tracking-[0.2em] uppercase mb-4">
+            Join a Department
+          </p>
+          <h2 className="font-display text-4xl md:text-5xl font-semibold text-primary mb-6">
+            Discover Your Purpose
+          </h2>
+          <p className="text-base md:text-lg max-w-2xl mx-auto text-warm-600">
+            We believe everyone has a unique gift to share. Explore our departments and find your place in our church family.
+          </p>
         </div>
 
         {/* Zig-Zag Rows */}

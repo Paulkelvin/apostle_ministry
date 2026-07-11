@@ -1,7 +1,6 @@
 import { Metadata } from 'next'
 import { client, allEventsQuery } from '@/lib/sanity'
 import { EventsPageClient } from '@/components/events'
-import { FloatingRing, WaveLine } from '@/components/ui/MicroGraphics'
 import type { Event } from '@/types'
 
 export const revalidate = 60;
@@ -102,13 +101,6 @@ export default async function EventsPage() {
     <div className="relative">
       {/* Hero Banner */}
       <section className="relative pt-36 pb-20 overflow-hidden bg-[#F4F0EA]">
-        {/* Soft sanctuary light — gentle glow over parchment */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(252,251,249,0.6)_0%,_transparent_70%)]" />
-
-          {/* Decorative MicroGraphics */}
-          <FloatingRing className="top-10 left-[8%] opacity-30 mix-blend-multiply" size={70} delay={0.8} color="#D4AF37" />
-          <WaveLine className="bottom-[15%] right-[10%] opacity-20 mix-blend-multiply rotate-[-5deg]" delay={1.4} color="#D4AF37" />
-
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-[#D4AF37] font-semibold tracking-[0.2em] text-sm uppercase mb-5">
             Upcoming Gatherings

@@ -5,16 +5,14 @@ import { motion } from 'framer-motion'
 import { format } from 'date-fns'
 import { ArrowRight, Clock, BookOpen } from 'lucide-react'
 import { SanityImageComponent } from '@/components/ui'
-import { FloatingCross } from '@/components/ui/MicroGraphics'
 import { estimateReadingTime } from '@/lib/utils'
-import type { Post, SanityImage } from '@/types'
+import type { Post } from '@/types'
 
 interface LatestNewsSectionProps {
   posts: Post[]
-  accentImage?: SanityImage
 }
 
-export function LatestNewsSection({ posts, accentImage }: LatestNewsSectionProps) {
+export function LatestNewsSection({ posts }: LatestNewsSectionProps) {
   if (!posts || posts.length === 0) {
     return (
       <section className="py-16 bg-[#F4F0EA]">
@@ -33,27 +31,15 @@ export function LatestNewsSection({ posts, accentImage }: LatestNewsSectionProps
 
   return (
     <section className="relative py-20 lg:py-28 bg-[#F4F0EA] overflow-hidden">
-
-      {/* Decorative MicroGraphics */}
-      <FloatingCross className="bottom-[10%] right-[3%] opacity-15 mix-blend-multiply z-0" delay={1.5} size={60} color="#6B4F9E" />
-
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.8 }}
         className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
       >
-        {/* Header with watermark */}
-        <div className="relative mb-12 lg:mb-16 overflow-hidden">
-          {/* Massive watermark - hidden on small mobile to prevent overflow */}
-          <span
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[4rem] sm:text-[8rem] lg:text-[10rem] font-black uppercase leading-none tracking-tight pointer-events-none select-none"
-            style={{ color: '#EAE5DF' }}
-            aria-hidden="true"
-          >
-            JOURNAL
-          </span>
+        {/* Header */}
+        <div className="relative mb-12 lg:mb-16">
           <div className="relative flex flex-col sm:flex-row justify-between items-start sm:items-end">
             <div>
               <div className="w-[2px] h-10 bg-[#D4AF37] mb-4" />

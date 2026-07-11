@@ -5,15 +5,14 @@ import { Video, Search, Calendar, Filter, ChevronDown, X, Play } from 'lucide-re
 import { SermonCard } from './SermonCard'
 import { SanityImageComponent } from '@/components/ui'
 import { VideoModal } from '@/components/ui/VideoEmbed'
-import type { Sermon, SanityImage } from '@/types'
+import type { Sermon } from '@/types'
 
 interface SermonsPageClientProps {
   sermons: Sermon[]
   seriesList: string[]
-  godRaysImage?: SanityImage
 }
 
-export function SermonsPageClient({ sermons, seriesList, godRaysImage }: SermonsPageClientProps) {
+export function SermonsPageClient({ sermons, seriesList }: SermonsPageClientProps) {
   const [search, setSearch] = useState('')
   const [activeSeries, setActiveSeries] = useState<string | null>(null)
   const [sortBy, setSortBy] = useState<'newest' | 'oldest'>('newest')
@@ -334,19 +333,6 @@ export function SermonsPageClient({ sermons, seriesList, godRaysImage }: Sermons
 
       {/* Sermons Grid */}
         <section className="py-20 bg-[#FCFBF9] relative overflow-hidden">
-          {/* Decorative Corner Accents (formerly God Rays) */}
-          {/* Decorative Grid Accent - Top Right Diagonal */}
-            {godRaysImage && (
-              <div className="absolute -top-12 md:-top-16 -right-12 md:-right-16 w-[300px] h-[300px] pointer-events-none opacity-60 mix-blend-multiply z-0 transform rotate-[30deg]">
-                <SanityImageComponent
-                  image={godRaysImage}
-                  alt="Decorative Grid Accent Top Right Diagonal"
-                  fill
-                  className="object-contain object-top object-right"
-                />
-              </div>
-            )}
-
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {filteredSermons.length > 0 ? (
             <>

@@ -1,7 +1,6 @@
 import { Metadata } from 'next'
 import { client, siteSettingsQuery, historyQuery, staffQuery } from '@/lib/sanity'
 import { MissionVisionSection, TimelineSection, LeadershipGrid } from '@/components/about'
-import { WaveLine, DottedSquare } from '@/components/ui/MicroGraphics'
 import type { SiteSettings, HistoryItem, Staff } from '@/types'
 
 export const revalidate = 60;
@@ -36,18 +35,6 @@ export default async function AboutPage() {
           background: 'linear-gradient(135deg, #2E2448 0%, #6B4F9E 100%)',
         }}
       >
-        {/* Gold glow overlay */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background: 'radial-gradient(circle at top right, rgba(212, 175, 55, 0.15), transparent)',
-          }}
-        />
-
-        {/* Decorative MicroGraphics */}
-        <WaveLine className="top-20 left-[5%] opacity-30 mix-blend-overlay rotate-[15deg]" delay={0.2} color="#D4AF37" />
-        <DottedSquare className="bottom-[10%] right-[10%] opacity-20 mix-blend-overlay" delay={1.5} color="#D4AF37" />
-
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1
             className="text-5xl font-bold mb-4 tracking-tight"

@@ -92,12 +92,6 @@ export default async function GivePage() {
       <section
         className="relative min-h-screen pt-[120px] pb-12 flex items-center overflow-hidden bg-[#FCFBF9]"
       >
-        {/* Subtle background texture */}
-        <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #6B4F9E 1px, transparent 0)', backgroundSize: '48px 48px' }} />
-
-        {/* Decorative gold accent */}
-        <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-transparent via-[#D4AF37] to-transparent opacity-30" />
-        
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Left: Content */}
@@ -136,41 +130,27 @@ export default async function GivePage() {
             <div className="relative z-10 hidden lg:block">
               <div className="relative">
                 {heroImage ? (
-                  <div
-                    className="aspect-[4/3] max-w-[520px] mx-auto overflow-hidden relative"
-                    style={{ borderRadius: '52% 48% 46% 54% / 58% 44% 56% 42%' }}
-                  >
+                  <div className="aspect-[4/3] max-w-[520px] mx-auto overflow-hidden relative rounded-2xl">
                     <SanityImageComponent
                       image={heroImage}
                       alt={heroTitle}
                       fill
                       className="object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
                   </div>
                 ) : (
-                  <div className="aspect-square max-w-[420px] mx-auto rounded-full bg-gradient-to-br from-[#6B4F9E]/5 via-[#F4F0EA] to-[#D4AF37]/10 flex items-center justify-center">
-                    <div className="w-3/4 h-3/4 rounded-full bg-gradient-to-br from-[#FFFFFF] to-[#F8F6F3] shadow-[0_8px_60px_rgba(107, 79, 158,0.15)] flex items-center justify-center">
-                      <Heart className="w-20 h-20 text-[#D4AF37]" strokeWidth={1} />
-                    </div>
+                  <div className="aspect-[4/3] max-w-[520px] mx-auto rounded-2xl bg-warm-100 flex items-center justify-center">
+                    <Heart className="w-20 h-20 text-warm-300" strokeWidth={1} />
                   </div>
                 )}
-                {/* Floating accent elements */}
-                <div className="absolute top-8 right-8 w-4 h-4 rounded-full bg-[#D4AF37]" />
-                <div className="absolute bottom-12 left-4 w-2 h-2 rounded-full bg-[#6B4F9E]/40" />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Elegant Vertical Connector */}
-      <div className="w-full flex justify-center bg-[#FCFBF9] -mb-12 relative z-10 pointer-events-none">
-        <div className="h-24 w-px bg-gradient-to-b from-[#D4AF37] to-transparent opacity-40"></div>
-      </div>
-
       {/* Impact Areas — Bento Grid Layout */}
-      <section id="impact" className="pt-12 pb-24 bg-[#F7F5F0] scroll-mt-20 relative">
+      <section id="impact" className="pt-24 pb-24 bg-[#F7F5F0] scroll-mt-20 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="flex items-center justify-center gap-4 mb-4">
@@ -206,14 +186,6 @@ export default async function GivePage() {
                     ...(index !== 0 && index !== 3 ? { boxShadow: '0 4px 20px rgba(0,0,0,0.05)' } : {})
                   }}
                 >
-                  {/* Background pattern for burgundy card (Card 1) */}
-                  {index === 0 && (
-                    <div className="absolute inset-0" style={{ opacity: 0.1 }}>
-                      <div className="absolute -top-10 -right-10 w-48 h-48 border border-white rounded-full" />
-                      <div className="absolute -bottom-16 -left-16 w-40 h-40 border border-white rounded-full" />
-                    </div>
-                  )}
-                  
                   <div className={`relative h-full flex flex-col ${
                     isLarge ? 'p-10' : 'p-8'
                   } ${
@@ -275,13 +247,6 @@ export default async function GivePage() {
 
       {/* Giving Breakdown — Visual */}
       <section className="py-24 bg-[#6B4F9E] relative overflow-hidden">
-        {/* Decorative background pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-10 left-10 w-40 h-40 border border-white rounded-full" />
-          <div className="absolute bottom-10 right-10 w-60 h-60 border border-white rounded-full" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 border border-white rounded-full" />
-        </div>
-        
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="inline-flex items-center justify-center gap-3 text-[#D4AF37] text-xs font-bold tracking-[0.2em] uppercase mb-4">

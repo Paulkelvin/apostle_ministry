@@ -37,7 +37,6 @@ export default async function SiteLayout({
         locationName={serviceTimes?.locationName}
         phone={serviceTimes?.phoneNumber}
         email={serviceTimes?.email}
-        skylineImage={settings?.footerSkylineImage}
       />
     </div>
   );
