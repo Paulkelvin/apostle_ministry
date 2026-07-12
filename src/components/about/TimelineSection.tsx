@@ -35,8 +35,8 @@ export function TimelineSection({ historyItems }: TimelineSectionProps) {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="text-primary font-semibold text-sm tracking-widest uppercase">Our Story</span>
-          <h2 className="text-4xl md:text-5xl font-bold text-warm-900 mt-3 mb-4">Our Journey</h2>
+          <span className="text-accent-dark text-xs font-semibold tracking-[0.2em] uppercase">Our Story</span>
+          <h2 className="font-display text-4xl md:text-5xl font-semibold text-primary mt-3 mb-4">Our Journey</h2>
           <p className="text-warm-600 text-lg max-w-2xl mx-auto">
             See how God has been faithful throughout our church&apos;s history
           </p>
@@ -66,7 +66,7 @@ export function TimelineSection({ historyItems }: TimelineSectionProps) {
                   <div className={`grid grid-cols-2 gap-12 ${isEven ? '' : 'direction-rtl'}`}>
                     <div className={isEven ? 'text-right pr-12' : 'order-2 text-left pl-12'}>
                       <span className="text-primary font-bold text-lg">{item.year}</span>
-                      <h3 className="text-2xl font-bold text-warm-900 mt-1">{item.title}</h3>
+                      <h3 className="font-display text-2xl font-semibold text-warm-900 mt-1">{item.title}</h3>
                       {item.description && (
                         <p className="text-warm-600 mt-2">{item.description}</p>
                       )}
@@ -82,8 +82,8 @@ export function TimelineSection({ historyItems }: TimelineSectionProps) {
                             />
                           </div>
                         ) : (
-                          <div className="relative aspect-video rounded-2xl bg-gradient-to-br from-warm-100 to-warm-50 flex items-center justify-center">
-                          <span className="text-5xl font-bold text-warm-200">{item.year}</span>
+                          <div className="relative aspect-video rounded-xl bg-warm-100 flex items-center justify-center">
+                          <span className="font-display text-5xl text-warm-300">{item.year}</span>
                         </div>
                       )}
                     </div>
@@ -186,9 +186,9 @@ export function TimelineSection({ historyItems }: TimelineSectionProps) {
                                   initial={{ opacity: 0, scale: 0.95 }}
                                   animate={{ opacity: 1, scale: 1 }}
                                   transition={{ delay: 0.15 }}
-                                  className="relative aspect-video rounded-xl bg-gradient-to-br from-warm-100 to-warm-50 flex items-center justify-center"
+                                  className="relative aspect-video rounded-xl bg-warm-100 flex items-center justify-center"
                                 >
-                                  <span className="text-4xl font-bold text-warm-200">{item.year}</span>
+                                  <span className="font-display text-4xl text-warm-300">{item.year}</span>
                                 </motion.div>
                               )}
                             </div>

@@ -34,11 +34,11 @@ export function ContactForm() {
 
   if (formState === 'success') {
     return (
-      <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-10 shadow-sm border border-warm-200/50 text-center">
+      <div className="bg-white rounded-xl p-10 shadow-[--shadow-card] border border-warm-200 text-center">
         <div className="w-16 h-16 rounded-full bg-sage/20 flex items-center justify-center mx-auto mb-4">
           <CheckCircle className="w-8 h-8 text-sage-dark" />
         </div>
-        <h3 className="text-2xl font-bold text-warm-900 mb-2">Message Sent!</h3>
+        <h3 className="font-display text-2xl font-semibold text-warm-900 mb-2">Message Sent!</h3>
         <p className="text-warm-600 mb-6">
           Thank you for reaching out. We&apos;ll get back to you as soon as possible.
         </p>
@@ -50,8 +50,8 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 md:p-10 border border-warm-200/40 shadow-sm">
-      <h2 className="text-2xl md:text-3xl font-bold text-warm-900 mb-1">Get in Touch</h2>
+    <form onSubmit={handleSubmit} className="bg-white rounded-xl p-8 md:p-10 border border-warm-200 shadow-[--shadow-card]">
+      <h2 className="font-display text-2xl md:text-3xl font-semibold text-warm-900 mb-1">Get in Touch</h2>
       <p className="text-warm-500 mb-8 text-sm">You can reach us anytime</p>
 
       {formState === 'error' && (
@@ -72,7 +72,7 @@ export function ContactForm() {
               value={formData.firstName}
               onChange={handleChange}
               required
-              className="w-full pl-10 pr-4 py-3 rounded-xl border border-warm-200/60 bg-white/80 focus:bg-white focus:border-primary/40 focus:ring-1 focus:ring-primary/10 transition-all text-warm-900 placeholder:text-warm-400 text-base outline-none"
+              className="w-full pl-10 pr-4 py-3 rounded-lg border border-warm-200 bg-white focus:border-primary transition-colors text-warm-900 placeholder:text-warm-400 text-base outline-none"
               placeholder="First name"
             />
           </div>
@@ -81,7 +81,7 @@ export function ContactForm() {
             name="lastName"
             value={formData.lastName}
             onChange={handleChange}
-            className="w-full px-4 py-3 rounded-xl border border-warm-200/60 bg-white/80 focus:bg-white focus:border-primary/40 focus:ring-1 focus:ring-primary/10 transition-all text-warm-900 placeholder:text-warm-400 text-base outline-none"
+            className="w-full px-4 py-3 rounded-lg border border-warm-200 bg-white focus:border-primary transition-colors text-warm-900 placeholder:text-warm-400 text-base outline-none"
             placeholder="Last name"
           />
         </div>
@@ -95,7 +95,7 @@ export function ContactForm() {
             value={formData.email}
             onChange={handleChange}
             required
-            className="w-full pl-10 pr-4 py-3 rounded-xl border border-warm-200/60 bg-white/80 focus:bg-white focus:border-primary/40 focus:ring-1 focus:ring-primary/10 transition-all text-warm-900 placeholder:text-warm-400 text-base outline-none"
+            className="w-full pl-10 pr-4 py-3 rounded-lg border border-warm-200 bg-white focus:border-primary transition-colors text-warm-900 placeholder:text-warm-400 text-base outline-none"
             placeholder="Your email"
           />
         </div>
@@ -108,7 +108,7 @@ export function ContactForm() {
             name="phone"
             value={formData.phone}
             onChange={handleChange}
-            className="w-full pl-10 pr-4 py-3 rounded-xl border border-warm-200/60 bg-white/80 focus:bg-white focus:border-primary/40 focus:ring-1 focus:ring-primary/10 transition-all text-warm-900 placeholder:text-warm-400 text-base outline-none"
+            className="w-full pl-10 pr-4 py-3 rounded-lg border border-warm-200 bg-white focus:border-primary transition-colors text-warm-900 placeholder:text-warm-400 text-base outline-none"
             placeholder="Phone number"
           />
         </div>
@@ -123,7 +123,7 @@ export function ContactForm() {
             required
             rows={4}
             maxLength={500}
-            className="w-full pl-10 pr-4 py-3 rounded-xl border border-warm-200/60 bg-white/80 focus:bg-white focus:border-primary/40 focus:ring-1 focus:ring-primary/10 transition-all resize-none text-warm-900 placeholder:text-warm-400 text-base outline-none"
+            className="w-full pl-10 pr-4 py-3 rounded-lg border border-warm-200 bg-white focus:border-primary transition-colors resize-none text-warm-900 placeholder:text-warm-400 text-base outline-none"
             placeholder="How can we help?"
           />
           <span className="absolute bottom-3 right-4 text-[11px] text-warm-400">

@@ -17,25 +17,13 @@ export function LeadershipGrid({ staff }: LeadershipGridProps) {
     { _id: '3', name: 'Michael Johnson', role: 'Outreach Pastor', bio: 'Michael is dedicated to serving the community and expanding the reach of our ministry.', rank: 3 },
   ]
 
-  // Alternating accent colors for avatar fallbacks
-  const accentColors = [
-    { bg: 'bg-primary/10', text: 'text-primary' },
-    { bg: 'bg-accent/10', text: 'text-accent-dark' },
-    { bg: 'bg-sage/10', text: 'text-sage-dark' },
-    { bg: 'bg-warm-200', text: 'text-warm-500' },
-  ]
-
   // Determine layout: if lead pastor exists (first), feature them large
   const leadPerson = displayStaff[0]
   const otherStaff = displayStaff.slice(1)
 
   return (
-    <section className="py-24 bg-gradient-to-b from-[#faf5f0] to-white relative overflow-hidden">
-      {/* Decorative background elements */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/[0.02] rounded-full blur-3xl -translate-y-1/2 translate-x-1/3" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-accent/[0.03] rounded-full blur-3xl translate-y-1/2 -translate-x-1/3" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+    <section className="py-24 bg-surface">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -44,8 +32,8 @@ export function LeadershipGrid({ staff }: LeadershipGridProps) {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <span className="inline-block text-xs font-bold tracking-[0.2em] uppercase text-primary mb-4">Meet The Team</span>
-          <h2 className="text-4xl md:text-5xl font-bold text-warm-900 mb-5 tracking-tight">Our Leadership</h2>
+          <span className="inline-block text-accent-dark text-xs font-semibold tracking-[0.2em] uppercase mb-4">Meet The Team</span>
+          <h2 className="font-display text-4xl md:text-5xl font-semibold text-primary mb-5">Our Leadership</h2>
           <p className="text-warm-600 text-lg max-w-xl mx-auto leading-relaxed">
             Dedicated servants who guide our church with wisdom, compassion, and unwavering faith.
           </p>
@@ -60,10 +48,10 @@ export function LeadershipGrid({ staff }: LeadershipGridProps) {
             transition={{ duration: 0.6 }}
             className="mb-16"
           >
-            <div className="bg-white rounded-3xl overflow-hidden border border-warm-100 shadow-sm hover:shadow-lg transition-shadow duration-500 max-w-3xl mx-auto">
+            <div className="bg-white rounded-xl overflow-hidden border border-warm-200 shadow-[--shadow-card] hover:shadow-[--shadow-card-hover] transition-shadow duration-300 max-w-3xl mx-auto">
               <div className="grid md:grid-cols-[1fr_1.4fr]">
                 {/* Photo */}
-                <div className="aspect-[4/4] md:aspect-auto relative overflow-hidden bg-gradient-to-br from-warm-100 to-warm-200 min-h-[180px] md:min-h-[320px]">
+                <div className="aspect-[4/4] md:aspect-auto relative overflow-hidden bg-warm-100 min-h-[180px] md:min-h-[320px]">
                   {leadPerson.image ? (
                     <SanityImageComponent
                       image={leadPerson.image}
@@ -73,26 +61,24 @@ export function LeadershipGrid({ staff }: LeadershipGridProps) {
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center min-h-[360px]">
-                      <div className={`w-32 h-32 rounded-full ${accentColors[0].bg} flex items-center justify-center`}>
-                        <span className={`text-5xl font-bold ${accentColors[0].text}`}>
-                          {leadPerson.name.charAt(0)}
-                        </span>
-                      </div>
+                      <span className="font-display text-7xl text-warm-300">
+                        {leadPerson.name.charAt(0)}
+                      </span>
                     </div>
                   )}
                 </div>
 
                 {/* Content */}
                 <div className="p-6 md:p-10 flex flex-col justify-center">
-                  <span className="text-xs font-bold tracking-[0.15em] uppercase text-primary mb-2">{leadPerson.role}</span>
-                  <h3 className="text-2xl md:text-4xl font-bold text-warm-900 mb-3 md:mb-4 tracking-tight">{leadPerson.name}</h3>
+                  <span className="text-accent-dark text-xs font-semibold tracking-[0.15em] uppercase mb-2">{leadPerson.role}</span>
+                  <h3 className="font-display text-2xl md:text-4xl font-semibold text-warm-900 mb-3 md:mb-4">{leadPerson.name}</h3>
                   {leadPerson.bio && (
                     <p className="text-warm-600 leading-relaxed mb-4 md:mb-6 text-sm md:text-[15px] line-clamp-4 md:line-clamp-none">{leadPerson.bio}</p>
                   )}
                   {leadPerson.email && (
                     <a
                       href={`mailto:${leadPerson.email}`}
-                      className="inline-flex items-center gap-2 bg-primary/5 hover:bg-primary/10 text-primary font-semibold px-5 py-2.5 rounded-xl transition-colors w-fit text-sm"
+                      className="inline-flex items-center gap-2 bg-primary/5 hover:bg-primary/10 text-primary font-semibold px-5 py-2.5 rounded-lg transition-colors w-fit text-sm"
                     >
                       <Mail className="w-4 h-4" />
                       Send a Message
@@ -114,7 +100,6 @@ export function LeadershipGrid({ staff }: LeadershipGridProps) {
             className={`grid gap-6 ${otherStaff.length === 2 ? 'sm:grid-cols-2 max-w-3xl mx-auto' : 'sm:grid-cols-2 lg:grid-cols-3'}`}
           >
             {otherStaff.map((person, index) => {
-              const accent = accentColors[(index + 1) % accentColors.length]
               return (
                 <motion.div
                   key={person._id}
@@ -122,10 +107,10 @@ export function LeadershipGrid({ staff }: LeadershipGridProps) {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: 0.1 * index }}
-                  className="bg-white rounded-2xl overflow-hidden border border-warm-100 shadow-sm hover:shadow-lg hover:border-warm-200 transition-all duration-500 group"
+                  className="bg-white rounded-xl overflow-hidden border border-warm-200 shadow-[--shadow-card] hover:shadow-[--shadow-card-hover] transition-shadow duration-300 group"
                 >
                   {/* Photo */}
-                  <div className="aspect-[16/9] relative overflow-hidden bg-gradient-to-br from-warm-100 to-warm-50">
+                  <div className="aspect-[16/9] relative overflow-hidden bg-warm-100">
                     {person.image ? (
                       <SanityImageComponent
                         image={person.image}
@@ -135,21 +120,17 @@ export function LeadershipGrid({ staff }: LeadershipGridProps) {
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center">
-                        <div className={`w-20 h-20 rounded-full ${accent.bg} flex items-center justify-center`}>
-                          <span className={`text-3xl font-bold ${accent.text}`}>
-                            {person.name.charAt(0)}
-                          </span>
-                        </div>
+                        <span className="font-display text-5xl text-warm-300">
+                          {person.name.charAt(0)}
+                        </span>
                       </div>
                     )}
-                    {/* Gradient overlay on hover */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   </div>
 
                   {/* Info */}
                   <div className="p-5">
-                    <span className="text-[11px] font-bold tracking-[0.15em] uppercase text-primary/70 mb-1 block">{person.role}</span>
-                    <h3 className="text-lg font-bold text-warm-900 mb-2">{person.name}</h3>
+                    <span className="text-accent-dark text-[11px] font-semibold tracking-[0.15em] uppercase mb-1 block">{person.role}</span>
+                    <h3 className="font-display text-lg font-semibold text-warm-900 mb-2">{person.name}</h3>
                     {person.bio && (
                       <p className="text-warm-600 text-sm leading-relaxed line-clamp-2">{person.bio}</p>
                     )}

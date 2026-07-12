@@ -29,16 +29,16 @@ export default async function ContactPage() {
   return (
     <>
       {/* Contact Hero + Form Section */}
-      <section className="pt-32 pb-20 bg-gradient-to-br from-[#F4F0EA] via-[#FCFBF9] to-[#FFFFFF] relative overflow-hidden">
+      <section className="pt-32 pb-20 bg-warm-100 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             {/* Left: Contact Info */}
             <div className="pt-4 lg:pt-8">
-              <span className="inline-block text-xs font-bold tracking-[0.2em] uppercase text-primary mb-4">Reach Out</span>
-              <h1 className="text-5xl md:text-6xl font-bold text-[#6B4F9E] mb-6 tracking-tight leading-[1.1]">
+              <span className="inline-block text-accent-dark text-xs font-semibold tracking-[0.2em] uppercase mb-4">Reach Out</span>
+              <h1 className="font-display text-5xl md:text-6xl font-semibold text-primary mb-6 leading-[1.1]">
                 Contact Us
               </h1>
-              <p className="text-lg text-[#332D2D] mb-10 max-w-md leading-relaxed">
+              <p className="text-lg text-ink mb-10 max-w-md leading-relaxed">
                 Email, call, or complete the form to learn how
                 Restoring Life Family Community Center can serve you.
               </p>
@@ -46,34 +46,34 @@ export default async function ContactPage() {
               <div className="space-y-4 mb-10">
                 <a
                   href={`mailto:${serviceTimes?.email || 'admin@rflcc.org'}`}
-                  className="flex items-center gap-4 p-3 -ml-3 rounded-xl text-[#332D2D] hover:bg-white/60 hover:text-primary transition-all group"
+                  className="flex items-center gap-4 p-3 -ml-3 rounded-lg text-ink hover:bg-white hover:text-primary transition-colors group"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
-                    <Mail className="w-4.5 h-4.5 text-primary group-hover:text-white transition-colors" />
+                  <div className="w-10 h-10 rounded-lg bg-warm-100 border border-warm-200 flex items-center justify-center">
+                    <Mail className="w-4.5 h-4.5 text-primary" />
                   </div>
                   <div>
-                    <span className="text-xs text-[#8A8080] block">Email</span>
+                    <span className="text-xs text-warm-500 block">Email</span>
                     <span className="font-medium">{serviceTimes?.email || 'admin@rflcc.org'}</span>
                   </div>
                 </a>
                 <a
                   href={`tel:${serviceTimes?.phoneNumber || '+12025039579'}`}
-                  className="flex items-center gap-4 p-3 -ml-3 rounded-xl text-[#332D2D] hover:bg-white/60 hover:text-primary transition-all group"
+                  className="flex items-center gap-4 p-3 -ml-3 rounded-lg text-ink hover:bg-white hover:text-primary transition-colors group"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center group-hover:bg-accent group-hover:text-white transition-colors">
-                    <Phone className="w-4.5 h-4.5 text-accent-dark group-hover:text-white transition-colors" />
+                  <div className="w-10 h-10 rounded-lg bg-warm-100 border border-warm-200 flex items-center justify-center">
+                    <Phone className="w-4.5 h-4.5 text-primary" />
                   </div>
                   <div>
-                    <span className="text-xs text-[#8A8080] block">Phone</span>
+                    <span className="text-xs text-warm-500 block">Phone</span>
                     <span className="font-medium">{serviceTimes?.phoneNumber || '(202) 503-9579'}</span>
                   </div>
                 </a>
-                <div className="flex items-center gap-4 p-3 -ml-3 rounded-xl text-[#332D2D]">
-                  <div className="w-10 h-10 rounded-xl bg-sage/10 flex items-center justify-center">
-                    <Clock className="w-4.5 h-4.5 text-sage-dark" />
+                <div className="flex items-center gap-4 p-3 -ml-3 rounded-lg text-ink">
+                  <div className="w-10 h-10 rounded-lg bg-warm-100 border border-warm-200 flex items-center justify-center">
+                    <Clock className="w-4.5 h-4.5 text-primary" />
                   </div>
                   <div>
-                    <span className="text-xs text-[#8A8080] block">Office Hours</span>
+                    <span className="text-xs text-warm-500 block">Office Hours</span>
                     <span className="font-medium">Mon – Fri, 9:00 AM – 5:00 PM</span>
                   </div>
                 </div>
@@ -92,41 +92,41 @@ export default async function ContactPage() {
       <section className="py-16 bg-[#FCFBF9]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="p-6 rounded-2xl bg-gradient-to-br from-[#fdf2f2] to-white border border-primary/[0.08] hover:border-primary/20 hover:shadow-md transition-all group">
+            <div className="p-6 rounded-xl bg-white border border-warm-200 shadow-[--shadow-card] hover:shadow-[--shadow-card-hover] transition-shadow">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/15 transition-colors">
+                <div className="w-10 h-10 rounded-lg bg-warm-100 flex items-center justify-center">
                   <Headset className="w-5 h-5 text-primary" />
                 </div>
-                <h3 className="font-bold text-[#6B4F9E]">Pastoral Support</h3>
+                <h3 className="font-semibold text-warm-900">Pastoral Support</h3>
               </div>
-              <p className="text-[#332D2D] text-sm leading-relaxed">
-                Our pastoral team is available to address any spiritual concerns, prayer 
+              <p className="text-warm-600 text-sm leading-relaxed">
+                Our pastoral team is available to address any spiritual concerns, prayer
                 requests, or questions you may have.
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-gradient-to-br from-[#fdf8f0] to-white border border-accent/[0.1] hover:border-accent/20 hover:shadow-md transition-all group">
+            <div className="p-6 rounded-xl bg-white border border-warm-200 shadow-[--shadow-card] hover:shadow-[--shadow-card-hover] transition-shadow">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center group-hover:bg-accent/15 transition-colors">
-                  <MessageSquare className="w-5 h-5 text-accent-dark" />
+                <div className="w-10 h-10 rounded-lg bg-warm-100 flex items-center justify-center">
+                  <MessageSquare className="w-5 h-5 text-primary" />
                 </div>
-                <h3 className="font-bold text-[#6B4F9E]">Feedback &amp; Suggestions</h3>
+                <h3 className="font-semibold text-warm-900">Feedback &amp; Suggestions</h3>
               </div>
-              <p className="text-[#332D2D] text-sm leading-relaxed">
-                We value your feedback and are continuously working to improve 
+              <p className="text-warm-600 text-sm leading-relaxed">
+                We value your feedback and are continuously working to improve
                 our ministry. Your input helps shape our community.
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-gradient-to-br from-[#f0f5f1] to-white border border-sage/[0.1] hover:border-sage/20 hover:shadow-md transition-all group">
+            <div className="p-6 rounded-xl bg-white border border-warm-200 shadow-[--shadow-card] hover:shadow-[--shadow-card-hover] transition-shadow">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-xl bg-sage/10 flex items-center justify-center group-hover:bg-sage/15 transition-colors">
-                  <Newspaper className="w-5 h-5 text-sage-dark" />
+                <div className="w-10 h-10 rounded-lg bg-warm-100 flex items-center justify-center">
+                  <Newspaper className="w-5 h-5 text-primary" />
                 </div>
-                <h3 className="font-bold text-[#6B4F9E]">Media Inquiries</h3>
+                <h3 className="font-semibold text-warm-900">Media Inquiries</h3>
               </div>
-              <p className="text-[#332D2D] text-sm leading-relaxed">
-                For media-related questions or press inquiries, please contact us 
+              <p className="text-warm-600 text-sm leading-relaxed">
+                For media-related questions or press inquiries, please contact us
                 at <a href="mailto:media@theapostlesministry.org" className="text-primary hover:underline font-medium">media@theapostlesministry.org</a>.
               </p>
             </div>
@@ -135,11 +135,11 @@ export default async function ContactPage() {
       </section>
 
       {/* Map & Location Section */}
-      <section id="directions" className="py-20 bg-gradient-to-b from-[#FCFBF9] via-[#F4F0EA] to-[#E0D8D2] scroll-mt-24">
+      <section id="directions" className="py-20 bg-warm-100 scroll-mt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <span className="inline-block text-xs font-bold tracking-[0.2em] uppercase text-primary mb-3">Visit Us</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-[#6B4F9E] leading-tight">
+            <span className="inline-block text-accent-dark text-xs font-semibold tracking-[0.2em] uppercase mb-3">Visit Us</span>
+            <h2 className="font-display text-3xl md:text-4xl font-semibold text-primary leading-tight">
               Come Worship With Us
             </h2>
           </div>
@@ -151,29 +151,29 @@ export default async function ContactPage() {
             />
 
             {/* Compact Location Details Card */}
-            <div className="bg-white rounded-2xl p-6 shadow-sm border border-[#F4F0EA] lg:self-center">
-              <h3 className="font-bold text-[#6B4F9E] text-lg mb-2">
+            <div className="bg-white rounded-xl p-6 shadow-[--shadow-card] border border-warm-200 lg:self-center">
+              <h3 className="font-semibold text-warm-900 text-lg mb-2">
                 {serviceTimes?.locationName || 'Main Campus'}
               </h3>
-              <p className="text-[#332D2D] text-sm whitespace-pre-line leading-relaxed mb-4">
+              <p className="text-warm-600 text-sm whitespace-pre-line leading-relaxed mb-4">
                 {serviceTimes?.address || 'High Calling Ministries\n401-A Prince George\'s Blvd\nUpper Marlboro, MD 20774'}
               </p>
 
-              <div className="h-px bg-[#F4F0EA] mb-4" />
+              <div className="h-px bg-warm-100 mb-4" />
 
               <div className="flex flex-col gap-2 mb-5">
                 <a
                   href={`tel:${serviceTimes?.phoneNumber || '+1234567890'}`}
-                  className="flex items-center gap-2.5 text-sm text-[#332D2D] hover:text-primary transition-colors"
+                  className="flex items-center gap-2.5 text-sm text-ink hover:text-primary transition-colors"
                 >
-                  <Phone className="w-4 h-4 text-[#8A8080]" />
+                  <Phone className="w-4 h-4 text-warm-500" />
                   {serviceTimes?.phoneNumber || '(202) 503-9579'}
                 </a>
                 <a
                   href={`mailto:${serviceTimes?.email || 'admin@rflcc.org'}`}
-                  className="flex items-center gap-2.5 text-sm text-[#332D2D] hover:text-primary transition-colors"
+                  className="flex items-center gap-2.5 text-sm text-ink hover:text-primary transition-colors"
                 >
-                  <Mail className="w-4 h-4 text-[#8A8080]" />
+                  <Mail className="w-4 h-4 text-warm-500" />
                   {serviceTimes?.email || 'admin@rflcc.org'}
                 </a>
               </div>
@@ -193,16 +193,16 @@ export default async function ContactPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="relative py-20 bg-gradient-to-b from-[#f5f0ea] to-[#faf5f0] overflow-hidden">
+      <section className="relative py-20 bg-surface overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-[1fr_2fr] gap-12 lg:gap-16 items-start">
             {/* Left: FAQ Heading */}
             <div className="lg:sticky lg:top-28">
-              <span className="inline-block text-xs font-bold tracking-[0.2em] uppercase text-primary mb-3">FAQ</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-[#1C1B1A] mb-4 leading-tight">
+              <span className="inline-block text-accent-dark text-xs font-semibold tracking-[0.2em] uppercase mb-3">FAQ</span>
+              <h2 className="font-display text-3xl md:text-4xl font-semibold text-primary mb-4 leading-tight">
                 Common Questions
               </h2>
-              <p className="text-[#5F5B55] leading-relaxed mb-6">
+              <p className="text-warm-600 leading-relaxed mb-6">
                 Find answers to the most frequently asked questions about our ministry and services.
               </p>
               <a href={`mailto:${serviceTimes?.email || 'admin@rflcc.org'}`} className="text-primary hover:text-primary-dark font-medium text-sm inline-flex items-center gap-1.5 group">
