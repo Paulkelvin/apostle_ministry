@@ -15,10 +15,10 @@ interface LatestNewsSectionProps {
 export function LatestNewsSection({ posts }: LatestNewsSectionProps) {
   if (!posts || posts.length === 0) {
     return (
-      <section className="py-16 bg-[#F4F0EA]">
+      <section className="py-16 bg-warm-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold mb-3" style={{ color: '#6B4F9E' }}>Latest Resources</h2>
-          <p style={{ color: '#332D2D' }}>No posts yet. Check back soon!</p>
+          <h2 className="font-display text-3xl font-semibold text-primary mb-3">Latest Resources</h2>
+          <p className="text-ink">No posts yet. Check back soon!</p>
         </div>
       </section>
     )
@@ -30,7 +30,7 @@ export function LatestNewsSection({ posts }: LatestNewsSectionProps) {
   const featuredCategory = featured.categories?.[0]
 
   return (
-    <section className="relative py-20 lg:py-28 bg-[#F4F0EA] overflow-hidden">
+    <section className="relative py-20 lg:py-28 bg-warm-100 overflow-hidden">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -42,14 +42,15 @@ export function LatestNewsSection({ posts }: LatestNewsSectionProps) {
         <div className="relative mb-12 lg:mb-16">
           <div className="relative flex flex-col sm:flex-row justify-between items-start sm:items-end">
             <div>
-              <div className="w-[2px] h-10 bg-[#D4AF37] mb-4" />
-              <h2 className="text-3xl md:text-4xl font-bold mb-1" style={{ color: '#6B4F9E' }}>Latest Resources</h2>
-              <p className="text-sm" style={{ color: '#5C5252' }}>Stories, devotionals, and news from our community</p>
+              <p className="text-accent-dark text-xs font-semibold tracking-[0.2em] uppercase mb-4">
+                From the Journal
+              </p>
+              <h2 className="font-display text-4xl md:text-5xl font-semibold text-primary mb-2">Latest Resources</h2>
+              <p className="text-sm text-warm-600">Stories, devotionals, and news from our community</p>
             </div>
             <Link
               href="/resources"
-              className="mt-4 sm:mt-0 inline-flex items-center gap-2 font-semibold text-sm hover:text-[#2E2448] transition-colors"
-              style={{ color: '#6B4F9E' }}
+              className="mt-4 sm:mt-0 inline-flex items-center gap-2 font-semibold text-sm text-primary hover:text-primary-dark transition-colors"
             >
               View All Resources
               <ArrowRight className="w-4 h-4" />
@@ -61,7 +62,7 @@ export function LatestNewsSection({ posts }: LatestNewsSectionProps) {
         <div className="grid lg:grid-cols-2 gap-6">
           {/* Featured (Left) — Full-height hero card */}
           <Link href={`/resources/${featured.slug?.current}`} className="group block">
-            <article className="relative h-full min-h-[420px] lg:min-h-[520px] rounded-2xl overflow-hidden bg-[#332D2D]">
+            <article className="relative h-full min-h-[420px] lg:min-h-[520px] rounded-xl overflow-hidden bg-warm-900">
               {featured.mainImage ? (
                 <SanityImageComponent
                   image={featured.mainImage}
@@ -70,37 +71,28 @@ export function LatestNewsSection({ posts }: LatestNewsSectionProps) {
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
               ) : (
-                <div className="absolute inset-0 bg-gradient-to-br from-[#6B4F9E]/30 to-[#D4AF37]/10 flex items-center justify-center">
-                  <BookOpen className="w-16 h-16 text-[#E0D8D2]/30" />
+                <div className="absolute inset-0 bg-warm-100 flex items-center justify-center">
+                  <BookOpen className="w-16 h-16 text-warm-300" />
                 </div>
               )}
               {/* Scrim overlay */}
-              <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 60%, transparent 100%)' }} />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
               {/* Content */}
               <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8">
                 {featuredCategory && (
-                  <span
-                    className="inline-block w-fit text-xs font-semibold px-3 py-1 rounded-full mb-3"
-                    style={{ backgroundColor: '#D4AF37', color: '#1A1A1A' }}
-                  >
+                  <span className="inline-block w-fit text-xs font-semibold px-3 py-1 rounded-lg bg-accent text-warm-900 mb-3">
                     {featuredCategory.title}
                   </span>
                 )}
-                <h3
-                  className="text-2xl md:text-3xl font-bold mb-2 leading-tight line-clamp-3"
-                  style={{ color: '#FFFFFF', textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}
-                >
+                <h3 className="font-display text-2xl md:text-3xl font-semibold text-white mb-2 leading-tight line-clamp-3">
                   {featured.title}
                 </h3>
                 {featured.excerpt && (
-                  <p
-                    className="text-sm leading-relaxed line-clamp-2 mb-3 max-w-lg"
-                    style={{ color: 'rgba(255,255,255,0.85)', textShadow: '0 1px 3px rgba(0,0,0,0.5)' }}
-                  >
+                  <p className="text-sm leading-relaxed line-clamp-2 mb-3 max-w-lg text-white/85">
                     {featured.excerpt}
                   </p>
                 )}
-                <div className="flex items-center gap-3 text-xs" style={{ color: 'rgba(255,255,255,0.7)' }}>
+                <div className="flex items-center gap-3 text-xs text-white/70">
                   {featured.publishedAt && (
                     <time>{format(new Date(featured.publishedAt), 'MMM d, yyyy')}</time>
                   )}
@@ -121,9 +113,9 @@ export function LatestNewsSection({ posts }: LatestNewsSectionProps) {
 
               return (
                 <Link key={post._id} href={`/resources/${post.slug?.current}`} className="group block flex-1">
-                  <article className="flex flex-col sm:flex-row gap-5 h-full bg-white rounded-2xl overflow-hidden border border-[#E0D8D2]/50 shadow-[0_8px_24px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_32px_rgba(0,0,0,0.08)] hover:-translate-y-0.5 transition-all duration-300 p-4 sm:p-5">
+                  <article className="flex flex-col sm:flex-row gap-5 h-full bg-white rounded-xl overflow-hidden border border-warm-200 shadow-[--shadow-card] hover:shadow-[--shadow-card-hover] hover:-translate-y-0.5 transition-all duration-300 p-4 sm:p-5">
                     {/* Thumbnail */}
-                    <div className="relative w-full sm:w-40 md:w-48 flex-shrink-0 aspect-[4/3] sm:aspect-square rounded-xl overflow-hidden">
+                    <div className="relative w-full sm:w-40 md:w-48 flex-shrink-0 aspect-[4/3] sm:aspect-square rounded-lg overflow-hidden">
                       {post.mainImage ? (
                         <SanityImageComponent
                           image={post.mainImage}
@@ -132,27 +124,27 @@ export function LatestNewsSection({ posts }: LatestNewsSectionProps) {
                           className="object-cover group-hover:scale-105 transition-transform duration-500"
                         />
                       ) : (
-                        <div className="w-full h-full bg-gradient-to-br from-[#6B4F9E]/10 to-[#D4AF37]/10 flex items-center justify-center">
-                          <BookOpen className="w-8 h-8 text-[#E0D8D2]" />
+                        <div className="w-full h-full bg-warm-100 flex items-center justify-center">
+                          <BookOpen className="w-8 h-8 text-warm-300" />
                         </div>
                       )}
                     </div>
                     {/* Text content */}
                     <div className="flex flex-col justify-center flex-1 min-w-0">
                       {category && (
-                        <span className="text-[11px] font-semibold uppercase tracking-wider mb-1.5" style={{ color: '#D4AF37' }}>
+                        <span className="text-[11px] font-semibold uppercase tracking-wider text-accent-dark mb-1.5">
                           {category.title}
                         </span>
                       )}
-                      <h3 className="text-base md:text-lg font-bold mb-1.5 leading-snug line-clamp-2 group-hover:text-[#5A4085] transition-colors" style={{ color: '#6B4F9E' }}>
+                      <h3 className="font-display text-base md:text-lg font-semibold text-warm-900 mb-1.5 leading-snug line-clamp-2 group-hover:text-primary transition-colors">
                         {post.title}
                       </h3>
                       {post.excerpt && (
-                        <p className="text-[13px] line-clamp-2 mb-2" style={{ color: '#5C5252' }}>
+                        <p className="text-[13px] text-warm-600 line-clamp-2 mb-2">
                           {post.excerpt}
                         </p>
                       )}
-                      <div className="flex items-center gap-3 text-[11px]" style={{ color: '#8A8080' }}>
+                      <div className="flex items-center gap-3 text-[11px] text-warm-500">
                         {post.publishedAt && (
                           <time>{format(new Date(post.publishedAt), 'MMM d, yyyy')}</time>
                         )}
@@ -170,10 +162,10 @@ export function LatestNewsSection({ posts }: LatestNewsSectionProps) {
             {/* If only one stacked post (2 total), add a "View All" card */}
             {stacked.length < 2 && (
               <Link href="/resources" className="flex-1 block">
-                <div className="flex items-center justify-center h-full min-h-[200px] rounded-2xl border-2 border-dashed border-[#E0D8D2] hover:border-[#D4AF37] transition-colors duration-300">
+                <div className="flex items-center justify-center h-full min-h-[200px] rounded-xl border border-dashed border-warm-300 hover:border-primary transition-colors duration-300">
                   <div className="text-center">
-                    <p className="font-semibold mb-1" style={{ color: '#6B4F9E' }}>Explore More</p>
-                    <p className="text-sm" style={{ color: '#8A8080' }}>Browse all our resources</p>
+                    <p className="font-semibold text-primary mb-1">Explore More</p>
+                    <p className="text-sm text-warm-500">Browse all our resources</p>
                   </div>
                 </div>
               </Link>

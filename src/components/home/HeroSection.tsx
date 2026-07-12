@@ -52,13 +52,12 @@ export function HeroSection({ settings }: HeroSectionProps) {
         <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary-dark to-warm-900" />
       )}
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/50" />
+      {/* Directional scrim — darker at the base, tinted toward the brand ink */}
+      <div className="absolute inset-0 bg-gradient-to-t from-primary-ink/80 via-black/40 to-black/25" />
       {/* Content */}
-      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
+      <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
         <motion.h1
-          className="text-5xl md:text-7xl lg:text-8xl font-bold mb-3"
-          style={{ color: '#FFFFFF', textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}
+          className="font-display font-semibold text-5xl md:text-7xl lg:text-8xl text-white mb-5"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.3 }}
@@ -67,8 +66,7 @@ export function HeroSection({ settings }: HeroSectionProps) {
         </motion.h1>
 
         <motion.p
-          className="text-xl md:text-2xl lg:text-3xl mb-7"
-          style={{ color: '#FFFFFF', textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}
+          className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto mb-9"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6 }}
@@ -82,15 +80,10 @@ export function HeroSection({ settings }: HeroSectionProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.9 }}
         >
-          <Button href="/contact#directions" variant="gold" size="md" className="uppercase tracking-widest text-sm px-10 py-3.5 rounded-lg">
+          <Button href="/contact#directions" variant="gold" size="md" className="px-9">
             Plan Your Visit
           </Button>
-          <Button
-            href={watchOnlineUrl || '/sermons'}
-            variant="inverse"
-            size="md"
-            className="uppercase tracking-widest text-sm px-10 py-3.5 rounded-lg"
-          >
+          <Button href={watchOnlineUrl || '/sermons'} variant="inverse" size="md" className="px-9">
             Watch Online
           </Button>
         </motion.div>

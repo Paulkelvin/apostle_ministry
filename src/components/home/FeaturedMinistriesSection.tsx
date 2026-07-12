@@ -88,7 +88,7 @@ export function FeaturedMinistriesSection({ ministries }: FeaturedMinistriesSect
   }
 
   return (
-    <section className="py-20 lg:py-28 bg-[#FCFBF9] relative overflow-hidden">
+    <section className="py-20 lg:py-28 bg-surface relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16 flex flex-col items-center">
@@ -119,18 +119,17 @@ export function FeaturedMinistriesSection({ ministries }: FeaturedMinistriesSect
               >
                 {/* Image Side */}
                 <div className="w-full lg:w-1/2">
-                  <div className="aspect-[4/3] relative overflow-hidden rounded-2xl group cursor-pointer" onClick={() => openDrawer(ministry)}>
-                    <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500 z-10" />
+                  <div className="aspect-[4/3] relative overflow-hidden rounded-xl group cursor-pointer" onClick={() => openDrawer(ministry)}>
                     {ministry.coverImage ? (
                       <SanityImageComponent
                         image={ministry.coverImage}
                         alt={ministry.name}
                         fill
-                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                        className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                       />
                     ) : (
-                      <div className="w-full h-full bg-gradient-to-br from-[#6B4F9E]/10 to-[#D4AF37]/10 flex items-center justify-center transition-transform duration-700 group-hover:scale-105">
-                        <span className="text-7xl font-bold" style={{ color: 'rgba(107, 79, 158,0.15)' }}>
+                      <div className="w-full h-full bg-warm-100 flex items-center justify-center">
+                        <span className="font-display text-7xl text-warm-300">
                           {ministry.name.charAt(0)}
                         </span>
                       </div>
@@ -141,18 +140,18 @@ export function FeaturedMinistriesSection({ ministries }: FeaturedMinistriesSect
                 {/* Text Side */}
                 <div className="w-full lg:w-1/2">
                   {/* Gold accent line */}
-                  <div className="w-[2px] h-10 bg-[#D4AF37] mb-5" />
-                  <h3 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: '#6B4F9E' }}>
+                  <div className="w-px h-10 bg-accent mb-5" />
+                  <h3 className="font-display text-2xl md:text-3xl font-semibold text-primary mb-4">
                     {ministry.name}
                   </h3>
                   {ministry.description && (
-                    <p className="text-base md:text-lg leading-relaxed mb-6" style={{ color: '#5C5252' }}>
+                    <p className="text-base md:text-lg leading-relaxed text-warm-600 mb-6">
                       {ministry.description}
                     </p>
                   )}
                   <button
                     onClick={() => openDrawer(ministry)}
-                    className="inline-flex items-center gap-2 px-7 py-3 rounded-lg border-2 border-[#D4AF37] text-[#D4AF37] font-semibold text-sm hover:bg-[#D4AF37] hover:text-[#1A1A1A] transition-colors duration-300 group"
+                    className="inline-flex items-center gap-2 px-7 py-3 rounded-lg border border-warm-200 text-ink font-semibold text-sm hover:border-primary hover:text-primary transition-colors duration-300 group"
                   >
                     Join {ministry.name}
                     <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -174,7 +173,7 @@ export function FeaturedMinistriesSection({ ministries }: FeaturedMinistriesSect
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={closeDrawer}
-              className="fixed inset-0 bg-[#1A1A1A]/60 backdrop-blur-sm z-50"
+              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50"
             />
             
             {/* Drawer */}
@@ -186,11 +185,11 @@ export function FeaturedMinistriesSection({ ministries }: FeaturedMinistriesSect
               className="fixed inset-y-0 right-0 w-full max-w-md bg-white shadow-2xl z-50 flex flex-col"
             >
               {/* Drawer Header */}
-              <div className="flex-shrink-0 px-6 py-6 border-b border-gray-100 flex items-center justify-between bg-[#FCFBF9]">
-                <h3 className="text-xl font-bold text-[#6B4F9E]">Join Department</h3>
-                <button 
+              <div className="flex-shrink-0 px-6 py-6 border-b border-warm-200 flex items-center justify-between bg-surface">
+                <h3 className="text-xl font-bold text-primary">Join Department</h3>
+                <button
                   onClick={closeDrawer}
-                  className="p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-full transition-colors"
+                  className="p-2 text-warm-400 hover:text-primary hover:bg-warm-100 rounded-lg transition-colors"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -199,52 +198,52 @@ export function FeaturedMinistriesSection({ ministries }: FeaturedMinistriesSect
               {/* Drawer Body (Scrollable) */}
               <div className="flex-1 overflow-y-auto px-6 py-8">
                 <div className="mb-8">
-                  <div className="w-12 h-1 bg-[#D4AF37] mb-4"></div>
-                  <h4 className="text-2xl font-extrabold text-[#1A1A1A] mb-3">{selectedMinistry.name}</h4>
-                  <p className="text-[#5C5252] leading-relaxed">
+                  <div className="w-px h-10 bg-accent mb-4"></div>
+                  <h4 className="font-display text-2xl font-semibold text-warm-900 mb-3">{selectedMinistry.name}</h4>
+                  <p className="text-warm-600 leading-relaxed">
                     {selectedMinistry.description}
                   </p>
                 </div>
 
                 {!isSubmitted ? (
-                  <div className="bg-gray-50 p-6 rounded-xl border border-gray-100 mb-8">
-                    <h5 className="font-bold text-[#6B4F9E] mb-4 border-b border-gray-200 pb-2">Express Interest</h5>
-                    <p className="text-sm text-gray-500 mb-6">Leave your details and leadership will reach out shortly.</p>
-                    
+                  <div className="bg-warm-100 p-6 rounded-xl mb-8">
+                    <h5 className="font-bold text-primary mb-4 border-b border-warm-200 pb-2">Express Interest</h5>
+                    <p className="text-sm text-warm-500 mb-6">Leave your details and leadership will reach out shortly.</p>
+
                     <form onSubmit={handleJoinSubmit} className="space-y-4">
                       <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-1">Full Name</label>
-                        <input 
-                          type="text" 
+                        <label className="block text-sm font-semibold text-warm-600 mb-1">Full Name</label>
+                        <input
+                          type="text"
                           required
-                          className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-[#D4AF37] focus:ring-2 focus:ring-[#D4AF37]/20 outline-none transition-all text-[#1A1A1A]" 
+                          className="w-full px-4 py-2.5 rounded-lg border border-warm-200 bg-white focus:border-primary outline-none transition-colors text-ink"
                           placeholder="John Doe"
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-1">Phone Number</label>
-                        <input 
-                          type="tel" 
+                        <label className="block text-sm font-semibold text-warm-600 mb-1">Phone Number</label>
+                        <input
+                          type="tel"
                           required
                           value={phoneNumber}
                           onChange={handlePhoneChange}
-                          className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-[#D4AF37] focus:ring-2 focus:ring-[#D4AF37]/20 outline-none transition-all text-[#1A1A1A]" 
+                          className="w-full px-4 py-2.5 rounded-lg border border-warm-200 bg-white focus:border-primary outline-none transition-colors text-ink"
                           placeholder="(555) 000-0000"
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-1">Message (Optional)</label>
-                        <textarea 
+                        <label className="block text-sm font-semibold text-warm-600 mb-1">Message (Optional)</label>
+                        <textarea
                           rows={3}
-                          className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-[#D4AF37] focus:ring-2 focus:ring-[#D4AF37]/20 outline-none transition-all resize-none text-[#1A1A1A]" 
+                          className="w-full px-4 py-2.5 rounded-lg border border-warm-200 bg-white focus:border-primary outline-none transition-colors resize-none text-ink"
                           placeholder="Why are you interested in this department?"
                         ></textarea>
                       </div>
-                      
-                      <button 
+
+                      <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="w-full mt-4 bg-[#6B4F9E] hover:bg-[#461F72] text-white font-bold py-3 px-4 rounded-lg transition-colors flex items-center justify-center gap-2 border border-transparent disabled:opacity-70"
+                        className="w-full mt-4 bg-primary hover:bg-primary-dark text-white font-bold py-3 px-4 rounded-lg transition-colors flex items-center justify-center gap-2 disabled:opacity-70"
                       >
                         {isSubmitting ? (
                           <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
