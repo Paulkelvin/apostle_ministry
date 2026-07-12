@@ -22,7 +22,7 @@ export function BlogCard({ post, index = 0 }: BlogCardProps) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay: index * 0.05 }}
-      className="group bg-white rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.05)] hover:shadow-[0_16px_40px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300 border border-[#E0D8D2]/50 flex flex-col cursor-pointer"
+      className="group bg-white rounded-xl overflow-hidden shadow-[--shadow-card] hover:shadow-[--shadow-card-hover] hover:-translate-y-1 transition-all duration-300 border border-warm-200 flex flex-col cursor-pointer"
     >
       <Link href={`/resources/${post.slug?.current}`} className="flex flex-col h-full">
         {/* Image */}
@@ -36,8 +36,8 @@ export function BlogCard({ post, index = 0 }: BlogCardProps) {
               className="group-hover:scale-105 transition-transform duration-500"
             />
           ) : (
-            <div className="w-full h-full bg-gradient-to-br from-[#6B4F9E]/10 to-[#D4AF37]/10 flex items-center justify-center">
-              <BookOpen className="w-10 h-10 text-[#E0D8D2]" />
+            <div className="w-full h-full bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
+              <BookOpen className="w-10 h-10 text-warm-200" />
             </div>
           )}
           {/* Category badge overlay */}
@@ -54,7 +54,7 @@ export function BlogCard({ post, index = 0 }: BlogCardProps) {
         {/* Content */}
         <div className="px-5 py-4 flex flex-col flex-1">
           {/* Meta */}
-          <div className="flex items-center gap-2 text-[11px] text-[#8A8080] mb-2">
+          <div className="flex items-center gap-2 text-[11px] text-warm-500 mb-2">
             {post.publishedAt && (
               <time>{format(new Date(post.publishedAt), 'MMM d, yyyy')}</time>
             )}
@@ -65,22 +65,22 @@ export function BlogCard({ post, index = 0 }: BlogCardProps) {
           </div>
 
           {/* Title */}
-          <h3 className="text-[15px] font-bold text-[#6B4F9E] mb-1 group-hover:text-[#5A4085] transition-colors line-clamp-2 leading-snug">
+          <h3 className="font-display text-[15px] font-semibold text-warm-900 mb-1 group-hover:text-primary transition-colors line-clamp-2 leading-snug">
             {post.title}
           </h3>
 
           {/* Excerpt */}
           {post.excerpt && (
-            <p className="text-[13px] text-[#332D2D] line-clamp-1">
+            <p className="text-[13px] text-ink line-clamp-1">
               {post.excerpt}
             </p>
           )}
 
           {/* Author */}
           {post.author && (
-            <div className="mt-3 pt-3 border-t border-[#E0D8D2]/40 flex items-center gap-2">
+            <div className="mt-3 pt-3 border-t border-warm-200/40 flex items-center gap-2">
               {post.author.image ? (
-                <div className="w-6 h-6 rounded-full overflow-hidden ring-1 ring-[#E0D8D2]/50">
+                <div className="w-6 h-6 rounded-full overflow-hidden ring-1 ring-warm-200/50">
                   <SanityImageComponent
                     image={post.author.image}
                     alt={post.author.name}
@@ -90,13 +90,13 @@ export function BlogCard({ post, index = 0 }: BlogCardProps) {
                   />
                 </div>
               ) : (
-                <div className="w-6 h-6 rounded-full bg-[#F4F0EA] flex items-center justify-center ring-1 ring-[#E0D8D2]/50">
-                  <span className="text-[10px] font-bold text-[#6B4F9E]">
+                <div className="w-6 h-6 rounded-full bg-warm-100 flex items-center justify-center ring-1 ring-warm-200/50">
+                  <span className="text-[10px] font-bold text-primary">
                     {post.author.name?.charAt(0)}
                   </span>
                 </div>
               )}
-              <span className="text-[13px] font-medium text-[#332D2D]">{post.author.name}</span>
+              <span className="text-[13px] font-medium text-ink">{post.author.name}</span>
             </div>
           )}
         </div>

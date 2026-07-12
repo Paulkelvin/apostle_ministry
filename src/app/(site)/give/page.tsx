@@ -1,9 +1,9 @@
 import { Metadata } from 'next'
-import { Heart, CreditCard, Building2, Mail, Users, BookOpen, Globe, Utensils, ArrowRight, Target, TrendingUp } from 'lucide-react'
+import { Heart, CreditCard, Building2, Mail, Users, BookOpen, Globe, Utensils } from 'lucide-react'
 import { TithelyButton } from '@/components/giving'
 import { client, givingPageQuery } from '@/lib/sanity'
 import { SanityImageComponent } from '@/components/ui'
-import type { GivingPage, DonationCampaign } from '@/types'
+import type { GivingPage } from '@/types'
 
 export const metadata: Metadata = {
   title: 'Give | Restoring Life Family Community Center',
@@ -44,15 +44,7 @@ export default async function GivePage() {
     { title: 'In Person', description: 'Give during any of our services using the offering boxes located at the back of the sanctuary.', note: 'Cash, checks, and giving envelopes accepted', icon: 'building' as const },
     { title: 'Mail a Check', description: 'Mail your donation to our church office. Make checks payable to "Restoring Life Family Community Center".', icon: 'mail' as const },
   ]
-  const taxStatement = data?.taxStatement || 'Restoring Life Family Community Center is a registered 501(c)(3) nonprofit organization. All donations are tax-deductible to the fullest extent allowed by law. You will receive a giving statement for your records.'
   const mailingAddress = data?.mailingAddress || "Restoring Life Family Community Center\n401-A Prince George's Blvd\nUpper Marlboro, MD 20774"
-  
-  // Demo donation campaigns if none exist
-  const donationCampaigns: DonationCampaign[] = data?.donationCampaigns?.filter(c => c.isActive) || [
-    { title: 'Building Fund', description: 'Help us expand our sanctuary to accommodate our growing congregation.', goalAmount: 100000, currentAmount: 67500, color: '#6B4F9E', isActive: true },
-    { title: 'Community Outreach', description: 'Provide meals, supplies, and support to families in need.', goalAmount: 15000, currentAmount: 12300, color: '#D4AF37', isActive: true },
-    { title: 'Missions Fund', description: 'Support our missionaries and partners spreading the Gospel around the world.', goalAmount: 20000, currentAmount: 14200, color: '#7BA381', isActive: true },
-  ]
 
   // Impact areas with church-appropriate icons and descriptions
   const impactAreas = [
@@ -90,38 +82,34 @@ export default async function GivePage() {
     <>
       {/* Hero Section — Clean Minimal Design */}
       <section
-        className="relative min-h-screen pt-[120px] pb-12 flex items-center overflow-hidden bg-[#FCFBF9]"
+        className="relative min-h-screen pt-[120px] pb-12 flex items-center overflow-hidden bg-surface"
       >
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Left: Content */}
             <div className="relative z-10">
-              {/* Decorative line */}
-              <div className="flex items-center gap-4 mb-8">
-                <div className="w-16 h-[2px] bg-[#D4AF37]" />
-                <span className="text-[#D4AF37] text-xs font-semibold tracking-[0.3em] uppercase">
-                  Generosity
-                </span>
-              </div>
-              
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#6B4F9E] mb-8 leading-[1.05] tracking-tight" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>
+              <p className="text-accent-dark text-xs font-semibold tracking-[0.2em] uppercase mb-8">
+                Generosity
+              </p>
+
+              <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold text-primary mb-8 leading-[1.05]">
                 {heroTitle}
               </h1>
               
               {/* Scripture as elegant inline quote */}
-              <div className="relative mb-10 pl-6 border-l-2 border-[#D4AF37]">
-                <p className="text-lg lg:text-xl text-[#3D3268] italic leading-relaxed">
+              <div className="relative mb-10 pl-6 border-l-2 border-accent">
+                <p className="text-lg lg:text-xl text-primary-deep italic leading-relaxed">
                   &ldquo;{heroVerse}&rdquo;
                 </p>
-                <p className="text-[#D4AF37] text-sm font-semibold mt-3 tracking-wide">
+                <p className="text-accent text-sm font-semibold mt-3 tracking-wide">
                   {heroVerseRef}
                 </p>
               </div>
               
               <div className="flex flex-col sm:flex-row gap-4">
-                <TithelyButton 
-                  label="Give Now" 
-                  className="group text-base px-10 py-4 bg-[#6B4F9E] hover:bg-[#2E2448] text-white rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-[1.02]" 
+                <TithelyButton
+                  label="Give Now"
+                  className="text-base px-10 py-4 bg-accent hover:bg-accent-dark text-warm-900 rounded-lg font-semibold transition-colors duration-300"
                 />
               </div>
             </div>
@@ -150,89 +138,69 @@ export default async function GivePage() {
       </section>
 
       {/* Impact Areas — Bento Grid Layout */}
-      <section id="impact" className="pt-24 pb-24 bg-[#F7F5F0] scroll-mt-20 relative">
+      <section id="impact" className="pt-24 pb-24 bg-warm-100 scroll-mt-20 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <div className="flex items-center justify-center gap-4 mb-4">
-              <div className="w-16 h-[1px] bg-[#CBA052]" />
-              <span className="text-[#CBA052] text-xs font-semibold tracking-[0.25em] uppercase">Your Impact</span>
-              <div className="w-16 h-[1px] bg-[#CBA052]" />
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#3D3268] mb-4" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>
+            <p className="text-accent-dark text-xs font-semibold tracking-[0.2em] uppercase mb-4">Your Impact</p>
+            <h2 className="font-display text-3xl md:text-4xl font-semibold text-primary mb-4">
               Building Kingdom Futures
             </h2>
-            <p className="text-[#595959] text-base max-w-2xl mx-auto">
+            <p className="text-warm-600 text-base max-w-2xl mx-auto">
               Every dollar you give is stewarded with care. Here&apos;s how your generosity makes a difference.
             </p>
           </div>
 
-          {/* Bento Grid - Refined with exact brand colors */}
+          {/* Bento Grid — two surfaces: primary-deep and white */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 auto-rows-[200px]">
             {impactAreas.map((area, index) => {
               const Icon = area.icon
               const isLarge = index === 0 || index === 3
-              
+              const isDark = index === 0
+
               return (
-                <div 
+                <div
                   key={area.title}
-                  className={`relative rounded-[24px] overflow-hidden transition-all duration-300 hover:scale-[1.02] ${
+                  className={`relative rounded-xl overflow-hidden transition-transform duration-300 hover:scale-[1.02] ${
                     isLarge ? 'md:col-span-2 md:row-span-2' : ''
                   } ${
-                    index === 0 ? 'bg-[#3D3268]' : 
-                    index === 3 ? 'bg-[#CBA052]' : 
-                    'bg-white shadow-[0_4px_20px_rgba(0,0,0,0.05)]'
+                    isDark
+                      ? 'bg-primary-deep'
+                      : 'bg-white border border-warm-200 shadow-[--shadow-card]'
                   }`}
-                  style={{ 
-                    ...(index !== 0 && index !== 3 ? { boxShadow: '0 4px 20px rgba(0,0,0,0.05)' } : {})
-                  }}
                 >
                   <div className={`relative h-full flex flex-col ${
                     isLarge ? 'p-10' : 'p-8'
                   } ${
-                    index === 0 ? 'justify-end' : 'justify-start'
+                    isDark ? 'justify-end' : 'justify-start'
                   }`}>
-                    {/* Icon - positioned at top for all cards */}
-                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
-                      index === 0 ? 'absolute top-10 left-10' : 'mb-auto'
-                    } ${
-                      index === 0 ? 'bg-white/10' : 
-                      index === 3 ? 'bg-[#3D3268]/15' : 
-                      'bg-[#F7F5F0]'
+                    {/* Icon */}
+                    <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${
+                      isDark ? 'absolute top-10 left-10 bg-white/10' : 'mb-auto bg-warm-100'
                     }`}>
-                      <Icon className={`w-6 h-6 ${
-                        index === 0 ? 'text-[#CBA052]' : 
-                        index === 3 ? 'text-[#3D3268]' : 
-                        'text-[#3D3268]'
-                      }`} />
+                      <Icon className={`w-6 h-6 ${isDark ? 'text-accent' : 'text-primary'}`} />
                     </div>
-                    
+
                     {/* Content */}
-                    <div className={index === 0 ? '' : 'mt-auto'}>
+                    <div className={isDark ? '' : 'mt-auto'}>
                       <div className="flex items-baseline gap-3 mb-3">
-                        <span 
-                          className={`font-bold drop-shadow-sm ${isLarge ? 'text-5xl md:text-6xl' : 'text-4xl'}`}
-                          style={{ color: index === 0 ? '#FDEFD3' : index === 3 ? '#2B1A1C' : '#CBA052' }}
+                        <span
+                          className={`font-display ${isLarge ? 'text-5xl md:text-6xl' : 'text-4xl'} ${
+                            isDark ? 'text-accent' : 'text-accent-dark'
+                          }`}
                         >
                           {area.stat}
                         </span>
-                        <span 
-                          className="text-sm font-medium"
-                          style={{ color: index === 0 ? '#FFFFFF' : index === 3 ? '#2B1A1C' : '#595959' }}
-                        >
+                        <span className={`text-sm font-medium ${isDark ? 'text-white/80' : 'text-warm-600'}`}>
                           {area.statLabel}
                         </span>
                       </div>
-                      <h3 
-                        className="text-lg font-bold mb-2" 
-                        style={{ fontFamily: 'Georgia, "Times New Roman", serif', color: index === 0 ? '#FFFFFF' : index === 3 ? '#2B1A1C' : '#3D3268' }}
-                      >
+                      <h3 className={`font-display text-lg font-semibold mb-2 ${isDark ? 'text-white' : 'text-warm-900'}`}>
                         {area.title}
                       </h3>
                       {isLarge && (
-                        <p 
-                          className="text-sm leading-relaxed line-clamp-3 hidden md:block"
-                          style={{ color: index === 0 ? '#FFFFFF' : index === 3 ? '#2B1A1C' : '#595959' }}
-                        >
+                        <p className={`text-sm leading-relaxed line-clamp-3 hidden md:block ${
+                          isDark ? 'text-white/75' : 'text-warm-600'
+                        }`}>
                           {area.description}
                         </p>
                       )}
@@ -246,34 +214,29 @@ export default async function GivePage() {
       </section>
 
       {/* Giving Breakdown — Visual */}
-      <section className="py-24 bg-[#6B4F9E] relative overflow-hidden">
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-24 bg-primary-deep">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <span className="inline-flex items-center justify-center gap-3 text-[#D4AF37] text-xs font-bold tracking-[0.2em] uppercase mb-4">
-              <span className="w-12 h-px bg-[#D4AF37]" />
+            <p className="text-accent text-xs font-semibold tracking-[0.2em] uppercase mb-4">
               Transparency
-              <span className="w-12 h-px bg-[#D4AF37]" />
-            </span>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: '#FFFFFF' }}>
+            </p>
+            <h2 className="font-display text-4xl md:text-5xl font-semibold text-white mb-4">
               Where Your Gift Goes
             </h2>
-            <p className="text-lg max-w-2xl mx-auto" style={{ color: 'rgba(255,255,255,0.8)' }}>
+            <p className="text-lg text-white/70 max-w-2xl mx-auto">
               We believe in complete transparency. Here&apos;s how every dollar is stewarded.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            {breakdown.map((item, index) => (
+            {breakdown.map((item) => (
               <div
                 key={item.title}
-                className="relative bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:bg-white/15 transition-all duration-300 group"
+                className="bg-white/[0.04] rounded-xl p-8 border border-white/10 hover:border-white/25 transition-colors duration-300"
               >
-                <span className="text-6xl font-bold text-[#D4AF37] mb-4 block">{item.percentage}</span>
-                <h3 className="text-xl font-bold mb-3" style={{ color: '#FFFFFF' }}>{item.title}</h3>
-                <p style={{ color: 'rgba(255,255,255,0.75)' }} className="text-sm leading-relaxed">{item.description}</p>
-                
-                {/* Hover line */}
-                <div className="absolute bottom-0 left-0 h-1 w-0 bg-[#D4AF37] group-hover:w-full transition-all duration-500 rounded-b-2xl" />
+                <span className="font-display text-6xl text-accent mb-4 block">{item.percentage}</span>
+                <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
+                <p className="text-white/75 text-sm leading-relaxed">{item.description}</p>
               </div>
             ))}
           </div>
@@ -281,51 +244,39 @@ export default async function GivePage() {
       </section>
 
       {/* Ways to Give — Flowing Cards */}
-      <section className="py-24 bg-[#FCFBF9]">
+      <section className="py-24 bg-surface">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <div className="flex items-center justify-center gap-4 mb-4">
-              <div className="w-16 h-[1px] bg-[#D4AF37]" />
-              <span className="text-[#6B4F9E] text-xs font-semibold tracking-[0.25em] uppercase">Ways to Give</span>
-              <div className="w-16 h-[1px] bg-[#D4AF37]" />
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#6B4F9E]" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>
+            <p className="text-accent-dark text-xs font-semibold tracking-[0.2em] uppercase mb-4">Ways to Give</p>
+            <h2 className="font-display text-3xl md:text-4xl font-semibold text-primary">
               Choose Your Giving Method
             </h2>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {methods.map((method, index) => {
+            {methods.map((method) => {
               const Icon = iconMap[method.icon] || CreditCard
-              const colors = [
-                { gradient: 'from-[#6B4F9E] to-[#5A4085]', light: 'bg-[#6B4F9E]/5', text: 'text-[#6B4F9E]' },
-                { gradient: 'from-[#D4AF37] to-[#C9A431]', light: 'bg-[#D4AF37]/5', text: 'text-[#D4AF37]' },
-                { gradient: 'from-[#7BA381] to-[#6E9475]', light: 'bg-[#7BA381]/5', text: 'text-[#7BA381]' },
-              ][index]
-              
+
               return (
-                <div 
-                  key={method.title} 
-                  className="relative bg-white rounded-3xl p-8 hover:shadow-2xl hover:shadow-[#6B4F9E]/10 transition-all duration-500 group"
+                <div
+                  key={method.title}
+                  className="bg-white rounded-xl p-8 border border-warm-200 shadow-[--shadow-card] hover:shadow-[--shadow-card-hover] transition-shadow duration-300"
                 >
-                  {/* Subtle gradient line at top */}
-                  <div className={`absolute top-0 left-8 right-8 h-1 bg-gradient-to-r ${colors.gradient} rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
-                  
-                  <div className={`w-14 h-14 rounded-2xl ${colors.light} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                    <Icon className={`w-7 h-7 ${colors.text}`} />
+                  <div className="w-14 h-14 rounded-lg bg-warm-100 flex items-center justify-center mb-6">
+                    <Icon className="w-7 h-7 text-primary" />
                   </div>
-                  <h3 className="text-xl font-bold text-[#6B4F9E] mb-3" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>{method.title}</h3>
-                  <p className="text-[#5C5252] mb-6 leading-relaxed text-sm">
+                  <h3 className="font-display text-xl font-semibold text-warm-900 mb-3">{method.title}</h3>
+                  <p className="text-warm-600 mb-6 leading-relaxed text-sm">
                     {method.description}
                   </p>
                   {method.icon === 'credit-card' && (
-                    <TithelyButton label="Give Online" className="w-full rounded-full" />
+                    <TithelyButton label="Give Online" className="w-full rounded-lg" />
                   )}
                   {method.note && (
-                    <p className="text-sm text-[#8A8080] bg-[#F4F0EA]/60 rounded-2xl px-4 py-3">{method.note}</p>
+                    <p className="text-sm text-warm-500 bg-warm-100 rounded-lg px-4 py-3">{method.note}</p>
                   )}
                   {method.icon === 'mail' && (
-                    <address className="text-sm text-[#8A8080] not-italic whitespace-pre-line bg-[#F4F0EA]/60 rounded-2xl px-4 py-3">
+                    <address className="text-sm text-warm-500 not-italic whitespace-pre-line bg-warm-100 rounded-lg px-4 py-3">
                       {mailingAddress}
                     </address>
                   )}

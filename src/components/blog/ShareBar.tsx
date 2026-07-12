@@ -49,12 +49,12 @@ export function ShareBar({ url, title, variant = 'default' }: ShareBarProps) {
 
   const isHero = variant === 'hero'
   const btnClass = isHero
-    ? 'w-9 h-9 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-white/20 transition-all text-[#E0D8D2]'
-    : 'w-9 h-9 rounded-full bg-[#FFFFFF] border border-[#E0D8D2]/50 flex items-center justify-center hover:border-[#6B4F9E] hover:text-[#6B4F9E] transition-all text-[#8A8080]'
+    ? 'w-9 h-9 rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-white/20 transition-all text-warm-200'
+    : 'w-9 h-9 rounded-full bg-white border border-warm-200/50 flex items-center justify-center hover:border-primary hover:text-primary transition-all text-warm-500'
 
   return (
     <div className="flex items-center gap-3 flex-wrap">
-      {!isHero && <span className="text-sm font-medium text-[#8A8080]">Share:</span>}
+      {!isHero && <span className="text-sm font-medium text-warm-500">Share:</span>}
       {shareLinks.map((link) => (
         <a
           key={link.label}
@@ -79,7 +79,7 @@ export function ShareBar({ url, title, variant = 'default' }: ShareBarProps) {
               initial={{ opacity: 0, y: 5 }}
               animate={{ opacity: 1, y: -8 }}
               exit={{ opacity: 0 }}
-              className="absolute -top-6 text-xs font-medium text-[#6B4F9E] bg-[#F4F0EA] px-2 py-0.5 rounded whitespace-nowrap"
+              className="absolute -top-6 text-xs font-medium text-primary bg-warm-100 px-2 py-0.5 rounded whitespace-nowrap"
             >
               Copied!
             </motion.span>

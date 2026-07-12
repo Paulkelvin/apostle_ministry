@@ -24,7 +24,7 @@ export function FeaturedPost({ post }: FeaturedPostProps) {
       className="group"
     >
       <Link href={`/resources/${post.slug?.current}`} className="cursor-pointer">
-        <div className="bg-[#FFFFFF] rounded-2xl overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.08)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.14)] transition-all duration-300 border border-[#E0D8D2]/50">
+        <div className="bg-white rounded-xl overflow-hidden shadow-[--shadow-card] hover:shadow-[--shadow-card-hover] transition-all duration-300 border border-warm-200">
           <div className="grid lg:grid-cols-2">
             {/* Image */}
             <div className="aspect-[16/10] lg:aspect-auto lg:min-h-[280px] relative overflow-hidden">
@@ -37,8 +37,8 @@ export function FeaturedPost({ post }: FeaturedPostProps) {
                   className="group-hover:scale-105 transition-transform duration-700"
                 />
               ) : (
-                <div className="w-full h-full bg-gradient-to-br from-[#6B4F9E]/10 to-[#D4AF37]/10 flex items-center justify-center">
-                  <BookOpen className="w-16 h-16 text-[#E0D8D2]" />
+                <div className="w-full h-full bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
+                  <BookOpen className="w-16 h-16 text-warm-200" />
                 </div>
               )}
               {/* Category badge */}
@@ -54,16 +54,16 @@ export function FeaturedPost({ post }: FeaturedPostProps) {
 
             {/* Content */}
             <div className="p-6 lg:p-8 flex flex-col justify-center">
-              <div className="flex items-center gap-1.5 text-[11px] font-semibold text-[#D4AF37] uppercase tracking-wider mb-3">
+              <div className="flex items-center gap-1.5 text-[11px] font-semibold text-accent uppercase tracking-wider mb-3">
                 <span>Featured Post</span>
               </div>
 
-              <h2 className="text-xl lg:text-2xl font-bold text-[#6B4F9E] mb-3 group-hover:text-[#6B4F9E] transition-colors line-clamp-2">
+              <h2 className="font-display text-xl lg:text-2xl font-semibold text-warm-900 mb-3 group-hover:text-primary transition-colors line-clamp-2">
                 {post.title}
               </h2>
 
               {post.excerpt && (
-                <p className="text-sm text-[#332D2D] mb-4 line-clamp-2 leading-relaxed">
+                <p className="text-sm text-ink mb-4 line-clamp-2 leading-relaxed">
                   {post.excerpt}
                 </p>
               )}
@@ -73,7 +73,7 @@ export function FeaturedPost({ post }: FeaturedPostProps) {
                 {post.author && (
                   <div className="flex items-center gap-2">
                     {post.author.image ? (
-                      <div className="w-8 h-8 rounded-full overflow-hidden ring-1 ring-[#E0D8D2]/50">
+                      <div className="w-8 h-8 rounded-full overflow-hidden ring-1 ring-warm-200/50">
                         <SanityImageComponent
                           image={post.author.image}
                           alt={post.author.name}
@@ -83,28 +83,28 @@ export function FeaturedPost({ post }: FeaturedPostProps) {
                         />
                       </div>
                     ) : (
-                      <div className="w-8 h-8 rounded-full bg-[#F4F0EA] flex items-center justify-center ring-1 ring-[#E0D8D2]/50">
-                        <span className="text-xs font-bold text-[#6B4F9E]">
+                      <div className="w-8 h-8 rounded-full bg-warm-100 flex items-center justify-center ring-1 ring-warm-200/50">
+                        <span className="text-xs font-bold text-primary">
                           {post.author.name?.charAt(0)}
                         </span>
                       </div>
                     )}
-                    <span className="text-[13px] font-medium text-[#332D2D]">{post.author.name}</span>
+                    <span className="text-[13px] font-medium text-ink">{post.author.name}</span>
                   </div>
                 )}
-                <span className="text-[#E0D8D2]">|</span>
+                <span className="text-warm-200">|</span>
                 {post.publishedAt && (
-                  <time className="text-[13px] text-[#8A8080]">
+                  <time className="text-[13px] text-warm-500">
                     {format(new Date(post.publishedAt), 'MMM d, yyyy')}
                   </time>
                 )}
-                <span className="flex items-center gap-1 text-[13px] text-[#8A8080]">
+                <span className="flex items-center gap-1 text-[13px] text-warm-500">
                   <Clock className="w-3 h-3" />
                   {readTime} min
                 </span>
               </div>
 
-              <div className="flex items-center gap-2 text-[#6B4F9E] font-semibold text-[13px] group-hover:gap-3 transition-all">
+              <div className="flex items-center gap-2 text-primary font-semibold text-[13px] group-hover:gap-3 transition-all">
                 Read Article
                 <ArrowRight className="w-3.5 h-3.5" />
               </div>

@@ -15,11 +15,11 @@ export function SearchBar({ value, onChange }: SearchBarProps) {
     <div
       className={`relative flex items-center transition-all duration-200 rounded-xl border ${
         focused
-          ? 'border-[#6B4F9E] ring-2 ring-[#6B4F9E]/10 bg-white'
-          : 'border-[#E0D8D2] bg-[#FFFFFF] hover:border-[#D4AF37]'
+          ? 'border-primary ring-2 ring-primary/10 bg-white'
+          : 'border-warm-200 bg-white hover:border-accent'
       }`}
     >
-      <Search className="absolute left-4 w-4 h-4 text-[#8A8080] pointer-events-none" />
+      <Search className="absolute left-4 w-4 h-4 text-warm-500 pointer-events-none" />
       <input
         type="text"
         placeholder="Search articles..."
@@ -27,14 +27,14 @@ export function SearchBar({ value, onChange }: SearchBarProps) {
         onChange={(e) => onChange(e.target.value)}
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
-        className="w-full py-3 pl-11 pr-10 bg-transparent text-sm text-[#332D2D] placeholder-[#8A8080] outline-none rounded-xl"
+        className="w-full py-3 pl-11 pr-10 bg-transparent text-sm text-ink placeholder-warm-500 outline-none rounded-xl"
       />
       {value && (
         <button
           onClick={() => onChange('')}
-          className="absolute right-3 p-1 rounded-full hover:bg-[#F4F0EA] transition-colors"
+          className="absolute right-3 p-1 rounded-full hover:bg-warm-100 transition-colors"
         >
-          <X className="w-3.5 h-3.5 text-[#8A8080]" />
+          <X className="w-3.5 h-3.5 text-warm-500" />
         </button>
       )}
     </div>

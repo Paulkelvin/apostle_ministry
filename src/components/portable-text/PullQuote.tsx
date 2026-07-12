@@ -1,5 +1,3 @@
-import { Quote } from 'lucide-react'
-
 interface PullQuoteProps {
   quote: string
   attribution?: string
@@ -7,15 +5,12 @@ interface PullQuoteProps {
 
 export function PullQuote({ quote, attribution }: PullQuoteProps) {
   return (
-    <blockquote className="my-12 relative">
-      <div className="absolute -top-4 -left-2 text-primary/20">
-        <Quote className="w-16 h-16 transform rotate-180" />
-      </div>
-      <p className="text-2xl md:text-3xl font-serif italic text-warm-800 leading-relaxed pl-8 pr-4">
+    <blockquote className="my-12 border-l-2 border-accent pl-8 pr-4">
+      <p className="font-display text-2xl md:text-3xl italic text-warm-800 leading-relaxed">
         &ldquo;{quote}&rdquo;
       </p>
       {attribution && (
-        <cite className="block mt-4 pl-8 text-warm-600 font-medium not-italic">
+        <cite className="block mt-4 text-warm-600 font-medium not-italic">
           — {attribution}
         </cite>
       )}

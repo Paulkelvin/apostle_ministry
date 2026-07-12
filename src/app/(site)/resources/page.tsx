@@ -26,7 +26,7 @@ export default async function BlogPage() {
   const { posts, categories } = await getBlogData()
 
   return (
-    <div className="bg-[#FCFBF9] min-h-screen">
+    <div className="bg-surface min-h-screen">
       <BlogPageClient posts={posts} categories={categories} />
     </div>
   )

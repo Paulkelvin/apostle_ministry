@@ -14,10 +14,10 @@ export function CategoryFilter({ categories, active, onSelect }: CategoryFilterP
     <div className="flex flex-wrap gap-2">
       <button
         onClick={() => onSelect(null)}
-        className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 border cursor-pointer ${
+        className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 border cursor-pointer ${
           active === null
-            ? 'bg-[#6B4F9E] text-white border-[#6B4F9E] shadow-sm'
-            : 'bg-[#FFFFFF] text-[#332D2D] border-[#E0D8D2] hover:border-[#6B4F9E] hover:text-[#6B4F9E]'
+            ? 'bg-primary text-white border-primary shadow-sm'
+            : 'bg-white text-ink border-warm-200 hover:border-primary hover:text-primary'
         }`}
       >
         All
@@ -27,10 +27,10 @@ export function CategoryFilter({ categories, active, onSelect }: CategoryFilterP
           key={cat._id}
           whileTap={{ scale: 0.95 }}
           onClick={() => onSelect(cat.slug.current)}
-          className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 border cursor-pointer ${
+          className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 border cursor-pointer ${
             active === cat.slug.current
               ? 'text-white shadow-sm'
-              : 'bg-[#FFFFFF] text-[#332D2D] border-[#E0D8D2] hover:border-[#6B4F9E] hover:text-[#6B4F9E]'
+              : 'bg-white text-ink border-warm-200 hover:border-primary hover:text-primary'
           }`}
           style={
             active === cat.slug.current

@@ -62,22 +62,11 @@ export default async function BlogPostPage({ params }: PageProps) {
   return (
     <>
       {/* Hero */}
-      <section
-        className="relative pt-32 pb-16 overflow-hidden"
-        style={{
-          background: 'linear-gradient(135deg, #2E2448 0%, #6B4F9E 100%)',
-        }}
-      >
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background: 'radial-gradient(circle at top right, rgba(212, 175, 55, 0.15), transparent)',
-          }}
-        />
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="bg-primary-deep pt-32 pb-16">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
             href="/resources"
-            className="inline-flex items-center gap-2 text-[#E0D8D2]/80 hover:text-[#FFFFFF] transition-colors mb-8 text-sm group"
+            className="inline-flex items-center gap-2 text-warm-200/80 hover:text-white transition-colors mb-8 text-sm group"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
             Back to Resources
@@ -98,10 +87,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             </div>
           )}
 
-          <h1
-            className="text-3xl md:text-5xl font-bold mb-6 tracking-tight leading-tight"
-            style={{ color: '#FFFFFF' }}
-          >
+          <h1 className="font-display text-3xl md:text-5xl font-semibold text-white mb-6 leading-tight">
             {post.title}
           </h1>
 
@@ -125,14 +111,14 @@ export default async function BlogPostPage({ params }: PageProps) {
                   </div>
                 )}
                 <div>
-                  <p className="text-sm font-medium" style={{ color: '#FFFFFF' }}>{post.author.name}</p>
+                  <p className="text-sm font-medium text-white">{post.author.name}</p>
                   {post.author.role && (
-                    <p className="text-xs" style={{ color: '#E0D8D2' }}>{post.author.role}</p>
+                    <p className="text-xs text-white/60">{post.author.role}</p>
                   )}
                 </div>
               </div>
             )}
-            <div className="flex items-center gap-4 text-sm" style={{ color: '#E0D8D2' }}>
+            <div className="flex items-center gap-4 text-sm text-white/60">
               {post.publishedAt && (
                 <span className="flex items-center gap-1.5">
                   <Calendar className="w-3.5 h-3.5" />
@@ -148,7 +134,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 
           {/* Share buttons in hero */}
           <div className="mt-6 flex items-center gap-3">
-            <span className="text-sm font-medium text-[#E0D8D2]/70">Share:</span>
+            <span className="text-sm font-medium text-warm-200/70">Share:</span>
             <ShareBar url={postUrl} title={post.title} variant="hero" />
           </div>
         </div>
@@ -156,9 +142,9 @@ export default async function BlogPostPage({ params }: PageProps) {
 
       {/* Featured Image */}
       {post.mainImage && (
-        <section className="bg-[#FCFBF9] pt-10">
+        <section className="bg-surface pt-10">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="aspect-[16/9] relative rounded-2xl overflow-hidden shadow-[0_8px_40px_rgba(0,0,0,0.15)] border border-[#E0D8D2]/20">
+            <div className="aspect-[16/9] relative rounded-xl overflow-hidden shadow-[--shadow-card] border border-warm-200">
               <SanityImageComponent
                 image={post.mainImage}
                 alt={post.title}
@@ -172,19 +158,19 @@ export default async function BlogPostPage({ params }: PageProps) {
       )}
 
       {/* Content */}
-      <article className="py-12 bg-[#FCFBF9]">
+      <article className="py-12 bg-surface">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Article body */}
-          <div className="bg-[#FFFFFF] rounded-2xl p-6 sm:p-10 shadow-[0_2px_16px_rgba(0,0,0,0.05)] border border-[#E0D8D2]/30">
+          <div className="bg-white rounded-xl p-6 sm:p-10 shadow-[--shadow-card] border border-warm-200">
             {post.body ? (
               <PortableTextRenderer value={post.body} />
             ) : (
-              <p className="text-[#332D2D]">No content available.</p>
+              <p className="text-ink">No content available.</p>
             )}
           </div>
 
           {/* Bottom share bar */}
-          <div className="mt-8 pt-8 border-t border-[#E0D8D2]/50">
+          <div className="mt-8 pt-8 border-t border-warm-200/50">
             <ShareBar url={postUrl} title={post.title} />
           </div>
         </div>
@@ -192,16 +178,13 @@ export default async function BlogPostPage({ params }: PageProps) {
 
       {/* Author Bio */}
       {post.author && post.author.bio && (
-        <section className="py-16 bg-gradient-to-b from-[#F4F0EA] to-[#FCFBF9]">
+        <section className="py-16 bg-warm-100">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="relative bg-[#FFFFFF] rounded-3xl p-8 sm:p-10 shadow-[0_4px_24px_rgba(0,0,0,0.08)] border border-[#E0D8D2]/40">
-              {/* Decorative accent */}
-              <div className="absolute top-0 left-8 w-16 h-1 bg-gradient-to-r from-[#D4AF37] to-[#D4AF37]/30 rounded-full -translate-y-1/2" />
-              
+            <div className="relative bg-white rounded-xl p-8 sm:p-10 shadow-[--shadow-card] border border-warm-200">
               <div className="flex flex-col sm:flex-row gap-6 items-start">
                 {post.author.image && (
                   <div className="flex-shrink-0">
-                    <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden ring-4 ring-[#F4F0EA] shadow-lg">
+                    <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-xl overflow-hidden">
                       <SanityImageComponent
                         image={post.author.image}
                         alt={post.author.name}
@@ -213,12 +196,12 @@ export default async function BlogPostPage({ params }: PageProps) {
                   </div>
                 )}
                 <div className="flex-1">
-                  <p className="text-xs font-semibold text-[#D4AF37] uppercase tracking-[0.15em] mb-2">About the Author</p>
-                  <h3 className="text-xl font-bold text-[#6B4F9E] mb-1" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>{post.author.name}</h3>
+                  <p className="text-xs font-semibold text-accent-dark uppercase tracking-[0.15em] mb-2">About the Author</p>
+                  <h3 className="font-display text-xl font-semibold text-warm-900 mb-1">{post.author.name}</h3>
                   {post.author.role && (
-                    <p className="text-[#8A8080] text-sm font-medium mb-4">{post.author.role}</p>
+                    <p className="text-warm-500 text-sm font-medium mb-4">{post.author.role}</p>
                   )}
-                  <p className="text-[#5C5252] text-sm leading-relaxed">{post.author.bio}</p>
+                  <p className="text-warm-600 text-sm leading-relaxed">{post.author.bio}</p>
                 </div>
               </div>
             </div>
@@ -227,7 +210,7 @@ export default async function BlogPostPage({ params }: PageProps) {
       )}
 
       {/* Comments */}
-      <section className="py-12 bg-[#FCFBF9]">
+      <section className="py-12 bg-surface">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <CommentSection postId={post._id} comments={comments} />
         </div>
@@ -235,9 +218,9 @@ export default async function BlogPostPage({ params }: PageProps) {
 
       {/* Related Posts */}
       {relatedPosts.length > 0 && (
-        <section className="py-16 bg-[#F4F0EA]">
+        <section className="py-16 bg-warm-100">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl font-bold text-[#6B4F9E] mb-8 text-center">
+            <h2 className="text-2xl font-bold text-primary mb-8 text-center">
               Related Articles
             </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
