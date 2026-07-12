@@ -35,7 +35,7 @@ export function EventCard({ event, index }: EventCardProps) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.1 }}
-      className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow group"
+      className="bg-white rounded-xl overflow-hidden border border-warm-200 shadow-[--shadow-card] hover:shadow-[--shadow-card-hover] transition-shadow group"
     >
       <div className="grid md:grid-cols-[300px_1fr]">
         {/* Image */}
@@ -61,7 +61,7 @@ export function EventCard({ event, index }: EventCardProps) {
 
         {/* Content */}
         <div className="p-6 flex flex-col">
-          <h3 className="text-2xl font-bold text-warm-900 group-hover:text-primary transition-colors">
+          <h3 className="font-display text-2xl font-semibold text-warm-900 group-hover:text-primary transition-colors">
             {event.title}
           </h3>
 

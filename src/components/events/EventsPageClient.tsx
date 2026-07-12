@@ -47,7 +47,7 @@ export function EventsPageClient({ events }: EventsPageClientProps) {
   return (
     <>
       {/* Controls Bar */}
-      <section className="bg-[#FFFFFF]/95 backdrop-blur-md border-b border-[#E0D8D2] sticky top-[73px] z-40 shadow-sm rounded-b-2xl">
+      <section className="bg-white/95 backdrop-blur-md border-b border-warm-200 sticky top-[73px] z-40 shadow-sm rounded-b-2xl">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             {/* Filter Chips — mask fades the trailing edge on mobile to hint at scrollability */}
@@ -59,8 +59,8 @@ export function EventsPageClient({ events }: EventsPageClientProps) {
                   onClick={() => setActiveFilter(key)}
                   className={`px-4 py-1.5 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-300 ease-out active:scale-95 ${
                     activeFilter === key
-                      ? 'bg-[#332D2D] text-white shadow-md shadow-[#332D2D]/15'
-                      : 'bg-white text-[#332D2D] hover:bg-[#F4F0EA] hover:text-[#332D2D]'
+                      ? 'bg-ink text-white shadow-md shadow-ink/15'
+                      : 'bg-white text-ink hover:bg-warm-100 hover:text-ink'
                   }`}
                 >
                   {label}
@@ -72,13 +72,13 @@ export function EventsPageClient({ events }: EventsPageClientProps) {
             </div>
 
             {/* View Toggle */}
-            <div className="flex items-center bg-[#F4F0EA] rounded-xl p-1 shrink-0 self-end sm:self-auto">
+            <div className="flex items-center bg-warm-100 rounded-xl p-1 shrink-0 self-end sm:self-auto">
               <button
                 onClick={() => setViewMode('grid')}
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-300 ease-out active:scale-95 ${
                   viewMode === 'grid'
-                    ? 'bg-white text-[#332D2D] shadow-sm'
-                    : 'text-[#8A8080] hover:text-[#332D2D]'
+                    ? 'bg-white text-ink shadow-sm'
+                    : 'text-warm-500 hover:text-ink'
                 }`}
               >
                 <LayoutGrid className="w-4 h-4" />
@@ -88,8 +88,8 @@ export function EventsPageClient({ events }: EventsPageClientProps) {
                 onClick={() => setViewMode('calendar')}
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-300 ease-out active:scale-95 ${
                   viewMode === 'calendar'
-                    ? 'bg-white text-[#332D2D] shadow-sm'
-                    : 'text-[#8A8080] hover:text-[#332D2D]'
+                    ? 'bg-white text-ink shadow-sm'
+                    : 'text-warm-500 hover:text-ink'
                 }`}
               >
                 <CalendarDays className="w-4 h-4" />
@@ -120,7 +120,7 @@ export function EventsPageClient({ events }: EventsPageClientProps) {
                   {/* Grid */}
                   {gridEvents.length > 0 && (
                     <div>
-                      <h2 className="text-lg font-bold text-[#6B4F9E] mb-5">
+                      <h2 className="text-lg font-bold text-primary mb-5">
                         {activeFilter === 'all' ? 'Upcoming Events' : `${FILTER_OPTIONS.find(f => f.key === activeFilter)?.label || ''} Events`}
                       </h2>
                       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

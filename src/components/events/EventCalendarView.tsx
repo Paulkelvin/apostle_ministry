@@ -77,12 +77,12 @@ export function EventCalendarView({ events, onSelectEvent }: EventCalendarViewPr
       {/* Calendar Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <h2 className="text-2xl font-bold text-[#6B4F9E] tracking-tight">
+          <h2 className="font-display text-2xl font-semibold text-primary">
             {format(currentMonth, 'MMMM yyyy')}
           </h2>
           <button
             onClick={goToToday}
-            className="text-xs font-semibold text-[#332D2D] bg-[#F4F0EA] hover:bg-[#E0D8D2] px-3 py-1.5 rounded-lg transition-colors border border-[#E0D8D2] cursor-pointer"
+            className="text-xs font-semibold text-ink bg-warm-100 hover:bg-warm-200 px-3 py-1.5 rounded-lg transition-colors border border-warm-200 cursor-pointer"
           >
             Today
           </button>
@@ -90,14 +90,14 @@ export function EventCalendarView({ events, onSelectEvent }: EventCalendarViewPr
         <div className="flex items-center gap-1">
           <button
             onClick={goToPrev}
-            className="w-9 h-9 rounded-xl flex items-center justify-center text-[#8A8080] hover:bg-[#F4F0EA] transition-colors cursor-pointer"
+            className="w-9 h-9 rounded-xl flex items-center justify-center text-warm-500 hover:bg-warm-100 transition-colors cursor-pointer"
             aria-label="Previous month"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
           <button
             onClick={goToNext}
-            className="w-9 h-9 rounded-xl flex items-center justify-center text-[#8A8080] hover:bg-[#F4F0EA] transition-colors cursor-pointer"
+            className="w-9 h-9 rounded-xl flex items-center justify-center text-warm-500 hover:bg-warm-100 transition-colors cursor-pointer"
             aria-label="Next month"
           >
             <ChevronRight className="w-5 h-5" />
@@ -107,11 +107,11 @@ export function EventCalendarView({ events, onSelectEvent }: EventCalendarViewPr
 
       {/* Desktop Calendar Grid */}
       <div className="hidden md:block">
-        <div className="bg-white rounded-2xl shadow-[0_12px_32px_rgba(28,27,26,0.08)] overflow-hidden">
+        <div className="bg-white rounded-xl border border-warm-200 shadow-[--shadow-card] overflow-hidden">
           {/* Header Row */}
-          <div className="grid grid-cols-7 border-b border-[#F4F0EA]">
+          <div className="grid grid-cols-7 border-b border-warm-100">
             {weekDays.map(day => (
-              <div key={day} className="py-3 text-center text-xs font-bold uppercase tracking-wider text-[#8A8080]">
+              <div key={day} className="py-3 text-center text-xs font-bold uppercase tracking-wider text-warm-500">
                 {day}
               </div>
             ))}
@@ -130,8 +130,8 @@ export function EventCalendarView({ events, onSelectEvent }: EventCalendarViewPr
               return (
                 <div
                   key={idx}
-                  className={`relative min-h-[100px] border-b border-r border-[#F5F2ED] p-2 transition-colors ${
-                    !isCurrentMonth ? 'bg-[#F5F2ED]/50' : 'bg-white hover:bg-[#F4F0EA]/30'
+                  className={`relative min-h-[100px] border-b border-r border-warm-100 p-2 transition-colors ${
+                    !isCurrentMonth ? 'bg-warm-100/50' : 'bg-white hover:bg-warm-100/30'
                   } ${idx % 7 === 0 ? 'border-l-0' : ''}`}
                   onMouseEnter={() => hasEvents && handleDateHover(day)}
                   onMouseLeave={handleDateLeave}
@@ -141,10 +141,10 @@ export function EventCalendarView({ events, onSelectEvent }: EventCalendarViewPr
                     <span
                       className={`text-sm font-medium w-7 h-7 flex items-center justify-center rounded-full ${
                         isCurrentDay
-                          ? 'bg-[#332D2D] text-white font-bold'
+                          ? 'bg-ink text-white font-bold'
                           : isCurrentMonth
-                            ? 'text-[#332D2D]'
-                            : 'text-[#D5CFC5]'
+                            ? 'text-ink'
+                            : 'text-warm-300'
                       }`}
                     >
                       {format(day, 'd')}
@@ -158,13 +158,13 @@ export function EventCalendarView({ events, onSelectEvent }: EventCalendarViewPr
                         <button
                           key={event._id}
                           onClick={() => onSelectEvent(event)}
-                          className="w-full text-left px-1.5 py-0.5 rounded text-[11px] font-medium truncate bg-[#FCFBF9] text-[#332D2D] hover:bg-[#E0D8D2] transition-colors block cursor-pointer"
+                          className="w-full text-left px-1.5 py-0.5 rounded text-[11px] font-medium truncate bg-surface text-ink hover:bg-warm-200 transition-colors block cursor-pointer"
                         >
                           {event.title}
                         </button>
                       ))}
                       {dayEvents.length > 2 && (
-                        <span className="text-[10px] text-[#8A8080] pl-1.5">
+                        <span className="text-[10px] text-warm-500 pl-1.5">
                           +{dayEvents.length - 2} more
                         </span>
                       )}
@@ -182,18 +182,18 @@ export function EventCalendarView({ events, onSelectEvent }: EventCalendarViewPr
 
                   {/* Tooltip on hover */}
                   {isHovered && hasEvents && (
-                    <div className="absolute z-20 bottom-full left-1/2 -translate-x-1/2 mb-2 w-56 bg-[#332D2D] text-white rounded-xl p-3 shadow-xl pointer-events-none">
-                      <p className="text-[10px] uppercase tracking-wider text-[#8A8080] mb-1.5">
+                    <div className="absolute z-20 bottom-full left-1/2 -translate-x-1/2 mb-2 w-56 bg-ink text-white rounded-xl p-3 shadow-xl pointer-events-none">
+                      <p className="text-[10px] uppercase tracking-wider text-warm-500 mb-1.5">
                         {format(day, 'EEEE, MMMM d')}
                       </p>
                       {dayEvents.map(event => (
-                        <div key={event._id} className="text-sm py-1 border-b border-[#2E2D2B] last:border-0">
+                        <div key={event._id} className="text-sm py-1 border-b border-warm-700 last:border-0">
                           <p className="font-medium truncate">{event.title}</p>
-                          <p className="text-[#8A8080] text-xs">{format(parseISO(event.date), 'h:mm a')}</p>
+                          <p className="text-warm-500 text-xs">{format(parseISO(event.date), 'h:mm a')}</p>
                         </div>
                       ))}
                       {/* Tooltip arrow */}
-                      <div className="absolute top-full left-1/2 -translate-x-1/2 w-2.5 h-2.5 bg-[#332D2D] rotate-45 -mt-1.5" />
+                      <div className="absolute top-full left-1/2 -translate-x-1/2 w-2.5 h-2.5 bg-ink rotate-45 -mt-1.5" />
                     </div>
                   )}
                 </div>
@@ -214,13 +214,13 @@ export function EventCalendarView({ events, onSelectEvent }: EventCalendarViewPr
                 onClick={() => onSelectEvent(event)}
                 className="w-full text-left bg-white rounded-xl p-4 flex items-center gap-4 shadow-[0_4px_16px_rgba(28,27,26,0.06)] hover:shadow-[0_8px_24px_rgba(28,27,26,0.1)] hover:-translate-y-0.5 transition-all active:scale-[0.98]"
               >
-                <div className="bg-[#FCFBF9] text-[#332D2D] rounded-xl px-2.5 py-2 text-center leading-none shrink-0">
-                  <span className="text-[9px] font-bold uppercase block tracking-wider text-[#8A8080]">{format(d, 'MMM')}</span>
+                <div className="bg-surface text-ink rounded-xl px-2.5 py-2 text-center leading-none shrink-0">
+                  <span className="text-[9px] font-bold uppercase block tracking-wider text-warm-500">{format(d, 'MMM')}</span>
                   <span className="text-xl font-bold block mt-0.5">{format(d, 'd')}</span>
                 </div>
                 <div className="min-w-0">
-                  <h3 className="font-bold text-[#6B4F9E] text-sm truncate">{event.title}</h3>
-                  <p className="text-xs text-[#8A8080] mt-0.5">
+                  <h3 className="font-bold text-primary text-sm truncate">{event.title}</h3>
+                  <p className="text-xs text-warm-500 mt-0.5">
                     {format(d, 'EEEE · h:mm a')}
                     {event.location && ` · ${event.location}`}
                   </p>

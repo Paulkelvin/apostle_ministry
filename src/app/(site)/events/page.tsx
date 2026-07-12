@@ -100,22 +100,22 @@ export default async function EventsPage() {
   return (
     <div className="relative">
       {/* Hero Banner */}
-      <section className="relative pt-36 pb-20 overflow-hidden bg-[#F4F0EA]">
+      <section className="relative pt-36 pb-20 overflow-hidden bg-warm-100">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-[#D4AF37] font-semibold tracking-[0.2em] text-sm uppercase mb-5">
+          <p className="text-accent-dark text-xs font-semibold tracking-[0.2em] uppercase mb-5">
             Upcoming Gatherings
           </p>
-          <h1 className="text-5xl md:text-6xl font-bold text-[#1C1B1A] mb-5 tracking-tight">
+          <h1 className="font-display text-5xl md:text-6xl font-semibold text-warm-900 mb-5">
             Events
           </h1>
-          <p className="text-lg text-[#5F5B55] max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg text-warm-600 max-w-2xl mx-auto leading-relaxed">
             Join us for worship, fellowship, and community — in person and online.
           </p>
         </div>
       </section>
 
       {/* Interactive Events Section */}
-      <section className="py-10 md:py-14 bg-[#FAF8F5] min-h-[60vh]">
+      <section className="py-10 md:py-14 bg-warm-100 min-h-[60vh]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <EventsPageClient events={events} />
         </div>

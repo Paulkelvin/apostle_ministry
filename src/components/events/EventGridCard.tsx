@@ -18,9 +18,9 @@ export function EventGridCard({ event, onClick }: EventGridCardProps) {
       onClick={onClick}
       className="w-full max-w-full text-left group"
     >
-      <article className="h-full flex flex-col bg-[#FFFFFF] rounded-2xl overflow-hidden shadow-[0_12px_32px_rgba(0,0,0,0.08)] hover:shadow-[0_16px_40px_rgba(0,0,0,0.12)] hover:-translate-y-1 transition-all duration-300">
+      <article className="h-full flex flex-col bg-white rounded-xl overflow-hidden border border-warm-200 shadow-[--shadow-card] hover:shadow-[--shadow-card-hover] hover:-translate-y-1 transition-all duration-300">
         {/* Image */}
-        <div className="aspect-[16/10] relative overflow-hidden bg-gradient-to-br from-[#FFFFFF] to-[#F4F0EA]">
+        <div className="aspect-[16/10] relative overflow-hidden bg-gradient-to-br from-white to-warm-100">
           {event.image ? (
             <SanityImageComponent
               image={event.image}
@@ -30,16 +30,16 @@ export function EventGridCard({ event, onClick }: EventGridCardProps) {
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center">
-              <Calendar className="w-12 h-12 text-[#D5CFC5]" />
+              <Calendar className="w-12 h-12 text-warm-300" />
             </div>
           )}
 
           {/* Date badge — mini calendar */}
-          <div className="absolute top-3 left-3 bg-[#F4F0EA] border border-[#E0D8D2] rounded-xl shadow-md overflow-hidden text-center w-[52px]">
-            <div className="bg-[#E0D8D2] text-[#332D2D] text-[10px] font-bold uppercase tracking-wider py-1">
+          <div className="absolute top-3 left-3 bg-warm-100 border border-warm-200 rounded-xl shadow-md overflow-hidden text-center w-[52px]">
+            <div className="bg-warm-200 text-ink text-[10px] font-bold uppercase tracking-wider py-1">
               {format(startDate, 'MMM')}
             </div>
-            <div className="text-xl font-bold text-[#332D2D] py-1.5 leading-none">
+            <div className="text-xl font-bold text-ink py-1.5 leading-none">
               {format(startDate, 'd')}
             </div>
           </div>
@@ -52,7 +52,7 @@ export function EventGridCard({ event, onClick }: EventGridCardProps) {
                 Online
               </span>
             ) : (
-              <span className="bg-[#6B4F9E]/85 backdrop-blur-sm text-white text-[10px] font-bold px-2.5 py-1 rounded-full">
+              <span className="bg-primary/85 backdrop-blur-sm text-white text-[10px] font-bold px-2.5 py-1 rounded-full">
                 In-Person
               </span>
             )}
@@ -61,18 +61,18 @@ export function EventGridCard({ event, onClick }: EventGridCardProps) {
 
         {/* Content */}
         <div className="p-5 flex-1 flex flex-col min-w-0">
-          <h3 className="text-base font-bold text-[#6B4F9E] mb-2 group-hover:text-[#6B4F9E] transition-colors line-clamp-2 leading-snug break-words">
+          <h3 className="text-base font-bold text-primary mb-2 group-hover:text-primary transition-colors line-clamp-2 leading-snug break-words">
             {event.title}
           </h3>
 
-          <div className="space-y-1.5 text-sm text-[#8A8080] min-w-0">
+          <div className="space-y-1.5 text-sm text-warm-500 min-w-0">
             <div className="flex items-center gap-2">
-              <Calendar className="w-3.5 h-3.5 text-[#D4AF37] flex-shrink-0" />
+              <Calendar className="w-3.5 h-3.5 text-accent flex-shrink-0" />
               <span className="truncate">{format(startDate, 'EEE, MMM d · h:mm a')}</span>
             </div>
             {event.location && (
               <div className="flex items-center gap-2">
-                <MapPin className="w-3.5 h-3.5 text-[#D4AF37] flex-shrink-0" />
+                <MapPin className="w-3.5 h-3.5 text-accent flex-shrink-0" />
                 <span className="truncate">{event.location}</span>
               </div>
             )}

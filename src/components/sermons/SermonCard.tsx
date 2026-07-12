@@ -21,7 +21,7 @@ export function SermonCard({ sermon, index, onPlayVideo }: SermonCardProps) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.05 }}
-      className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow group"
+      className="bg-white rounded-xl overflow-hidden border border-warm-200 shadow-[--shadow-card] hover:shadow-[--shadow-card-hover] transition-shadow group"
     >
       {/* Thumbnail */}
       <div className="aspect-video relative overflow-hidden bg-warm-200">
@@ -33,8 +33,8 @@ export function SermonCard({ sermon, index, onPlayVideo }: SermonCardProps) {
             className="object-cover group-hover:scale-105 transition-transform duration-500"
           />
         ) : (
-          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary to-primary-dark">
-            <div className="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center"><Play className="w-8 h-8 text-white/50 ml-1" /></div>
+          <div className="w-full h-full flex items-center justify-center bg-warm-100">
+            <Play className="w-10 h-10 text-warm-300 ml-1" />
           </div>
         )}
 
@@ -52,7 +52,7 @@ export function SermonCard({ sermon, index, onPlayVideo }: SermonCardProps) {
 
         {/* Series Badge */}
         {sermon.series && (
-          <div className="absolute top-4 left-4 bg-primary text-white text-xs font-medium px-3 py-1 rounded-full">
+          <div className="absolute top-4 left-4 bg-primary text-white text-xs font-medium px-3 py-1 rounded-lg">
             {sermon.series}
           </div>
         )}
@@ -61,7 +61,7 @@ export function SermonCard({ sermon, index, onPlayVideo }: SermonCardProps) {
       {/* Content */}
       <div className="p-5">
         <time className="text-xs text-warm-500">{format(date, 'MMMM d, yyyy')}</time>
-        <h3 className="text-lg font-bold text-warm-900 mt-1 group-hover:text-primary transition-colors line-clamp-2">
+        <h3 className="font-display text-lg font-semibold text-warm-900 mt-1 group-hover:text-primary transition-colors line-clamp-2">
           {sermon.title}
         </h3>
 
