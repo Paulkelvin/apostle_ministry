@@ -34,7 +34,7 @@ export function CategoryFilter({ categories, active, onSelect }: CategoryFilterP
           }`}
           style={
             active === cat.slug.current
-              ? { backgroundColor: cat.color || '#6B4F9E', borderColor: cat.color || '#6B4F9E' }
+              ? { backgroundColor: cat.color || 'var(--color-primary)', borderColor: cat.color || 'var(--color-primary)' }
               : undefined
           }
         >

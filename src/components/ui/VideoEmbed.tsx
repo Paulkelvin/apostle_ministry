@@ -88,8 +88,8 @@ export function VideoEmbed({
           />
         )}
         <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-          <div className="w-16 h-16 rounded-full bg-[#CBA052] flex items-center justify-center">
-            <Play className="w-6 h-6 text-[#3D3268] ml-1" fill="#3D3268" />
+          <div className="w-16 h-16 rounded-full bg-accent flex items-center justify-center">
+            <Play className="w-6 h-6 text-primary-deep ml-1" fill="currentColor" />
           </div>
         </div>
       </a>
@@ -131,8 +131,8 @@ export function VideoEmbed({
           )}
           {showOverlay && <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors" />}
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-20 h-20 rounded-full bg-[#CBA052] flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform">
-              <Play className="w-8 h-8 text-[#3D3268] ml-1" fill="#3D3268" />
+            <div className="w-20 h-20 rounded-full bg-accent flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform">
+              <Play className="w-8 h-8 text-primary-deep ml-1" fill="currentColor" />
             </div>
           </div>
         </button>

@@ -35,7 +35,9 @@ export function TithelyButton({
 
   return (
     <button
-      className={`tithely-give-btn inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:scale-105 ${className}`}
+      className={`tithely-give-btn inline-flex items-center justify-center gap-2 font-semibold rounded-lg transition-colors ${
+        className || 'bg-primary hover:bg-primary-dark text-white px-8 py-4'
+      }`}
       data-church-id={cid}
     >
       <Heart className="w-5 h-5" />

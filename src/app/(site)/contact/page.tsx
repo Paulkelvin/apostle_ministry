@@ -89,7 +89,7 @@ export default async function ContactPage() {
       </section>
 
       {/* Info Cards Row */}
-      <section className="py-16 bg-[#FCFBF9]">
+      <section className="py-16 bg-surface">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-6">
             <div className="p-6 rounded-xl bg-white border border-warm-200 shadow-[--shadow-card] hover:shadow-[--shadow-card-hover] transition-shadow">
