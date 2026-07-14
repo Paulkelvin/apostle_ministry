@@ -16,8 +16,22 @@ export function MissionVisionSection({ mission, vision }: MissionVisionSectionPr
     'To be a church where everyone can experience the transforming love of Jesus and become who God created them to be.'
 
   return (
-    <section className="bg-primary-deep py-24 lg:py-32">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative overflow-hidden bg-primary-deep py-24 lg:py-32">
+      {/* Faint watermark */}
+      <span
+        className="absolute inset-0 flex items-center justify-center text-white/10 text-[8rem] sm:text-[12rem] lg:text-[15rem] font-black uppercase leading-none tracking-wide pointer-events-none select-none"
+        aria-hidden="true"
+      >
+        Faith
+      </span>
+
+      {/* Est. in Faith tag */}
+      <div className="absolute bottom-8 right-4 sm:right-8 lg:right-12 hidden sm:flex items-center gap-3" aria-hidden="true">
+        <div className="w-8 h-[2px] bg-accent/50" />
+        <span className="text-xs uppercase tracking-[0.25em] font-medium text-accent/60">Est. in Faith</span>
+      </div>
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}

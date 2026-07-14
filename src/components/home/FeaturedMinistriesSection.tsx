@@ -197,8 +197,16 @@ export function FeaturedMinistriesSection({ ministries }: FeaturedMinistriesSect
               animate={{ y: 0 }}
               exit={{ y: '100%' }}
               transition={{ type: 'spring', damping: 30, stiffness: 320 }}
+              drag="y"
+              dragConstraints={{ top: 0, bottom: 0 }}
+              dragElastic={{ top: 0, bottom: 0.6 }}
+              onDragEnd={(_e, info) => {
+                if (info.offset.y > 120 || info.velocity.y > 500) {
+                  closeDrawer()
+                }
+              }}
               style={jdTokens}
-              className="fixed inset-x-0 bottom-0 z-50 mx-auto w-full sm:max-w-lg rounded-t-[28px] shadow-2xl max-h-[88vh] flex flex-col overflow-hidden font-[family-name:var(--font-inter)] bg-[var(--jd-paper)]"
+              className="fixed inset-x-0 top-0 bottom-0 z-50 mx-auto w-full sm:max-w-lg rounded-t-[28px] shadow-2xl flex flex-col overflow-hidden font-[family-name:var(--font-inter)] bg-[var(--jd-paper)]"
             >
               {/* Grabber */}
               <div className="flex-shrink-0 pt-3 pb-1 flex justify-center" aria-hidden="true">
@@ -209,7 +217,7 @@ export function FeaturedMinistriesSection({ ministries }: FeaturedMinistriesSect
               <button
                 onClick={closeDrawer}
                 aria-label="Close"
-                className="absolute top-4 right-4 w-9 h-9 rounded-full bg-[var(--jd-ink)]/5 hover:bg-[var(--jd-ink)]/10 flex items-center justify-center transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--jd-focus)]"
+                className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-[var(--jd-ink)]/5 hover:bg-[var(--jd-ink)]/10 flex items-center justify-center transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--jd-focus)]"
               >
                 <X className="w-4 h-4 text-[var(--jd-text-dark)]" />
               </button>
