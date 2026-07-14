@@ -42,7 +42,7 @@ export function LatestNewsSection({ posts }: LatestNewsSectionProps) {
         <div className="relative mb-12 lg:mb-16 overflow-hidden">
           {/* Faint watermark */}
           <span
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-warm-200 text-[4rem] sm:text-[8rem] lg:text-[10rem] font-black uppercase leading-none tracking-tight pointer-events-none select-none"
+            className="absolute top-[34%] sm:top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-warm-200 text-[4rem] sm:text-[8rem] lg:text-[10rem] font-black uppercase leading-none tracking-tight pointer-events-none select-none"
             aria-hidden="true"
           >
             Journal

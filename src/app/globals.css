@@ -50,7 +50,7 @@
 @theme inline {
   --font-sans: var(--font-inter), system-ui, sans-serif;
   --font-body: var(--font-inter), system-ui, sans-serif;
-  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-display: var(--font-poppins), system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), monospace;
 }
 
@@ -65,36 +65,36 @@ body {
 /* Type scale — single source of truth for heading/body treatments.
    Colors and spacing stay per-component; these fix family/weight/size.
 
-   Note: these reference the next/font variables (--font-fraunces,
+   Note: these reference the next/font variables (--font-poppins,
    --font-inter) directly rather than the --font-display/--font-body
    @theme-inline aliases. Those aliases are meant for Tailwind's own
    generated utilities (which inline the resolved value at build time,
-   e.g. .font-display compiles straight to `font-family: var(--font-fraunces)...`)
+   e.g. .font-display compiles straight to `font-family: var(--font-poppins)...`)
    — referenced directly like `var(--font-display)`, the intermediate
    token doesn't reliably resolve at runtime (Next.js CSS chunking
    doesn't guarantee the :root theme block is in every route's bundle),
    silently falling back to the inherited body font. */
 @layer components {
   .text-hero {
-    font-family: var(--font-fraunces), Georgia, serif;
+    font-family: var(--font-poppins), system-ui, sans-serif;
     font-weight: 600;
     font-size: var(--text-5xl);
     line-height: 1;
   }
   .text-h1 {
-    font-family: var(--font-fraunces), Georgia, serif;
+    font-family: var(--font-poppins), system-ui, sans-serif;
     font-weight: 600;
     font-size: var(--text-5xl);
     line-height: 1.1;
   }
   .text-h2 {
-    font-family: var(--font-fraunces), Georgia, serif;
+    font-family: var(--font-poppins), system-ui, sans-serif;
     font-weight: 600;
     font-size: var(--text-4xl);
     line-height: 1.1;
   }
   .text-h3 {
-    font-family: var(--font-fraunces), Georgia, serif;
+    font-family: var(--font-poppins), system-ui, sans-serif;
     font-weight: 600;
     font-size: var(--text-2xl);
     line-height: 1.2;

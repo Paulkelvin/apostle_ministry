@@ -238,7 +238,7 @@ export function FeaturedMinistriesSection({ ministries }: FeaturedMinistriesSect
                   </p>
                   <h3
                     id="jd-title"
-                    className="relative font-[family-name:var(--font-fraunces)] font-medium text-3xl text-[var(--jd-text-dark)] mb-3"
+                    className="relative font-[family-name:var(--font-poppins)] font-medium text-3xl text-[var(--jd-text-dark)] mb-3"
                   >
                     {selectedMinistry.name}
                   </h3>
@@ -331,7 +331,7 @@ export function FeaturedMinistriesSection({ ministries }: FeaturedMinistriesSect
                     <div className="w-14 h-14 bg-[var(--jd-gold)]/15 text-[var(--jd-gold-deep)] rounded-full flex items-center justify-center mb-4">
                       <CheckCircle2 className="w-7 h-7" />
                     </div>
-                    <h5 className="font-[family-name:var(--font-fraunces)] font-medium text-xl text-[var(--jd-text-dark)] mb-2">Request Sent!</h5>
+                    <h5 className="font-[family-name:var(--font-poppins)] font-medium text-xl text-[var(--jd-text-dark)] mb-2">Request Sent!</h5>
                     <p className="text-[var(--jd-text-muted)]">
                       Thank you for your interest in joining <strong className="text-[var(--jd-text-dark)]">{selectedMinistry.name}</strong>. A leader will be in touch with you shortly to help you get started.
                     </p>

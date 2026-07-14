@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist_Mono, Fraunces, Inter } from "next/font/google";
+import { Geist_Mono, Poppins, Inter } from "next/font/google";
 import "./globals.css";
 
 const geistMono = Geist_Mono({
@@ -8,10 +8,10 @@ const geistMono = Geist_Mono({
 });
 
 // Display font — headings, hero titles, section titles only
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
+const poppins = Poppins({
+  variable: "--font-poppins",
   subsets: ["latin"],
-  axes: ["opsz"],
+  weight: ["500", "600", "700"],
   display: "swap",
 });
 
@@ -36,7 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistMono.variable} ${fraunces.variable} ${inter.variable} antialiased`}
+        className={`${geistMono.variable} ${poppins.variable} ${inter.variable} antialiased`}
       >
         {children}
       </body>
