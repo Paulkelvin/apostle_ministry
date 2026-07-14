@@ -63,39 +63,49 @@ body {
 }
 
 /* Type scale — single source of truth for heading/body treatments.
-   Colors and spacing stay per-component; these fix family/weight/size. */
+   Colors and spacing stay per-component; these fix family/weight/size.
+
+   Note: these reference the next/font variables (--font-fraunces,
+   --font-inter) directly rather than the --font-display/--font-body
+   @theme-inline aliases. Those aliases are meant for Tailwind's own
+   generated utilities (which inline the resolved value at build time,
+   e.g. .font-display compiles straight to `font-family: var(--font-fraunces)...`)
+   — referenced directly like `var(--font-display)`, the intermediate
+   token doesn't reliably resolve at runtime (Next.js CSS chunking
+   doesn't guarantee the :root theme block is in every route's bundle),
+   silently falling back to the inherited body font. */
 @layer components {
   .text-hero {
-    font-family: var(--font-display);
+    font-family: var(--font-fraunces), Georgia, serif;
     font-weight: 600;
     font-size: var(--text-5xl);
     line-height: 1;
   }
   .text-h1 {
-    font-family: var(--font-display);
+    font-family: var(--font-fraunces), Georgia, serif;
     font-weight: 600;
     font-size: var(--text-5xl);
     line-height: 1.1;
   }
   .text-h2 {
-    font-family: var(--font-display);
+    font-family: var(--font-fraunces), Georgia, serif;
     font-weight: 600;
     font-size: var(--text-4xl);
     line-height: 1.1;
   }
   .text-h3 {
-    font-family: var(--font-display);
+    font-family: var(--font-fraunces), Georgia, serif;
     font-weight: 600;
     font-size: var(--text-2xl);
     line-height: 1.2;
   }
   .text-body {
-    font-family: var(--font-body);
+    font-family: var(--font-inter), system-ui, sans-serif;
     font-size: var(--text-base);
     line-height: 1.7;
   }
   .text-caption {
-    font-family: var(--font-body);
+    font-family: var(--font-inter), system-ui, sans-serif;
     font-size: var(--text-xs);
     font-weight: 600;
     letter-spacing: 0.2em;
