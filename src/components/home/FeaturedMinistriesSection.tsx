@@ -10,6 +10,20 @@ interface FeaturedMinistriesSectionProps {
   ministries: Ministry[]
 }
 
+// Local palette for the Join Department sheet — scoped to this component
+// via CSS custom properties rather than the site-wide theme tokens.
+const jdTokens = {
+  '--jd-ink': '#171B22',
+  '--jd-paper': '#F7F2E7',
+  '--jd-paper-line': '#E4DCC9',
+  '--jd-text-dark': '#262019',
+  '--jd-text-muted': '#6B6252',
+  '--jd-gold': '#C79A3A',
+  '--jd-gold-deep': '#9C7620',
+  '--jd-wine': '#5B3A52',
+  '--jd-focus': '#B8862B',
+} as React.CSSProperties
+
 export function FeaturedMinistriesSection({ ministries }: FeaturedMinistriesSectionProps) {
   const [selectedMinistry, setSelectedMinistry] = useState<Ministry | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -163,7 +177,7 @@ export function FeaturedMinistriesSection({ ministries }: FeaturedMinistriesSect
         </div>
       </div>
 
-      {/* Slide-out Drawer Overlay */}
+      {/* Join Department — bottom sheet */}
       <AnimatePresence>
         {selectedMinistry && (
           <>
@@ -173,83 +187,131 @@ export function FeaturedMinistriesSection({ ministries }: FeaturedMinistriesSect
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={closeDrawer}
-              className="fixed inset-0 bg-primary-ink/70 backdrop-blur-sm z-50"
+              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50"
             />
 
-            {/* Drawer */}
+            {/* Sheet */}
             <motion.div
-              initial={{ x: '100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '100%' }}
-              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="fixed inset-y-0 right-0 w-full max-w-md bg-primary-deep shadow-2xl border-l border-white/10 rounded-l-2xl overflow-hidden z-50 flex flex-col"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="jd-title"
+              initial={{ y: '100%' }}
+              animate={{ y: 0 }}
+              exit={{ y: '100%' }}
+              transition={{ type: 'spring', damping: 30, stiffness: 320 }}
+              style={jdTokens}
+              className="fixed inset-x-0 bottom-0 z-50 mx-auto w-full sm:max-w-lg rounded-t-[28px] shadow-2xl max-h-[88vh] flex flex-col overflow-hidden font-[family-name:var(--font-inter)] bg-[var(--jd-paper)]"
             >
-              {/* Drawer Header */}
-              <div className="flex-shrink-0 px-6 py-6 border-b border-white/10 flex items-center justify-between">
-                <h3 className="font-display text-xl text-white">Join Department</h3>
-                <button
-                  onClick={closeDrawer}
-                  className="w-10 h-10 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center transition-colors"
-                  aria-label="Close"
-                >
-                  <X className="w-5 h-5 text-white/80" />
-                </button>
+              {/* Grabber */}
+              <div className="flex-shrink-0 pt-3 pb-1 flex justify-center" aria-hidden="true">
+                <div className="w-10 h-1.5 rounded-full bg-[var(--jd-paper-line)]" />
               </div>
 
-              {/* Drawer Body (Scrollable) */}
-              <div className="flex-1 overflow-y-auto px-6 py-8">
-                <div className="mb-8">
-                  <div className="w-12 h-px bg-accent/40 mb-5" />
-                  <h4 className="font-display text-2xl font-semibold text-white mb-3">{selectedMinistry.name}</h4>
-                  <p className="text-white/60 leading-relaxed">
+              {/* Close button */}
+              <button
+                onClick={closeDrawer}
+                aria-label="Close"
+                className="absolute top-4 right-4 w-9 h-9 rounded-full bg-[var(--jd-ink)]/5 hover:bg-[var(--jd-ink)]/10 flex items-center justify-center transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--jd-focus)]"
+              >
+                <X className="w-4 h-4 text-[var(--jd-text-dark)]" />
+              </button>
+
+              {/* Sheet Body (scrollable) */}
+              <div className="flex-1 overflow-y-auto px-6 sm:px-8 pb-8 pt-3">
+                <div className="relative mb-8">
+                  {/* Glow accent behind title */}
+                  <div className="absolute -inset-x-8 -top-4 h-24 pointer-events-none" aria-hidden="true">
+                    <div
+                      className="mx-auto h-full w-3/4 rounded-full blur-2xl opacity-40 motion-safe:animate-[glow-flicker_6s_ease-in-out_infinite]"
+                      style={{ background: 'radial-gradient(closest-side, var(--jd-gold), transparent 70%)' }}
+                    />
+                  </div>
+
+                  <p className="relative text-[var(--jd-wine)] text-xs font-semibold tracking-[0.2em] uppercase mb-3">
+                    Join a Department
+                  </p>
+                  <h3
+                    id="jd-title"
+                    className="relative font-[family-name:var(--font-fraunces)] font-medium text-3xl text-[var(--jd-text-dark)] mb-3"
+                  >
+                    {selectedMinistry.name}
+                  </h3>
+                  <p className="relative text-[var(--jd-text-muted)] leading-relaxed">
                     {selectedMinistry.description}
                   </p>
                 </div>
 
                 {!isSubmitted ? (
                   <div>
-                    <p className="text-accent text-xs font-semibold tracking-[0.2em] uppercase mb-2">Express Interest</p>
-                    <p className="text-sm text-white/45 mb-6">Leave your details and leadership will reach out shortly.</p>
+                    <p className="text-[var(--jd-gold-deep)] text-xs font-semibold tracking-[0.2em] uppercase mb-2">Express Interest</p>
+                    <p className="text-sm text-[var(--jd-text-muted)] mb-7">Leave your details and leadership will reach out shortly.</p>
 
-                    <form onSubmit={handleJoinSubmit} className="space-y-5">
-                      <div>
-                        <label className="block text-xs font-semibold tracking-wide uppercase text-white/50 mb-2">Full Name</label>
+                    <form onSubmit={handleJoinSubmit} className="space-y-7">
+                      <div className="relative pt-4">
                         <input
+                          id="jd-name"
+                          name="name"
                           type="text"
                           required
-                          className="w-full px-4 py-3 rounded-lg border border-white/15 bg-white/5 text-white placeholder-white/30 focus:border-accent focus:bg-white/10 outline-none transition-colors"
-                          placeholder="John Doe"
+                          placeholder=" "
+                          className="peer w-full bg-transparent border-0 border-b-2 border-[var(--jd-paper-line)] focus:border-[var(--jd-focus)] outline-none px-0 py-2.5 text-[var(--jd-text-dark)] transition-colors duration-200 focus-visible:outline-none"
                         />
+                        <label
+                          htmlFor="jd-name"
+                          className="absolute left-0 top-1/2 -translate-y-1/2 text-[var(--jd-text-muted)] text-base transition-all duration-200 ease-out pointer-events-none peer-focus:top-1 peer-focus:-translate-y-full peer-focus:text-xs peer-focus:font-semibold peer-focus:tracking-wide peer-focus:text-[var(--jd-gold-deep)] peer-[:not(:placeholder-shown)]:top-1 peer-[:not(:placeholder-shown)]:-translate-y-full peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:font-semibold peer-[:not(:placeholder-shown)]:tracking-wide peer-[:not(:placeholder-shown)]:text-[var(--jd-gold-deep)]"
+                        >
+                          Full Name
+                        </label>
                       </div>
-                      <div>
-                        <label className="block text-xs font-semibold tracking-wide uppercase text-white/50 mb-2">Phone Number</label>
+
+                      <div className="relative pt-4">
                         <input
+                          id="jd-phone"
+                          name="phone"
                           type="tel"
                           required
                           value={phoneNumber}
                           onChange={handlePhoneChange}
-                          className="w-full px-4 py-3 rounded-lg border border-white/15 bg-white/5 text-white placeholder-white/30 focus:border-accent focus:bg-white/10 outline-none transition-colors"
-                          placeholder="(555) 000-0000"
+                          placeholder=" "
+                          className="peer w-full bg-transparent border-0 border-b-2 border-[var(--jd-paper-line)] focus:border-[var(--jd-focus)] outline-none px-0 py-2.5 text-[var(--jd-text-dark)] transition-colors duration-200 focus-visible:outline-none"
                         />
+                        <label
+                          htmlFor="jd-phone"
+                          className="absolute left-0 top-1/2 -translate-y-1/2 text-[var(--jd-text-muted)] text-base transition-all duration-200 ease-out pointer-events-none peer-focus:top-1 peer-focus:-translate-y-full peer-focus:text-xs peer-focus:font-semibold peer-focus:tracking-wide peer-focus:text-[var(--jd-gold-deep)] peer-[:not(:placeholder-shown)]:top-1 peer-[:not(:placeholder-shown)]:-translate-y-full peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:font-semibold peer-[:not(:placeholder-shown)]:tracking-wide peer-[:not(:placeholder-shown)]:text-[var(--jd-gold-deep)]"
+                        >
+                          Phone Number
+                        </label>
                       </div>
-                      <div>
-                        <label className="block text-xs font-semibold tracking-wide uppercase text-white/50 mb-2">Message (Optional)</label>
+
+                      <div className="relative pt-4">
                         <textarea
+                          id="jd-message"
+                          name="message"
                           rows={3}
-                          className="w-full px-4 py-3 rounded-lg border border-white/15 bg-white/5 text-white placeholder-white/30 focus:border-accent focus:bg-white/10 outline-none transition-colors resize-none"
-                          placeholder="Why are you interested in this department?"
+                          placeholder=" "
+                          className="peer w-full bg-transparent border-0 border-b-2 border-[var(--jd-paper-line)] focus:border-[var(--jd-focus)] outline-none px-0 py-2.5 text-[var(--jd-text-dark)] transition-colors duration-200 resize-none focus-visible:outline-none"
                         ></textarea>
+                        <label
+                          htmlFor="jd-message"
+                          className="absolute left-0 top-4 text-[var(--jd-text-muted)] text-base transition-all duration-200 ease-out pointer-events-none peer-focus:top-1 peer-focus:-translate-y-full peer-focus:text-xs peer-focus:font-semibold peer-focus:tracking-wide peer-focus:text-[var(--jd-gold-deep)] peer-[:not(:placeholder-shown)]:top-1 peer-[:not(:placeholder-shown)]:-translate-y-full peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:font-semibold peer-[:not(:placeholder-shown)]:tracking-wide peer-[:not(:placeholder-shown)]:text-[var(--jd-gold-deep)]"
+                        >
+                          Message (Optional)
+                        </label>
                       </div>
 
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="w-full mt-2 bg-accent text-warm-900 shadow-[inset_0_1px_0_0_rgb(255_255_255/0.35),0_1px_2px_rgb(0_0_0/0.06),0_4px_14px_-4px_rgb(212_175_55/0.5)] hover:bg-accent-dark hover:-translate-y-0.5 hover:shadow-[inset_0_1px_0_0_rgb(255_255_255/0.3),0_2px_4px_rgb(0_0_0/0.08),0_10px_22px_-6px_rgb(212_175_55/0.6)] font-semibold py-3 px-4 rounded-lg transition-[background-color,box-shadow,transform] duration-200 flex items-center justify-center gap-2 disabled:opacity-70 disabled:hover:translate-y-0"
+                        className="w-full py-3.5 px-4 rounded-full font-semibold text-[var(--jd-ink)] shadow-[0_10px_24px_-8px_rgb(156_118_32/0.55)] transition-[box-shadow,transform] duration-200 hover:-translate-y-0.5 hover:shadow-[0_14px_30px_-8px_rgb(156_118_32/0.65)] flex items-center justify-center gap-2 disabled:opacity-70 disabled:hover:translate-y-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--jd-focus)]"
+                        style={{ background: 'linear-gradient(135deg, var(--jd-gold), var(--jd-gold-deep))' }}
                       >
                         {isSubmitting ? (
-                          <span className="w-5 h-5 border-2 border-warm-900/30 border-t-warm-900 rounded-full animate-spin"></span>
+                          <span className="w-5 h-5 border-2 border-[var(--jd-ink)]/30 border-t-[var(--jd-ink)] rounded-full animate-spin" />
                         ) : (
-                          'Submit Interest'
+                          <>
+                            Submit Interest
+                            <ArrowRight className="w-4 h-4" />
+                          </>
                         )}
                       </button>
                     </form>
@@ -258,18 +320,18 @@ export function FeaturedMinistriesSection({ ministries }: FeaturedMinistriesSect
                   <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="bg-white/5 border border-accent/30 p-8 rounded-xl flex flex-col items-center text-center"
+                    className="bg-[var(--jd-gold)]/10 border border-[var(--jd-gold)]/30 p-8 rounded-2xl flex flex-col items-center text-center"
                   >
-                    <div className="w-14 h-14 bg-accent/15 text-accent rounded-full flex items-center justify-center mb-4">
+                    <div className="w-14 h-14 bg-[var(--jd-gold)]/15 text-[var(--jd-gold-deep)] rounded-full flex items-center justify-center mb-4">
                       <CheckCircle2 className="w-7 h-7" />
                     </div>
-                    <h5 className="font-display text-xl text-white mb-2">Request Sent!</h5>
-                    <p className="text-white/60">
-                      Thank you for your interest in joining <strong className="text-white/85">{selectedMinistry.name}</strong>. A leader will be in touch with you shortly to help you get started.
+                    <h5 className="font-[family-name:var(--font-fraunces)] font-medium text-xl text-[var(--jd-text-dark)] mb-2">Request Sent!</h5>
+                    <p className="text-[var(--jd-text-muted)]">
+                      Thank you for your interest in joining <strong className="text-[var(--jd-text-dark)]">{selectedMinistry.name}</strong>. A leader will be in touch with you shortly to help you get started.
                     </p>
                     <button
                       onClick={closeDrawer}
-                      className="mt-6 font-semibold text-accent hover:text-accent-dark underline underline-offset-4 transition-colors"
+                      className="mt-6 font-semibold text-[var(--jd-gold-deep)] hover:text-[var(--jd-wine)] underline underline-offset-4 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--jd-focus)] rounded-sm"
                     >
                       Close and return
                     </button>

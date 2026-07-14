@@ -143,6 +143,17 @@ select:focus-visible {
   }
 }
 
+/* Join Department sheet — faint glow behind the department title */
+@keyframes glow-flicker {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+
 /* Cursor — interactive elements */
 a, button, [role="button"], label[for], select,
 input[type="submit"], input[type="button"], input[type="reset"],
