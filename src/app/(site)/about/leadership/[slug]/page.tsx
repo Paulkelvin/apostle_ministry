@@ -48,27 +48,27 @@ export default async function LeadershipBioPage({ params }: PageProps) {
   return (
     <>
       {/* Hero */}
-      <section className="bg-primary-deep pt-40 md:pt-48 pb-24 md:pb-32">
+      <section className="bg-primary-deep pt-32 md:pt-40 pb-14 md:pb-16">
         <div className="max-w-3xl mx-auto px-6 sm:px-8">
           <Link
             href="/about"
-            className="inline-flex items-center gap-2 text-[11px] font-semibold tracking-[0.18em] uppercase text-white/45 hover:text-white transition-colors mb-14 group"
+            className="inline-flex items-center gap-2 text-[11px] font-semibold tracking-[0.15em] uppercase text-white/45 hover:text-white transition-colors mb-8 group"
           >
             <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
             Back to Our Team
           </Link>
 
-          <p className="text-accent text-xs font-semibold tracking-[0.3em] uppercase mb-6">
+          <p className="text-accent text-xs font-semibold tracking-[0.25em] uppercase mb-4">
             {person.role}
           </p>
-          <div className="w-14 h-px bg-accent/40 mb-8" aria-hidden="true" />
-          <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-medium text-white leading-[1.05] tracking-tight">
+          <div className="w-12 h-px bg-accent/40 mb-5" aria-hidden="true" />
+          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium text-white leading-[1.08] tracking-tight">
             {person.name}
           </h1>
           {person.email && (
             <a
               href={`mailto:${person.email}`}
-              className="inline-flex items-center gap-2 text-sm text-white/55 hover:text-white transition-colors mt-10"
+              className="inline-flex items-center gap-2 text-sm text-white/55 hover:text-white transition-colors mt-6"
             >
               <Mail className="w-4 h-4" />
               {person.email}
@@ -79,9 +79,9 @@ export default async function LeadershipBioPage({ params }: PageProps) {
 
       {/* Main photo */}
       {person.image && (
-        <section className="bg-surface pt-20 md:pt-28">
+        <section className="bg-surface pt-10 md:pt-14">
           <div className="max-w-3xl mx-auto px-6 sm:px-8">
-            <div className="max-w-md mx-auto aspect-[4/5] relative rounded-lg overflow-hidden shadow-[0_30px_60px_-20px_rgb(37_32_53/0.28)]">
+            <div className="max-w-md mx-auto aspect-[4/5] relative rounded-lg overflow-hidden shadow-[0_20px_40px_-16px_rgb(37_32_53/0.25)]">
               <SanityImageComponent
                 image={person.image}
                 alt={person.name}
@@ -96,18 +96,18 @@ export default async function LeadershipBioPage({ params }: PageProps) {
       )}
 
       {/* Full biography — editorial article, not a boxed card */}
-      <article className="bg-surface pt-16 md:pt-20 pb-20 md:pb-28">
+      <article className="bg-surface pt-10 md:pt-14 pb-12 md:pb-16">
         <div className="max-w-3xl mx-auto px-6 sm:px-8">
           {person.fullBio ? (
             <div
-              className="[&_p]:!text-warm-800 [&_p]:!text-lg [&_p]:md:!text-[1.1875rem] [&_p]:!leading-[1.9] [&_p]:!mb-9 [&_p:last-child]:!mb-0
-                         [&_h2]:!mt-16 [&_h2]:!mb-6 [&_h3]:!mt-14 [&_h3]:!mb-5 [&_h4]:!mt-12 [&_h4]:!mb-4
-                         [&_blockquote]:!my-12 [&_blockquote]:!text-xl [&_blockquote]:!leading-[1.7]"
+              className="[&_p]:!text-warm-800 [&_p]:!text-lg [&_p]:!leading-[1.75] [&_p]:!mb-6 [&_p:last-child]:!mb-0
+                         [&_h2]:!mt-10 [&_h2]:!mb-4 [&_h3]:!mt-9 [&_h3]:!mb-4 [&_h4]:!mt-8 [&_h4]:!mb-3
+                         [&_blockquote]:!my-8 [&_blockquote]:!text-xl [&_blockquote]:!leading-[1.6]"
             >
               <PortableTextRenderer value={person.fullBio} />
             </div>
           ) : person.bio ? (
-            <p className="text-warm-800 text-lg leading-[1.9]">{person.bio}</p>
+            <p className="text-warm-800 text-lg leading-[1.75]">{person.bio}</p>
           ) : (
             <p className="text-ink">No biography available.</p>
           )}
@@ -116,15 +116,15 @@ export default async function LeadershipBioPage({ params }: PageProps) {
 
       {/* Photo gallery — curated, not a grid of thumbnails */}
       {person.gallery && person.gallery.length > 0 && (
-        <section className="bg-surface pb-24 md:pb-36">
+        <section className="bg-surface pb-16 md:pb-20">
           <div className="max-w-3xl mx-auto px-6 sm:px-8">
-            <div className="flex items-center gap-4 mb-12">
-              <p className="text-accent-dark text-xs font-semibold tracking-[0.3em] uppercase">
+            <div className="flex items-center gap-4 mb-6">
+              <p className="text-accent-dark text-xs font-semibold tracking-[0.25em] uppercase">
                 Gallery
               </p>
               <div className="h-px flex-1 bg-warm-200" aria-hidden="true" />
             </div>
-            <div className="grid grid-cols-2 gap-6 md:gap-10">
+            <div className="grid grid-cols-2 gap-4 md:gap-6">
               {person.gallery.map((photo, i) => (
                 <div
                   key={i}
