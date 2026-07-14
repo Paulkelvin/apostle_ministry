@@ -3,7 +3,8 @@ import { client, allEventsQuery } from '@/lib/sanity'
 import { EventsPageClient } from '@/components/events'
 import type { Event } from '@/types'
 
-export const revalidate = 60;
+// People check listings before attending — keep fairly fresh
+export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: 'Events | The Apostles Ministry',

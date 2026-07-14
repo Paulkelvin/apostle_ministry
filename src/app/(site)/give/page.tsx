@@ -10,8 +10,8 @@ export const metadata: Metadata = {
   description: 'Support the mission of Restoring Life Family Community Center through your generous giving.',
 }
 
-// Revalidate frequently so published Sanity changes show up quickly
-export const revalidate = 60
+// Donation totals update via the Tithely webhook — keep fairly fresh
+export const revalidate = 300
 
 async function getGivingPageData(): Promise<GivingPage | null> {
   try {

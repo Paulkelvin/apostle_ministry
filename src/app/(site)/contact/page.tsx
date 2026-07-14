@@ -4,7 +4,8 @@ import { client, faqQuery, serviceTimesQuery } from '@/lib/sanity'
 import { ContactForm, FAQAccordion, InteractiveMap } from '@/components/contact'
 import type { FAQ, ServiceTimes } from '@/types'
 
-export const revalidate = 60;
+// FAQ/service times rarely change — revalidate hourly
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: 'Contact Us | Restoring Life Family Community Center',

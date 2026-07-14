@@ -3,7 +3,8 @@ import { client, sermonsQuery, sermonSeriesQuery } from '@/lib/sanity'
 import { SermonsPageClient } from '@/components/sermons'
 import type { Sermon } from '@/types'
 
-export const revalidate = 60;
+// New sermon posted roughly weekly, people check same-day
+export const revalidate = 600;
 
 export const metadata: Metadata = {
   title: 'Sermons | Restoring Life Family Community Center',

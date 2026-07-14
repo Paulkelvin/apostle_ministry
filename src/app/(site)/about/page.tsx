@@ -3,7 +3,8 @@ import { client, siteSettingsQuery, historyQuery, staffQuery } from '@/lib/sanit
 import { MissionVisionSection, TimelineSection, LeadershipGrid } from '@/components/about'
 import type { SiteSettings, HistoryItem, Staff } from '@/types'
 
-export const revalidate = 60;
+// Staff/history/mission rarely change — revalidate hourly
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: 'About Us | Restoring Life Family Community Center',

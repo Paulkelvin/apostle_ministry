@@ -2,8 +2,8 @@ import { client, siteSettingsQuery, serviceTimesQuery, latestPostsQuery, feature
 import { HeroSection, ServiceTimesSection, LatestNewsSection, FeaturedMinistriesSection, MissionVisionSection } from '@/components/home'
 import type { SiteSettings, ServiceTimes, Post, Ministry } from '@/types'
 
-// Revalidate every 60 seconds so CMS changes appear quickly
-export const revalidate = 60
+// Revalidate every 5 minutes — highest-traffic page, kept freshest of the low-churn tier
+export const revalidate = 300
 
 async function getHomePageData() {
   try {

@@ -10,6 +10,10 @@ import { ShareBar, CommentSection, BlogCard } from '@/components/blog'
 import { estimateReadingTime } from '@/lib/utils'
 import type { Post, Comment } from '@/types'
 
+// Previously uncached (revalidate defaulted to never) — add an hourly
+// window so edits/comments eventually surface without a redeploy
+export const revalidate = 3600
+
 interface PageProps {
   params: Promise<{ slug: string }>
 }
