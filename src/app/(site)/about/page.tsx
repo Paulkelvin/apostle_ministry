@@ -35,7 +35,7 @@ export default async function AboutPage() {
           <p className="text-accent text-xs font-semibold tracking-[0.2em] uppercase mb-4">
             Our Church
           </p>
-          <h1 className="font-display text-5xl md:text-6xl font-semibold text-white mb-4">
+          <h1 className="text-h1 text-white mb-4">
             About Us
           </h1>
           <p className="text-lg text-white/60 max-w-2xl">

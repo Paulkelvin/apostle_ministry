@@ -1,17 +1,13 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Fraunces, Inter } from "next/font/google";
+import { Geist_Mono, Fraunces, Inter } from "next/font/google";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
 
+// Display font — headings, hero titles, section titles only
 const fraunces = Fraunces({
   variable: "--font-fraunces",
   subsets: ["latin"],
@@ -19,7 +15,7 @@ const fraunces = Fraunces({
   display: "swap",
 });
 
-// Used by the Join Department sheet only (see FeaturedMinistriesSection)
+// Body/UI font — paragraphs, labels, buttons, nav (site-wide default)
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
@@ -40,7 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} ${inter.variable} antialiased`}
+        className={`${geistMono.variable} ${fraunces.variable} ${inter.variable} antialiased`}
       >
         {children}
       </body>

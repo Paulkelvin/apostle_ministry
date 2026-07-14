@@ -57,7 +57,7 @@ export function HeroSection({ settings }: HeroSectionProps) {
       {/* Content */}
       <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
         <motion.h1
-          className="font-display font-semibold text-5xl md:text-7xl lg:text-8xl text-white mb-5"
+          className="text-hero text-white mb-5"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.3 }}

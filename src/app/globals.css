@@ -48,7 +48,8 @@
 /* Font tokens must be inline: the referenced next/font variables are
    defined on <body>, not :root, so they only resolve at the use site */
 @theme inline {
-  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-body: var(--font-inter), system-ui, sans-serif;
   --font-display: var(--font-fraunces), Georgia, serif;
   --font-mono: var(--font-geist-mono), monospace;
 }
@@ -56,9 +57,71 @@
 body {
   background: var(--color-background);
   color: var(--color-foreground);
-  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  font-family: var(--font-inter), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Type scale — single source of truth for heading/body treatments.
+   Colors and spacing stay per-component; these fix family/weight/size. */
+@layer components {
+  .text-hero {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--text-5xl);
+    line-height: 1;
+  }
+  .text-h1 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--text-5xl);
+    line-height: 1.1;
+  }
+  .text-h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--text-4xl);
+    line-height: 1.1;
+  }
+  .text-h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--text-2xl);
+    line-height: 1.2;
+  }
+  .text-body {
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    line-height: 1.7;
+  }
+  .text-caption {
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  @media (min-width: 48rem) {
+    .text-hero {
+      font-size: var(--text-7xl);
+    }
+    .text-h1 {
+      font-size: var(--text-6xl);
+    }
+    .text-h2 {
+      font-size: var(--text-5xl);
+    }
+    .text-h3 {
+      font-size: var(--text-3xl);
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .text-hero {
+      font-size: var(--text-8xl);
+    }
+  }
 }
 
 /* Smooth scrolling */
