@@ -52,13 +52,13 @@ export function LeadershipGrid({ staff }: LeadershipGridProps) {
             <div className="bg-white rounded-xl overflow-hidden border border-warm-200 shadow-[--shadow-card] hover:shadow-[--shadow-card-hover] transition-shadow duration-300 max-w-3xl mx-auto">
               <div className="grid md:grid-cols-[1fr_1.4fr]">
                 {/* Photo */}
-                <div className="aspect-[4/4] md:aspect-auto relative overflow-hidden bg-warm-100 min-h-[180px] md:min-h-[320px]">
+                <div className="aspect-[4/5] md:aspect-auto relative overflow-hidden bg-warm-100 min-h-[240px] md:min-h-[320px]">
                   {leadPerson.image ? (
                     <SanityImageComponent
                       image={leadPerson.image}
                       alt={leadPerson.name}
                       fill
-                      className="object-cover object-top"
+                      className="object-cover object-center"
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center min-h-[360px]">
@@ -118,13 +118,13 @@ export function LeadershipGrid({ staff }: LeadershipGridProps) {
                   className="bg-white rounded-xl overflow-hidden border border-warm-200 shadow-[--shadow-card] hover:shadow-[--shadow-card-hover] transition-shadow duration-300 group"
                 >
                   {/* Photo */}
-                  <div className="aspect-[16/9] relative overflow-hidden bg-warm-100">
+                  <div className="aspect-[4/5] relative overflow-hidden bg-warm-100">
                     {person.image ? (
                       <SanityImageComponent
                         image={person.image}
                         alt={person.name}
                         fill
-                        className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                        className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center">

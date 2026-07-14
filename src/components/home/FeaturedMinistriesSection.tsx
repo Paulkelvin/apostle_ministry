@@ -173,69 +173,70 @@ export function FeaturedMinistriesSection({ ministries }: FeaturedMinistriesSect
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={closeDrawer}
-              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50"
+              className="fixed inset-0 bg-primary-ink/70 backdrop-blur-sm z-50"
             />
-            
+
             {/* Drawer */}
             <motion.div
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="fixed inset-y-0 right-0 w-full max-w-md bg-white shadow-2xl z-50 flex flex-col"
+              className="fixed inset-y-0 right-0 w-full max-w-md bg-primary-deep shadow-2xl border-l border-white/10 rounded-l-2xl overflow-hidden z-50 flex flex-col"
             >
               {/* Drawer Header */}
-              <div className="flex-shrink-0 px-6 py-6 border-b border-warm-200 flex items-center justify-between bg-surface">
-                <h3 className="text-xl font-bold text-primary">Join Department</h3>
+              <div className="flex-shrink-0 px-6 py-6 border-b border-white/10 flex items-center justify-between">
+                <h3 className="font-display text-xl text-white">Join Department</h3>
                 <button
                   onClick={closeDrawer}
-                  className="p-2 text-warm-400 hover:text-primary hover:bg-warm-100 rounded-lg transition-colors"
+                  className="w-10 h-10 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center transition-colors"
+                  aria-label="Close"
                 >
-                  <X className="w-5 h-5" />
+                  <X className="w-5 h-5 text-white/80" />
                 </button>
               </div>
 
               {/* Drawer Body (Scrollable) */}
               <div className="flex-1 overflow-y-auto px-6 py-8">
                 <div className="mb-8">
-                  <div className="w-px h-10 bg-accent mb-4"></div>
-                  <h4 className="font-display text-2xl font-semibold text-warm-900 mb-3">{selectedMinistry.name}</h4>
-                  <p className="text-warm-600 leading-relaxed">
+                  <div className="w-12 h-px bg-accent/40 mb-5" />
+                  <h4 className="font-display text-2xl font-semibold text-white mb-3">{selectedMinistry.name}</h4>
+                  <p className="text-white/60 leading-relaxed">
                     {selectedMinistry.description}
                   </p>
                 </div>
 
                 {!isSubmitted ? (
-                  <div className="bg-warm-100 p-6 rounded-xl mb-8">
-                    <h5 className="font-bold text-primary mb-4 border-b border-warm-200 pb-2">Express Interest</h5>
-                    <p className="text-sm text-warm-500 mb-6">Leave your details and leadership will reach out shortly.</p>
+                  <div>
+                    <p className="text-accent text-xs font-semibold tracking-[0.2em] uppercase mb-2">Express Interest</p>
+                    <p className="text-sm text-white/45 mb-6">Leave your details and leadership will reach out shortly.</p>
 
-                    <form onSubmit={handleJoinSubmit} className="space-y-4">
+                    <form onSubmit={handleJoinSubmit} className="space-y-5">
                       <div>
-                        <label className="block text-sm font-semibold text-warm-600 mb-1">Full Name</label>
+                        <label className="block text-xs font-semibold tracking-wide uppercase text-white/50 mb-2">Full Name</label>
                         <input
                           type="text"
                           required
-                          className="w-full px-4 py-2.5 rounded-lg border border-warm-200 bg-white focus:border-primary outline-none transition-colors text-ink"
+                          className="w-full px-4 py-3 rounded-lg border border-white/15 bg-white/5 text-white placeholder-white/30 focus:border-accent focus:bg-white/10 outline-none transition-colors"
                           placeholder="John Doe"
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-semibold text-warm-600 mb-1">Phone Number</label>
+                        <label className="block text-xs font-semibold tracking-wide uppercase text-white/50 mb-2">Phone Number</label>
                         <input
                           type="tel"
                           required
                           value={phoneNumber}
                           onChange={handlePhoneChange}
-                          className="w-full px-4 py-2.5 rounded-lg border border-warm-200 bg-white focus:border-primary outline-none transition-colors text-ink"
+                          className="w-full px-4 py-3 rounded-lg border border-white/15 bg-white/5 text-white placeholder-white/30 focus:border-accent focus:bg-white/10 outline-none transition-colors"
                           placeholder="(555) 000-0000"
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-semibold text-warm-600 mb-1">Message (Optional)</label>
+                        <label className="block text-xs font-semibold tracking-wide uppercase text-white/50 mb-2">Message (Optional)</label>
                         <textarea
                           rows={3}
-                          className="w-full px-4 py-2.5 rounded-lg border border-warm-200 bg-white focus:border-primary outline-none transition-colors resize-none text-ink"
+                          className="w-full px-4 py-3 rounded-lg border border-white/15 bg-white/5 text-white placeholder-white/30 focus:border-accent focus:bg-white/10 outline-none transition-colors resize-none"
                           placeholder="Why are you interested in this department?"
                         ></textarea>
                       </div>
@@ -243,10 +244,10 @@ export function FeaturedMinistriesSection({ ministries }: FeaturedMinistriesSect
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="w-full mt-4 bg-primary hover:bg-primary-dark text-white font-bold py-3 px-4 rounded-lg transition-colors flex items-center justify-center gap-2 disabled:opacity-70"
+                        className="w-full mt-2 bg-accent text-warm-900 shadow-[inset_0_1px_0_0_rgb(255_255_255/0.35),0_1px_2px_rgb(0_0_0/0.06),0_4px_14px_-4px_rgb(212_175_55/0.5)] hover:bg-accent-dark hover:-translate-y-0.5 hover:shadow-[inset_0_1px_0_0_rgb(255_255_255/0.3),0_2px_4px_rgb(0_0_0/0.08),0_10px_22px_-6px_rgb(212_175_55/0.6)] font-semibold py-3 px-4 rounded-lg transition-[background-color,box-shadow,transform] duration-200 flex items-center justify-center gap-2 disabled:opacity-70 disabled:hover:translate-y-0"
                       >
                         {isSubmitting ? (
-                          <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
+                          <span className="w-5 h-5 border-2 border-warm-900/30 border-t-warm-900 rounded-full animate-spin"></span>
                         ) : (
                           'Submit Interest'
                         )}
@@ -254,21 +255,21 @@ export function FeaturedMinistriesSection({ ministries }: FeaturedMinistriesSect
                     </form>
                   </div>
                 ) : (
-                  <motion.div 
+                  <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="bg-green-50 border border-green-200 p-8 rounded-xl flex flex-col items-center text-center mb-8"
+                    className="bg-white/5 border border-accent/30 p-8 rounded-xl flex flex-col items-center text-center"
                   >
-                    <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-4">
-                      <CheckCircle2 className="w-8 h-8" />
+                    <div className="w-14 h-14 bg-accent/15 text-accent rounded-full flex items-center justify-center mb-4">
+                      <CheckCircle2 className="w-7 h-7" />
                     </div>
-                    <h5 className="text-xl font-bold text-green-800 mb-2">Request Sent!</h5>
-                    <p className="text-green-700/80">
-                      Thank you for your interest in joining <strong>{selectedMinistry.name}</strong>. A leader will be in touch with you shortly to help you get started.
+                    <h5 className="font-display text-xl text-white mb-2">Request Sent!</h5>
+                    <p className="text-white/60">
+                      Thank you for your interest in joining <strong className="text-white/85">{selectedMinistry.name}</strong>. A leader will be in touch with you shortly to help you get started.
                     </p>
-                    <button 
+                    <button
                       onClick={closeDrawer}
-                      className="mt-6 font-semibold text-green-700 hover:text-green-800 underline underline-offset-2"
+                      className="mt-6 font-semibold text-accent hover:text-accent-dark underline underline-offset-4 transition-colors"
                     >
                       Close and return
                     </button>
