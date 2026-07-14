@@ -8,6 +8,7 @@ export const staffQuery = groq`
     _id,
     name,
     role,
+    slug,
     image,
     bio,
     rank,
@@ -16,13 +17,16 @@ export const staffQuery = groq`
   }
 `
 
-export const staffByIdQuery = groq`
-  *[_type == "staff" && _id == $id][0] {
+export const staffBySlugQuery = groq`
+  *[_type == "staff" && slug.current == $slug][0] {
     _id,
     name,
     role,
+    slug,
     image,
     bio,
+    fullBio,
+    gallery,
     rank,
     email,
     socialLinks

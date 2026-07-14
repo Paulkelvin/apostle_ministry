@@ -25,8 +25,11 @@ export interface Staff {
   _id: string
   name: string
   role: string
+  slug?: { current: string }
   image?: SanityImage
   bio?: string
+  fullBio?: PortableTextBlock[]
+  gallery?: SanityImage[]
   rank: number
   email?: string
   socialLinks?: SocialLink[]

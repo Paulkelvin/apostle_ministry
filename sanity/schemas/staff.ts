@@ -18,6 +18,16 @@ export const staff = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'slug',
+      title: 'Slug',
+      description: 'Used for this person\'s full bio page URL. Leave empty to show only a summary card with no detail page.',
+      type: 'slug',
+      options: {
+        source: 'name',
+        maxLength: 96,
+      },
+    }),
+    defineField({
       name: 'image',
       title: 'Photo',
       type: 'image',
@@ -27,9 +37,23 @@ export const staff = defineType({
     }),
     defineField({
       name: 'bio',
-      title: 'Biography',
+      title: 'Short Biography',
+      description: 'A 1-3 sentence summary shown on the team grid card.',
       type: 'text',
       rows: 4,
+    }),
+    defineField({
+      name: 'fullBio',
+      title: 'Full Biography',
+      description: 'The complete biography shown on this person\'s full bio page.',
+      type: 'blockContent',
+    }),
+    defineField({
+      name: 'gallery',
+      title: 'Photo Gallery',
+      description: 'Additional photos shown on this person\'s full bio page.',
+      type: 'array',
+      of: [{ type: 'image', options: { hotspot: true } }],
     }),
     defineField({
       name: 'rank',

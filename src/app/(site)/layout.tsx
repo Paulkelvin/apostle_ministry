@@ -23,7 +23,7 @@ export default async function SiteLayout({
 
   return (
     <div className="bg-background text-foreground">
-      <Navbar />
+      <Navbar socialLinks={settings?.socialLinks} />
       <SocialStickyBar socialLinks={settings?.socialLinks} />
       <main className="min-h-screen">
         {children}

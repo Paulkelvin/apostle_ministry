@@ -1,8 +1,9 @@
 'use client'
 
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Mail, ArrowUpRight } from 'lucide-react'
-import { SanityImageComponent } from '@/components/ui'
+import { SanityImageComponent, Button } from '@/components/ui'
 import type { Staff } from '@/types'
 
 interface LeadershipGridProps {
@@ -75,15 +76,22 @@ export function LeadershipGrid({ staff }: LeadershipGridProps) {
                   {leadPerson.bio && (
                     <p className="text-warm-600 leading-relaxed mb-4 md:mb-6 text-sm md:text-[15px] line-clamp-4 md:line-clamp-none">{leadPerson.bio}</p>
                   )}
-                  {leadPerson.email && (
-                    <a
-                      href={`mailto:${leadPerson.email}`}
-                      className="inline-flex items-center gap-2 bg-primary/5 hover:bg-primary/10 text-primary font-semibold px-5 py-2.5 rounded-lg transition-colors w-fit text-sm"
-                    >
-                      <Mail className="w-4 h-4" />
-                      Send a Message
-                    </a>
-                  )}
+                  <div className="flex flex-wrap items-center gap-3">
+                    {leadPerson.email && (
+                      <a
+                        href={`mailto:${leadPerson.email}`}
+                        className="inline-flex items-center gap-2 bg-primary/5 hover:bg-primary/10 text-primary font-semibold px-5 py-2.5 rounded-lg transition-colors w-fit text-sm"
+                      >
+                        <Mail className="w-4 h-4" />
+                        Send a Message
+                      </a>
+                    )}
+                    {leadPerson.slug && (
+                      <Button href={`/about/leadership/${leadPerson.slug.current}`} variant="outline" size="sm">
+                        Read Full Bio
+                      </Button>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
@@ -134,16 +142,27 @@ export function LeadershipGrid({ staff }: LeadershipGridProps) {
                     {person.bio && (
                       <p className="text-warm-600 text-sm leading-relaxed line-clamp-2">{person.bio}</p>
                     )}
-                    {person.email && (
-                      <a
-                        href={`mailto:${person.email}`}
-                        className="inline-flex items-center gap-1.5 text-primary hover:text-primary-dark text-sm font-medium mt-4 transition-colors group/link"
-                      >
-                        <Mail className="w-3.5 h-3.5" />
-                        Contact
-                        <ArrowUpRight className="w-3 h-3 opacity-0 -translate-x-1 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all" />
-                      </a>
-                    )}
+                    <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-4">
+                      {person.email && (
+                        <a
+                          href={`mailto:${person.email}`}
+                          className="inline-flex items-center gap-1.5 text-primary hover:text-primary-dark text-sm font-medium transition-colors group/link"
+                        >
+                          <Mail className="w-3.5 h-3.5" />
+                          Contact
+                          <ArrowUpRight className="w-3 h-3 opacity-0 -translate-x-1 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all" />
+                        </a>
+                      )}
+                      {person.slug && (
+                        <Link
+                          href={`/about/leadership/${person.slug.current}`}
+                          className="inline-flex items-center gap-1.5 text-primary hover:text-primary-dark text-sm font-medium transition-colors group/link"
+                        >
+                          Read Full Bio
+                          <ArrowUpRight className="w-3 h-3 opacity-0 -translate-x-1 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all" />
+                        </Link>
+                      )}
+                    </div>
                   </div>
                 </motion.div>
               )
