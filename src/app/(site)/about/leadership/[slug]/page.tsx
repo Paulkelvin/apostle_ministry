@@ -1,9 +1,9 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { ArrowLeft, Mail } from 'lucide-react'
+import { ArrowLeft, Mail, Globe } from 'lucide-react'
 import { client, staffBySlugQuery } from '@/lib/sanity'
-import { SanityImageComponent } from '@/components/ui'
+import { SanityImageComponent, Button } from '@/components/ui'
 import { PortableTextRenderer } from '@/components/portable-text'
 import type { Staff } from '@/types'
 
@@ -65,14 +65,24 @@ export default async function LeadershipBioPage({ params }: PageProps) {
           <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium text-white leading-[1.08] tracking-tight">
             {person.name}
           </h1>
-          {person.email && (
-            <a
-              href={`mailto:${person.email}`}
-              className="inline-flex items-center gap-2 text-sm text-white/55 hover:text-white transition-colors mt-6"
-            >
-              <Mail className="w-4 h-4" />
-              {person.email}
-            </a>
+          {(person.email || person.website) && (
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-3 mt-6">
+              {person.email && (
+                <a
+                  href={`mailto:${person.email}`}
+                  className="inline-flex items-center gap-2 text-sm text-white/55 hover:text-white transition-colors"
+                >
+                  <Mail className="w-4 h-4" />
+                  {person.email}
+                </a>
+              )}
+              {person.website && (
+                <Button href={person.website} variant="inverse" size="sm" className="gap-2">
+                  <Globe className="w-4 h-4" />
+                  Visit Website
+                </Button>
+              )}
+            </div>
           )}
         </div>
       </section>

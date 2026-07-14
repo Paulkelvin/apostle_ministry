@@ -68,6 +68,12 @@ export const staff = defineType({
       type: 'string',
     }),
     defineField({
+      name: 'website',
+      title: 'Website',
+      description: 'Shown as a "Visit Website" button on this person\'s full bio page.',
+      type: 'url',
+    }),
+    defineField({
       name: 'socialLinks',
       title: 'Social Media Links',
       type: 'array',

@@ -32,6 +32,7 @@ export interface Staff {
   gallery?: SanityImage[]
   rank: number
   email?: string
+  website?: string
   socialLinks?: SocialLink[]
 }
 

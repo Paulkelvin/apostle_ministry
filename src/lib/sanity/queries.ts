@@ -29,6 +29,7 @@ export const staffBySlugQuery = groq`
     gallery,
     rank,
     email,
+    website,
     socialLinks
   }
 `
