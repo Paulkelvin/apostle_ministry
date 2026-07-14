@@ -153,8 +153,6 @@ export function FeaturedMinistriesSection({ ministries }: FeaturedMinistriesSect
 
                 {/* Text Side */}
                 <div className="w-full lg:w-1/2">
-                  {/* Gold accent line */}
-                  <div className="w-px h-10 bg-accent mb-5" />
                   <h3 className="text-h3 text-primary mb-4">
                     {ministry.name}
                   </h3>
