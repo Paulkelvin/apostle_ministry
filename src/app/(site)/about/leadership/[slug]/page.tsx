@@ -48,26 +48,27 @@ export default async function LeadershipBioPage({ params }: PageProps) {
   return (
     <>
       {/* Hero */}
-      <section className="bg-primary-deep pt-32 pb-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="bg-primary-deep pt-40 md:pt-48 pb-24 md:pb-32">
+        <div className="max-w-3xl mx-auto px-6 sm:px-8">
           <Link
             href="/about"
-            className="inline-flex items-center gap-2 text-warm-200/80 hover:text-white transition-colors mb-8 text-sm group"
+            className="inline-flex items-center gap-2 text-[11px] font-semibold tracking-[0.18em] uppercase text-white/45 hover:text-white transition-colors mb-14 group"
           >
-            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+            <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
             Back to Our Team
           </Link>
 
-          <p className="text-accent text-xs font-semibold tracking-[0.2em] uppercase mb-4">
+          <p className="text-accent text-xs font-semibold tracking-[0.3em] uppercase mb-6">
             {person.role}
           </p>
-          <h1 className="font-display text-4xl md:text-6xl font-semibold text-white mb-4 leading-tight">
+          <div className="w-14 h-px bg-accent/40 mb-8" aria-hidden="true" />
+          <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-medium text-white leading-[1.05] tracking-tight">
             {person.name}
           </h1>
           {person.email && (
             <a
               href={`mailto:${person.email}`}
-              className="inline-flex items-center gap-2 text-sm font-medium text-white/80 hover:text-white transition-colors"
+              className="inline-flex items-center gap-2 text-sm text-white/55 hover:text-white transition-colors mt-10"
             >
               <Mail className="w-4 h-4" />
               {person.email}
@@ -78,56 +79,63 @@ export default async function LeadershipBioPage({ params }: PageProps) {
 
       {/* Main photo */}
       {person.image && (
-        <section className="bg-surface pt-10">
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="aspect-[4/3] relative rounded-xl overflow-hidden shadow-[--shadow-card] border border-warm-200">
+        <section className="bg-surface pt-20 md:pt-28">
+          <div className="max-w-3xl mx-auto px-6 sm:px-8">
+            <div className="max-w-md mx-auto aspect-[4/5] relative rounded-lg overflow-hidden shadow-[0_30px_60px_-20px_rgb(37_32_53/0.28)]">
               <SanityImageComponent
                 image={person.image}
                 alt={person.name}
                 fill
                 priority
                 className="object-cover object-top"
-                sizes="(max-width: 768px) 100vw, 768px"
+                sizes="(max-width: 768px) 90vw, 448px"
               />
             </div>
           </div>
         </section>
       )}
 
-      {/* Full biography */}
-      <article className="py-12 bg-surface">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-xl p-6 sm:p-10 shadow-[--shadow-card] border border-warm-200">
-            {person.fullBio ? (
+      {/* Full biography — editorial article, not a boxed card */}
+      <article className="bg-surface pt-16 md:pt-20 pb-20 md:pb-28">
+        <div className="max-w-3xl mx-auto px-6 sm:px-8">
+          {person.fullBio ? (
+            <div
+              className="[&_p]:!text-warm-800 [&_p]:!text-lg [&_p]:md:!text-[1.1875rem] [&_p]:!leading-[1.9] [&_p]:!mb-9 [&_p:last-child]:!mb-0
+                         [&_h2]:!mt-16 [&_h2]:!mb-6 [&_h3]:!mt-14 [&_h3]:!mb-5 [&_h4]:!mt-12 [&_h4]:!mb-4
+                         [&_blockquote]:!my-12 [&_blockquote]:!text-xl [&_blockquote]:!leading-[1.7]"
+            >
               <PortableTextRenderer value={person.fullBio} />
-            ) : person.bio ? (
-              <p className="text-warm-700 leading-relaxed">{person.bio}</p>
-            ) : (
-              <p className="text-ink">No biography available.</p>
-            )}
-          </div>
+            </div>
+          ) : person.bio ? (
+            <p className="text-warm-800 text-lg leading-[1.9]">{person.bio}</p>
+          ) : (
+            <p className="text-ink">No biography available.</p>
+          )}
         </div>
       </article>
 
-      {/* Photo gallery */}
+      {/* Photo gallery — curated, not a grid of thumbnails */}
       {person.gallery && person.gallery.length > 0 && (
-        <section className="pb-16 bg-surface">
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <p className="text-accent-dark text-xs font-semibold tracking-[0.15em] uppercase mb-4">
-              Gallery
-            </p>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        <section className="bg-surface pb-24 md:pb-36">
+          <div className="max-w-3xl mx-auto px-6 sm:px-8">
+            <div className="flex items-center gap-4 mb-12">
+              <p className="text-accent-dark text-xs font-semibold tracking-[0.3em] uppercase">
+                Gallery
+              </p>
+              <div className="h-px flex-1 bg-warm-200" aria-hidden="true" />
+            </div>
+            <div className="grid grid-cols-2 gap-6 md:gap-10">
               {person.gallery.map((photo, i) => (
                 <div
                   key={i}
-                  className="aspect-square relative rounded-lg overflow-hidden border border-warm-200"
+                  className="aspect-[4/5] relative rounded-lg overflow-hidden shadow-[0_16px_36px_-16px_rgb(37_32_53/0.22)]"
                 >
                   <SanityImageComponent
                     image={photo}
                     alt={`${person.name} photo ${i + 1}`}
                     fill
                     className="object-cover"
-                    sizes="(max-width: 640px) 50vw, 25vw"
+                    sizes="(max-width: 640px) 45vw, 340px"
                   />
                 </div>
               ))}
