@@ -109,7 +109,7 @@ export function FeaturedMinistriesSection({ ministries }: FeaturedMinistriesSect
           <p className="text-accent-dark text-xs font-semibold tracking-[0.2em] uppercase mb-4">
             Join a Department
           </p>
-          <h2 className="font-display text-4xl md:text-5xl font-semibold text-primary mb-6">
+          <h2 className="text-h2 text-primary mb-6">
             Discover Your Purpose
           </h2>
           <p className="text-base md:text-lg max-w-2xl mx-auto text-warm-600">
@@ -155,7 +155,7 @@ export function FeaturedMinistriesSection({ ministries }: FeaturedMinistriesSect
                 <div className="w-full lg:w-1/2">
                   {/* Gold accent line */}
                   <div className="w-px h-10 bg-accent mb-5" />
-                  <h3 className="font-display text-2xl md:text-3xl font-semibold text-primary mb-4">
+                  <h3 className="text-h3 text-primary mb-4">
                     {ministry.name}
                   </h3>
                   {ministry.description && (

@@ -45,7 +45,7 @@ export function LatestNewsSection({ posts }: LatestNewsSectionProps) {
               <p className="text-accent-dark text-xs font-semibold tracking-[0.2em] uppercase mb-4">
                 From the Journal
               </p>
-              <h2 className="font-display text-4xl md:text-5xl font-semibold text-primary mb-2">Latest Resources</h2>
+              <h2 className="text-h2 text-primary mb-2">Latest Resources</h2>
               <p className="text-sm text-warm-600">Stories, devotionals, and news from our community</p>
             </div>
             <Link
@@ -84,7 +84,7 @@ export function LatestNewsSection({ posts }: LatestNewsSectionProps) {
                     {featuredCategory.title}
                   </span>
                 )}
-                <h3 className="font-display text-2xl md:text-3xl font-semibold text-white mb-2 leading-tight line-clamp-3">
+                <h3 className="text-h3 text-white mb-2 leading-tight line-clamp-3">
                   {featured.title}
                 </h3>
                 {featured.excerpt && (

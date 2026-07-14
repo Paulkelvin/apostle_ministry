@@ -148,7 +148,7 @@ export function EventDetailModal({ event, onClose }: EventDetailModalProps) {
                   )}
 
                   {/* Title */}
-                  <h2 className="font-display text-2xl md:text-3xl font-semibold text-warm-900 leading-tight">
+                  <h2 className="text-h3 text-warm-900 leading-tight">
                     {event.title}
                   </h2>
 

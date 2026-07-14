@@ -36,7 +36,7 @@ export function TimelineSection({ historyItems }: TimelineSectionProps) {
           className="text-center mb-16"
         >
           <span className="text-accent-dark text-xs font-semibold tracking-[0.2em] uppercase">Our Story</span>
-          <h2 className="font-display text-4xl md:text-5xl font-semibold text-primary mt-3 mb-4">Our Journey</h2>
+          <h2 className="text-h2 text-primary mt-3 mb-4">Our Journey</h2>
           <p className="text-warm-600 text-lg max-w-2xl mx-auto">
             See how God has been faithful throughout our church&apos;s history
           </p>

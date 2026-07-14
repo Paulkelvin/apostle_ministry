@@ -34,7 +34,7 @@ export function LeadershipGrid({ staff }: LeadershipGridProps) {
           className="text-center mb-16"
         >
           <span className="inline-block text-accent-dark text-xs font-semibold tracking-[0.2em] uppercase mb-4">Meet The Team</span>
-          <h2 className="font-display text-4xl md:text-5xl font-semibold text-primary mb-5">Our Leadership</h2>
+          <h2 className="text-h2 text-primary mb-5">Our Leadership</h2>
           <p className="text-warm-600 text-lg max-w-xl mx-auto leading-relaxed">
             Dedicated servants who guide our church with wisdom, compassion, and unwavering faith.
           </p>

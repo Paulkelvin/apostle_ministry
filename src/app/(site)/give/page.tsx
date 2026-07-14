@@ -220,7 +220,7 @@ export default async function GivePage() {
             <p className="text-accent text-xs font-semibold tracking-[0.2em] uppercase mb-4">
               Transparency
             </p>
-            <h2 className="font-display text-4xl md:text-5xl font-semibold text-white mb-4">
+            <h2 className="text-h2 text-white mb-4">
               Where Your Gift Goes
             </h2>
             <p className="text-lg text-white/70 max-w-2xl mx-auto">

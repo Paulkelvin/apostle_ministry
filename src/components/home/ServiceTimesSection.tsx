@@ -30,7 +30,7 @@ export function ServiceTimesSection({ serviceTimes }: ServiceTimesSectionProps) 
           <p className="text-accent text-xs font-semibold tracking-[0.2em] uppercase mb-4">
             Service Times
           </p>
-          <h2 className="font-display text-4xl md:text-5xl font-semibold text-white mb-3">
+          <h2 className="text-h2 text-white mb-3">
             Join Us This Week
           </h2>
           <p className="text-base text-white/60 max-w-lg mx-auto">

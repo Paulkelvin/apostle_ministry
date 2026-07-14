@@ -51,7 +51,7 @@ export function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="bg-white rounded-xl p-8 md:p-10 border border-warm-200 shadow-[--shadow-card]">
-      <h2 className="font-display text-2xl md:text-3xl font-semibold text-warm-900 mb-1">Get in Touch</h2>
+      <h2 className="text-h3 text-warm-900 mb-1">Get in Touch</h2>
       <p className="text-warm-500 mb-8 text-sm">You can reach us anytime</p>
 
       {formState === 'error' && (

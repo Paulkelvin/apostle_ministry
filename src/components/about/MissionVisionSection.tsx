@@ -36,7 +36,7 @@ export function MissionVisionSection({ mission, vision }: MissionVisionSectionPr
               <span className="text-accent text-xs font-semibold tracking-[0.2em] uppercase mb-6 block">
                 Who We Are
               </span>
-              <h2 className="font-display text-4xl md:text-5xl font-semibold text-white mb-6 leading-tight">
+              <h2 className="text-h2 text-white mb-6 leading-tight">
                 Our Mission
               </h2>
               <p className="text-lg text-white/80 leading-relaxed">
@@ -57,7 +57,7 @@ export function MissionVisionSection({ mission, vision }: MissionVisionSectionPr
               <span className="text-accent-dark text-xs font-semibold tracking-[0.2em] uppercase mb-6 block">
                 Where We&apos;re Going
               </span>
-              <h2 className="font-display text-4xl md:text-5xl font-semibold text-primary mb-6 leading-tight">
+              <h2 className="text-h2 text-primary mb-6 leading-tight">
                 Our Vision
               </h2>
               <p className="text-lg text-ink leading-relaxed">
@@ -88,7 +88,7 @@ export function MissionVisionSection({ mission, vision }: MissionVisionSectionPr
             <span className="text-accent-dark text-xs font-semibold tracking-[0.2em] uppercase mb-4 block">
               What Guides Us
             </span>
-            <h2 className="font-display text-4xl md:text-5xl font-semibold text-primary">Our Core Values</h2>
+            <h2 className="text-h2 text-primary">Our Core Values</h2>
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-8 lg:gap-10">
