@@ -1,5 +1,6 @@
 import Link from 'next/link'
-import { Facebook, Instagram, Youtube, Twitter } from 'lucide-react'
+import { Facebook, Instagram, Youtube, Twitter, Phone, Mail, MapPin } from 'lucide-react'
+import { Button } from '@/components/ui'
 import type { SocialLink } from '@/types'
 
 interface FooterProps {
@@ -47,95 +48,122 @@ export function Footer({ socialLinks = [], statement501c3, siteName, siteTagline
   const addressLines = (address || "High Calling Ministries\n401-A Prince George's Blvd\nUpper Marlboro, MD 20774").split('\n')
 
   return (
-      <footer className="bg-primary-deep">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          {/* Brand & Social */}
-          <div>
-            <div className="h-px w-12 bg-accent/40 mb-6" aria-hidden="true" />
-            <h3 className="text-2xl font-bold text-warm-100 mb-4">
-              {displayName}
-            </h3>
-            <p className="text-white/60 mb-6">
-              {displayTagline}
-            </p>
-            <div className="flex space-x-4">
-              {(socialLinks || []).map((link) => {
-                const Icon = socialIcons[link.platform]
-                if (!Icon) return null
-                return (
-                  <a
-                    key={link.platform}
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-full bg-white/5 border border-white/10 text-white/70 flex items-center justify-center hover:bg-primary hover:text-white transition-colors"
-                    aria-label={`Follow us on ${link.platform}`}
-                  >
-                    <Icon className="w-5 h-5" />
-                  </a>
-                )
-              })}
-            </div>
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <h4 className="text-lg font-semibold text-warm-100 mb-4">
-              Quick Links
-            </h4>
-            <ul className="space-y-3">
-              {quickLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-white/60 hover:text-accent transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact Info */}
-          <div>
-            <h4 className="text-lg font-semibold text-warm-100 mb-4">
-              Contact Us
-            </h4>
-            <address className="not-italic space-y-2 text-white/60">
-              {addressLines.map((line, i) => (
-                <p key={i}>{line}</p>
-              ))}
-              <p className="mt-4">
-                <a
-                  href={`tel:${displayPhone.replace(/[^+\d]/g, '')}`}
-                  className="hover:text-accent transition-colors"
-                >
-                  {displayPhone}
-                </a>
-              </p>
-              <p>
-                <a
-                  href={`mailto:${displayEmail}`}
-                  className="hover:text-accent transition-colors"
-                >
-                  {displayEmail}
-                </a>
-              </p>
-            </address>
+    <footer className="bg-background px-4 sm:px-6 lg:px-8 pb-6 lg:pb-10">
+      <div className="max-w-7xl mx-auto rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-secondary via-white to-accent-light/25 shadow-[--shadow-card-hover]">
+        {/* CTA banner */}
+        <div className="text-center px-6 sm:px-12 pt-14 pb-10 sm:pt-20 sm:pb-14">
+          <p className="text-accent-dark text-xs font-semibold tracking-[0.2em] uppercase mb-4">
+            Join Us
+          </p>
+          <h2 className="text-h2 text-primary mb-4">
+            Ready to Find Your Place With Us?
+          </h2>
+          <p className="text-warm-600 max-w-xl mx-auto mb-8">
+            From Sunday worship to everyday community, there&apos;s a seat saved for you.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <Button href="/contact#directions" variant="primary" size="md">
+              Plan Your Visit
+            </Button>
+            <Button href="/give" variant="outline" size="md" className="bg-white/70 backdrop-blur-sm">
+              Give Now
+            </Button>
           </div>
         </div>
-      </div>
 
-      {/* Bottom Bar */}
-      <div className="border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex justify-center items-center">
-            <p className="text-sm text-white/40">
-              © {currentYear} {displayName}. All rights reserved.
-            </p>
+        {/* Nested footer panel */}
+        <div className="mx-3 sm:mx-6">
+          <div className="rounded-[1.5rem] bg-white/70 backdrop-blur-sm px-6 sm:px-10 py-10 sm:py-12">
+            <div className="grid grid-cols-1 md:grid-cols-[1.2fr_1fr_1fr] gap-10 md:gap-8">
+              {/* Brand & Social */}
+              <div>
+                <h3 className="text-xl font-bold text-primary mb-2">
+                  {displayName}
+                </h3>
+                <p className="text-warm-600 text-sm mb-6">
+                  {displayTagline}
+                </p>
+                <div className="flex flex-wrap gap-3">
+                  {(socialLinks || []).map((link) => {
+                    const Icon = socialIcons[link.platform]
+                    if (!Icon) return null
+                    return (
+                      <a
+                        key={link.platform}
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-10 h-10 rounded-full bg-primary/5 border border-primary/10 text-primary flex items-center justify-center hover:bg-primary hover:text-white hover:border-primary transition-colors"
+                        aria-label={`Follow us on ${link.platform}`}
+                      >
+                        <Icon className="w-4 h-4" />
+                      </a>
+                    )
+                  })}
+                </div>
+              </div>
+
+              {/* Quick Links */}
+              <div>
+                <h4 className="text-xs font-semibold uppercase tracking-[0.15em] text-warm-500 mb-4">
+                  Quick Links
+                </h4>
+                <ul className="space-y-3">
+                  {quickLinks.map((link) => (
+                    <li key={link.href}>
+                      <Link
+                        href={link.href}
+                        className="text-sm text-ink hover:text-primary transition-colors"
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Contact Info */}
+              <div>
+                <h4 className="text-xs font-semibold uppercase tracking-[0.15em] text-warm-500 mb-4">
+                  Visit Us
+                </h4>
+                <address className="not-italic space-y-3 text-sm text-ink">
+                  <div className="flex gap-2.5">
+                    <MapPin className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                    <div>
+                      {addressLines.map((line, i) => (
+                        <p key={i}>{line}</p>
+                      ))}
+                    </div>
+                  </div>
+                  <a
+                    href={`tel:${displayPhone.replace(/[^+\d]/g, '')}`}
+                    className="flex items-center gap-2.5 hover:text-primary transition-colors"
+                  >
+                    <Phone className="w-4 h-4 text-primary shrink-0" />
+                    {displayPhone}
+                  </a>
+                  <a
+                    href={`mailto:${displayEmail}`}
+                    className="flex items-center gap-2.5 hover:text-primary transition-colors"
+                  >
+                    <Mail className="w-4 h-4 text-primary shrink-0" />
+                    {displayEmail}
+                  </a>
+                </address>
+              </div>
+            </div>
           </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="px-6 sm:px-10 py-6 text-center">
+          <p className="text-xs text-warm-500">
+            © {currentYear} {displayName}. All rights reserved.
+            {statement501c3 && (
+              <span className="block sm:inline sm:before:content-['_·_']">{statement501c3}</span>
+            )}
+          </p>
         </div>
       </div>
     </footer>
