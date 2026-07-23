@@ -49,9 +49,13 @@ export function Footer({ socialLinks = [], statement501c3, siteName, siteTagline
 
   return (
     <footer className="bg-background px-4 sm:px-6 lg:px-8 pb-6 lg:pb-10">
-      <div className="max-w-7xl mx-auto rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-secondary via-white to-accent-light/25 shadow-[--shadow-card-hover]">
+      <div className="relative max-w-7xl mx-auto rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-secondary-dark via-secondary to-accent-light/50 border border-primary/15 shadow-[0_10px_15px_-3px_rgb(107_79_158/0.15),0_20px_45px_-12px_rgb(107_79_158/0.3)]">
+        {/* Decorative color wash — lifts the card off whatever section sits above it */}
+        <div className="pointer-events-none absolute -top-24 -left-20 w-72 h-72 rounded-full bg-primary/20 blur-3xl" aria-hidden="true" />
+        <div className="pointer-events-none absolute -bottom-24 -right-16 w-80 h-80 rounded-full bg-accent/25 blur-3xl" aria-hidden="true" />
+
         {/* CTA banner */}
-        <div className="text-center px-6 sm:px-12 pt-14 pb-10 sm:pt-20 sm:pb-14">
+        <div className="relative text-center px-6 sm:px-12 pt-14 pb-10 sm:pt-20 sm:pb-14">
           <p className="text-accent-dark text-xs font-semibold tracking-[0.2em] uppercase mb-4">
             Join Us
           </p>
@@ -72,7 +76,7 @@ export function Footer({ socialLinks = [], statement501c3, siteName, siteTagline
         </div>
 
         {/* Nested footer panel */}
-        <div className="mx-3 sm:mx-6">
+        <div className="relative mx-3 sm:mx-6">
           <div className="rounded-[1.5rem] bg-white/70 backdrop-blur-sm px-6 sm:px-10 py-10 sm:py-12">
             <div className="grid grid-cols-1 md:grid-cols-[1.2fr_1fr_1fr] gap-10 md:gap-8">
               {/* Brand & Social */}
@@ -157,7 +161,7 @@ export function Footer({ socialLinks = [], statement501c3, siteName, siteTagline
         </div>
 
         {/* Bottom Bar */}
-        <div className="px-6 sm:px-10 py-6 text-center">
+        <div className="relative px-6 sm:px-10 py-6 text-center">
           <p className="text-xs text-warm-500">
             © {currentYear} {displayName}. All rights reserved.
             {statement501c3 && (
