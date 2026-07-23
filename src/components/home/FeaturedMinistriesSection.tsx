@@ -24,6 +24,10 @@ const jdTokens = {
   '--jd-focus': '#B8862B',
 } as React.CSSProperties
 
+// Alternating card backgrounds, cycled by index — drawn from the site's
+// existing palette tokens rather than a single flat surface per card.
+const cardBackgrounds = ['bg-secondary', 'bg-sage-light', 'bg-accent-light/25', 'bg-warm-50']
+
 export function FeaturedMinistriesSection({ ministries }: FeaturedMinistriesSectionProps) {
   const [selectedMinistry, setSelectedMinistry] = useState<Ministry | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -104,74 +108,66 @@ export function FeaturedMinistriesSection({ ministries }: FeaturedMinistriesSect
   return (
     <section className="py-20 lg:py-28 bg-surface relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-16 flex flex-col items-center">
-          <p className="text-accent-dark text-xs font-semibold tracking-[0.2em] uppercase mb-4">
-            Join a Department
-          </p>
-          <h2 className="text-h2 text-primary mb-6">
-            Discover Your Purpose
-          </h2>
-          <p className="text-base md:text-lg max-w-2xl mx-auto text-warm-600">
-            We believe everyone has a unique gift to share. Explore our departments and find your place in our church family.
+        {/* Section Header — label + heading on the left, supporting copy on the right */}
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12 lg:mb-16">
+          <div>
+            <p className="text-accent-dark text-xs font-semibold tracking-[0.2em] uppercase mb-4">
+              Find Your Place
+            </p>
+            <h2 className="text-h2 text-primary">
+              Discover Your Purpose
+            </h2>
+          </div>
+          <p className="text-base md:text-lg text-warm-600 lg:max-w-md lg:text-right">
+            We believe everyone has a unique gift to share. Explore our departments below and find where you belong.
           </p>
         </div>
 
-        {/* Zig-Zag Rows */}
-        <div className="space-y-16 lg:space-y-24">
-          {displayMinistries.map((ministry, index) => {
-            const isReversed = index % 2 !== 0
-
-            return (
-              <motion.div
-                key={ministry._id || String(index)}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-60px' }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                className={`flex flex-col ${isReversed ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center gap-8 lg:gap-16`}
-              >
-                {/* Image Side */}
-                <div className="w-full lg:w-1/2">
-                  <div className="aspect-[4/3] relative overflow-hidden rounded-xl group cursor-pointer" onClick={() => openDrawer(ministry)}>
-                    {ministry.coverImage ? (
-                      <SanityImageComponent
-                        image={ministry.coverImage}
-                        alt={ministry.name}
-                        fill
-                        className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                      />
-                    ) : (
-                      <div className="w-full h-full bg-warm-100 flex items-center justify-center">
-                        <span className="font-display text-7xl text-warm-300">
-                          {ministry.name.charAt(0)}
-                        </span>
-                      </div>
-                    )}
+        {/* Ministry Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {displayMinistries.map((ministry, index) => (
+            <motion.button
+              key={ministry._id || String(index)}
+              type="button"
+              onClick={() => openDrawer(ministry)}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.5, delay: (index % 4) * 0.08 }}
+              className={`group text-left rounded-2xl overflow-hidden border border-warm-200/60 transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover ${cardBackgrounds[index % cardBackgrounds.length]}`}
+            >
+              <div className="aspect-[4/3] relative overflow-hidden">
+                {ministry.coverImage ? (
+                  <SanityImageComponent
+                    image={ministry.coverImage}
+                    alt={ministry.name}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+                  />
+                ) : (
+                  <div className="w-full h-full bg-warm-100 flex items-center justify-center">
+                    <span className="font-display text-6xl text-warm-300">
+                      {ministry.name.charAt(0)}
+                    </span>
                   </div>
-                </div>
-
-                {/* Text Side */}
-                <div className="w-full lg:w-1/2">
-                  <h3 className="text-h3 text-primary mb-4">
-                    {ministry.name}
-                  </h3>
-                  {ministry.description && (
-                    <p className="text-base md:text-lg leading-relaxed text-warm-600 mb-6">
-                      {ministry.description}
-                    </p>
-                  )}
-                  <button
-                    onClick={() => openDrawer(ministry)}
-                    className="inline-flex items-center gap-2 px-7 py-3 rounded-lg border border-warm-200 text-ink font-semibold text-sm hover:border-primary hover:text-primary transition-colors duration-300 group"
-                  >
-                    Join {ministry.name}
-                    <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-                  </button>
-                </div>
-              </motion.div>
-            )
-          })}
+                )}
+              </div>
+              <div className="p-6">
+                <h3 className="font-display font-semibold text-lg text-ink mb-2">
+                  {ministry.name}
+                </h3>
+                {ministry.description && (
+                  <p className="text-sm leading-relaxed text-warm-600 mb-4 line-clamp-3">
+                    {ministry.description}
+                  </p>
+                )}
+                <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
+                  Read More
+                  <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+                </span>
+              </div>
+            </motion.button>
+          ))}
         </div>
       </div>
 
