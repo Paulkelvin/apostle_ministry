@@ -1,4 +1,4 @@
-import type { SiteSettings, ServiceTimes, Sermon, Event } from '@/types'
+import type { SiteSettings, ServiceTimes, Sermon, Event, Post, Staff } from '@/types'
 
 function getNextDayOfWeek(dayOfWeek: number, hour: number, minute: number): Date {
   const now = new Date()
@@ -165,7 +165,7 @@ export function normalizeServiceTimes(serviceTimes: ServiceTimes | null | undefi
 }
 
 /**
- * Normalizes Sermons to remove placeholder / third-party YouTube videos that are not RLFCC's.
+ * Normalizes Sermons to remove placeholder / third-party YouTube videos and fictional speaker names.
  */
 export function normalizeSermons(sermons: Sermon[] | null | undefined): Sermon[] {
   if (!sermons || !Array.isArray(sermons)) return []
@@ -174,9 +174,94 @@ export function normalizeSermons(sermons: Sermon[] | null | undefined): Sermon[]
     // Strip external YouTube links since they do not belong to RLFCC
     const isThirdPartyYouTube = sermon.videoUrl && sermon.videoUrl.includes('youtube.com')
 
+    let cleanSpeaker = sermon.speaker
+    if (cleanSpeaker) {
+      const name = cleanSpeaker.name?.toLowerCase() || ''
+      if (name.includes('smith') || name.includes('david') || name.includes('john')) {
+        cleanSpeaker = {
+          ...cleanSpeaker,
+          name: 'RLFCC Pastoral Team',
+          role: 'Pastoral Teaching',
+        }
+      }
+    } else {
+      cleanSpeaker = {
+        _id: 'rlfcc-pastoral-team',
+        name: 'RLFCC Pastoral Team',
+        role: 'Pastoral Teaching',
+        rank: 1,
+      }
+    }
+
+    let cleanDesc = sermon.description || ''
+    cleanDesc = cleanDesc
+      .replace(/Pastor John Smith/gi, 'Our pastoral team')
+      .replace(/Pastor David/gi, 'Our pastoral team')
+      .replace(/Jane Smith/gi, 'Our worship team')
+      .replace(/John Smith/gi, 'Our pastoral team')
+
     return {
       ...sermon,
+      speaker: cleanSpeaker,
+      description: cleanDesc,
       videoUrl: isThirdPartyYouTube ? undefined : sermon.videoUrl,
     }
   })
+}
+
+/**
+ * Normalizes Posts:
+ * 1. Replaces fictional author names (e.g. "Pastor John Smith") with "RLFCC Ministry Team".
+ * 2. Cleans fictional names from excerpts while preserving the articles.
+ */
+export function normalizePosts(posts: Post[] | null | undefined): Post[] {
+  if (!posts || !Array.isArray(posts)) return []
+
+  return posts.map((post) => {
+    let cleanAuthor = post.author
+    if (cleanAuthor) {
+      const name = cleanAuthor.name?.toLowerCase() || ''
+      if (name.includes('smith') || name.includes('john')) {
+        cleanAuthor = {
+          ...cleanAuthor,
+          name: 'RLFCC Ministry Team',
+          role: 'Editorial & Teaching',
+          image: undefined, // remove placeholder author portrait
+        }
+      }
+    } else {
+      cleanAuthor = {
+        _id: 'rlfcc-ministry-team',
+        name: 'RLFCC Ministry Team',
+        role: 'Editorial & Teaching',
+        rank: 1,
+      }
+    }
+
+    let cleanExcerpt = post.excerpt || ''
+    cleanExcerpt = cleanExcerpt
+      .replace(/Pastor John Smith/gi, 'The RLFCC ministry team')
+      .replace(/Pastor John/gi, 'The pastoral team')
+      .replace(/John Smith/gi, 'The RLFCC ministry team')
+
+    return {
+      ...post,
+      author: cleanAuthor,
+      excerpt: cleanExcerpt,
+    }
+  })
+}
+
+/**
+ * Normalizes Staff:
+ * 1. Filters out fictional placeholder staff (e.g. "Pastor John Smith", "Jane Smith", "Michael Johnson").
+ * 2. Keeps verified leadership members.
+ */
+export function normalizeStaff(staff: Staff[] | null | undefined): Staff[] {
+  const cleanStaff = (staff || []).filter((person) => {
+    const name = person.name?.toLowerCase() || ''
+    return !name.includes('smith') && !name.includes('michael johnson')
+  })
+
+  return cleanStaff
 }

@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { Mail, ArrowUpRight } from 'lucide-react'
+import { Mail, ArrowUpRight, Users } from 'lucide-react'
 import { SanityImageComponent, Button } from '@/components/ui'
 import type { Staff } from '@/types'
 
@@ -11,11 +11,10 @@ interface LeadershipGridProps {
 }
 
 export function LeadershipGrid({ staff }: LeadershipGridProps) {
-  // Default staff for demo if none from CMS
+  // Clean ministry staff if none from CMS
   const displayStaff = staff.length > 0 ? staff : [
-    { _id: '1', name: 'Pastor John Smith', role: 'Senior Pastor', bio: 'Pastor John has been leading our congregation for over 15 years with a heart for teaching and shepherding.', rank: 1 },
-    { _id: '2', name: 'Jane Smith', role: 'Worship Pastor', bio: 'Jane leads our worship ministry with a passion for creating meaningful worship experiences.', rank: 2 },
-    { _id: '3', name: 'Michael Johnson', role: 'Outreach Pastor', bio: 'Michael is dedicated to serving the community and expanding the reach of our ministry.', rank: 3 },
+    { _id: '1', name: 'RLFCC Pastoral Team', role: 'Spiritual Leadership', bio: 'Guiding our church family in biblical truth, prayer, and Christ-centered worship.', rank: 1 },
+    { _id: '2', name: 'Ministry Operations', role: 'Administration & Fellowship', bio: 'Ensuring seamless weekly online worship services and community connection.', rank: 2 },
   ]
 
   // Determine layout: if lead pastor exists (first), feature them large
@@ -61,9 +60,12 @@ export function LeadershipGrid({ staff }: LeadershipGridProps) {
                       className="object-cover object-center"
                     />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center min-h-[360px]">
-                      <span className="font-display text-7xl text-warm-300">
-                        {leadPerson.name.charAt(0)}
+                    <div className="w-full h-full flex flex-col items-center justify-center min-h-[320px] bg-gradient-to-br from-primary/5 via-warm-100 to-accent/10 p-6 text-center">
+                      <div className="w-20 h-20 rounded-2xl bg-white shadow-xs border border-warm-200/80 flex items-center justify-center mb-3">
+                        <Users className="w-10 h-10 text-primary" />
+                      </div>
+                      <span className="font-display text-lg font-semibold text-primary">
+                        RLFCC Ministry
                       </span>
                     </div>
                   )}
@@ -127,9 +129,12 @@ export function LeadershipGrid({ staff }: LeadershipGridProps) {
                         className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
                       />
                     ) : (
-                      <div className="w-full h-full flex items-center justify-center">
-                        <span className="font-display text-5xl text-warm-300">
-                          {person.name.charAt(0)}
+                      <div className="w-full h-full flex flex-col items-center justify-center p-6 bg-gradient-to-br from-primary/5 via-warm-100 to-accent/10">
+                        <div className="w-14 h-14 rounded-xl bg-white shadow-xs border border-warm-200/80 flex items-center justify-center mb-2">
+                          <Users className="w-7 h-7 text-primary" />
+                        </div>
+                        <span className="font-display text-sm font-semibold text-primary">
+                          RLFCC Team
                         </span>
                       </div>
                     )}

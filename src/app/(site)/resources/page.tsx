@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { client, postsQuery, categoriesQuery } from '@/lib/sanity'
+import { client, postsQuery, categoriesQuery, normalizePosts } from '@/lib/sanity'
 import { BlogPageClient } from '@/components/blog'
 import type { Post, Category } from '@/types'
 
@@ -13,11 +13,11 @@ export const metadata: Metadata = {
 
 async function getBlogData() {
   try {
-    const [posts, categories] = await Promise.all([
+    const [rawPosts, categories] = await Promise.all([
       client.fetch<Post[]>(postsQuery),
       client.fetch<Category[]>(categoriesQuery),
     ])
-    return { posts, categories }
+    return { posts: normalizePosts(rawPosts), categories: categories || [] }
   } catch {
     return { posts: [], categories: [] }
   }

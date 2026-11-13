@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { client, siteSettingsQuery, historyQuery, staffQuery } from '@/lib/sanity'
+import { client, siteSettingsQuery, historyQuery, staffQuery, normalizeStaff, normalizeSiteSettings } from '@/lib/sanity'
 import { MissionVisionSection, TimelineSection, LeadershipGrid } from '@/components/about'
 import type { SiteSettings, HistoryItem, Staff } from '@/types'
 
@@ -13,14 +13,18 @@ export const metadata: Metadata = {
 
 async function getAboutPageData() {
   try {
-    const [settings, historyItems, staff] = await Promise.all([
+    const [rawSettings, historyItems, rawStaff] = await Promise.all([
       client.fetch<SiteSettings>(siteSettingsQuery),
       client.fetch<HistoryItem[]>(historyQuery),
       client.fetch<Staff[]>(staffQuery),
     ])
-    return { settings, historyItems, staff }
+    return {
+      settings: normalizeSiteSettings(rawSettings),
+      historyItems: historyItems || [],
+      staff: normalizeStaff(rawStaff),
+    }
   } catch {
-    return { settings: null, historyItems: [], staff: [] }
+    return { settings: normalizeSiteSettings(null), historyItems: [], staff: [] }
   }
 }
 

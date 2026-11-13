@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { format } from 'date-fns'
 import { ArrowLeft, Clock, Calendar } from 'lucide-react'
-import { client, postBySlugQuery, relatedPostsQuery, commentsByPostQuery } from '@/lib/sanity'
+import { client, postBySlugQuery, relatedPostsQuery, commentsByPostQuery, normalizePosts } from '@/lib/sanity'
 import { SanityImageComponent } from '@/components/ui'
 import { PortableTextRenderer } from '@/components/portable-text'
 import { ShareBar, CommentSection, BlogCard } from '@/components/blog'
@@ -32,7 +32,10 @@ async function getPostData(slug: string) {
       client.fetch<Comment[]>(commentsByPostQuery, { postId: post._id }),
     ])
 
-    return { post, relatedPosts, comments }
+    const normalizedPost = normalizePosts([post])[0] || null
+    const normalizedRelated = normalizePosts(relatedPosts || [])
+
+    return { post: normalizedPost, relatedPosts: normalizedRelated, comments }
   } catch {
     return { post: null, relatedPosts: [], comments: [] }
   }

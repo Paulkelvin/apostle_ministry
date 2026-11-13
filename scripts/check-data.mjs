@@ -15,7 +15,10 @@ const st = await client.fetch('*[_type == "serviceTimes"][0]')
 console.log('\n=== serviceTimes ===')
 console.log(JSON.stringify(st, null, 2))
 
-// Check a sample post
-const post = await client.fetch('*[_type == "post"][0]{_id, title, slug, publishedAt, "cats": categories[]->title}')
-console.log('\n=== Sample post ===')
-console.log(JSON.stringify(post, null, 2))
+const posts = await client.fetch('*[_type == "post"]{_id, title, "authorName": author->name}')
+console.log('\n=== Posts and Authors ===')
+console.log(JSON.stringify(posts, null, 2))
+
+const staff = await client.fetch('*[_type == "staff"]{_id, name, role}')
+console.log('\n=== Staff ===')
+console.log(JSON.stringify(staff, null, 2))

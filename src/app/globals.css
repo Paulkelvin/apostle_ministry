@@ -1,63 +1,71 @@
 @import "tailwindcss";
 
 @theme {
-  /* Warm Sanctuary Palette — Calming, accessible, easy on the eyes */
-  --color-primary: #5B4582;        /* Dignified, welcoming soft royal violet */
-  --color-primary-dark: #473468;   /* Refined hover tone */
-  --color-primary-light: #7E65A8;  /* Gentle violet highlight */
-  --color-primary-deep: #1A1625;   /* Rich, velvety midnight obsidian — no harsh mud */
-  --color-primary-ink: #110F18;    /* Deepest soft charcoal */
+  /* TBHE-Inspired Warm Human Palette (from tbheducator.com) */
+  --color-primary: #763D8E;         /* Rich, welcoming regal plum */
+  --color-primary-dark: #552C66;    /* Deep plum */
+  --color-primary-light: #9453AD;   /* Gentle plum highlight */
+  --color-primary-deep: #2A1734;    /* Warm aubergine obsidian — zero harsh edgy black */
+  --color-primary-ink: #1F1025;     /* Deep warm plum charcoal */
 
-  --color-secondary: #F7F5FA;      /* Calming airy lavender mist */
-  --color-secondary-dark: #EAE4F2;
+  --color-secondary: #F5EFE3;       /* Soft linen/canvas tint */
+  --color-secondary-dark: #EAE1D0;
 
-  --color-accent: #E0A946;         /* Warm honey gold — luminous, gentle on the eye */
-  --color-accent-dark: #C58F30;
-  --color-accent-light: #FCE6B8;
+  --color-accent: #C4862C;          /* Warm honey amber / gold (TBHE) */
+  --color-accent-dark: #946521;
+  --color-accent-light: #F7E5C6;
 
   --color-sage: #6B9475;
   --color-sage-dark: #507559;
   --color-sage-light: #ECF3EE;
 
-  /* Warm neutral ramp — airy, clean, organic linen */
-  --color-warm-50: #FFFFFF;        /* Pure white cards */
-  --color-warm-100: #F7F6F3;       /* Soothing alabaster linen */
-  --color-warm-200: #E6E3DC;       /* Delicate borders */
-  --color-warm-300: #D4CFC6;
-  --color-warm-400: #9B958A;
-  --color-warm-500: #716B60;       /* Crisp accessible muted text */
-  --color-warm-600: #48433B;       /* Secondary text */
-  --color-warm-700: #332E3E;
-  --color-warm-800: #221D2C;
-  --color-warm-900: #17141E;
+  /* TBHE warm natural linen ramp */
+  --color-warm-50: #FFFFFF;         /* Crisp white cards */
+  --color-warm-100: #FAF7F1;        /* TBHE canvas (#FAF7F1) */
+  --color-warm-200: #E6DDCA;        /* TBHE hairline border */
+  --color-warm-300: #D6C9AC;
+  --color-warm-400: #9B9183;
+  --color-warm-500: #6E6371;        /* TBHE muted ink */
+  --color-warm-600: #5C525C;        /* TBHE body text (#5C525C) */
+  --color-warm-700: #423643;
+  --color-warm-800: #2F1F31;
+  --color-warm-900: #251827;        /* TBHE ink (#251827) */
 
-  --color-surface: #FCFCFA;        /* Fresh Warm White */
-  --color-ink: #221F1B;            /* Soft charcoal */
-  --color-background: var(--color-surface);
+  --color-canvas: #FAF7F1;
+  --color-canvas-soft: #F5EFE3;
+  --color-surface: #FAF7F1;
+  --color-surface-card: #FFFFFF;
+  --color-hairline: #E6DDCA;
+  --color-hairline-soft: #EFE8D9;
+  --color-hairline-lavender: #DBC5E4;
+  --color-lavender-surface: #F4EEF7;
+  --color-ink: #251827;
+  --color-body: #5C525C;
+  --color-background: var(--color-canvas);
   --color-foreground: var(--color-ink);
 
   /* Elevation — smooth, organic micro-shadows */
-  --shadow-card: 0 1px 3px rgba(23, 20, 30, 0.04), 0 10px 28px -8px rgba(23, 20, 30, 0.07);
-  --shadow-card-hover: 0 4px 8px rgba(23, 20, 30, 0.05), 0 20px 42px -12px rgba(23, 20, 30, 0.12);
+  --shadow-card: 0 1px 3px rgba(37, 24, 39, 0.04), 0 10px 24px -8px rgba(37, 24, 39, 0.06);
+  --shadow-card-hover: 0 4px 12px rgba(37, 24, 39, 0.06), 0 20px 36px -12px rgba(37, 24, 39, 0.1);
 
   /* Accordion animations (Radix) */
   --animate-slideDown: slideDown 350ms cubic-bezier(0.33, 1, 0.68, 1);
   --animate-slideUp: slideUp 250ms cubic-bezier(0.33, 1, 0.68, 1);
 }
 
-/* Font tokens */
+/* Font tokens — Cormorant Garamond display + Manrope body */
 @theme inline {
-  --font-sans: var(--font-inter), system-ui, sans-serif;
-  --font-body: var(--font-inter), system-ui, sans-serif;
-  --font-display: var(--font-display), system-ui, sans-serif;
-  --font-serif: var(--font-serif), Georgia, serif;
+  --font-sans: var(--font-sans), system-ui, sans-serif;
+  --font-body: var(--font-sans), system-ui, sans-serif;
+  --font-display: var(--font-display), Georgia, serif;
+  --font-serif: var(--font-display), Georgia, serif;
   --font-mono: var(--font-geist-mono), monospace;
 }
 
 body {
   background: var(--color-background);
   color: var(--color-foreground);
-  font-family: var(--font-inter), system-ui, sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

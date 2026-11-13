@@ -1,8 +1,7 @@
 import { Metadata } from 'next'
-import { Heart, CreditCard, Building2, Mail, Users, BookOpen, Globe, Utensils } from 'lucide-react'
+import { Heart, CreditCard, Mail, Video, ShieldCheck } from 'lucide-react'
 import { TithelyButton } from '@/components/giving'
 import { client, givingPageQuery } from '@/lib/sanity'
-import { SanityImageComponent } from '@/components/ui'
 import type { GivingPage } from '@/types'
 
 export const metadata: Metadata = {
@@ -10,7 +9,6 @@ export const metadata: Metadata = {
   description: 'Support the mission of Restoring Life Family Community Center through your generous giving.',
 }
 
-// Donation totals update via the Tithely webhook — keep fairly fresh
 export const revalidate = 300
 
 async function getGivingPageData(): Promise<GivingPage | null> {
@@ -21,273 +19,161 @@ async function getGivingPageData(): Promise<GivingPage | null> {
   }
 }
 
-const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
-  'credit-card': CreditCard,
-  building: Building2,
-  mail: Mail,
-}
-
 export default async function GivePage() {
   const data = await getGivingPageData()
 
-  const heroTitle = data?.heroTitle || 'Together, We Build Faith and Create Impact'
   const heroVerse = data?.heroVerse || 'Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver.'
   const heroVerseRef = data?.heroVerseRef || '2 Corinthians 9:7'
-  const heroImage = data?.heroImage
-  const breakdown = data?.givingBreakdown || [
-    { title: 'Local Outreach', percentage: '30%', description: 'Feeding the hungry, clothing the needy, and serving our local community with the love of Christ.' },
-    { title: 'Ministry Operations', percentage: '50%', description: "Supporting worship, outreach programs, and creating spaces for spiritual growth and community fellowship." },
-    { title: 'Global Missions', percentage: '20%', description: 'Partnering with missionaries and organizations around the world to spread the Gospel.' },
-  ]
-  const methods = data?.givingMethods || [
-    { title: 'Online Giving', description: 'Give securely online using credit card, debit card, or bank transfer through our Tithe.ly integration.', icon: 'credit-card' as const },
-    { title: 'Virtual Services', description: 'Give during our Sunday Worship (4:00 PM) or Thursday Bible Study (7:30 PM) via online giving links shared in Zoom.', note: 'Zoom links shared weekly', icon: 'credit-card' as const },
-    { title: 'Mail a Check', description: 'Mail your donation to our ministry mailing address. Make checks payable to "Restoring Life Family Community Center".', icon: 'mail' as const },
-  ]
-  const mailingAddress = data?.mailingAddress || "Restoring Life Family Community Center\n6916 Hillmeade Road\nGlenn Dale, MD 20769"
-
-  // Impact areas with church-appropriate icons and descriptions
-  const impactAreas = [
-    { 
-      title: 'Feeding the Hungry', 
-      description: 'Providing nutritious meals to families in need through our weekly food pantry and community meals program.',
-      icon: Utensils,
-      stat: '500+',
-      statLabel: 'meals served monthly'
-    },
-    { 
-      title: 'Discipleship & Education', 
-      description: 'Funding Bible studies, Sunday school materials, and spiritual growth resources for all ages.',
-      icon: BookOpen,
-      stat: '200+',
-      statLabel: 'lives transformed'
-    },
-    { 
-      title: 'Community Support', 
-      description: 'Helping families with emergency assistance, counseling services, and support groups.',
-      icon: Users,
-      stat: '100+',
-      statLabel: 'families helped yearly'
-    },
-    { 
-      title: 'Global Missions', 
-      description: 'Supporting missionaries and church plants spreading the Gospel around the world.',
-      icon: Globe,
-      stat: '5',
-      statLabel: 'mission partners'
-    },
-  ]
+  const mailingAddress = data?.mailingAddress || 'Restoring Life Family Community Center\n6916 Hillmeade Road\nGlenn Dale, MD 20769'
 
   return (
-    <>
-      {/* Hero Section — Clean Minimal Design */}
-      <section
-        className="relative min-h-screen pt-[120px] pb-12 flex items-center overflow-hidden bg-surface"
-      >
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            {/* Left: Content */}
-            <div className="relative z-10">
-              <p className="text-accent-dark text-xs font-semibold tracking-[0.2em] uppercase mb-8">
-                Generosity
-              </p>
+    <div className="bg-[#FAF7F1] min-h-screen text-[#251827]">
+      {/* Hero Section — Clean, Human & Warm */}
+      <section className="relative pt-36 pb-20 overflow-hidden bg-[#FAF7F1]">
+        {/* Subtle dot matrix pattern & soft ambient light */}
+        <div className="absolute inset-0 bg-[radial-gradient(#e6ddca_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none opacity-50" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-primary-light/5 blur-[120px] pointer-events-none rounded-full" />
 
-              <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold text-primary mb-8 leading-[1.05]">
-                {heroTitle}
-              </h1>
-              
-              {/* Scripture as elegant inline quote */}
-              <div className="relative mb-10 pl-6 border-l-2 border-accent">
-                <p className="text-lg lg:text-xl text-primary-deep italic leading-relaxed font-serif-quote">
-                  &ldquo;{heroVerse}&rdquo;
-                </p>
-                <p className="text-accent-dark text-sm font-semibold mt-3 tracking-wide">
-                  {heroVerseRef}
-                </p>
-              </div>
-              
-              <div className="flex flex-col sm:flex-row gap-4">
-                <TithelyButton
-                  label="Give Now"
-                  className="text-base px-10 py-3.5 bg-accent hover:bg-accent-dark text-warm-900 rounded-xl font-semibold shadow-md transition-all duration-300"
-                />
-              </div>
-            </div>
-            
-            {/* Right: Hero image if provided, else fallback visual */}
-            <div className="relative z-10 hidden lg:block">
-              <div className="relative">
-                {heroImage ? (
-                  <div className="aspect-[4/3] max-w-[520px] mx-auto overflow-hidden relative rounded-2xl">
-                    <SanityImageComponent
-                      image={heroImage}
-                      alt={heroTitle}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                ) : (
-                  <div className="aspect-[4/3] max-w-[520px] mx-auto rounded-2xl bg-warm-100 flex items-center justify-center">
-                    <Heart className="w-20 h-20 text-warm-300" strokeWidth={1} />
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
+          <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#E6DDCA] text-accent-dark text-xs font-semibold tracking-wider uppercase mb-6 shadow-xs">
+            <Heart className="w-3.5 h-3.5 text-accent fill-accent/20" />
+            Stewardship &amp; Generosity
+          </span>
 
-      {/* Impact Areas — Bento Grid Layout */}
-      <section id="impact" className="pt-24 pb-24 bg-warm-100 scroll-mt-20 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <p className="text-accent-dark text-xs font-semibold tracking-[0.2em] uppercase mb-4">Your Impact</p>
-            <h2 className="font-display text-3xl md:text-4xl font-semibold text-primary mb-4">
-              Building Kingdom Futures
-            </h2>
-            <p className="text-warm-600 text-base max-w-2xl mx-auto">
-              Every dollar you give is stewarded with care. Here&apos;s how your generosity makes a difference.
+          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-primary mb-6 leading-tight">
+            Support the Mission of RLFCC
+          </h1>
+
+          <p className="text-lg text-[#5C525C] max-w-2xl mx-auto leading-relaxed mb-10">
+            Thank you for partnering with Restoring Life Family Community Center. Your giving helps us share the gospel, minister through live online worship, and build a loving, Christ-centered community.
+          </p>
+
+          {/* Scripture Card */}
+          <div className="max-w-2xl mx-auto p-6 sm:p-8 rounded-2xl bg-white border border-[#E6DDCA] shadow-sm mb-10 text-left relative overflow-hidden">
+            <div className="absolute top-0 left-0 bottom-0 w-1.5 bg-accent" />
+            <p className="text-lg sm:text-xl text-[#251827] italic leading-relaxed font-serif">
+              &ldquo;{heroVerse}&rdquo;
+            </p>
+            <p className="text-accent-dark text-sm font-bold mt-3 uppercase tracking-wider">
+              — {heroVerseRef}
             </p>
           </div>
 
-          {/* Bento Grid — two surfaces: primary-deep and white */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 auto-rows-[200px]">
-            {impactAreas.map((area, index) => {
-              const Icon = area.icon
-              const isLarge = index === 0 || index === 3
-              const isDark = index === 0
-
-              return (
-                <div
-                  key={area.title}
-                  className={`relative rounded-xl overflow-hidden transition-transform duration-300 hover:scale-[1.02] ${
-                    isLarge ? 'md:col-span-2 md:row-span-2' : ''
-                  } ${
-                    isDark
-                      ? 'bg-primary-deep'
-                      : 'bg-white border border-warm-200 shadow-[--shadow-card]'
-                  }`}
-                >
-                  <div className={`relative h-full flex flex-col ${
-                    isLarge ? 'p-10' : 'p-8'
-                  } ${
-                    isDark ? 'justify-end' : 'justify-start'
-                  }`}>
-                    {/* Icon */}
-                    <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${
-                      isDark ? 'absolute top-10 left-10 bg-white/10' : 'mb-auto bg-warm-100'
-                    }`}>
-                      <Icon className={`w-6 h-6 ${isDark ? 'text-accent' : 'text-primary'}`} />
-                    </div>
-
-                    {/* Content */}
-                    <div className={isDark ? '' : 'mt-auto'}>
-                      <div className="flex items-baseline gap-3 mb-3">
-                        <span
-                          className={`font-display ${isLarge ? 'text-5xl md:text-6xl' : 'text-4xl'} ${
-                            isDark ? 'text-accent' : 'text-accent-dark'
-                          }`}
-                        >
-                          {area.stat}
-                        </span>
-                        <span className={`text-sm font-medium ${isDark ? 'text-white/80' : 'text-warm-600'}`}>
-                          {area.statLabel}
-                        </span>
-                      </div>
-                      <h3 className={`font-display text-lg font-semibold mb-2 ${isDark ? 'text-white' : 'text-warm-900'}`}>
-                        {area.title}
-                      </h3>
-                      {isLarge && (
-                        <p className={`text-sm leading-relaxed line-clamp-3 hidden md:block ${
-                          isDark ? 'text-white/75' : 'text-warm-600'
-                        }`}>
-                          {area.description}
-                        </p>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              )
-            })}
+          {/* Primary Action Button */}
+          <div className="flex justify-center">
+            <TithelyButton
+              label="Give Online Now"
+              className="px-10 py-4 bg-accent hover:bg-accent-dark text-white rounded-xl font-bold shadow-md hover:shadow-lg transition-all duration-300 text-base"
+            />
           </div>
         </div>
       </section>
 
-      {/* Giving Breakdown — Visual */}
-      <section className="py-24 bg-gradient-to-b from-primary-deep via-primary-deep to-primary-ink">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Ways to Give Section — 3 Simple, Clear Options */}
+      <section className="py-20 bg-white border-y border-[#E6DDCA]">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-accent/15 border border-accent/25 text-accent text-xs font-semibold tracking-wider uppercase mb-4">
-              Transparency
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-accent-dark block mb-2">
+              Simple Options
             </span>
-            <h2 className="text-h2 text-white mb-4 font-display">
-              Where Your Gift Goes
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-primary">
+              Ways to Give
             </h2>
-            <p className="text-lg text-white/70 max-w-2xl mx-auto">
-              We believe in complete transparency. Here&apos;s how every dollar is stewarded.
+            <p className="text-[#5C525C] text-base max-w-xl mx-auto mt-3">
+              Choose the method of giving that works best for you and your family.
             </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
-            {breakdown.map((item) => (
-              <div
-                key={item.title}
-                className="bg-white/[0.04] rounded-2xl p-8 border border-white/10 hover:border-white/25 transition-all duration-300 hover:-translate-y-1"
-              >
-                <span className="font-display text-6xl text-accent mb-4 block font-bold">{item.percentage}</span>
-                <h3 className="text-xl font-bold text-white mb-3 font-display">{item.title}</h3>
-                <p className="text-white/75 text-sm leading-relaxed">{item.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Ways to Give — Flowing Cards */}
-      <section className="py-24 bg-surface">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <p className="text-accent-dark text-xs font-semibold tracking-[0.2em] uppercase mb-4">Ways to Give</p>
-            <h2 className="font-display text-3xl md:text-4xl font-semibold text-warm-900">
-              Choose Your Giving Method
-            </h2>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {methods.map((method) => {
-              const Icon = iconMap[method.icon] || CreditCard
-
-              return (
-                <div
-                  key={method.title}
-                  className="bg-white rounded-2xl p-8 border border-warm-200/80 shadow-[--shadow-card] hover:shadow-[--shadow-card-hover] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
-                >
-                  <div className="w-14 h-14 rounded-lg bg-warm-100 flex items-center justify-center mb-6">
-                    <Icon className="w-7 h-7 text-primary" />
-                  </div>
-                  <h3 className="font-display text-xl font-semibold text-warm-900 mb-3">{method.title}</h3>
-                  <p className="text-warm-600 mb-6 leading-relaxed text-sm">
-                    {method.description}
-                  </p>
-                  {method.icon === 'credit-card' && (
-                    <TithelyButton label="Give Online" className="w-full rounded-lg" />
-                  )}
-                  {method.note && (
-                    <p className="text-sm text-warm-500 bg-warm-100 rounded-lg px-4 py-3">{method.note}</p>
-                  )}
-                  {method.icon === 'mail' && (
-                    <address className="text-sm text-warm-500 not-italic whitespace-pre-line bg-warm-100 rounded-lg px-4 py-3">
-                      {mailingAddress}
-                    </address>
-                  )}
+            {/* Method 1: Online Giving */}
+            <div className="p-8 rounded-2xl bg-[#FAF7F1] border border-[#E6DDCA] flex flex-col justify-between shadow-xs hover:border-primary/40 transition-colors">
+              <div>
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-6">
+                  <CreditCard className="w-6 h-6" />
                 </div>
-              )
-            })}
+                <h3 className="font-display text-2xl font-bold text-[#251827] mb-3">
+                  Online Giving
+                </h3>
+                <p className="text-sm text-[#5C525C] leading-relaxed mb-6">
+                  Fast, secure digital giving using your debit card, credit card, or bank transfer. Give once or set up recurring gifts.
+                </p>
+              </div>
+
+              <div className="pt-4 border-t border-[#E6DDCA]">
+                <TithelyButton label="Give Online" className="w-full rounded-lg" />
+              </div>
+            </div>
+
+            {/* Method 2: During Live Service */}
+            <div className="p-8 rounded-2xl bg-[#FAF7F1] border border-[#E6DDCA] flex flex-col justify-between shadow-xs hover:border-primary/40 transition-colors">
+              <div>
+                <div className="w-12 h-12 rounded-xl bg-accent/15 flex items-center justify-center text-accent-dark mb-6">
+                  <Video className="w-6 h-6" />
+                </div>
+                <h3 className="font-display text-2xl font-bold text-[#251827] mb-3">
+                  Live Gatherings
+                </h3>
+                <p className="text-sm text-[#5C525C] leading-relaxed mb-6">
+                  You can give during our Sunday Worship Service (4:00 PM) or Thursday Bible Study (7:30 PM) via the giving links shared in the live Zoom chat.
+                </p>
+              </div>
+
+              <div className="pt-4 border-t border-[#E6DDCA]">
+                <a
+                  href="/events"
+                  className="w-full inline-flex items-center justify-center px-4 py-2.5 rounded-lg border border-[#E6DDCA] bg-white text-primary font-semibold text-sm hover:bg-[#FAF7F1] transition-colors"
+                >
+                  View Service Times
+                </a>
+              </div>
+            </div>
+
+            {/* Method 3: Mail-in Check */}
+            <div className="p-8 rounded-2xl bg-[#FAF7F1] border border-[#E6DDCA] flex flex-col justify-between shadow-xs hover:border-primary/40 transition-colors">
+              <div>
+                <div className="w-12 h-12 rounded-xl bg-sage/15 flex items-center justify-center text-sage-dark mb-6">
+                  <Mail className="w-6 h-6" />
+                </div>
+                <h3 className="font-display text-2xl font-bold text-[#251827] mb-3">
+                  Mail a Check
+                </h3>
+                <p className="text-sm text-[#5C525C] leading-relaxed mb-4">
+                  Please make checks payable to <span className="font-semibold text-[#251827]">Restoring Life Family Community Center</span> and mail to:
+                </p>
+                <div className="bg-white p-3 rounded-lg border border-[#E6DDCA] text-xs font-mono text-[#5C525C] whitespace-pre-line leading-relaxed mb-6">
+                  {mailingAddress}
+                </div>
+              </div>
+
+              <div className="pt-4 border-t border-[#E6DDCA]">
+                <a
+                  href="/contact"
+                  className="w-full inline-flex items-center justify-center px-4 py-2.5 rounded-lg border border-[#E6DDCA] bg-white text-primary font-semibold text-sm hover:bg-[#FAF7F1] transition-colors"
+                >
+                  Contact Ministry Office
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-    </>
+      {/* Tax Deductibility & Stewardship Statement */}
+      <section className="py-16 bg-[#FAF7F1]">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="p-8 rounded-2xl bg-white border border-[#E6DDCA] shadow-xs">
+            <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mx-auto mb-4">
+              <ShieldCheck className="w-6 h-6" />
+            </div>
+            <h3 className="font-display text-xl font-bold text-[#251827] mb-2">
+              Tax-Deductible 501(c)(3) Organization
+            </h3>
+            <p className="text-sm text-[#5C525C] max-w-xl mx-auto leading-relaxed">
+              Restoring Life Family Community Center is a registered 501(c)(3) nonprofit religious organization. All donations are tax-deductible to the fullest extent permitted by law. Donors will receive a contribution statement for tax records.
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
   )
 }
-

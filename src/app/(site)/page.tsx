@@ -1,4 +1,4 @@
-import { client, siteSettingsQuery, serviceTimesQuery, latestPostsQuery, featuredMinistriesQuery, normalizeSiteSettings, normalizeServiceTimes } from '@/lib/sanity'
+import { client, siteSettingsQuery, serviceTimesQuery, latestPostsQuery, featuredMinistriesQuery, normalizeSiteSettings, normalizeServiceTimes, normalizePosts } from '@/lib/sanity'
 import { HeroSection, ServiceTimesSection, LatestNewsSection, FeaturedMinistriesSection, MissionVisionSection } from '@/components/home'
 import type { SiteSettings, ServiceTimes, Post, Ministry } from '@/types'
 
@@ -16,7 +16,7 @@ async function getHomePageData() {
     return {
       settings: normalizeSiteSettings(rawSettings),
       serviceTimes: normalizeServiceTimes(rawServiceTimes),
-      posts: posts || [],
+      posts: normalizePosts(posts || []),
       ministries: ministries || [],
     }
   } catch {
