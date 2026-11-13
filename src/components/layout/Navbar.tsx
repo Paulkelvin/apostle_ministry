@@ -26,7 +26,7 @@ const socialIcons: Record<string, React.ComponentType<{ className?: string }>> =
   instagram: Instagram,
   youtube: Youtube,
 }
-const defaultSocialPlatforms = ['facebook', 'instagram', 'youtube']
+const defaultSocialPlatforms = ['facebook', 'instagram']
 
 interface NavbarProps {
   socialLinks?: SocialLink[]

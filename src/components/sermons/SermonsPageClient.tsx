@@ -1,7 +1,9 @@
 'use client'
 
 import { useState, useMemo } from 'react'
-import { Video, Search, Calendar, Filter, ChevronDown, X, Play } from 'lucide-react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { Video, Search, Calendar, Filter, ChevronDown, X, Play, BookOpen, ArrowUpRight } from 'lucide-react'
 import { SermonCard } from './SermonCard'
 import { SanityImageComponent } from '@/components/ui'
 import { VideoModal } from '@/components/ui/VideoEmbed'
@@ -113,7 +115,6 @@ export function SermonsPageClient({ sermons, seriesList }: SermonsPageClientProp
                             className="object-cover"
                           />
                         )}
-                        {/* 40% black overlay for depth */}
                         <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors" />
                       </div>
                       <div className="relative z-10 w-20 h-20 rounded-full bg-accent flex items-center justify-center group-hover:scale-110 transition-transform">
@@ -121,8 +122,21 @@ export function SermonsPageClient({ sermons, seriesList }: SermonsPageClientProp
                       </div>
                     </button>
                   ) : (
-                    <div className="absolute inset-0 bg-primary-deep flex items-center justify-center">
-                      <Video className="w-24 h-24 text-white/20" />
+                    <div className="relative w-full h-full min-h-[300px] lg:min-h-[400px] flex items-center justify-center overflow-hidden bg-primary-ink">
+                      <Image
+                        src="/images/hero-banner.jpg"
+                        alt="Restoring Life Sanctuary"
+                        fill
+                        className="object-cover opacity-25"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-primary-deep via-primary-deep/80 to-transparent" />
+                      <div className="relative z-10 flex flex-col items-center text-center p-6">
+                        <div className="w-16 h-16 rounded-2xl bg-accent/20 border border-accent/40 flex items-center justify-center mb-3">
+                          <BookOpen className="w-8 h-8 text-accent" />
+                        </div>
+                        <span className="text-white/80 text-sm font-medium">Sunday Worship Archive</span>
+                        <span className="text-accent text-xs font-semibold uppercase tracking-wider mt-1">Live Online Gathering</span>
+                      </div>
                     </div>
                   )}
                 </div>
@@ -130,7 +144,7 @@ export function SermonsPageClient({ sermons, seriesList }: SermonsPageClientProp
                 {/* Content side */}
                 <div className="p-8 lg:px-12 lg:py-10 flex flex-col justify-center">
                   <span className="text-accent text-xs font-semibold tracking-[0.2em] uppercase mb-3">
-                    Latest Message
+                    Featured Message
                   </span>
                   <h2 className="font-display text-2xl lg:text-3xl font-semibold text-white mb-4">
                     {featuredSermon.title}
@@ -141,7 +155,7 @@ export function SermonsPageClient({ sermons, seriesList }: SermonsPageClientProp
                     </p>
                   )}
                   {featuredSermon.scripture && (
-                    <p className="text-sm font-semibold text-white/70 mb-4">
+                    <p className="text-sm font-semibold text-accent/90 mb-4">
                       {featuredSermon.scripture}
                     </p>
                   )}
@@ -150,7 +164,7 @@ export function SermonsPageClient({ sermons, seriesList }: SermonsPageClientProp
                       {featuredSermon.series}
                     </span>
                   )}
-                  {featuredSermon.videoUrl && (
+                  {featuredSermon.videoUrl ? (
                     <button
                       onClick={() => handlePlayVideo(featuredSermon.videoUrl!, featuredSermon.title)}
                       className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-warm-900 font-bold rounded-lg hover:bg-accent-dark transition-colors w-fit"
@@ -158,6 +172,14 @@ export function SermonsPageClient({ sermons, seriesList }: SermonsPageClientProp
                       <Play className="w-4 h-4" fill="currentColor" />
                       Watch Now
                     </button>
+                  ) : (
+                    <Link
+                      href="/events"
+                      className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-warm-900 font-bold rounded-lg hover:bg-accent-dark transition-colors w-fit shadow-md text-sm"
+                    >
+                      Join Live Worship · Sundays 4:00 PM
+                      <ArrowUpRight className="w-4 h-4" />
+                    </Link>
                   )}
                 </div>
               </div>

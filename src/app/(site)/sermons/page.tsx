@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { client, sermonsQuery, sermonSeriesQuery } from '@/lib/sanity'
+import { client, sermonsQuery, sermonSeriesQuery, normalizeSermons } from '@/lib/sanity'
 import { SermonsPageClient } from '@/components/sermons'
 import type { Sermon } from '@/types'
 
@@ -8,16 +8,19 @@ export const revalidate = 600;
 
 export const metadata: Metadata = {
   title: 'Sermons | Restoring Life Family Community Center',
-  description: 'Watch and listen to past sermons from Restoring Life Family Community Center.',
+  description: 'Worship and grow with spirit-filled messages from Restoring Life Family Community Center.',
 }
 
 async function getSermonsData() {
   try {
-    const [sermons, seriesList] = await Promise.all([
+    const [rawSermons, seriesList] = await Promise.all([
       client.fetch<Sermon[]>(sermonsQuery),
       client.fetch<string[]>(sermonSeriesQuery),
     ])
-    return { sermons, seriesList }
+    return {
+      sermons: normalizeSermons(rawSermons),
+      seriesList: seriesList || [],
+    }
   } catch {
     return { sermons: [], seriesList: [] }
   }

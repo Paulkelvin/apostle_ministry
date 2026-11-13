@@ -15,7 +15,7 @@ interface LatestNewsSectionProps {
 export function LatestNewsSection({ posts }: LatestNewsSectionProps) {
   if (!posts || posts.length === 0) {
     return (
-      <section className="py-16 bg-warm-100">
+      <section className="py-16 bg-[#FAFAF8]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-display text-3xl font-semibold text-primary mb-3">Latest Resources</h2>
           <p className="text-ink">No posts yet. Check back soon!</p>
@@ -30,7 +30,11 @@ export function LatestNewsSection({ posts }: LatestNewsSectionProps) {
   const featuredCategory = featured.categories?.[0]
 
   return (
-    <section className="relative py-20 lg:py-28 bg-warm-100 overflow-hidden">
+    <section className="relative py-20 lg:py-28 bg-[#FAFAF8] overflow-hidden">
+      {/* Subtle tactile dot pattern & ambient light */}
+      <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none opacity-40" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-primary-light/5 blur-[120px] pointer-events-none rounded-full" />
+
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -42,17 +46,18 @@ export function LatestNewsSection({ posts }: LatestNewsSectionProps) {
         <div className="relative mb-12 lg:mb-16 overflow-hidden">
           {/* Faint watermark */}
           <span
-            className="absolute top-[34%] sm:top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-warm-200 text-[4rem] sm:text-[8rem] lg:text-[10rem] font-black uppercase leading-none tracking-tight pointer-events-none select-none"
+            className="absolute top-[34%] sm:top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-warm-200/70 text-[4rem] sm:text-[8rem] lg:text-[10rem] font-black uppercase leading-none tracking-tight pointer-events-none select-none"
             aria-hidden="true"
           >
             Journal
           </span>
           <div className="relative flex flex-col sm:flex-row justify-between items-start sm:items-end">
             <div>
-              <p className="text-accent-dark text-xs font-semibold tracking-[0.2em] uppercase mb-4">
+              <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white border border-warm-200/80 text-accent-dark text-xs font-semibold tracking-wider uppercase mb-3 shadow-xs">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent" />
                 From the Journal
-              </p>
-              <h2 className="text-h2 text-primary mb-2">Latest Resources</h2>
+              </span>
+              <h2 className="text-h2 text-warm-900 mb-2 font-display">Latest Resources</h2>
               <p className="text-sm text-warm-600">Stories, devotionals, and news from our community</p>
             </div>
             <Link
@@ -180,6 +185,9 @@ export function LatestNewsSection({ posts }: LatestNewsSectionProps) {
           </div>
         </div>
       </motion.div>
+
+      {/* Atmospheric transition into dark footer */}
+      <div className="absolute -bottom-px left-0 right-0 h-16 bg-gradient-to-b from-transparent to-primary-deep/10 pointer-events-none" />
     </section>
   )
 }

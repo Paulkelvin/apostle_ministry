@@ -102,17 +102,23 @@ export function FeaturedMinistriesSection({ ministries }: FeaturedMinistriesSect
   }
 
   return (
-    <section className="py-20 lg:py-28 bg-surface relative overflow-hidden">
+    <section className="py-20 lg:py-28 bg-[#FAFAF8] relative overflow-hidden">
+      {/* Subtle tactile dot pattern & ambient glow */}
+      <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none opacity-40" />
+      <div className="absolute -top-32 right-1/4 w-96 h-96 bg-primary-light/5 blur-[120px] pointer-events-none rounded-full" />
+      <div className="absolute top-1/2 left-10 w-80 h-80 bg-accent/5 blur-[100px] pointer-events-none rounded-full" />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16 flex flex-col items-center">
-          <p className="text-accent-dark text-xs font-semibold tracking-[0.2em] uppercase mb-4">
-            Join a Department
-          </p>
-          <h2 className="text-h2 text-primary mb-6">
+          <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white border border-warm-200/80 text-accent-dark text-xs font-semibold tracking-wider uppercase mb-4 shadow-xs">
+            <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+            Serve &amp; Connect
+          </span>
+          <h2 className="text-h2 text-warm-900 mb-4 font-display">
             Discover Your Purpose
           </h2>
-          <p className="text-base md:text-lg max-w-2xl mx-auto text-warm-600">
+          <p className="text-base md:text-lg max-w-2xl mx-auto text-warm-600 leading-relaxed">
             We believe everyone has a unique gift to share. Explore our departments and find your place in our church family.
           </p>
         </div>
@@ -173,6 +179,16 @@ export function FeaturedMinistriesSection({ ministries }: FeaturedMinistriesSect
               </motion.div>
             )
           })}
+        </div>
+
+        {/* Elegant Section Divider */}
+        <div className="mt-20 pt-8 flex items-center justify-center">
+          <div className="relative w-full max-w-4xl flex items-center justify-center">
+            <div className="w-full h-px bg-gradient-to-r from-transparent via-warm-200 to-transparent" />
+            <span className="absolute bg-[#FAFAF8] px-4 text-warm-400 text-xs tracking-widest uppercase">
+              ✦
+            </span>
+          </div>
         </div>
       </div>
 

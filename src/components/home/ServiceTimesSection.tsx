@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { MapPin, Clock, Video, Mail, ArrowUpRight } from 'lucide-react'
+import { Clock, Video, Mail, ArrowUpRight } from 'lucide-react'
 import type { ServiceTimes as ServiceTimesType } from '@/types'
 
 interface ServiceTimesSectionProps {
@@ -18,17 +18,21 @@ export function ServiceTimesSection({ serviceTimes }: ServiceTimesSectionProps) 
   ]
 
   const address = serviceTimes?.address || '6916 Hillmeade Road\nGlenn Dale, MD 20769'
-  const locationName = serviceTimes?.locationName || 'Mailing Address (Virtual Ministry)'
+  const locationName = serviceTimes?.locationName || 'Mailing Address'
 
   return (
-    <section id="service-times" className="relative bg-gradient-to-b from-primary-deep via-primary-deep to-primary-ink py-20 lg:py-28 overflow-hidden scroll-mt-12">
+    <section id="service-times" className="relative bg-gradient-to-b from-primary-deep via-primary-deep to-primary-ink pt-20 lg:pt-28 pb-32 lg:pb-40 overflow-hidden scroll-mt-12">
       {/* Subtle ambient light */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-primary-light/10 blur-[120px] pointer-events-none rounded-full" />
+      <div className="absolute top-1/3 right-10 w-80 h-80 bg-accent/5 blur-[100px] pointer-events-none rounded-full" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Subtle dot matrix decoration for depth */}
+      <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.06)_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none opacity-60" />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         {/* Section header */}
         <div className="text-center mb-16">
-          <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-accent/15 border border-accent/25 text-accent text-xs font-semibold tracking-wider uppercase mb-4">
+          <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-accent/15 border border-accent/25 text-accent text-xs font-semibold tracking-wider uppercase mb-4 shadow-xs">
             <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
             Weekly Gatherings
           </span>
@@ -36,7 +40,7 @@ export function ServiceTimesSection({ serviceTimes }: ServiceTimesSectionProps) 
             Worship With Us Online
           </h2>
           <p className="text-base sm:text-lg text-white/70 max-w-xl mx-auto leading-relaxed">
-            We are a welcoming virtual ministry. Join our live weekly worship services and interactive Bible study from the comfort of your home.
+            Join our live weekly worship services and interactive Bible study from the comfort of your home.
           </p>
         </div>
 
@@ -70,7 +74,7 @@ export function ServiceTimesSection({ serviceTimes }: ServiceTimesSectionProps) 
                 href="/events"
                 className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-accent-light transition-colors group-hover:translate-x-0.5 duration-200"
               >
-                Service Details & Zoom
+                Service Details &amp; Zoom
                 <ArrowUpRight className="w-4 h-4" />
               </Link>
             </div>
@@ -119,7 +123,7 @@ export function ServiceTimesSection({ serviceTimes }: ServiceTimesSectionProps) 
                   <Mail className="w-5 h-5" />
                 </div>
                 <span className="text-[11px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full bg-white/10 text-white/80">
-                  Virtual Ministry
+                  Church Office
                 </span>
               </div>
               <h3 className="text-xl font-bold text-white mb-2 font-display">{locationName}</h3>
@@ -143,6 +147,19 @@ export function ServiceTimesSection({ serviceTimes }: ServiceTimesSectionProps) 
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Seamless curved organic blend into the daytime canvas (Inspired by BuiltByEm) */}
+      <div className="absolute -bottom-px left-0 right-0 h-28 pointer-events-none">
+        <svg
+          className="w-full h-full text-[#FAFAF8] fill-current preserve-3d"
+          viewBox="0 0 1440 120"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+        >
+          <path d="M0,32 C288,88 720,112 1440,32 L1440,120 L0,120 Z" />
+        </svg>
       </div>
     </section>
   )

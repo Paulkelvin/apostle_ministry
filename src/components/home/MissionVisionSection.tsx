@@ -17,11 +17,15 @@ export function MissionVisionSection({ mission, vision }: MissionVisionSectionPr
     'To be a community where everyone can experience the transforming love of Jesus, discover their purpose, and grow in faith together in genuine Christian fellowship.'
 
   return (
-    <section className="bg-warm-100 py-20 lg:py-28 relative overflow-hidden border-t border-warm-200/60">
+    <section className="bg-[#FAFAF8] py-20 lg:py-28 relative overflow-hidden">
+      {/* Subtle tactile dot pattern & ambient light */}
+      <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none opacity-40" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-primary-light/5 blur-[120px] pointer-events-none rounded-full" />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-semibold tracking-wider uppercase mb-3">
-            <Compass className="w-3.5 h-3.5" />
+          <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white border border-warm-200/80 text-primary text-xs font-semibold tracking-wider uppercase mb-3 shadow-xs">
+            <Compass className="w-3.5 h-3.5 text-primary" />
             Our Foundation
           </span>
           <h2 className="text-h2 text-warm-900 font-display">
@@ -82,6 +86,16 @@ export function MissionVisionSection({ mission, vision }: MissionVisionSectionPr
             </div>
           </div>
         </motion.div>
+
+        {/* Elegant Section Divider */}
+        <div className="mt-20 pt-8 flex items-center justify-center">
+          <div className="relative w-full max-w-4xl flex items-center justify-center">
+            <div className="w-full h-px bg-gradient-to-r from-transparent via-warm-200 to-transparent" />
+            <span className="absolute bg-[#FAFAF8] px-4 text-warm-400 text-xs tracking-widest uppercase">
+              ✦
+            </span>
+          </div>
+        </div>
       </div>
     </section>
   )

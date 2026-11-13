@@ -1,16 +1,22 @@
 import { Navbar, Footer, SocialStickyBar } from "@/components/layout";
-import { client, siteSettingsQuery, serviceTimesQuery } from "@/lib/sanity";
+import { client, siteSettingsQuery, serviceTimesQuery, normalizeSiteSettings, normalizeServiceTimes } from "@/lib/sanity";
 import type { SiteSettings, ServiceTimes } from "@/types";
 
 async function getSiteData() {
   try {
-    const [settings, serviceTimes] = await Promise.all([
+    const [rawSettings, rawServiceTimes] = await Promise.all([
       client.fetch<SiteSettings>(siteSettingsQuery),
       client.fetch<ServiceTimes>(serviceTimesQuery),
     ]);
-    return { settings, serviceTimes };
+    return {
+      settings: normalizeSiteSettings(rawSettings),
+      serviceTimes: normalizeServiceTimes(rawServiceTimes),
+    };
   } catch {
-    return { settings: null, serviceTimes: null };
+    return {
+      settings: normalizeSiteSettings(null),
+      serviceTimes: normalizeServiceTimes(null),
+    };
   }
 }
 

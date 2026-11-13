@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import { MapPin, Phone, Mail, Clock, Headset, MessageSquare, Newspaper, ExternalLink, ArrowRight } from 'lucide-react'
-import { client, faqQuery, serviceTimesQuery } from '@/lib/sanity'
+import { client, faqQuery, serviceTimesQuery, normalizeServiceTimes } from '@/lib/sanity'
 import { ContactForm, FAQAccordion, InteractiveMap } from '@/components/contact'
 import type { FAQ, ServiceTimes } from '@/types'
 
@@ -14,13 +14,13 @@ export const metadata: Metadata = {
 
 async function getContactPageData() {
   try {
-    const [faqs, serviceTimes] = await Promise.all([
+    const [faqs, rawServiceTimes] = await Promise.all([
       client.fetch<FAQ[]>(faqQuery),
       client.fetch<ServiceTimes>(serviceTimesQuery),
     ])
-    return { faqs, serviceTimes }
+    return { faqs: faqs || [], serviceTimes: normalizeServiceTimes(rawServiceTimes) }
   } catch {
-    return { faqs: [], serviceTimes: null }
+    return { faqs: [], serviceTimes: normalizeServiceTimes(null) }
   }
 }
 
@@ -139,12 +139,12 @@ export default async function ContactPage() {
       <section id="directions" className="py-20 bg-warm-100 scroll-mt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <span className="inline-block text-accent-dark text-xs font-semibold tracking-[0.2em] uppercase mb-3">Our Ministry</span>
+            <span className="inline-block text-accent-dark text-xs font-semibold tracking-[0.2em] uppercase mb-3">Our Location</span>
             <h2 className="font-display text-3xl md:text-4xl font-semibold text-primary leading-tight">
-              Virtual Ministry & Mailing Address
+              Church Information &amp; Mailing Address
             </h2>
             <p className="text-warm-600 text-base max-w-2xl mx-auto mt-3">
-              We are a virtual ministry gathering online for worship and fellowship. All correspondence can be sent to our mailing address.
+              We gather online for weekly worship and fellowship. All ministry correspondence can be sent to our official mailing address.
             </p>
           </div>
 
@@ -157,7 +157,7 @@ export default async function ContactPage() {
             {/* Compact Location Details Card */}
             <div className="bg-white rounded-2xl p-7 shadow-[--shadow-card] border border-warm-200/80 lg:self-center">
               <h3 className="font-semibold text-warm-900 text-lg mb-2">
-                {serviceTimes?.locationName || 'Mailing Address (Virtual Ministry)'}
+                {serviceTimes?.locationName || 'Mailing Address'}
               </h3>
               <p className="text-warm-600 text-sm whitespace-pre-line leading-relaxed mb-4">
                 {serviceTimes?.address || '6916 Hillmeade Road\nGlenn Dale, MD 20769'}

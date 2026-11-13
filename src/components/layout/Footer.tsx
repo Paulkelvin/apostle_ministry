@@ -44,7 +44,7 @@ export function Footer({ socialLinks = [], statement501c3, siteName, siteTagline
   const displayTagline = siteTagline || 'A place where everyone belongs.'
   const displayPhone = phone || '(202) 503-9579'
   const displayEmail = email || 'admin@rlfcc.org'
-  const addressLines = (address || "Mailing Address (Virtual Ministry):\n6916 Hillmeade Road\nGlenn Dale, MD 20769").split('\n')
+  const addressLines = (address || "6916 Hillmeade Road\nGlenn Dale, MD 20769").split('\n')
 
   return (
     <footer className="relative bg-gradient-to-b from-primary-deep via-primary-deep to-primary-ink border-t border-white/[0.08] overflow-hidden">
@@ -149,7 +149,7 @@ export function Footer({ socialLinks = [], statement501c3, siteName, siteTagline
               © {currentYear} {displayName}. All rights reserved.
             </p>
             <p className="text-xs text-accent/80 font-medium">
-              Virtual Ministry · Sunday 4:00 PM · Thursday 7:30 PM (Zoom)
+              Sunday 4:00 PM · Thursday 7:30 PM (Zoom)
             </p>
           </div>
         </div>

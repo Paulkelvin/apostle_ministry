@@ -56,10 +56,10 @@ export function HeroSection({ settings }: HeroSectionProps) {
           initial={{ opacity: 0, y: -15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/[0.08] backdrop-blur-md border border-white/15 text-accent-light text-xs font-semibold tracking-wider uppercase mb-7 shadow-sm"
+          className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-accent-light text-xs font-semibold tracking-wider uppercase mb-7 shadow-sm"
         >
           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-          Virtual Ministry · Worship & Fellowship Online
+          Worship &amp; Fellowship Community
         </motion.div>
 
         <motion.h1
@@ -89,8 +89,8 @@ export function HeroSection({ settings }: HeroSectionProps) {
           <Button href="#service-times" variant="gold" size="lg" className="px-8 shadow-md">
             Join Us This Sunday
           </Button>
-          <Button href={watchOnlineUrl || '/sermons'} variant="inverse" size="lg" className="px-8">
-            Watch Sermons
+          <Button href="/sermons" variant="inverse" size="lg" className="px-8">
+            Explore Messages
           </Button>
         </motion.div>
       </div>

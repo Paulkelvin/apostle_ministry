@@ -32,7 +32,7 @@ const socialConfig: Record<string, {
   },
 }
 
-const defaultPlatforms = ['facebook', 'instagram', 'youtube']
+const defaultPlatforms = ['facebook', 'instagram']
 
 export function SocialStickyBar({ socialLinks = [] }: SocialStickyBarProps) {
   const links = socialLinks || []
