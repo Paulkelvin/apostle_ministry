@@ -82,7 +82,7 @@ export function Navbar({ socialLinks = [] }: NavbarProps) {
             {/* Logo */}
             <Link href="/" className="flex items-center space-x-2 group">
               <span
-                className={`text-2xl font-bold tracking-tight transition-colors duration-300 ${
+                className={`text-2xl font-black tracking-tight font-display transition-colors duration-300 ${
                   showSolid ? 'text-primary' : 'text-white'
                 }`}
               >
@@ -99,13 +99,13 @@ export function Navbar({ socialLinks = [] }: NavbarProps) {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+                    className={`relative px-3.5 py-1.5 rounded-full text-sm font-medium transition-all duration-200 ${
                       showSolid
                         ? isActive
-                          ? 'text-primary bg-warm-100'
+                          ? 'text-primary bg-primary/10 font-semibold'
                           : 'text-ink hover:text-primary hover:bg-warm-100'
                         : isActive
-                          ? 'text-white bg-white/10'
+                          ? 'text-white bg-white/15 font-semibold'
                           : 'text-white/85 hover:text-white hover:bg-white/10'
                     }`}
                   >
@@ -113,6 +113,19 @@ export function Navbar({ socialLinks = [] }: NavbarProps) {
                   </Link>
                 )
               })}
+              <div className="pl-3">
+                <Link
+                  href="/events"
+                  className={`inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all shadow-sm ${
+                    showSolid
+                      ? 'bg-primary text-white hover:bg-primary-dark'
+                      : 'bg-accent text-warm-900 hover:bg-accent-light'
+                  }`}
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  Zoom Services
+                </Link>
+              </div>
             </div>
 
             {/* Mobile Menu Button */}

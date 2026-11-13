@@ -41,10 +41,10 @@ export default async function GivePage() {
   ]
   const methods = data?.givingMethods || [
     { title: 'Online Giving', description: 'Give securely online using credit card, debit card, or bank transfer through our Tithe.ly integration.', icon: 'credit-card' as const },
-    { title: 'In Person', description: 'Give during any of our services using the offering boxes located at the back of the sanctuary.', note: 'Cash, checks, and giving envelopes accepted', icon: 'building' as const },
-    { title: 'Mail a Check', description: 'Mail your donation to our church office. Make checks payable to "Restoring Life Family Community Center".', icon: 'mail' as const },
+    { title: 'Virtual Services', description: 'Give during our Sunday Worship (4:00 PM) or Thursday Bible Study (7:30 PM) via online giving links shared in Zoom.', note: 'Zoom links shared weekly', icon: 'credit-card' as const },
+    { title: 'Mail a Check', description: 'Mail your donation to our ministry mailing address. Make checks payable to "Restoring Life Family Community Center".', icon: 'mail' as const },
   ]
-  const mailingAddress = data?.mailingAddress || "Restoring Life Family Community Center\n401-A Prince George's Blvd\nUpper Marlboro, MD 20774"
+  const mailingAddress = data?.mailingAddress || "Restoring Life Family Community Center\n6916 Hillmeade Road\nGlenn Dale, MD 20769"
 
   // Impact areas with church-appropriate icons and descriptions
   const impactAreas = [
@@ -98,10 +98,10 @@ export default async function GivePage() {
               
               {/* Scripture as elegant inline quote */}
               <div className="relative mb-10 pl-6 border-l-2 border-accent">
-                <p className="text-lg lg:text-xl text-primary-deep italic leading-relaxed">
+                <p className="text-lg lg:text-xl text-primary-deep italic leading-relaxed font-serif-quote">
                   &ldquo;{heroVerse}&rdquo;
                 </p>
-                <p className="text-accent text-sm font-semibold mt-3 tracking-wide">
+                <p className="text-accent-dark text-sm font-semibold mt-3 tracking-wide">
                   {heroVerseRef}
                 </p>
               </div>
@@ -109,7 +109,7 @@ export default async function GivePage() {
               <div className="flex flex-col sm:flex-row gap-4">
                 <TithelyButton
                   label="Give Now"
-                  className="text-base px-10 py-4 bg-accent hover:bg-accent-dark text-warm-900 rounded-lg font-semibold transition-colors duration-300"
+                  className="text-base px-10 py-3.5 bg-accent hover:bg-accent-dark text-warm-900 rounded-xl font-semibold shadow-md transition-all duration-300"
                 />
               </div>
             </div>
@@ -214,13 +214,13 @@ export default async function GivePage() {
       </section>
 
       {/* Giving Breakdown — Visual */}
-      <section className="py-24 bg-primary-deep">
+      <section className="py-24 bg-gradient-to-b from-primary-deep via-primary-deep to-primary-ink">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <p className="text-accent text-xs font-semibold tracking-[0.2em] uppercase mb-4">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-accent/15 border border-accent/25 text-accent text-xs font-semibold tracking-wider uppercase mb-4">
               Transparency
-            </p>
-            <h2 className="text-h2 text-white mb-4">
+            </span>
+            <h2 className="text-h2 text-white mb-4 font-display">
               Where Your Gift Goes
             </h2>
             <p className="text-lg text-white/70 max-w-2xl mx-auto">
@@ -228,14 +228,14 @@ export default async function GivePage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
             {breakdown.map((item) => (
               <div
                 key={item.title}
-                className="bg-white/[0.04] rounded-xl p-8 border border-white/10 hover:border-white/25 transition-colors duration-300"
+                className="bg-white/[0.04] rounded-2xl p-8 border border-white/10 hover:border-white/25 transition-all duration-300 hover:-translate-y-1"
               >
-                <span className="font-display text-6xl text-accent mb-4 block">{item.percentage}</span>
-                <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
+                <span className="font-display text-6xl text-accent mb-4 block font-bold">{item.percentage}</span>
+                <h3 className="text-xl font-bold text-white mb-3 font-display">{item.title}</h3>
                 <p className="text-white/75 text-sm leading-relaxed">{item.description}</p>
               </div>
             ))}
@@ -248,7 +248,7 @@ export default async function GivePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <p className="text-accent-dark text-xs font-semibold tracking-[0.2em] uppercase mb-4">Ways to Give</p>
-            <h2 className="font-display text-3xl md:text-4xl font-semibold text-primary">
+            <h2 className="font-display text-3xl md:text-4xl font-semibold text-warm-900">
               Choose Your Giving Method
             </h2>
           </div>
@@ -260,7 +260,7 @@ export default async function GivePage() {
               return (
                 <div
                   key={method.title}
-                  className="bg-white rounded-xl p-8 border border-warm-200 shadow-[--shadow-card] hover:shadow-[--shadow-card-hover] transition-shadow duration-300"
+                  className="bg-white rounded-2xl p-8 border border-warm-200/80 shadow-[--shadow-card] hover:shadow-[--shadow-card-hover] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
                 >
                   <div className="w-14 h-14 rounded-lg bg-warm-100 flex items-center justify-center mb-6">
                     <Icon className="w-7 h-7 text-primary" />

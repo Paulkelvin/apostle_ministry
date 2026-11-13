@@ -52,39 +52,52 @@ export function HeroSection({ settings }: HeroSectionProps) {
         <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary-dark to-warm-900" />
       )}
 
-      {/* Directional scrim — darker at the base, tinted toward the brand ink */}
-      <div className="absolute inset-0 bg-gradient-to-t from-primary-ink/80 via-black/40 to-black/25" />
+      {/* Directional scrim — softer, luminous ambient gradient */}
+      <div className="absolute inset-0 bg-gradient-to-t from-primary-deep via-primary-deep/65 to-primary-ink/40" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary-light/25 via-transparent to-transparent pointer-events-none" />
+
       {/* Content */}
-      <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
-        <motion.h1
-          className="text-hero text-white mb-5"
-          initial={{ opacity: 0, y: 30 }}
+      <div className="relative z-10 text-center px-4 max-w-5xl mx-auto flex flex-col items-center">
+        {/* Floating pill badge */}
+        <motion.div
+          initial={{ opacity: 0, y: -15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.3 }}
+          transition={{ duration: 0.8, delay: 0.1 }}
+          className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/[0.08] backdrop-blur-md border border-white/15 text-accent-light text-xs font-semibold tracking-wider uppercase mb-7 shadow-sm"
+        >
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+          Virtual Ministry · Worship & Fellowship Online
+        </motion.div>
+
+        <motion.h1
+          className="text-hero text-white mb-6 drop-shadow-sm font-display tracking-tight"
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.3 }}
         >
           {title}
         </motion.h1>
 
         <motion.p
-          className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto mb-9"
-          initial={{ opacity: 0, y: 20 }}
+          className="text-lg md:text-xl text-white/85 max-w-2xl mx-auto mb-10 leading-relaxed font-normal"
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.6 }}
+          transition={{ duration: 0.9, delay: 0.5 }}
         >
           {subtitle}
         </motion.p>
 
         <motion.div
-          className="flex flex-col sm:flex-row gap-3 justify-center"
-          initial={{ opacity: 0, y: 20 }}
+          className="flex flex-col sm:flex-row gap-3.5 justify-center w-full sm:w-auto"
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.9 }}
+          transition={{ duration: 0.9, delay: 0.7 }}
         >
-          <Button href="/contact#directions" variant="gold" size="md" className="px-9">
-            Plan Your Visit
+          <Button href="#service-times" variant="gold" size="lg" className="px-8 shadow-md">
+            Join Us This Sunday
           </Button>
-          <Button href={watchOnlineUrl || '/sermons'} variant="inverse" size="md" className="px-9">
-            Watch Online
+          <Button href={watchOnlineUrl || '/sermons'} variant="inverse" size="lg" className="px-8">
+            Watch Sermons
           </Button>
         </motion.div>
       </div>

@@ -46,7 +46,7 @@ export default async function ContactPage() {
 
               <div className="space-y-4 mb-10">
                 <a
-                  href={`mailto:${serviceTimes?.email || 'admin@rflcc.org'}`}
+                  href={`mailto:${serviceTimes?.email || 'admin@rlfcc.org'}`}
                   className="flex items-center gap-4 p-3 -ml-3 rounded-lg text-ink hover:bg-white hover:text-primary transition-colors group"
                 >
                   <div className="w-10 h-10 rounded-lg bg-warm-100 border border-warm-200 flex items-center justify-center">
@@ -54,7 +54,7 @@ export default async function ContactPage() {
                   </div>
                   <div>
                     <span className="text-xs text-warm-500 block">Email</span>
-                    <span className="font-medium">{serviceTimes?.email || 'admin@rflcc.org'}</span>
+                    <span className="font-medium">{serviceTimes?.email || 'admin@rlfcc.org'}</span>
                   </div>
                 </a>
                 <a
@@ -93,12 +93,12 @@ export default async function ContactPage() {
       <section className="py-16 bg-surface">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="p-6 rounded-xl bg-white border border-warm-200 shadow-[--shadow-card] hover:shadow-[--shadow-card-hover] transition-shadow">
+            <div className="p-7 rounded-2xl bg-white border border-warm-200/80 shadow-[--shadow-card] hover:shadow-[--shadow-card-hover] hover:-translate-y-0.5 transition-all duration-300">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-lg bg-warm-100 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
                   <Headset className="w-5 h-5 text-primary" />
                 </div>
-                <h3 className="font-semibold text-warm-900">Pastoral Support</h3>
+                <h3 className="font-semibold text-warm-900 font-display">Pastoral Support</h3>
               </div>
               <p className="text-warm-600 text-sm leading-relaxed">
                 Our pastoral team is available to address any spiritual concerns, prayer
@@ -106,12 +106,12 @@ export default async function ContactPage() {
               </p>
             </div>
 
-            <div className="p-6 rounded-xl bg-white border border-warm-200 shadow-[--shadow-card] hover:shadow-[--shadow-card-hover] transition-shadow">
+            <div className="p-7 rounded-2xl bg-white border border-warm-200/80 shadow-[--shadow-card] hover:shadow-[--shadow-card-hover] hover:-translate-y-0.5 transition-all duration-300">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-lg bg-warm-100 flex items-center justify-center">
-                  <MessageSquare className="w-5 h-5 text-primary" />
+                <div className="w-10 h-10 rounded-xl bg-accent/15 flex items-center justify-center">
+                  <MessageSquare className="w-5 h-5 text-accent-dark" />
                 </div>
-                <h3 className="font-semibold text-warm-900">Feedback &amp; Suggestions</h3>
+                <h3 className="font-semibold text-warm-900 font-display">Feedback &amp; Suggestions</h3>
               </div>
               <p className="text-warm-600 text-sm leading-relaxed">
                 We value your feedback and are continuously working to improve
@@ -119,16 +119,16 @@ export default async function ContactPage() {
               </p>
             </div>
 
-            <div className="p-6 rounded-xl bg-white border border-warm-200 shadow-[--shadow-card] hover:shadow-[--shadow-card-hover] transition-shadow">
+            <div className="p-7 rounded-2xl bg-white border border-warm-200/80 shadow-[--shadow-card] hover:shadow-[--shadow-card-hover] hover:-translate-y-0.5 transition-all duration-300">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-lg bg-warm-100 flex items-center justify-center">
-                  <Newspaper className="w-5 h-5 text-primary" />
+                <div className="w-10 h-10 rounded-xl bg-sage/15 flex items-center justify-center">
+                  <Newspaper className="w-5 h-5 text-sage" />
                 </div>
-                <h3 className="font-semibold text-warm-900">Media Inquiries</h3>
+                <h3 className="font-semibold text-warm-900 font-display">Media Inquiries</h3>
               </div>
               <p className="text-warm-600 text-sm leading-relaxed">
                 For media-related questions or press inquiries, please contact us
-                at <a href="mailto:media@theapostlesministry.org" className="text-primary hover:underline font-medium">media@theapostlesministry.org</a>.
+                at <a href={`mailto:${serviceTimes?.email || 'admin@rlfcc.org'}`} className="text-primary hover:underline font-medium">{serviceTimes?.email || 'admin@rlfcc.org'}</a>.
               </p>
             </div>
           </div>
@@ -139,25 +139,28 @@ export default async function ContactPage() {
       <section id="directions" className="py-20 bg-warm-100 scroll-mt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <span className="inline-block text-accent-dark text-xs font-semibold tracking-[0.2em] uppercase mb-3">Visit Us</span>
+            <span className="inline-block text-accent-dark text-xs font-semibold tracking-[0.2em] uppercase mb-3">Our Ministry</span>
             <h2 className="font-display text-3xl md:text-4xl font-semibold text-primary leading-tight">
-              Come Worship With Us
+              Virtual Ministry & Mailing Address
             </h2>
+            <p className="text-warm-600 text-base max-w-2xl mx-auto mt-3">
+              We are a virtual ministry gathering online for worship and fellowship. All correspondence can be sent to our mailing address.
+            </p>
           </div>
 
           <div className="grid lg:grid-cols-[1.3fr_1fr] gap-8 items-start">
             {/* Interactive Map with Directions */}
             <InteractiveMap
-              churchAddress={serviceTimes?.address || 'High Calling Ministries, 401-A Prince Georges Blvd, Upper Marlboro, MD 20774'}
+              churchAddress={serviceTimes?.address || '6916 Hillmeade Road, Glenn Dale, MD 20769'}
             />
 
             {/* Compact Location Details Card */}
-            <div className="bg-white rounded-xl p-6 shadow-[--shadow-card] border border-warm-200 lg:self-center">
+            <div className="bg-white rounded-2xl p-7 shadow-[--shadow-card] border border-warm-200/80 lg:self-center">
               <h3 className="font-semibold text-warm-900 text-lg mb-2">
-                {serviceTimes?.locationName || 'Main Campus'}
+                {serviceTimes?.locationName || 'Mailing Address (Virtual Ministry)'}
               </h3>
               <p className="text-warm-600 text-sm whitespace-pre-line leading-relaxed mb-4">
-                {serviceTimes?.address || 'High Calling Ministries\n401-A Prince George\'s Blvd\nUpper Marlboro, MD 20774'}
+                {serviceTimes?.address || '6916 Hillmeade Road\nGlenn Dale, MD 20769'}
               </p>
 
               <div className="h-px bg-warm-100 mb-4" />
@@ -171,11 +174,11 @@ export default async function ContactPage() {
                   {serviceTimes?.phoneNumber || '(202) 503-9579'}
                 </a>
                 <a
-                  href={`mailto:${serviceTimes?.email || 'admin@rflcc.org'}`}
+                  href={`mailto:${serviceTimes?.email || 'admin@rlfcc.org'}`}
                   className="flex items-center gap-2.5 text-sm text-ink hover:text-primary transition-colors"
                 >
                   <Mail className="w-4 h-4 text-warm-500" />
-                  {serviceTimes?.email || 'admin@rflcc.org'}
+                  {serviceTimes?.email || 'admin@rlfcc.org'}
                 </a>
               </div>
 
@@ -206,7 +209,7 @@ export default async function ContactPage() {
               <p className="text-warm-600 leading-relaxed mb-6">
                 Find answers to the most frequently asked questions about our ministry and services.
               </p>
-              <a href={`mailto:${serviceTimes?.email || 'admin@rflcc.org'}`} className="text-primary hover:text-primary-dark font-medium text-sm inline-flex items-center gap-1.5 group">
+              <a href={`mailto:${serviceTimes?.email || 'admin@rlfcc.org'}`} className="text-primary hover:text-primary-dark font-medium text-sm inline-flex items-center gap-1.5 group">
                 Still have questions? Email us
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
               </a>

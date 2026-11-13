@@ -9,7 +9,7 @@ interface MissionVisionSectionProps {
 }
 
 export function MissionVisionSection({ mission, vision }: MissionVisionSectionProps) {
-  const missionText = mission || "It is the mission of RFLCC to be followers of Christ, at all times; triumphant over every obstacle, the adversary, sin, and imaginations. We will share the Love of God, the life, death, resurrection, and constant intercession of Jesus Christ, and the sweet communion, fellowship, and comfort of the Holy Ghost. We will accomplish this by Teaching, Agape, Fellowship, Evangelism, and Word of God."
+  const missionText = mission || "It is the mission of RLFCC to be followers of Christ, at all times; triumphant over every obstacle, the adversary, sin, and imaginations. We will share the Love of God, the life, death, resurrection, and constant intercession of Jesus Christ, and the sweet communion, fellowship, and comfort of the Holy Ghost. We will accomplish this by Teaching, Agape, Fellowship, Evangelism, and Word of God."
   const visionText = vision || "To be a church where everyone can experience the transforming love of Jesus and become who God created them to be."
 
   const coreValues = [
@@ -102,7 +102,7 @@ export function MissionVisionSection({ mission, vision }: MissionVisionSectionPr
                   viewport={{ once: true }}
                   transition={{ delay: 0.1 * index }}
                 >
-                  <div className="h-full bg-white border border-warm-200 rounded-xl shadow-[--shadow-card] hover:shadow-[--shadow-card-hover] transition-shadow duration-300 p-8 lg:p-10">
+                  <div className="h-full bg-white border border-warm-200/80 rounded-2xl shadow-[--shadow-card] hover:shadow-[--shadow-card-hover] hover:-translate-y-0.5 transition-all duration-300 p-8 lg:p-10">
                     {/* Number + Icon row */}
                     <div className="flex items-center justify-between mb-6">
                       <span className="font-display text-4xl text-accent">

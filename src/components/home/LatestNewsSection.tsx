@@ -66,10 +66,10 @@ export function LatestNewsSection({ posts }: LatestNewsSectionProps) {
         </div>
 
         {/* Hero + Stack Grid */}
-        <div className="grid lg:grid-cols-2 gap-6">
+        <div className="grid lg:grid-cols-2 gap-6 lg:gap-8">
           {/* Featured (Left) — Full-height hero card */}
           <Link href={`/resources/${featured.slug?.current}`} className="group block">
-            <article className="relative h-full min-h-[420px] lg:min-h-[520px] rounded-xl overflow-hidden bg-warm-900">
+            <article className="relative h-full min-h-[420px] lg:min-h-[500px] rounded-2xl overflow-hidden bg-warm-900 shadow-sm hover:shadow-xl transition-all duration-300">
               {featured.mainImage ? (
                 <SanityImageComponent
                   image={featured.mainImage}
@@ -78,24 +78,24 @@ export function LatestNewsSection({ posts }: LatestNewsSectionProps) {
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
               ) : (
-                <div className="absolute inset-0 bg-warm-100 flex items-center justify-center">
-                  <BookOpen className="w-16 h-16 text-warm-300" />
+                <div className="absolute inset-0 bg-warm-200 flex items-center justify-center">
+                  <BookOpen className="w-16 h-16 text-warm-400" />
                 </div>
               )}
               {/* Scrim overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
               {/* Content */}
               <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8">
                 {featuredCategory && (
-                  <span className="inline-block w-fit text-xs font-semibold px-3 py-1 rounded-lg bg-accent text-warm-900 mb-3">
+                  <span className="inline-block w-fit text-xs font-semibold px-3 py-1 rounded-full bg-accent text-warm-900 mb-3 shadow-sm">
                     {featuredCategory.title}
                   </span>
                 )}
-                <h3 className="text-h3 text-white mb-2 leading-tight line-clamp-3">
+                <h3 className="text-h3 text-white mb-2 leading-tight line-clamp-3 font-display">
                   {featured.title}
                 </h3>
                 {featured.excerpt && (
-                  <p className="text-sm leading-relaxed line-clamp-2 mb-3 max-w-lg text-white/85">
+                  <p className="text-sm leading-relaxed line-clamp-2 mb-3 max-w-lg text-white/85 font-normal">
                     {featured.excerpt}
                   </p>
                 )}
@@ -120,9 +120,9 @@ export function LatestNewsSection({ posts }: LatestNewsSectionProps) {
 
               return (
                 <Link key={post._id} href={`/resources/${post.slug?.current}`} className="group block flex-1">
-                  <article className="flex flex-col sm:flex-row gap-5 h-full bg-white rounded-xl overflow-hidden border border-warm-200 shadow-[--shadow-card] hover:shadow-[--shadow-card-hover] hover:-translate-y-0.5 transition-all duration-300 p-4 sm:p-5">
+                  <article className="flex flex-col sm:flex-row gap-5 h-full bg-white rounded-2xl overflow-hidden border border-warm-200/80 shadow-[--shadow-card] hover:shadow-[--shadow-card-hover] hover:-translate-y-0.5 transition-all duration-300 p-4 sm:p-5">
                     {/* Thumbnail */}
-                    <div className="relative w-full sm:w-40 md:w-48 flex-shrink-0 aspect-[4/3] sm:aspect-square rounded-lg overflow-hidden">
+                    <div className="relative w-full sm:w-40 md:w-48 flex-shrink-0 aspect-[4/3] sm:aspect-square rounded-xl overflow-hidden">
                       {post.mainImage ? (
                         <SanityImageComponent
                           image={post.mainImage}

@@ -49,7 +49,7 @@ export function LeadershipGrid({ staff }: LeadershipGridProps) {
             transition={{ duration: 0.6 }}
             className="mb-16"
           >
-            <div className="bg-white rounded-xl overflow-hidden border border-warm-200 shadow-[--shadow-card] hover:shadow-[--shadow-card-hover] transition-shadow duration-300 max-w-3xl mx-auto">
+            <div className="bg-white rounded-2xl overflow-hidden border border-warm-200/80 shadow-[--shadow-card] hover:shadow-[--shadow-card-hover] transition-all duration-300 max-w-3xl mx-auto">
               <div className="grid md:grid-cols-[1fr_1.4fr]">
                 {/* Photo */}
                 <div className="aspect-[4/5] md:aspect-auto relative overflow-hidden bg-warm-100 min-h-[240px] md:min-h-[320px]">
@@ -115,7 +115,7 @@ export function LeadershipGrid({ staff }: LeadershipGridProps) {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: 0.1 * index }}
-                  className="bg-white rounded-xl overflow-hidden border border-warm-200 shadow-[--shadow-card] hover:shadow-[--shadow-card-hover] transition-shadow duration-300 group"
+                  className="bg-white rounded-2xl overflow-hidden border border-warm-200/80 shadow-[--shadow-card] hover:shadow-[--shadow-card-hover] hover:-translate-y-1 transition-all duration-300 group"
                 >
                   {/* Photo */}
                   <div className="aspect-[4/5] relative overflow-hidden bg-warm-100">

@@ -28,12 +28,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const person = await getStaffData(resolvedParams.slug)
 
   if (!person) {
-    return { title: 'Not Found | The Apostles Ministry' }
+    return { title: 'Not Found | Restoring Life Family Community Center' }
   }
 
   return {
-    title: `${person.name} | The Apostles Ministry`,
-    description: person.bio || `Learn more about ${person.name} at The Apostles Ministry.`,
+    title: `${person.name} | Restoring Life Family Community Center`,
+    description: person.bio || `Learn more about ${person.name} at Restoring Life Family Community Center.`,
   }
 }
 

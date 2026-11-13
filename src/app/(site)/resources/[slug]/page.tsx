@@ -43,12 +43,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { post } = await getPostData(resolvedParams.slug)
 
   if (!post) {
-    return { title: 'Post Not Found | The Apostles Ministry' }
+    return { title: 'Post Not Found | Restoring Life Family Community Center' }
   }
 
   return {
-    title: `${post.title} | The Apostles Ministry`,
-    description: post.excerpt || 'Read this article from The Apostles Ministry',
+    title: `${post.title} | Restoring Life Family Community Center`,
+    description: post.excerpt || 'Read this article from Restoring Life Family Community Center',
   }
 }
 
@@ -61,7 +61,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   }
 
   const readTime = estimateReadingTime(post.body)
-  const postUrl = `https://theapostlesministry.org/resources/${post.slug.current}`
+  const postUrl = `https://rlfcc.vercel.app/resources/${post.slug.current}`
 
   return (
     <>

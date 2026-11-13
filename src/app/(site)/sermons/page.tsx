@@ -29,16 +29,17 @@ export default async function SermonsPage() {
   return (
     <>
       {/* Hero Banner */}
-      <section className="bg-primary-deep pt-36 pb-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-accent text-xs font-semibold tracking-[0.2em] uppercase mb-4">
+      <section className="relative bg-gradient-to-b from-primary-deep via-primary-deep to-primary-ink pt-36 pb-24 overflow-hidden">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-64 bg-primary-light/10 blur-[100px] pointer-events-none rounded-full" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left">
+          <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-accent/15 border border-accent/25 text-accent text-xs font-semibold tracking-wider uppercase mb-5">
             Watch &amp; Listen
-          </p>
-          <h1 className="font-display text-5xl md:text-6xl font-semibold text-white mb-4">
-            Sermons
+          </span>
+          <h1 className="font-display text-5xl md:text-6xl font-bold text-white mb-4">
+            Messages &amp; Sermons
           </h1>
-          <p className="text-lg text-white/60 max-w-2xl">
-            Explore our archive of messages to grow in your faith
+          <p className="text-lg md:text-xl text-white/75 max-w-2xl leading-relaxed">
+            Explore our archive of spirit-filled messages to grow in faith, wisdom, and fellowship.
           </p>
         </div>
       </section>

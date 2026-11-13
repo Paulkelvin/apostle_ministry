@@ -71,13 +71,13 @@ async function seedSiteSettings() {
   }
 
   await createIfMissing('siteSettings', {
-    siteName: 'The Apostles Ministry',
+    siteName: 'Restoring Life Family Community Center',
     siteTagline: 'A place where everyone belongs.',
     heroTitle: 'Welcome Home',
     heroSubtitle: 'A place where everyone belongs',
-    missionStatement: 'It is the mission of RFLCC to be followers of Christ, at all times; triumphant over every obstacle, the adversary, sin, and imaginations. We will share the Love of God, the life, death, resurrection, and constant intercession of Jesus Christ, and the sweet communion, fellowship, and comfort of the Holy Ghost. We will accomplish this by Teaching, Agape, Fellowship, Evangelism, and Word of God.',
+    missionStatement: 'It is the mission of RLFCC to be followers of Christ, at all times; triumphant over every obstacle, the adversary, sin, and imaginations. We will share the Love of God, the life, death, resurrection, and constant intercession of Jesus Christ, and the sweet communion, fellowship, and comfort of the Holy Ghost. We will accomplish this by Teaching, Agape, Fellowship, Evangelism, and Word of God.',
     visionStatement: 'To be a church where everyone can experience the transforming love of Jesus and become who God created them to be.',
-    statement501c3: 'The Apostles Ministry is a registered 501(c)(3) nonprofit organization. All donations are tax-deductible to the fullest extent allowed by law. You will receive a giving statement for your records.',
+    statement501c3: 'Restoring Life Family Community Center is a registered 501(c)(3) nonprofit organization. All donations are tax-deductible to the fullest extent allowed by law. You will receive a giving statement for your records.',
     socialLinks: [
       { platform: 'facebook', url: 'https://facebook.com' },
       { platform: 'instagram', url: 'https://instagram.com' },
@@ -99,18 +99,16 @@ async function seedServiceTimes() {
 
   await createIfMissing('serviceTimes', {
     sundayServices: [
-      { _key: 'sun1', name: 'Morning Worship', time: '9:00 AM' },
-      { _key: 'sun2', name: 'Sunday School', time: '10:30 AM' },
-      { _key: 'sun3', name: 'Evening Service', time: '6:00 PM' },
+      { _key: 'sun1', name: 'Sunday Worship Service (via Zoom)', time: '4:00 PM' },
     ],
     midweekServices: [
-      { _key: 'mid1', name: 'Bible Study', day: 'Wednesday', time: '7:00 PM' },
+      { _key: 'mid1', name: 'Bible Study (via Zoom)', day: 'Thursday', time: '7:30 PM' },
     ],
-    locationName: 'Main Campus',
-    address: 'High Calling Ministries\n401-A Prince George\'s Blvd\nUpper Marlboro, MD 20774',
+    locationName: 'Mailing Address (Virtual Ministry)',
+    address: '6916 Hillmeade Road\nGlenn Dale, MD 20769',
     phoneNumber: '(202) 503-9579',
-    email: 'admin@rflcc.org',
-    googleMapsLink: 'https://maps.google.com',
+    email: 'admin@rlfcc.org',
+    googleMapsLink: 'https://maps.google.com/?q=6916+Hillmeade+Road+Glenn+Dale+MD+20769',
   }, 'Service Times')
 }
 
@@ -131,7 +129,7 @@ async function seedStaff() {
       role: 'Senior Pastor',
       bio: 'Pastor John has been leading our congregation for over 15 years with a heart for teaching and shepherding.',
       rank: 1,
-      email: 'pastor@theapostlesministry.org',
+      email: 'pastor@rlfcc.org',
     },
     {
       name: 'Jane Smith',
@@ -271,29 +269,35 @@ async function seedEvents() {
     {
       title: 'Sunday Worship Service',
       slug: { _type: 'slug', current: 'sunday-worship' },
-      date: makeDate(((7 - now.getDay()) % 7) || 7, 10),
-      location: "High Calling Ministries, 401-A Prince George's Blvd, Upper Marlboro, MD 20774",
-      description: 'Join us for a powerful time of praise, worship, and the Word. All are welcome!',
+      date: makeDate(((7 - now.getDay()) % 7) || 7, 16),
+      location: 'Online via Zoom',
+      description: 'Join us every Sunday at 4:00 PM via Zoom for a powerful time of praise, worship, and the Word. All are welcome!',
       category: 'sunday-service',
       featured: true,
       cost: 'Free',
+      isOnline: true,
+      onlineLink: 'https://zoom.us',
     },
     {
-      title: 'Midweek Bible Study',
+      title: 'Thursday Bible Study',
       slug: { _type: 'slug', current: 'bible-study' },
-      date: makeDate(3, 19),
-      location: 'High Calling Ministries',
-      description: 'Dive deeper into the Word of God with our midweek Bible study. Bring your Bible and a friend!',
+      date: makeDate(4, 19),
+      location: 'Online via Zoom',
+      description: 'Dive deeper into the Word of God with our weekly Bible study every Thursday at 7:30 PM via Zoom. Bring your Bible and a friend!',
       category: 'bible-study',
+      isOnline: true,
+      onlineLink: 'https://zoom.us',
     },
     {
       title: 'Prayer & Worship Night',
       slug: { _type: 'slug', current: 'prayer-worship-night' },
-      date: makeDate(5, 18),
-      location: 'High Calling Ministries — Fellowship Hall',
+      date: makeDate(5, 19),
+      location: 'Online via Zoom',
       description: 'An evening of deep prayer, worship, and fellowship. Come expecting to encounter the presence of God.',
       category: 'special',
       cost: 'Free',
+      isOnline: true,
+      onlineLink: 'https://zoom.us',
     },
     {
       title: 'Online Prayer Meeting',
@@ -308,20 +312,22 @@ async function seedEvents() {
       title: 'Community Outreach & Food Drive',
       slug: { _type: 'slug', current: 'community-outreach' },
       date: makeDate(12, 9),
-      location: 'Upper Marlboro Community Center',
+      location: 'Glenn Dale Community Area',
       description: 'Serving our community with love! Volunteers are welcome to help distribute food and essentials to families in need.',
       category: 'outreach',
     },
     {
       title: 'Annual Church Anniversary Celebration',
       slug: { _type: 'slug', current: 'anniversary' },
-      date: makeDate(20, 11),
-      endDate: makeDate(20, 15),
-      location: 'High Calling Ministries',
-      description: 'Celebrate the faithfulness of God as we mark another year of ministry. Special guest speakers, music, and dinner to follow.',
+      date: makeDate(20, 16),
+      endDate: makeDate(20, 18),
+      location: 'Online via Zoom',
+      description: 'Celebrate the faithfulness of God as we mark another year of ministry. Special guest speakers, praise, and fellowship.',
       category: 'special',
       featured: true,
       cost: 'Free',
+      isOnline: true,
+      onlineLink: 'https://zoom.us',
     },
   ]
 
@@ -354,11 +360,11 @@ async function seedGivingPage() {
     ],
     givingMethods: [
       { _key: 'gm1', title: 'Online Giving', description: 'Give securely online using credit card, debit card, or bank transfer through our Tithe.ly integration.', icon: 'credit-card' },
-      { _key: 'gm2', title: 'In Person', description: 'Give during any of our services using the offering boxes located at the back of the sanctuary.', note: 'Cash, checks, and giving envelopes accepted', icon: 'building' },
-      { _key: 'gm3', title: 'Mail a Check', description: 'Mail your donation to our church office. Make checks payable to "The Apostles Ministry".', icon: 'mail' },
+      { _key: 'gm2', title: 'Virtual Services', description: 'Give during our Sunday Worship (4:00 PM) or Thursday Bible Study (7:30 PM) via online giving links shared in Zoom.', note: 'Zoom links shared weekly', icon: 'credit-card' },
+      { _key: 'gm3', title: 'Mail a Check', description: 'Mail your donation to our ministry mailing address. Make checks payable to "Restoring Life Family Community Center".', icon: 'mail' },
     ],
-    taxStatement: 'The Apostles Ministry is a registered 501(c)(3) nonprofit organization. All donations are tax-deductible to the fullest extent allowed by law. You will receive a giving statement for your records.',
-    mailingAddress: 'The Apostles Ministry\n401-A Prince George\'s Blvd\nUpper Marlboro, MD 20774',
+    taxStatement: 'Restoring Life Family Community Center is a registered 501(c)(3) nonprofit organization. All donations are tax-deductible to the fullest extent allowed by law. You will receive a giving statement for your records.',
+    mailingAddress: 'Restoring Life Family Community Center\n6916 Hillmeade Road\nGlenn Dale, MD 20769',
   }, 'Giving Page')
 }
 

@@ -106,6 +106,7 @@ export const givingPage = defineType({
       title: 'Mailing Address for Checks',
       type: 'text',
       rows: 3,
+      initialValue: 'Restoring Life Family Community Center\n6916 Hillmeade Road\nGlenn Dale, MD 20769',
     }),
     defineField({
       name: 'donationCampaigns',

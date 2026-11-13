@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist_Mono, Poppins, Inter } from "next/font/google";
+import { Geist_Mono, Plus_Jakarta_Sans, Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
 const geistMono = Geist_Mono({
@@ -7,11 +7,20 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// Display font — headings, hero titles, section titles only
-const poppins = Poppins({
-  variable: "--font-poppins",
+// Display font — modern, warm, humanist sans for headings & UI titles
+const plusJakartaSans = Plus_Jakarta_Sans({
+  variable: "--font-display",
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
+});
+
+// Editorial serif font — elegant, warm for scripture quotes, mission statements, and accents
+const playfair = Playfair_Display({
+  variable: "--font-serif",
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
@@ -36,7 +45,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistMono.variable} ${poppins.variable} ${inter.variable} antialiased`}
+        className={`${geistMono.variable} ${plusJakartaSans.variable} ${playfair.variable} ${inter.variable} antialiased`}
       >
         {children}
       </body>

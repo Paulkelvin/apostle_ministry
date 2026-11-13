@@ -43,23 +43,26 @@ export function Footer({ socialLinks = [], statement501c3, siteName, siteTagline
   const displayName = siteName || 'Restoring Life Family Community Center'
   const displayTagline = siteTagline || 'A place where everyone belongs.'
   const displayPhone = phone || '(202) 503-9579'
-  const displayEmail = email || 'admin@rflcc.org'
-  const addressLines = (address || "High Calling Ministries\n401-A Prince George's Blvd\nUpper Marlboro, MD 20774").split('\n')
+  const displayEmail = email || 'admin@rlfcc.org'
+  const addressLines = (address || "Mailing Address (Virtual Ministry):\n6916 Hillmeade Road\nGlenn Dale, MD 20769").split('\n')
 
   return (
-      <footer className="bg-primary-deep">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+    <footer className="relative bg-gradient-to-b from-primary-deep via-primary-deep to-primary-ink border-t border-white/[0.08] overflow-hidden">
+      {/* Subtle top ambient glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-24 bg-primary-light/5 blur-3xl pointer-events-none rounded-full" />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
           {/* Brand & Social */}
           <div>
-            <div className="h-px w-12 bg-accent/40 mb-6" aria-hidden="true" />
-            <h3 className="text-2xl font-bold text-warm-100 mb-4">
+            <div className="h-1 w-12 bg-accent rounded-full mb-6" aria-hidden="true" />
+            <h3 className="text-2xl font-bold font-display text-white mb-3">
               {displayName}
             </h3>
-            <p className="text-white/60 mb-6">
+            <p className="text-white/70 text-sm leading-relaxed mb-6 max-w-sm">
               {displayTagline}
             </p>
-            <div className="flex space-x-4">
+            <div className="flex space-x-3">
               {(socialLinks || []).map((link) => {
                 const Icon = socialIcons[link.platform]
                 if (!Icon) return null
@@ -69,10 +72,10 @@ export function Footer({ socialLinks = [], statement501c3, siteName, siteTagline
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-full bg-white/5 border border-white/10 text-white/70 flex items-center justify-center hover:bg-primary hover:text-white transition-colors"
+                    className="w-9 h-9 rounded-full bg-white/[0.07] border border-white/10 text-white/80 flex items-center justify-center hover:bg-accent hover:text-warm-900 hover:border-accent transition-all duration-200"
                     aria-label={`Follow us on ${link.platform}`}
                   >
-                    <Icon className="w-5 h-5" />
+                    <Icon className="w-4 h-4" />
                   </a>
                 )
               })}
@@ -81,15 +84,15 @@ export function Footer({ socialLinks = [], statement501c3, siteName, siteTagline
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-semibold text-warm-100 mb-4">
-              Quick Links
+            <h4 className="text-base font-semibold font-display text-white mb-4 uppercase tracking-wider text-xs text-accent">
+              Explore
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-2.5">
               {quickLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-white/60 hover:text-accent transition-colors"
+                    className="text-sm text-white/70 hover:text-accent transition-colors flex items-center gap-1.5"
                   >
                     {link.label}
                   </Link>
@@ -100,40 +103,53 @@ export function Footer({ socialLinks = [], statement501c3, siteName, siteTagline
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-lg font-semibold text-warm-100 mb-4">
-              Contact Us
+            <h4 className="text-base font-semibold font-display text-white mb-4 uppercase tracking-wider text-xs text-accent">
+              Connect
             </h4>
-            <address className="not-italic space-y-2 text-white/60">
+            <address className="not-italic space-y-2 text-sm text-white/70 leading-relaxed">
               {addressLines.map((line, i) => (
                 <p key={i}>{line}</p>
               ))}
-              <p className="mt-4">
-                <a
-                  href={`tel:${displayPhone.replace(/[^+\d]/g, '')}`}
-                  className="hover:text-accent transition-colors"
-                >
-                  {displayPhone}
-                </a>
-              </p>
-              <p>
-                <a
-                  href={`mailto:${displayEmail}`}
-                  className="hover:text-accent transition-colors"
-                >
-                  {displayEmail}
-                </a>
-              </p>
+              <div className="pt-2 space-y-1">
+                <p>
+                  <a
+                    href={`tel:${displayPhone.replace(/[^+\d]/g, '')}`}
+                    className="text-white/85 hover:text-accent transition-colors font-medium"
+                  >
+                    {displayPhone}
+                  </a>
+                </p>
+                <p>
+                  <a
+                    href={`mailto:${displayEmail}`}
+                    className="text-white/85 hover:text-accent transition-colors font-medium"
+                  >
+                    {displayEmail}
+                  </a>
+                </p>
+              </div>
             </address>
           </div>
         </div>
+
+        {statement501c3 && (
+          <div className="mt-12 pt-8 border-t border-white/[0.08]">
+            <p className="text-xs text-white/50 text-center max-w-2xl mx-auto leading-relaxed">
+              {statement501c3}
+            </p>
+          </div>
+        )}
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex justify-center items-center">
-            <p className="text-sm text-white/40">
+      <div className="border-t border-white/[0.08] bg-black/20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-2">
+            <p className="text-xs text-white/50 text-center sm:text-left">
               © {currentYear} {displayName}. All rights reserved.
+            </p>
+            <p className="text-xs text-accent/80 font-medium">
+              Virtual Ministry · Sunday 4:00 PM · Thursday 7:30 PM (Zoom)
             </p>
           </div>
         </div>

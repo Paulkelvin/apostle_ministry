@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'Sanity Studio | The Apostles Ministry',
+  title: 'Sanity Studio | Restoring Life Family Community Center',
 }
 
 export default function StudioLayout({

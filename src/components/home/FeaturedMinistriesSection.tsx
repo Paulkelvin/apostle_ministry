@@ -133,7 +133,7 @@ export function FeaturedMinistriesSection({ ministries }: FeaturedMinistriesSect
               >
                 {/* Image Side */}
                 <div className="w-full lg:w-1/2">
-                  <div className="aspect-[4/3] relative overflow-hidden rounded-xl group cursor-pointer" onClick={() => openDrawer(ministry)}>
+                  <div className="aspect-[4/3] relative overflow-hidden rounded-2xl shadow-sm hover:shadow-md transition-all duration-500 group cursor-pointer border border-warm-200/60" onClick={() => openDrawer(ministry)}>
                     {ministry.coverImage ? (
                       <SanityImageComponent
                         image={ministry.coverImage}
@@ -142,8 +142,8 @@ export function FeaturedMinistriesSection({ ministries }: FeaturedMinistriesSect
                         className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                       />
                     ) : (
-                      <div className="w-full h-full bg-warm-100 flex items-center justify-center">
-                        <span className="font-display text-7xl text-warm-300">
+                      <div className="w-full h-full bg-gradient-to-br from-warm-100 to-warm-200/50 flex items-center justify-center">
+                        <span className="font-display text-7xl font-bold text-warm-300">
                           {ministry.name.charAt(0)}
                         </span>
                       </div>
@@ -153,20 +153,21 @@ export function FeaturedMinistriesSection({ ministries }: FeaturedMinistriesSect
 
                 {/* Text Side */}
                 <div className="w-full lg:w-1/2">
-                  <h3 className="text-h3 text-primary mb-4">
+                  <span className="text-xs font-semibold uppercase tracking-wider text-accent-dark mb-2 block">Ministry Team</span>
+                  <h3 className="text-h3 text-warm-900 mb-4 font-display">
                     {ministry.name}
                   </h3>
                   {ministry.description && (
-                    <p className="text-base md:text-lg leading-relaxed text-warm-600 mb-6">
+                    <p className="text-base md:text-lg leading-relaxed text-warm-600 mb-6 font-normal">
                       {ministry.description}
                     </p>
                   )}
                   <button
                     onClick={() => openDrawer(ministry)}
-                    className="inline-flex items-center gap-2 px-7 py-3 rounded-lg border border-warm-200 text-ink font-semibold text-sm hover:border-primary hover:text-primary transition-colors duration-300 group"
+                    className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl border border-warm-200 bg-white text-warm-900 font-semibold text-sm hover:border-primary hover:text-primary hover:shadow-sm transition-all duration-200 group"
                   >
-                    Join {ministry.name}
-                    <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                    Get Involved in {ministry.name}
+                    <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
                   </button>
                 </div>
               </motion.div>
