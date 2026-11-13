@@ -16,7 +16,7 @@ interface FooterProps {
 const quickLinks = [
   { href: '/about', label: 'About Us' },
   { href: '/events', label: 'Events' },
-  { href: '/sermons', label: 'Sermons' },
+  { href: '/sermons', label: 'Messages & Resources' },
   { href: '/give', label: 'Give' },
   { href: '/contact', label: 'Contact' },
 ]

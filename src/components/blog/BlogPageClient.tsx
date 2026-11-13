@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useMemo, useEffect, useRef } from 'react'
-import { BookOpen, ChevronDown, Clock, ChevronLeft, ChevronRight, ArrowUpRight } from 'lucide-react'
+import { BookOpen, ChevronDown, Clock, ChevronLeft, ChevronRight, ArrowUpRight, Sparkles, FileText } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { format } from 'date-fns'
@@ -191,6 +191,23 @@ export function BlogPageClient({ posts, categories }: BlogPageClientProps) {
       {/* ──── Heading + Category Tabs + Sort ──── */}
       <section className={`pb-4 ${(!featuredPost || search || activeCategory) ? 'pt-32' : 'pt-10'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Unified Switcher Tabs (Messages & Sermons | Devotionals & Articles) */}
+          <div className="mb-8">
+            <div className="inline-flex items-center p-1 rounded-xl bg-warm-200/60 border border-warm-300/40">
+              <Link
+                href="/sermons"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-warm-600 hover:text-warm-900 font-medium text-sm transition-colors"
+              >
+                <Sparkles className="w-4 h-4 text-accent" />
+                Messages &amp; Sermons
+              </Link>
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white text-primary font-bold text-sm shadow-xs">
+                <FileText className="w-4 h-4 text-primary" />
+                Devotionals &amp; Articles
+              </span>
+            </div>
+          </div>
+
           <div className="mb-6">
             {/* Decorative label */}
             <div className="flex items-center gap-3 mb-3">

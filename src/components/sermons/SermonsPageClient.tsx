@@ -3,8 +3,9 @@
 import { useState, useMemo } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Video, Search, Calendar, Filter, ChevronDown, X, Play, BookOpen, ArrowUpRight } from 'lucide-react'
+import { Video, Search, Calendar, Filter, ChevronDown, X, Play, BookOpen, ArrowUpRight, Sparkles, FileText } from 'lucide-react'
 import { SermonCard } from './SermonCard'
+import { SermonDetailModal } from './SermonDetailModal'
 import { SanityImageComponent } from '@/components/ui'
 import { VideoModal } from '@/components/ui/VideoEmbed'
 import type { Sermon } from '@/types'
@@ -23,6 +24,7 @@ export function SermonsPageClient({ sermons, seriesList }: SermonsPageClientProp
   const [showVideoModal, setShowVideoModal] = useState(false)
   const [activeVideoUrl, setActiveVideoUrl] = useState<string | null>(null)
   const [activeVideoTitle, setActiveVideoTitle] = useState<string>('Sermon Video')
+  const [selectedSermon, setSelectedSermon] = useState<Sermon | null>(null)
 
   // Handle video playback
   const handlePlayVideo = (videoUrl: string, title: string) => {
@@ -164,29 +166,50 @@ export function SermonsPageClient({ sermons, seriesList }: SermonsPageClientProp
                       {featuredSermon.series}
                     </span>
                   )}
-                  {featuredSermon.videoUrl ? (
+                  <div className="flex flex-wrap items-center gap-3">
                     <button
-                      onClick={() => handlePlayVideo(featuredSermon.videoUrl!, featuredSermon.title)}
-                      className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-warm-900 font-bold rounded-lg hover:bg-accent-dark transition-colors w-fit"
+                      onClick={() => setSelectedSermon(featuredSermon)}
+                      className="inline-flex items-center gap-2 px-6 py-3 bg-white text-warm-900 font-bold rounded-lg hover:bg-warm-100 transition-colors shadow-md text-sm cursor-pointer"
                     >
-                      <Play className="w-4 h-4" fill="currentColor" />
-                      Watch Now
+                      <BookOpen className="w-4 h-4 text-primary" />
+                      View Message &amp; Notes
                     </button>
-                  ) : (
                     <Link
                       href="/events"
-                      className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-warm-900 font-bold rounded-lg hover:bg-accent-dark transition-colors w-fit shadow-md text-sm"
+                      className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-warm-900 font-bold rounded-lg hover:bg-accent-dark transition-colors shadow-md text-sm"
                     >
                       Join Live Worship · Sundays 4:00 PM
                       <ArrowUpRight className="w-4 h-4" />
                     </Link>
-                  )}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
       )}
+
+      {/* Unified Switcher Tabs (Messages & Sermons | Devotionals & Articles) */}
+      <div className="bg-[#FAFAF8] pt-6 pb-2 border-b border-warm-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="inline-flex items-center p-1 rounded-xl bg-warm-200/60 border border-warm-300/40">
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white text-primary font-bold text-sm shadow-xs">
+              <Sparkles className="w-4 h-4 text-accent" />
+              Messages &amp; Sermons
+            </span>
+            <Link
+              href="/resources"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-warm-600 hover:text-warm-900 font-medium text-sm transition-colors"
+            >
+              <FileText className="w-4 h-4" />
+              Devotionals &amp; Articles
+            </Link>
+          </div>
+          <p className="text-xs text-warm-500">
+            Click any message to read scripture notes &amp; reflections
+          </p>
+        </div>
+      </div>
 
       {/* Filter Bar */}
       <section className="py-6 bg-white border-b border-warm-200 sticky top-[72px] z-30">
@@ -368,6 +391,7 @@ export function SermonsPageClient({ sermons, seriesList }: SermonsPageClientProp
                     sermon={sermon} 
                     index={index}
                     onPlayVideo={handlePlayVideo}
+                    onSelect={(s) => setSelectedSermon(s)}
                   />
                 ))}
               </div>
@@ -375,7 +399,7 @@ export function SermonsPageClient({ sermons, seriesList }: SermonsPageClientProp
           ) : (
             <div className="text-center py-16">
               <div className="w-20 h-20 rounded-full bg-warm-100 flex items-center justify-center mx-auto mb-6">
-                <Video className="w-10 h-10 text-warm-200" />
+                <BookOpen className="w-10 h-10 text-warm-300" />
               </div>
               <h2 className="text-2xl font-bold text-primary mb-2">
                 {hasActiveFilters ? 'No Matching Sermons' : 'No Sermons Yet'}
@@ -397,6 +421,12 @@ export function SermonsPageClient({ sermons, seriesList }: SermonsPageClientProp
           )}
         </div>
       </section>
+
+      {/* Interactive Sermon Detail & Scripture Notes Modal */}
+      <SermonDetailModal
+        sermon={selectedSermon}
+        onClose={() => setSelectedSermon(null)}
+      />
 
       {/* Video Modal for embedded playback */}
       {activeVideoUrl && (
