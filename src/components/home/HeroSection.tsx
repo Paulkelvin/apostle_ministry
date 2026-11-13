@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui'
 import { SanityImageComponent } from '@/components/ui'
@@ -12,49 +13,41 @@ interface HeroSectionProps {
 export function HeroSection({ settings }: HeroSectionProps) {
   const title = settings?.heroTitle || 'Welcome Home'
   const subtitle = settings?.heroSubtitle || 'A place where everyone belongs'
-  // Build video URL from uploaded file asset ref, or fall back to external URL
-  let videoUrl = settings?.heroVideo
-  if (settings?.heroVideoFile?.asset?._ref) {
-    // Asset ref format: file-{id}-{ext}
-    const ref = settings.heroVideoFile.asset._ref
-    const [, id, ext] = ref.match(/^file-(.+)-(\w+)$/) || []
-    if (id && ext) {
-      videoUrl = `https://cdn.sanity.io/files/${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'j2qt3gmh'}/${process.env.NEXT_PUBLIC_SANITY_DATASET || 'rlfcc'}/${id}.${ext}`
-    }
-  }
   const watchOnlineUrl = settings?.watchOnlineUrl
 
+  // Check if a new custom image was uploaded via CMS (excluding legacy template asset)
+  const isCustomCmsImage =
+    settings?.heroImage?.asset?._ref &&
+    settings.heroImage.asset._ref !== 'image-cae6eaecd222aa5e4ed0fa40c1d51b7e7ee60a98-1920x1080-png'
+
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Background: Video > Image > Gradient */}
-      {videoUrl ? (
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-        >
-          <source src={videoUrl} type="video/mp4" />
-        </video>
-      ) : settings?.heroImage ? (
-        <div className="absolute inset-0">
+    <section className="relative min-h-[92vh] lg:min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Background Image: Curated warm aesthetic hero banner or CMS image */}
+      <div className="absolute inset-0">
+        {settings?.heroImage && isCustomCmsImage ? (
           <SanityImageComponent
             image={settings.heroImage}
             alt={title}
             fill
             priority
             sizes="100vw"
-            className="object-cover"
+            className="object-cover object-center scale-[1.01] transition-transform duration-1000"
           />
-        </div>
-      ) : (
-        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary-dark to-warm-900" />
-      )}
+        ) : (
+          <Image
+            src="/images/hero-banner.jpg"
+            alt={title}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center scale-[1.01] transition-transform duration-1000"
+          />
+        )}
+      </div>
 
       {/* Directional scrim — softer, luminous ambient gradient */}
-      <div className="absolute inset-0 bg-gradient-to-t from-primary-deep via-primary-deep/65 to-primary-ink/40" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary-light/25 via-transparent to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-t from-primary-deep via-primary-deep/60 to-primary-ink/40" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary-light/20 via-transparent to-transparent pointer-events-none" />
 
       {/* Content */}
       <div className="relative z-10 text-center px-4 max-w-5xl mx-auto flex flex-col items-center">
