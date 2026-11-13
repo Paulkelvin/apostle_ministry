@@ -108,7 +108,14 @@ export function SermonDetailModal({ sermon, onClose }: SermonDetailModalProps) {
 
           {/* Header Banner */}
           <div className="relative aspect-[16/7] w-full overflow-hidden bg-primary-deep shrink-0">
-            {sermon.thumbnail ? (
+            {sermon.fallbackImageUrl ? (
+              <Image
+                src={sermon.fallbackImageUrl}
+                alt={sermon.title}
+                fill
+                className="object-cover"
+              />
+            ) : sermon.thumbnail ? (
               <SanityImageComponent
                 image={sermon.thumbnail}
                 alt={sermon.title}

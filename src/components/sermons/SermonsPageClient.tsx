@@ -96,12 +96,12 @@ export function SermonsPageClient({ sermons, seriesList }: SermonsPageClientProp
     <>
       {/* Featured Sermon - Only show if there are sermons */}
       {featuredSermon && sermons.length > 0 && (
-        <section className="py-12 bg-surface">
+        <section className="py-12 bg-[#FAF7F1]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="relative rounded-xl overflow-hidden bg-primary-deep">
+            <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-primary-deep via-primary-deep to-primary-ink border border-[#E6DDCA] shadow-md">
               <div className="grid lg:grid-cols-2 gap-0">
                 {/* Video/Thumbnail side */}
-                <div className="relative aspect-video lg:aspect-auto lg:min-h-[400px]">
+                <div className="relative aspect-video lg:aspect-auto lg:min-h-[420px]">
                   {featuredSermon.videoUrl ? (
                     <button 
                       onClick={() => handlePlayVideo(featuredSermon.videoUrl!, featuredSermon.title)}
@@ -124,20 +124,20 @@ export function SermonsPageClient({ sermons, seriesList }: SermonsPageClientProp
                       </div>
                     </button>
                   ) : (
-                    <div className="relative w-full h-full min-h-[300px] lg:min-h-[400px] flex items-center justify-center overflow-hidden bg-primary-ink">
+                    <div className="relative w-full h-full min-h-[300px] lg:min-h-[420px] flex items-center justify-center overflow-hidden bg-primary-ink">
                       <Image
-                        src="/images/hero-banner.jpg"
-                        alt="Restoring Life Sanctuary"
+                        src={featuredSermon.fallbackImageUrl || "/images/sermons/sermon_faith.jpg"}
+                        alt={featuredSermon.title || "Restoring Life Sanctuary"}
                         fill
-                        className="object-cover opacity-25"
+                        className="object-cover opacity-75"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-primary-deep via-primary-deep/80 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-primary-deep via-primary-deep/50 to-transparent" />
                       <div className="relative z-10 flex flex-col items-center text-center p-6">
-                        <div className="w-16 h-16 rounded-2xl bg-accent/20 border border-accent/40 flex items-center justify-center mb-3">
-                          <BookOpen className="w-8 h-8 text-accent" />
+                        <div className="w-14 h-14 rounded-2xl bg-accent/20 border border-accent/40 flex items-center justify-center mb-3">
+                          <BookOpen className="w-7 h-7 text-accent" />
                         </div>
-                        <span className="text-white/80 text-sm font-medium">Sunday Worship Archive</span>
-                        <span className="text-accent text-xs font-semibold uppercase tracking-wider mt-1">Live Online Gathering</span>
+                        <span className="text-white/95 text-sm font-semibold">Sunday Worship Archive</span>
+                        <span className="text-accent text-xs font-bold uppercase tracking-wider mt-1">Live Online Gathering</span>
                       </div>
                     </div>
                   )}
@@ -189,30 +189,30 @@ export function SermonsPageClient({ sermons, seriesList }: SermonsPageClientProp
         </section>
       )}
 
-      {/* Unified Switcher Tabs (Messages & Sermons | Devotionals & Articles) */}
-      <div className="bg-[#FAFAF8] pt-6 pb-2 border-b border-warm-200">
+      {/* Unified Switcher Tabs (Messages | Devotionals & Articles) */}
+      <div className="bg-[#FAF7F1] pt-6 pb-2 border-b border-[#E6DDCA]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div className="inline-flex items-center p-1 rounded-xl bg-warm-200/60 border border-warm-300/40">
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white text-primary font-bold text-sm shadow-xs">
+          <div className="inline-flex items-center p-1 rounded-xl bg-white border border-[#E6DDCA]">
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#FAF7F1] text-primary font-bold text-sm shadow-xs border border-[#E6DDCA]">
               <Sparkles className="w-4 h-4 text-accent" />
-              Messages &amp; Sermons
+              Messages
             </span>
             <Link
               href="/resources"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-warm-600 hover:text-warm-900 font-medium text-sm transition-colors"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-[#5C525C] hover:text-[#251827] font-medium text-sm transition-colors"
             >
               <FileText className="w-4 h-4" />
               Devotionals &amp; Articles
             </Link>
           </div>
-          <p className="text-xs text-warm-500">
+          <p className="text-xs text-[#5C525C]">
             Click any message to read scripture notes &amp; reflections
           </p>
         </div>
       </div>
 
       {/* Filter Bar */}
-      <section className="py-6 bg-white border-b border-warm-200 sticky top-[72px] z-30">
+      <section className="py-6 bg-[#FAF7F1]/95 backdrop-blur-md border-b border-[#E6DDCA] sticky top-[72px] z-30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col gap-4">
             {/* Top row: Search + sort */}
@@ -377,8 +377,10 @@ export function SermonsPageClient({ sermons, seriesList }: SermonsPageClientProp
       </section>
 
       {/* Sermons Grid */}
-        <section className="py-20 bg-surface relative overflow-hidden">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <section className="py-20 bg-[#FAF7F1] relative overflow-hidden">
+        {/* Subtle dot matrix pattern */}
+        <div className="absolute inset-0 bg-[radial-gradient(#e6ddca_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none opacity-50" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {filteredSermons.length > 0 ? (
             <>
               <p className="text-sm text-warm-500 mb-6">

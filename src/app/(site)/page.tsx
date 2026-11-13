@@ -1,5 +1,5 @@
 import { client, siteSettingsQuery, serviceTimesQuery, latestPostsQuery, featuredMinistriesQuery, normalizeSiteSettings, normalizeServiceTimes, normalizePosts } from '@/lib/sanity'
-import { HeroSection, ServiceTimesSection, LatestNewsSection, FeaturedMinistriesSection, MissionVisionSection } from '@/components/home'
+import { HeroSection, ServiceTimesSection, LatestNewsSection, FeaturedMinistriesSection, MissionVisionSection, GivingSpotlightSection } from '@/components/home'
 import type { SiteSettings, ServiceTimes, Post, Ministry } from '@/types'
 
 // Revalidate every 5 minutes — highest-traffic page, kept freshest of the low-churn tier
@@ -43,6 +43,7 @@ export default async function HomePage() {
         mission={settings?.missionStatement}
         vision={settings?.visionStatement}
       />
+      <GivingSpotlightSection />
       <LatestNewsSection posts={posts} />
     </>
   )

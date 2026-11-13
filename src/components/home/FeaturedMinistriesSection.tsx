@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowRight, X, CheckCircle2 } from 'lucide-react'
 import { SanityImageComponent } from '@/components/ui'
@@ -23,6 +24,15 @@ const jdTokens = {
   '--jd-wine': '#5B3A52',
   '--jd-focus': '#B8862B',
 } as React.CSSProperties
+
+const getMinistryFallbackImage = (name: string) => {
+  const n = (name || '').toLowerCase()
+  if (n.includes('worship') || n.includes('music')) return '/images/events/worship.jpg'
+  if (n.includes('outreach') || n.includes('community')) return '/images/events/fellowship.jpg'
+  if (n.includes('prayer')) return '/images/events/prayer.jpg'
+  if (n.includes('hospitality') || n.includes('welcome') || n.includes('fellowship')) return '/images/events/bible-study.jpg'
+  return '/images/hero-banner.jpg'
+}
 
 export function FeaturedMinistriesSection({ ministries }: FeaturedMinistriesSectionProps) {
   const [selectedMinistry, setSelectedMinistry] = useState<Ministry | null>(null)
@@ -148,10 +158,15 @@ export function FeaturedMinistriesSection({ ministries }: FeaturedMinistriesSect
                         className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                       />
                     ) : (
-                      <div className="w-full h-full bg-gradient-to-br from-warm-100 to-warm-200/50 flex items-center justify-center">
-                        <span className="font-display text-7xl font-bold text-warm-300">
-                          {ministry.name.charAt(0)}
-                        </span>
+                      <div className="relative w-full h-full overflow-hidden">
+                        <Image
+                          src={getMinistryFallbackImage(ministry.name)}
+                          alt={ministry.name}
+                          fill
+                          sizes="(max-width: 1024px) 100vw, 50vw"
+                          className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-primary-deep/60 via-transparent to-transparent" />
                       </div>
                     )}
                   </div>

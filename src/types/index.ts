@@ -121,6 +121,7 @@ export interface Sermon {
   videoUrl?: string
   audioUrl?: string
   thumbnail?: SanityImage
+  fallbackImageUrl?: string
   description?: string
   notes?: PortableTextBlock[]
 }

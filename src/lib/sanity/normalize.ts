@@ -174,6 +174,24 @@ export function normalizeSermons(sermons: Sermon[] | null | undefined): Sermon[]
     // Strip external YouTube links since they do not belong to RLFCC
     const isThirdPartyYouTube = sermon.videoUrl && sermon.videoUrl.includes('youtube.com')
 
+    // Detect third-party YouTube thumbnail imports (480x360 video captures from external channels)
+    const assetRef = sermon.thumbnail?.asset?._ref || ''
+    const isThirdPartyThumbnail = assetRef.includes('480x360')
+
+    const titleLower = (sermon.title || '').toLowerCase()
+    let fallbackImageUrl = '/images/sermons/sermon_faith.jpg'
+    if (titleLower.includes('prayer')) {
+      fallbackImageUrl = '/images/sermons/sermon_prayer.jpg'
+    } else if (titleLower.includes('rest') || titleLower.includes('storm') || titleLower.includes('peace')) {
+      fallbackImageUrl = '/images/sermons/sermon_peace.jpg'
+    } else if (titleLower.includes('love') || titleLower.includes('neighbor')) {
+      fallbackImageUrl = '/images/sermons/sermon_love.jpg'
+    } else if (titleLower.includes('fear') || titleLower.includes('free') || titleLower.includes('hope')) {
+      fallbackImageUrl = '/images/sermons/sermon_hope.jpg'
+    } else if (titleLower.includes('faith') || titleLower.includes('walk')) {
+      fallbackImageUrl = '/images/sermons/sermon_faith.jpg'
+    }
+
     let cleanSpeaker = sermon.speaker
     if (cleanSpeaker) {
       const name = cleanSpeaker.name?.toLowerCase() || ''
@@ -205,6 +223,8 @@ export function normalizeSermons(sermons: Sermon[] | null | undefined): Sermon[]
       speaker: cleanSpeaker,
       description: cleanDesc,
       videoUrl: isThirdPartyYouTube ? undefined : sermon.videoUrl,
+      thumbnail: isThirdPartyThumbnail ? undefined : sermon.thumbnail,
+      fallbackImageUrl,
     }
   })
 }

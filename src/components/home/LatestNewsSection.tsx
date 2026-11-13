@@ -30,9 +30,9 @@ export function LatestNewsSection({ posts }: LatestNewsSectionProps) {
   const featuredCategory = featured.categories?.[0]
 
   return (
-    <section className="relative py-20 lg:py-28 bg-[#FAFAF8] overflow-hidden">
+    <section className="relative py-20 lg:py-28 bg-white border-t border-[#E6DDCA] overflow-hidden">
       {/* Subtle tactile dot pattern & ambient light */}
-      <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none opacity-40" />
+      <div className="absolute inset-0 bg-[radial-gradient(#e6ddca_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none opacity-40" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-primary-light/5 blur-[120px] pointer-events-none rounded-full" />
 
       <motion.div
@@ -125,7 +125,7 @@ export function LatestNewsSection({ posts }: LatestNewsSectionProps) {
 
               return (
                 <Link key={post._id} href={`/resources/${post.slug?.current}`} className="group block flex-1">
-                  <article className="flex flex-col sm:flex-row gap-5 h-full bg-white rounded-2xl overflow-hidden border border-warm-200/80 shadow-[--shadow-card] hover:shadow-[--shadow-card-hover] hover:-translate-y-0.5 transition-all duration-300 p-4 sm:p-5">
+                  <article className="flex flex-col sm:flex-row gap-5 h-full bg-[#FAF7F1] rounded-3xl overflow-hidden border border-[#E6DDCA] shadow-xs hover:border-primary/40 hover:-translate-y-0.5 transition-all duration-300 p-4 sm:p-5">
                     {/* Thumbnail */}
                     <div className="relative w-full sm:w-40 md:w-48 flex-shrink-0 aspect-[4/3] sm:aspect-square rounded-xl overflow-hidden">
                       {post.mainImage ? (

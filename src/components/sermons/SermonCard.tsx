@@ -29,7 +29,18 @@ export function SermonCard({ sermon, index, onPlayVideo, onSelect }: SermonCardP
       <div>
         {/* Thumbnail */}
         <div className="aspect-video relative overflow-hidden bg-gradient-to-br from-primary-deep/5 via-warm-100 to-warm-200/60">
-          {sermon.thumbnail ? (
+          {sermon.fallbackImageUrl ? (
+            <div className="relative w-full h-full overflow-hidden">
+              <Image
+                src={sermon.fallbackImageUrl}
+                alt={sermon.title}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary-deep/70 via-transparent to-transparent" />
+            </div>
+          ) : sermon.thumbnail ? (
             <SanityImageComponent
               image={sermon.thumbnail}
               alt={sermon.title}
