@@ -135,6 +135,7 @@ export interface Event {
   address?: string
   description?: string
   image?: SanityImage
+  fallbackImageUrl?: string
   registrationLink?: string
   cost?: string
   ministry?: Ministry

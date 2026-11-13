@@ -126,20 +126,18 @@ export function EventDetailModal({ event, onClose }: EventDetailModalProps) {
               {/* Top Section: Image + Info */}
               <div className="md:flex">
                 {/* Event Image */}
-                {event.image && (
-                  <div className="relative w-full md:w-1/2 aspect-[4/3] md:aspect-auto md:min-h-[400px] shrink-0">
-                    <Image
-                      src={urlFor(event.image).width(800).height(600).url()}
-                      alt={event.title}
-                      fill
-                      className="object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent md:bg-gradient-to-r md:from-transparent md:to-transparent" />
-                  </div>
-                )}
+                <div className="relative w-full md:w-1/2 aspect-[4/3] md:aspect-auto md:min-h-[400px] shrink-0">
+                  <Image
+                    src={event.image ? urlFor(event.image).width(800).height(600).url() : (event.fallbackImageUrl || '/images/hero-banner.jpg')}
+                    alt={event.title}
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent md:bg-gradient-to-r md:from-transparent md:to-transparent" />
+                </div>
 
                 {/* Event Info */}
-                <div className={`p-6 md:p-8 ${event.image ? 'md:w-1/2' : 'w-full'}`}>
+                <div className="p-6 md:p-8 md:w-1/2 w-full">
                   {/* Category Badge */}
                   {event.category && (
                     <span className={`inline-block text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full ${getCategoryColor(event.category)} mb-4`}>

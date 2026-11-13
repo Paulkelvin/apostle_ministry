@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { format, parseISO } from 'date-fns'
 import { Calendar, MapPin, Wifi } from 'lucide-react'
 import { SanityImageComponent } from '@/components/ui'
@@ -20,7 +21,7 @@ export function EventGridCard({ event, onClick }: EventGridCardProps) {
     >
       <article className="h-full flex flex-col bg-white rounded-xl overflow-hidden border border-warm-200 shadow-[--shadow-card] hover:shadow-[--shadow-card-hover] hover:-translate-y-1 transition-all duration-300">
         {/* Image */}
-        <div className="aspect-[16/10] relative overflow-hidden bg-gradient-to-br from-white to-warm-100">
+        <div className="aspect-[16/10] relative overflow-hidden bg-gradient-to-br from-warm-100 to-warm-200">
           {event.image ? (
             <SanityImageComponent
               image={event.image}
@@ -29,9 +30,13 @@ export function EventGridCard({ event, onClick }: EventGridCardProps) {
               className="object-cover group-hover:scale-105 transition-transform duration-700"
             />
           ) : (
-            <div className="w-full h-full flex items-center justify-center">
-              <Calendar className="w-12 h-12 text-warm-300" />
-            </div>
+            <Image
+              src={event.fallbackImageUrl || '/images/hero-banner.jpg'}
+              alt={event.title}
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              className="object-cover group-hover:scale-105 transition-transform duration-700"
+            />
           )}
 
           {/* Date badge — mini calendar */}

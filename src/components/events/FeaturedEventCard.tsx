@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Image from 'next/image'
 import { format, parseISO, differenceInSeconds } from 'date-fns'
 import { Calendar, Clock, MapPin, Wifi } from 'lucide-react'
 import { SanityImageComponent } from '@/components/ui'
@@ -56,7 +57,7 @@ export function FeaturedEventCard({ event, onClick }: FeaturedEventCardProps) {
 
         <div className="grid lg:grid-cols-[1.1fr_1fr]">
           {/* Image */}
-          <div className="aspect-[16/9] lg:aspect-auto relative overflow-hidden bg-gradient-to-br from-warm-100 to-warm-100 min-h-[220px] lg:min-h-[260px]">
+          <div className="aspect-[16/9] lg:aspect-auto relative overflow-hidden bg-gradient-to-br from-warm-100 to-warm-200 min-h-[220px] lg:min-h-[260px]">
             {event.image ? (
               <SanityImageComponent
                 image={event.image}
@@ -65,12 +66,16 @@ export function FeaturedEventCard({ event, onClick }: FeaturedEventCardProps) {
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
               />
             ) : (
-              <div className="w-full h-full flex items-center justify-center">
-                <Calendar className="w-20 h-20 text-warm-300" />
-              </div>
+              <Image
+                src={event.fallbackImageUrl || '/images/hero-banner.jpg'}
+                alt={event.title}
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
+              />
             )}
             {/* Dark overlay gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-black/10" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-black/20" />
           </div>
 
           {/* Content */}

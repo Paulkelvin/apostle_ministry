@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { format, isSameDay, parseISO } from 'date-fns'
 import { Calendar, MapPin, Clock, ExternalLink } from 'lucide-react'
@@ -39,7 +40,7 @@ export function EventCard({ event, index }: EventCardProps) {
     >
       <div className="grid md:grid-cols-[300px_1fr]">
         {/* Image */}
-        <div className="aspect-[4/3] md:aspect-auto relative overflow-hidden bg-warm-200">
+        <div className="aspect-[4/3] md:aspect-auto relative overflow-hidden bg-warm-200 min-h-[200px]">
           {event.image ? (
             <SanityImageComponent
               image={event.image}
@@ -48,9 +49,13 @@ export function EventCard({ event, index }: EventCardProps) {
               className="object-cover group-hover:scale-105 transition-transform duration-500"
             />
           ) : (
-            <div className="w-full h-full flex items-center justify-center">
-              <Calendar className="w-16 h-16 text-warm-300" />
-            </div>
+            <Image
+              src={event.fallbackImageUrl || '/images/hero-banner.jpg'}
+              alt={event.title}
+              fill
+              sizes="(max-width: 768px) 100vw, 300px"
+              className="object-cover group-hover:scale-105 transition-transform duration-500"
+            />
           )}
           {/* Date Badge */}
           <div className="absolute top-4 left-4 bg-primary text-white rounded-lg p-3 text-center shadow-lg">

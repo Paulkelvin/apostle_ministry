@@ -1,4 +1,116 @@
-import type { SiteSettings, ServiceTimes, Sermon } from '@/types'
+import type { SiteSettings, ServiceTimes, Sermon, Event } from '@/types'
+
+function getNextDayOfWeek(dayOfWeek: number, hour: number, minute: number): Date {
+  const now = new Date()
+  const result = new Date(now)
+  result.setHours(hour, minute, 0, 0)
+  const currentDay = now.getDay()
+  let daysUntil = (dayOfWeek - currentDay + 7) % 7
+  if (daysUntil === 0 && now.getTime() > result.getTime()) {
+    daysUntil = 7
+  }
+  result.setDate(now.getDate() + daysUntil)
+  return result
+}
+
+function getEventFallbackImage(event: Partial<Event>): string {
+  const text = `${event.title || ''} ${event.category || ''}`.toLowerCase()
+  if (text.includes('worship') || text.includes('sunday')) {
+    return '/images/events/worship.jpg'
+  }
+  if (text.includes('bible') || text.includes('study')) {
+    return '/images/events/bible-study.jpg'
+  }
+  if (text.includes('prayer') || text.includes('intercession')) {
+    return '/images/events/prayer.jpg'
+  }
+  return '/images/events/fellowship.jpg'
+}
+
+/**
+ * Normalizes events:
+ * 1. Filters out any event containing placeholder / other ministry references (e.g. "High Calling", "Upper Marlboro").
+ * 2. If events are empty or only contained placeholder events, provides the verified recurring RLFCC gatherings.
+ * 3. Assigns an appealing category photograph to every event card so none show an empty grey placeholder box.
+ */
+export function normalizeEvents(events: Event[] | null | undefined): Event[] {
+  const cleanEvents = (events || []).filter((event) => {
+    const combined = `${event.title || ''} ${event.location || ''} ${event.description || ''}`.toLowerCase()
+    return (
+      !combined.includes('high calling') &&
+      !combined.includes('upper marlboro') &&
+      !combined.includes('the apostles ministry')
+    )
+  })
+
+  if (cleanEvents.length > 0) {
+    return cleanEvents.map((evt) => ({
+      ...evt,
+      fallbackImageUrl: getEventFallbackImage(evt),
+    }))
+  }
+
+  const nextSunday = getNextDayOfWeek(0, 16, 0) // Sunday 4:00 PM
+  const nextThursday = getNextDayOfWeek(4, 19, 30) // Thursday 7:30 PM
+  const nextPrayer = getNextDayOfWeek(2, 7, 0) // Tuesday 7:00 AM
+  const nextFellowship = new Date(nextSunday.getTime() + 7 * 24 * 60 * 60 * 1000)
+
+  return [
+    {
+      _id: 'rlfcc-sunday-worship',
+      title: 'Sunday Worship Service',
+      slug: { current: 'sunday-worship-service' },
+      date: nextSunday.toISOString(),
+      location: 'Online via Zoom',
+      description: 'Join us live for praise, worship, and an uplifting message from the Word of God.',
+      category: 'sunday-service',
+      cost: 'Free',
+      featured: true,
+      isOnline: true,
+      onlineLink: 'https://zoom.us',
+      fallbackImageUrl: '/images/events/worship.jpg',
+    },
+    {
+      _id: 'rlfcc-thursday-bible-study',
+      title: 'Midweek Bible Study',
+      slug: { current: 'midweek-bible-study' },
+      date: nextThursday.toISOString(),
+      location: 'Online via Zoom',
+      description: 'In-depth exploration of scripture, spiritual growth, and interactive discussion every Thursday.',
+      category: 'bible-study',
+      cost: 'Free',
+      isOnline: true,
+      onlineLink: 'https://zoom.us',
+      fallbackImageUrl: '/images/events/bible-study.jpg',
+    },
+    {
+      _id: 'rlfcc-prayer-meeting',
+      title: 'Corporate Prayer & Intercession',
+      slug: { current: 'prayer-meeting' },
+      date: nextPrayer.toISOString(),
+      location: 'Online via Zoom',
+      description: 'Start your day grounded in prayer. Join us online via Zoom for corporate intercession.',
+      category: 'online',
+      cost: 'Free',
+      isOnline: true,
+      onlineLink: 'https://zoom.us',
+      fallbackImageUrl: '/images/events/prayer.jpg',
+    },
+    {
+      _id: 'rlfcc-family-fellowship',
+      title: 'Family & Community Fellowship',
+      slug: { current: 'family-fellowship' },
+      date: nextFellowship.toISOString(),
+      location: 'Online via Zoom',
+      description: 'Connecting in faith, sharing testimonies, and building authentic community in Christ.',
+      category: 'general',
+      cost: 'Free',
+      isOnline: true,
+      onlineLink: 'https://zoom.us',
+      fallbackImageUrl: '/images/events/fellowship.jpg',
+    },
+  ]
+}
 
 /**
  * Normalizes SiteSettings to guarantee RLFCC branding and correct metadata.
