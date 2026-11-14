@@ -28,18 +28,18 @@ export default async function GivePage() {
   const mailingAddress = data?.mailingAddress || 'Restoring Life Family Community Center\n6916 Hillmeade Road\nGlenn Dale, MD 20769'
 
   return (
-    <div className="bg-[#FAF7F1] min-h-screen text-[#251827]">
+    <div className="bg-[#FAF8F5] min-h-screen text-[#221524]">
       {/* Hero Section — Clean, Human, Warm & Editorial */}
-      <section className="relative pt-36 pb-20 overflow-hidden bg-[#FAF7F1]">
+      <section className="relative pt-36 pb-20 overflow-hidden bg-[#FAF8F5]">
         {/* Subtle dot matrix pattern & soft ambient light */}
-        <div className="absolute inset-0 bg-[radial-gradient(#e6ddca_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none opacity-50" />
+        <div className="absolute inset-0 bg-[radial-gradient(#ebe3d5_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none opacity-50" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-primary-light/5 blur-[120px] pointer-events-none rounded-full" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             {/* Left Column: Heading, Scripture & Action */}
             <div className="lg:col-span-7 text-center lg:text-left">
-              <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#E6DDCA] text-accent-dark text-xs font-semibold tracking-wider uppercase mb-6 shadow-xs">
+              <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#EBE3D5] text-accent-dark text-xs font-semibold tracking-wider uppercase mb-6 shadow-xs">
                 <Heart className="w-3.5 h-3.5 text-accent fill-accent/20" />
                 Stewardship &amp; Generosity
               </span>
@@ -48,14 +48,14 @@ export default async function GivePage() {
                 Support the Mission of RLFCC
               </h1>
 
-              <p className="text-base sm:text-lg text-[#5C525C] leading-relaxed mb-8 max-w-2xl mx-auto lg:mx-0">
+              <p className="text-base sm:text-lg text-[#584E59] leading-relaxed mb-8 max-w-2xl mx-auto lg:mx-0">
                 Thank you for partnering with Restoring Life Family Community Center. Your giving helps us share the gospel, minister through live online worship, and build a loving, Christ-centered community.
               </p>
 
               {/* Scripture Card */}
-              <div className="p-6 sm:p-7 rounded-2xl bg-white border border-[#E6DDCA] shadow-xs mb-8 text-left relative overflow-hidden">
+              <div className="p-6 sm:p-7 rounded-2xl bg-white border border-[#EBE3D5] shadow-xs mb-8 text-left relative overflow-hidden">
                 <div className="absolute top-0 left-0 bottom-0 w-1.5 bg-accent" />
-                <p className="text-base sm:text-lg text-[#251827] italic leading-relaxed font-serif">
+                <p className="text-base sm:text-lg text-[#221524] italic leading-relaxed font-serif">
                   &ldquo;{heroVerse}&rdquo;
                 </p>
                 <p className="text-accent-dark text-xs font-bold mt-2 uppercase tracking-wider">
@@ -71,16 +71,16 @@ export default async function GivePage() {
                 />
                 <a
                   href="#ways-to-give"
-                  className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-4 rounded-xl border border-[#E6DDCA] bg-white hover:bg-[#FAF7F1] text-primary font-semibold text-sm transition-colors"
+                  className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-4 rounded-xl border border-[#EBE3D5] bg-white hover:bg-[#FAF8F5] text-primary font-semibold text-sm transition-colors"
                 >
                   Other Ways to Give
                 </a>
               </div>
             </div>
 
-            {/* Right Column: Warm Visual Image Patch */}
+            {/* Right Column: Warm Visual Image Patch with Cathedral Arch */}
             <div className="lg:col-span-5 relative">
-              <div className="relative aspect-[4/3] sm:aspect-[16/11] rounded-3xl overflow-hidden border border-[#E6DDCA] shadow-lg">
+              <div className="relative aspect-[4/3] sm:aspect-[16/11] rounded-t-[3.5rem] rounded-b-3xl overflow-hidden border border-[#EBE3D5] shadow-md">
                 <Image
                   src="/images/sermons/sermon_prayer.jpg"
                   alt="Generosity and Stewardship at RLFCC"
@@ -93,17 +93,17 @@ export default async function GivePage() {
               </div>
 
               {/* Layered Tax Statement Pill */}
-              <div className="sm:absolute -bottom-6 -left-6 mt-4 sm:mt-0 max-w-xs bg-white/95 backdrop-blur-md p-5 rounded-2xl border border-[#E6DDCA] shadow-md">
+              <div className="sm:absolute -bottom-6 -left-6 mt-4 sm:mt-0 max-w-xs bg-white/95 backdrop-blur-md p-5 rounded-2xl border border-[#EBE3D5] shadow-md">
                 <div className="flex items-center gap-3 mb-1.5">
                   <div className="w-8 h-8 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
                     <ShieldCheck className="w-4 h-4 text-primary" />
                   </div>
                   <div>
                     <p className="text-xs font-bold text-primary uppercase tracking-wider">Tax-Deductible</p>
-                    <p className="text-xs font-medium text-[#5C525C]">501(c)(3) Nonprofit</p>
+                    <p className="text-xs font-medium text-[#584E59]">501(c)(3) Nonprofit</p>
                   </div>
                 </div>
-                <p className="text-[11px] text-[#5C525C] leading-normal">
+                <p className="text-[11px] text-[#584E59] leading-normal">
                   All donations are tax-deductible to the fullest extent permitted by law.
                 </p>
               </div>

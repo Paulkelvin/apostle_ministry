@@ -3,19 +3,19 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { Heart, ShieldCheck, ArrowRight, Sparkles, CreditCard, Gift } from 'lucide-react'
+import { Heart, ShieldCheck, ArrowRight, Sparkles, CreditCard, Gift, CheckCircle2 } from 'lucide-react'
 
 export function GivingSpotlightSection() {
   return (
-    <section className="py-24 bg-[#FAF7F1] relative overflow-hidden border-t border-[#E6DDCA]">
+    <section className="py-24 bg-[#FAF8F5] relative overflow-hidden border-t border-[#EBE3D5]">
       {/* Delicate tactile background pattern */}
-      <div className="absolute inset-0 bg-[radial-gradient(#e6ddca_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none opacity-60" />
+      <div className="absolute inset-0 bg-[radial-gradient(#ebe3d5_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none opacity-60" />
       <div className="absolute top-1/2 left-0 w-96 h-96 bg-accent/10 blur-[130px] pointer-events-none rounded-full" />
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary/5 blur-[130px] pointer-events-none rounded-full" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          {/* Left Column: Image Patch with Layered Stewardship Badge */}
+          {/* Left Column: Image Patch with Cathedral Arch Silhouette */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -23,7 +23,7 @@ export function GivingSpotlightSection() {
             transition={{ duration: 0.7 }}
             className="lg:col-span-6 relative"
           >
-            <div className="relative aspect-[4/3] sm:aspect-[16/11] rounded-3xl overflow-hidden border border-[#E6DDCA] shadow-lg">
+            <div className="relative aspect-[4/3] sm:aspect-[16/11] rounded-t-[3.5rem] rounded-b-3xl overflow-hidden border border-[#EBE3D5] shadow-md">
               <Image
                 src="/images/sermons/sermon_prayer.jpg"
                 alt="Worship and Giving at RLFCC"
@@ -40,18 +40,18 @@ export function GivingSpotlightSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3, duration: 0.6 }}
-              className="sm:absolute -bottom-6 -right-6 mt-4 sm:mt-0 max-w-xs bg-white/95 backdrop-blur-md p-5 rounded-2xl border border-[#E6DDCA] shadow-md"
+              className="sm:absolute -bottom-6 -right-6 mt-4 sm:mt-0 max-w-xs bg-white/95 backdrop-blur-md p-5 rounded-2xl border border-[#EBE3D5] shadow-md"
             >
               <div className="flex items-center gap-3 mb-2">
-                <div className="w-9 h-9 rounded-xl bg-accent/15 flex items-center justify-center text-accent-dark">
+                <div className="w-10 h-10 rounded-xl bg-accent/15 flex items-center justify-center text-accent-dark">
                   <ShieldCheck className="w-5 h-5 text-accent-dark" />
                 </div>
                 <div>
                   <p className="text-xs font-bold text-accent-dark uppercase tracking-wider">501(c)(3) Ministry</p>
-                  <p className="text-sm font-display font-semibold text-[#251827]">Tax-Deductible Giving</p>
+                  <p className="text-sm font-display font-semibold text-[#221524]">Tax-Deductible Giving</p>
                 </div>
               </div>
-              <p className="text-xs text-[#5C525C] leading-relaxed">
+              <p className="text-xs text-[#584E59] leading-relaxed">
                 All tithes and offerings directly support live worship services, prayer outreach, and community care.
               </p>
             </motion.div>
@@ -65,7 +65,7 @@ export function GivingSpotlightSection() {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="lg:col-span-6 flex flex-col justify-center"
           >
-            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#E6DDCA] text-accent-dark text-xs font-semibold tracking-wider uppercase mb-5 w-fit shadow-xs">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#EBE3D5] text-accent-dark text-xs font-semibold tracking-wider uppercase mb-5 w-fit shadow-xs">
               <Heart className="w-3.5 h-3.5 text-accent fill-accent/20" />
               Stewardship &amp; Generosity
             </span>
@@ -74,14 +74,14 @@ export function GivingSpotlightSection() {
               Partner With Us in Spreading the Gospel
             </h2>
 
-            <p className="text-base sm:text-lg text-[#5C525C] leading-relaxed mb-6">
+            <p className="text-base sm:text-lg text-[#584E59] leading-relaxed mb-6">
               Your faithful support enables Restoring Life Family Community Center to minister every week through live worship, spirit-filled Bible study, and compassionate pastoral outreach.
             </p>
 
-            {/* Scripture Quote Box */}
-            <div className="p-6 rounded-2xl bg-white border border-[#E6DDCA] shadow-xs mb-8 relative overflow-hidden">
+            {/* Scripture Quote Box with Arch Accent */}
+            <div className="p-6 rounded-2xl bg-white border border-[#EBE3D5] shadow-xs mb-8 relative overflow-hidden">
               <div className="absolute top-0 left-0 bottom-0 w-1.5 bg-accent" />
-              <p className="text-base sm:text-lg text-[#251827] italic font-serif leading-relaxed">
+              <p className="text-base sm:text-lg text-[#221524] italic font-serif leading-relaxed">
                 &ldquo;Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver.&rdquo;
               </p>
               <p className="text-accent-dark text-xs font-bold mt-2 uppercase tracking-wider">
@@ -90,7 +90,7 @@ export function GivingSpotlightSection() {
             </div>
 
             {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 items-stretch sm:items-center">
+            <div className="flex flex-col sm:flex-row gap-4 items-stretch sm:items-center mb-6">
               <Link
                 href="/give"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-accent hover:bg-accent-dark text-white font-bold text-base shadow-md hover:shadow-lg transition-all duration-300"
@@ -100,11 +100,23 @@ export function GivingSpotlightSection() {
               </Link>
               <Link
                 href="/give#ways-to-give"
-                className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl border border-[#E6DDCA] bg-white hover:bg-[#FAF7F1] text-primary font-semibold text-base transition-colors duration-200"
+                className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl border border-[#EBE3D5] bg-white hover:bg-[#FAF8F5] text-primary font-semibold text-base transition-colors duration-200"
               >
                 Explore Ways to Give
                 <ArrowRight className="w-4 h-4" />
               </Link>
+            </div>
+
+            {/* Trust Points */}
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-[#584E59]">
+              <span className="flex items-center gap-1.5">
+                <CheckCircle2 className="w-3.5 h-3.5 text-sage" />
+                Secure Encrypted Giving
+              </span>
+              <span className="flex items-center gap-1.5">
+                <CheckCircle2 className="w-3.5 h-3.5 text-sage" />
+                Instant Tax Receipts
+              </span>
             </div>
           </motion.div>
         </div>

@@ -62,6 +62,9 @@ export default async function AboutPage() {
             Discover the mission, biblical pillars, and spiritual family that guide Restoring Life Family Community Center.
           </p>
         </div>
+
+        {/* Cathedral Arch Mask Transition */}
+        <div className="absolute bottom-0 left-0 right-0 h-10 sm:h-12 bg-[#FAF8F5] [clip-path:ellipse(65%_100%_at_50%_100%)] pointer-events-none" />
       </section>
 
       {/* Story & Heart */}

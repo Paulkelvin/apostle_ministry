@@ -1,46 +1,46 @@
 @import "tailwindcss";
 
 @theme {
-  /* TBHE-Inspired Warm Human Palette (from tbheducator.com) */
-  --color-primary: #763D8E;         /* Rich, welcoming regal plum */
-  --color-primary-dark: #552C66;    /* Deep plum */
-  --color-primary-light: #9453AD;   /* Gentle plum highlight */
-  --color-primary-deep: #2A1734;    /* Warm aubergine obsidian — zero harsh edgy black */
-  --color-primary-ink: #1F1025;     /* Deep warm plum charcoal */
+  /* RLFCC Distinctive Sacred Palette: Royal Plum, Radiant Gold, & Restoration Sage */
+  --color-primary: #632B66;         /* Royal Imperial Violet-Plum — sacred, regal, welcoming */
+  --color-primary-dark: #451748;    /* Deep sanctuary plum */
+  --color-primary-light: #843B88;   /* Luminous plum highlight */
+  --color-primary-deep: #221026;    /* Deep warm aubergine night */
+  --color-primary-ink: #180A1C;     /* Deep velvet charcoal */
 
-  --color-secondary: #F5EFE3;       /* Soft linen/canvas tint */
+  --color-secondary: #F5EFE3;       /* Soft alabaster parchment */
   --color-secondary-dark: #EAE1D0;
 
-  --color-accent: #C4862C;          /* Warm honey amber / gold (TBHE) */
-  --color-accent-dark: #946521;
-  --color-accent-light: #F7E5C6;
+  --color-accent: #D49B38;          /* Radiant Divine Gold / Warm Honey Amber */
+  --color-accent-dark: #A3711E;
+  --color-accent-light: #FBF0D9;
 
-  --color-sage: #6B9475;
-  --color-sage-dark: #507559;
-  --color-sage-light: #ECF3EE;
+  --color-sage: #4E7559;            /* Restoration Sage — represents new life & healing */
+  --color-sage-dark: #375641;
+  --color-sage-light: #EEF4F0;
 
-  /* TBHE warm natural linen ramp */
-  --color-warm-50: #FFFFFF;         /* Crisp white cards */
-  --color-warm-100: #FAF7F1;        /* TBHE canvas (#FAF7F1) */
-  --color-warm-200: #E6DDCA;        /* TBHE hairline border */
-  --color-warm-300: #D6C9AC;
-  --color-warm-400: #9B9183;
-  --color-warm-500: #6E6371;        /* TBHE muted ink */
-  --color-warm-600: #5C525C;        /* TBHE body text (#5C525C) */
-  --color-warm-700: #423643;
-  --color-warm-800: #2F1F31;
-  --color-warm-900: #251827;        /* TBHE ink (#251827) */
+  /* RLFCC Alabaster & Linen Canvas */
+  --color-warm-50: #FFFFFF;         /* Pure white */
+  --color-warm-100: #FAF8F5;        /* Warm Alabaster Canvas (#FAF8F5) */
+  --color-warm-200: #EBE3D5;        /* Gentle Parchment Hairline (#EBE3D5) */
+  --color-warm-300: #D8CEBE;
+  --color-warm-400: #9E9385;
+  --color-warm-500: #6F6270;        /* Muted sanctuary ink */
+  --color-warm-600: #584E59;        /* Warm body text */
+  --color-warm-700: #3E333F;
+  --color-warm-800: #2C1F2E;
+  --color-warm-900: #221524;        /* Deep velvety ink */
 
-  --color-canvas: #FAF7F1;
-  --color-canvas-soft: #F5EFE3;
-  --color-surface: #FAF7F1;
+  --color-canvas: #FAF8F5;
+  --color-canvas-soft: #F4EFE6;
+  --color-surface: #FAF8F5;
   --color-surface-card: #FFFFFF;
-  --color-hairline: #E6DDCA;
-  --color-hairline-soft: #EFE8D9;
-  --color-hairline-lavender: #DBC5E4;
-  --color-lavender-surface: #F4EEF7;
-  --color-ink: #251827;
-  --color-body: #5C525C;
+  --color-hairline: #EBE3D5;
+  --color-hairline-soft: #F0E9DC;
+  --color-hairline-lavender: #D5BEDA;
+  --color-lavender-surface: #F5EFF8;
+  --color-ink: #221524;
+  --color-body: #584E59;
   --color-background: var(--color-canvas);
   --color-foreground: var(--color-ink);
 
@@ -253,4 +253,31 @@ button:disabled, input:disabled, select:disabled, textarea:disabled {
 ::selection {
   background: var(--color-primary);
   color: #FFFFFF;
+}
+
+/* Church Architectural & Sacred Design Motifs */
+@layer utilities {
+  /* Sanctuary Stained-Glass Window Arch */
+  .arch-frame {
+    border-radius: 2.75rem 2.75rem 1.5rem 1.5rem;
+  }
+  .arch-window {
+    border-radius: 9999px 9999px 1.5rem 1.5rem;
+  }
+  .arch-pill {
+    border-radius: 9999px;
+  }
+
+  /* Radiant ambient warm halo */
+  .radiant-halo {
+    background: radial-gradient(circle at 50% 30%, rgba(212, 155, 56, 0.12) 0%, rgba(99, 43, 102, 0.04) 50%, transparent 80%);
+  }
+
+  /* Sacred cross hairline divider */
+  .cross-divider {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
